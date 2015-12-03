@@ -20,8 +20,6 @@ We warmly welcome (and are in dire need of) any developper with seasoned knowled
 
 Furthermore, any one with good knowledge of GitHub / community management is really welcome on board
 
-Follow these steps to contribute:
-
 #Acknowledgements
 
 This code has been written by Charles d'Avernas
