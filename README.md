@@ -9,6 +9,11 @@ It runs on top of the AWESOME OpenTK library (http://www.opentk.com/)
 
 WORK IN PROGRESS
 
+
+#Forum
+
+http://photon-forum.indev.be/
+
 #Contributing
 
 We warmly welcome (and are in dire need of) any developper with seasoned knowledge in any and all of the following:
