@@ -31,4 +31,5 @@ Furthermore, any one with good knowledge of GitHub / community management is rea
 #Acknowledgements
 
 This code has been written by Charles d'Avernas
+
 Special thanks to the amazing <b>inDev</b> (http://www.indev.be) team for their unyielding support to my work
