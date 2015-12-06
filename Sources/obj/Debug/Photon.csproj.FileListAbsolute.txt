@@ -1,0 +1,17 @@
+D:\Dev\Photon\Photon\bin\Debug\Photon.dll
+D:\Dev\Photon\Photon\bin\Debug\Photon.pdb
+D:\Dev\Photon\Photon\obj\Debug\Photon.csprojResolveAssemblyReference.cache
+D:\Dev\Photon\Photon\obj\Debug\Photon.dll
+D:\Dev\Photon\Photon\obj\Debug\Photon.pdb
+D:\Dev\Photon\Sources\bin\Debug\Photon.dll
+D:\Dev\Photon\Sources\bin\Debug\Photon.pdb
+D:\Dev\Photon\Sources\bin\Debug\OpenTK.Compatibility.dll
+D:\Dev\Photon\Sources\bin\Debug\OpenTK.dll
+D:\Dev\Photon\Sources\bin\Debug\OpenTK.GLControl.dll
+D:\Dev\Photon\Sources\bin\Debug\OpenTK.pdb
+D:\Dev\Photon\Sources\bin\Debug\OpenTK.xml
+D:\Dev\Photon\Sources\bin\Debug\OpenTK.GLControl.xml
+D:\Dev\Photon\Sources\obj\Debug\Photon.csprojResolveAssemblyReference.cache
+D:\Dev\Photon\Sources\obj\Debug\Photon.dll
+D:\Dev\Photon\Sources\obj\Debug\Photon.pdb
+D:\Dev\Photon\Sources\bin\Debug\Photon.XML

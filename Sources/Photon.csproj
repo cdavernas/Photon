@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{33948291-4CDE-49F4-82DA-F8DE0CD6C18E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Photon</RootNamespace>
+    <AssemblyName>Photon</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Photon.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Charles-Frédéric\Documents\OpenTK\1.1\Binaries\OpenTK\Release\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.Compatibility, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Charles-Frédéric\Documents\OpenTK\1.1\Binaries\OpenTK\Release\OpenTK.Compatibility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Entities\Application.cs" />
+    <Compile Include="Core\Entities\Window.cs" />
+    <Compile Include="Controls\Interfaces\IBorderedElement.cs" />
+    <Compile Include="Controls\Interfaces\IElementPresenter.cs" />
+    <Compile Include="Controls\Interfaces\IDecorator.cs" />
+    <Compile Include="Controls\Interfaces\IPaddedElement.cs" />
+    <Compile Include="Controls\Interfaces\IPanel.cs" />
+    <Compile Include="Controls\Interfaces\ITextPresenter.cs" />
+    <Compile Include="Core\Abstract\DependencyObject.cs" />
+    <Compile Include="Core\Abstract\UIElement.cs" />
+    <Compile Include="Core\Collections\ObservableHashSet.cs" />
+    <Compile Include="Core\Collections\UIElementCollection.cs" />
+    <Compile Include="Core\Entities\DependencyProperty.cs" />
+    <Compile Include="Core\Entities\DrawingContext.cs" />
+    <Compile Include="Core\Enumerations\ApplicationState.cs" />
+    <Compile Include="Core\Enumerations\DependencyPropertyType.cs" />
+    <Compile Include="Core\Enumerations\HorizontalAlignment.cs" />
+    <Compile Include="Core\Enumerations\ShutdownMode.cs" />
+    <Compile Include="Core\Enumerations\VerticalAlignment.cs" />
+    <Compile Include="Core\Enumerations\Visibility.cs" />
+    <Compile Include="Core\Extensions\BitmapExtensions.cs" />
+    <Compile Include="Core\Extensions\HashSetExtensions.cs" />
+    <Compile Include="Core\Extensions\PointExtensions.cs" />
+    <Compile Include="Core\Extensions\PointFExtensions.cs" />
+    <Compile Include="Core\Extensions\TextPrinterExtensions.cs" />
+    <Compile Include="Core\Extensions\XmlAttributeExtensions.cs" />
+    <Compile Include="Core\Extensions\XmlDocumentExtensions.cs" />
+    <Compile Include="Core\Extensions\XmlNodeExtensions.cs" />
+    <Compile Include="Core\Interfaces\IDependencyElement.cs" />
+    <Compile Include="Core\Interfaces\IUIElement.cs" />
+    <Compile Include="Core\Static\SystemParameters.cs" />
+    <Compile Include="Input\Static\FocusManager.cs" />
+    <Compile Include="Input\Entities\HitTestResult.cs" />
+    <Compile Include="Input\Static\KeyboardNavigation.cs" />
+    <Compile Include="Input\Entities\PointHitTestParameters.cs" />
+    <Compile Include="Input\Entities\TextSelection.cs" />
+    <Compile Include="Input\Entities\UIEventArgs.cs" />
+    <Compile Include="Input\Enumerations\TextSelectionMode.cs" />
+    <Compile Include="Input\Enumerations\UIEvent.cs" />
+    <Compile Include="Media.Animations\Abstract\Animation.cs" />
+    <Compile Include="Media.Animations\Abstract\AnimationClock.cs" />
+    <Compile Include="Media.Animations\Abstract\AnimationTimeline.cs" />
+    <Compile Include="Media.Animations\Abstract\EasingFunction.cs" />
+    <Compile Include="Media.Animations\Entities\RepeatBehavior.cs" />
+    <Compile Include="Media.Animations\Enumerations\EasingMode.cs" />
+    <Compile Include="Media.Animations\Enumerations\FillBehavior.cs" />
+    <Compile Include="Media.Animations\Enumerations\RepeatMode.cs" />
+    <Compile Include="Media\Abstract\Brush.cs" />
+    <Compile Include="Media\Extensions\ColorExtensions.cs" />
+    <Compile Include="Media\Entities\FontFamily.cs" />
+    <Compile Include="Media\Entities\ImageBrush.cs" />
+    <Compile Include="Media\Entities\MouseCursor.cs" />
+    <Compile Include="Media\Entities\Point.cs" />
+    <Compile Include="Media\Entities\Rectangle.cs" />
+    <Compile Include="Media\Entities\Size.cs" />
+    <Compile Include="Media\Entities\SolidColorBrush.cs" />
+    <Compile Include="Media\Entities\Thickness.cs" />
+    <Compile Include="Media\Extensions\StringExtensions.cs" />
+    <Compile Include="Media\TypeConverters\BrushConverter.cs" />
+    <Compile Include="Media\TypeConverters\FontFamilyConverter.cs" />
+    <Compile Include="Media\TypeConverters\MouseCursorConverter.cs" />
+    <Compile Include="Media\TypeConverters\PointConverter.cs" />
+    <Compile Include="Media\TypeConverters\RectangleConverter.cs" />
+    <Compile Include="Media\TypeConverters\SizeConverter.cs" />
+    <Compile Include="Media\TypeConverters\ThicknessConverter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Xaml\Static\XamlParser.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
