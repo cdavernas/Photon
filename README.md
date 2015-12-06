@@ -11,7 +11,7 @@ WORK IN PROGRESS
 
 #License
 
-Photon is licensed under the MIT license. Refer to <b>docs/license.txt</b> for more information.
+Photon is licensed under the GNU GPL license. Refer to <b>docs/license.txt</b> for more information.
 
 #Forum
 
