@@ -1,0 +1,2765 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Photon</name>
+    </assembly>
+    <members>
+        <member name="T:Photon.Application">
+            <summary>
+            Encapsulates a Photon application
+            </summary>
+        </member>
+        <member name="F:Photon.Application.DEFAULT_UPDATE_FREQUENCY">
+            <summary>
+            The default frequency, in milliseconds, at which the application will check for events
+            </summary>
+        </member>
+        <member name="E:Photon.Application.Startup">
+            <summary>
+            This event is fired on <see cref="T:Photon.Application"/> start up
+            </summary>
+        </member>
+        <member name="E:Photon.Application.Exit">
+            <summary>
+            This event is fired when the <see cref="T:Photon.Application"/> shuts down
+            </summary>
+        </member>
+        <member name="M:Photon.Application.#ctor">
+            <summary>
+            The default constructor for the <see cref="T:Photon.Application"/> class
+            </summary>
+        </member>
+        <member name="P:Photon.Application.StartupArguments">
+            <summary>
+            Gets an array of string representing the application's statup arguments
+            </summary>
+        </member>
+        <member name="P:Photon.Application.StartupUri">
+            <summary>
+            Gets/sets the <see cref="T:System.Uri"/> of application's startup <see cref="T:Photon.IUIElement"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Application.ShutdownMode">
+            <summary>
+            Gets/sets the application's <see cref="T:Photon.ShutdownMode"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Application.State">
+            <summary>
+            Gets the application's <see cref="T:Photon.ApplicationState"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Application.MainWindow">
+            <summary>
+            Gets/sets the application's main <see cref="T:Photon.Window"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Application.Windows">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.IReadOnlyList`1"/> containing all the application's active <see cref="T:Photon.Window"/>s
+            </summary>
+        </member>
+        <member name="M:Photon.Application.RegisterWindow(Photon.Window)">
+            <summary>
+            Registers the specified <see cref="T:Photon.Window"/>
+            </summary>
+            <param name="window">The <see cref="T:Photon.Window"/> to register</param>
+        </member>
+        <member name="M:Photon.Application.Run">
+            <summary>
+            Starts the application
+            </summary>
+        </member>
+        <member name="M:Photon.Application.Shutdown">
+            <summary>
+            Shuts the application down
+            </summary>
+        </member>
+        <member name="M:Photon.Application.OnStartup">
+            <summary>
+            When overriden in a class, allows the execution of code when the application is starting up
+            </summary>
+        </member>
+        <member name="M:Photon.Application.OnWindowCollectionChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Handles the <see cref="P:Photon.Application.Windows"/>'s <see cref="E:Photon.ObservableHashSet`1.CollectionChanged"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> associated with the event</param>
+        </member>
+        <member name="M:Photon.Application.OnWindowClosed(System.Object,System.EventArgs)">
+            <summary>
+            Handles the <see cref="E:Photon.Window.Closed"/> event of the application's registered, active <see cref="T:Photon.Window"/>s
+            </summary>
+            <param name="sender">The event's sender</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Application.OnExit">
+            <summary>
+            When overriden in a class, allows the execution of code when the application is exiting
+            </summary>
+        </member>
+        <member name="P:Photon.Application.Current">
+            <summary>
+            Gets the current <see cref="T:Photon.Application"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Application.GetResourceStream(System.Uri)">
+            <summary>
+            Gets the <see cref="T:System.IO.Stream"/> of the specified resource
+            </summary>
+            <param name="resourceUri">The resource's <see cref="T:System.Uri"/></param>
+            <returns>The specified resource's <see cref="T:System.IO.Stream"/></returns>
+        </member>
+        <member name="M:Photon.Application.Start``1(System.String[])">
+            <summary>
+            Starts a new application fo the specified type
+            </summary>
+            <typeparam name="TApplication">The type of the application to create</typeparam>
+            <param name="startupArguments">An array of string representing the application's startup arguments</param>
+        </member>
+        <member name="T:Photon.Window">
+            <summary>
+            Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes
+            </summary>
+        </member>
+        <member name="F:Photon.Window.DEFAULT_WIDTH">
+            <summary>
+            The default width of a window
+            </summary>
+        </member>
+        <member name="F:Photon.Window.DEFAULT_HEIGHT">
+            <summary>
+            The default height of a window
+            </summary>
+        </member>
+        <member name="F:Photon.Window.DEFAULT_UDATES_PER_SECOND">
+            <summary>
+            The default updates per second of a window
+            </summary>
+        </member>
+        <member name="F:Photon.Window.DEFAULT_FRAMES_PER_SECOND">
+            <summary>
+            The default fps of a window
+            </summary>
+        </member>
+        <member name="E:Photon.Window.Loaded">
+            <summary>
+            This event is fired whenever the window is loaded
+            </summary>
+        </member>
+        <member name="E:Photon.Window.Closing">
+            <summary>
+            This event is fired when the window is closing
+            </summary>
+        </member>
+        <member name="E:Photon.Window.Closed">
+            <summary>
+            This event is fired whenever the window is closed
+            </summary>
+        </member>
+        <member name="E:Photon.Window.MouseMove">
+            <summary>
+            This event is fired every time the mouse moves
+            </summary>
+        </member>
+        <member name="E:Photon.Window.MouseButtonDown">
+            <summary>
+            This event is fired every time a mouse button is down
+            </summary>
+        </member>
+        <member name="E:Photon.Window.MouseButtonUp">
+            <summary>
+            This event is fired every time a mouse button is up
+            </summary>
+        </member>
+        <member name="E:Photon.Window.MouseLeftButtonDown">
+            <summary>
+            This event is fired every time the left mouse button is down
+            </summary>
+        </member>
+        <member name="E:Photon.Window.MouseLeftButtonUp">
+            <summary>
+            This event is fired every time the left mouse button is up
+            </summary>
+        </member>
+        <member name="E:Photon.Window.MouseMiddleButtonDown">
+            <summary>
+            This event is fired every time the middle mouse button is down
+            </summary>
+        </member>
+        <member name="E:Photon.Window.MouseMiddleButtonUp">
+            <summary>
+            This event is fired every time the middle mouse button is up
+            </summary>
+        </member>
+        <member name="E:Photon.Window.MouseRightButtonDown">
+            <summary>
+            This event is fired every time the right mouse button is down
+            </summary>
+        </member>
+        <member name="E:Photon.Window.MouseRightButtonUp">
+            <summary>
+            This event is fired every time the right mouse button is up
+            </summary>
+        </member>
+        <member name="E:Photon.Window.MouseWheel">
+            <summary>
+            This event is fired every time the mouse wheel is used
+            </summary>
+        </member>
+        <member name="E:Photon.Window.KeyDown">
+            <summary>
+            This event is fired every time a key is down
+            </summary>
+        </member>
+        <member name="E:Photon.Window.KeyUp">
+            <summary>
+            This event is fired every time a key is up
+            </summary>
+        </member>
+        <member name="E:Photon.Window.KeyPressed">
+            <summary>
+            This event is fired every time a key is pressed
+            </summary>
+        </member>
+        <member name="E:Photon.Window.VisibilityChanged">
+            <summary>
+            This event is fired every time the window's visibility has changed
+            </summary>
+        </member>
+        <member name="E:Photon.Window.GotFocus">
+            <summary>
+            This event is fired every time the window gets focus
+            </summary>
+        </member>
+        <member name="E:Photon.Window.LostFocus">
+            <summary>
+            This event is fired every time the window looses focus
+            </summary>
+        </member>
+        <member name="M:Photon.Window.#ctor">
+            <summary>
+            The default constructor for the <see cref="T:Photon.Window"/> class
+            </summary>
+        </member>
+        <member name="P:Photon.Window.DrawingContext">
+            <summary>
+            Gets the window's <see cref="T:Photon.DrawingContext"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Window.Hwnd">
+            <summary>
+            Gets the window's underlying <see cref="T:OpenTK.GameWindow"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Window.Title">
+            <summary>
+            Gets/sets the window's title
+            </summary>
+        </member>
+        <member name="P:Photon.Window.Width">
+            <summary>
+            Gets/sets the window's width
+            </summary>
+        </member>
+        <member name="P:Photon.Window.Height">
+            <summary>
+            Gets/sets the window's height
+            </summary>
+        </member>
+        <member name="P:Photon.Window.Background">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Brush"/> used to paint the window's background
+            </summary>
+        </member>
+        <member name="P:Photon.Window.IsHitTestVisible">
+            <summary>
+            Gets/sets a boolean indicating whether or not the window is hit test visible
+            </summary>
+        </member>
+        <member name="P:Photon.Window.Child">
+            <summary>
+            Gets/sets the window's child <see cref="T:Photon.UIElement"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Window.ContentsAffectsLayout">
+            <summary>
+            Gets/sets a boolean indicating whether or not the window's contents affect its layout
+            </summary>
+        </member>
+        <member name="P:Photon.Window.ContentsSize">
+            <summary>
+            Gets the window's contents <see cref="T:Photon.Media.Size"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Window.LayoutTarget">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the position and size of the window's layout
+            </summary>
+        </member>
+        <member name="P:Photon.Window.RenderTarget">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the position and size of the window's render target
+            </summary>
+        </member>
+        <member name="M:Photon.Window.Initialize">
+            <summary>
+            Initializes the <see cref="T:Photon.Window"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Window.Show">
+            <summary>
+            Shows the window
+            </summary>
+        </member>
+        <member name="M:Photon.Window.ShowDialog">
+            <summary>
+            Show the window as a dialog, meaning the UI will block until the dialog closes or returns a value
+            </summary>
+        </member>
+        <member name="M:Photon.Window.Hide">
+            <summary>
+            Hides the window
+            </summary>
+        </member>
+        <member name="M:Photon.Window.Close">
+            <summary>
+            Closes the window
+            </summary>
+        </member>
+        <member name="M:Photon.Window.ComputeChildOffset(Photon.UIElement)">
+            <summary>
+            Computes the x and y offset of the specified window's child <see cref="T:Photon.UIElement"/>
+            </summary>
+            <param name="child">The window's child <see cref="T:Photon.UIElement"/> for whihc to compute the offset</param>
+            <returns>A <see cref="T:Photon.Media.Point"/> representing the window's child x and y offset</returns>
+        </member>
+        <member name="M:Photon.Window.ProcessUIEvent(Photon.Input.UIEventArgs)">
+            <summary>
+            Processes the <see cref="T:Photon.Input.UIEvent"/> specified by the <see cref="T:Photon.Input.UIEventArgs"/> passed as parameter
+            </summary>
+            <param name="e">The <see cref="T:Photon.Input.UIEventArgs"/> associated with the <see cref="T:Photon.Input.UIEvent"/> to process</param>
+        </member>
+        <member name="M:Photon.Window.SetCursor(Photon.Media.MouseCursor)">
+            <summary>
+            Sets the mouse cursor
+            </summary>
+            <param name="cursor">The <see cref="T:Photon.Media.MouseCursor"/> to set</param>
+        </member>
+        <member name="M:Photon.Window.InvalidateLayout">
+            <summary>
+            Invalidates the window's layout
+            </summary>
+        </member>
+        <member name="M:Photon.Window.InvalidateVisual">
+            <summary>
+            Invalidates the window's visual, forcing it to redraw
+            </summary>
+        </member>
+        <member name="M:Photon.Window.OnHwndLoad(System.Object,System.EventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.GameWindow.Load"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndUpdateFrame(System.Object,OpenTK.FrameEventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.GameWindow.UpdateFrame"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndRenderFrame(System.Object,OpenTK.FrameEventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.GameWindow.RenderFrame"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndMouseMove(System.Object,OpenTK.Input.MouseMoveEventArgs)">
+            <summary>
+            Handles the underlying <see cref="!:GameWindow.MouseMove"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndMouseButtonDown(System.Object,OpenTK.Input.MouseButtonEventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.NativeWindow.MouseDown"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndMouseButtonUp(System.Object,OpenTK.Input.MouseButtonEventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.NativeWindow.MouseUp"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndMouseWheel(System.Object,OpenTK.Input.MouseWheelEventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.NativeWindow.MouseWheel"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndKeyDown(System.Object,OpenTK.Input.KeyboardKeyEventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.NativeWindow.KeyDown"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndKeyUp(System.Object,OpenTK.Input.KeyboardKeyEventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.NativeWindow.KeyUp"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndKeyPress(System.Object,OpenTK.KeyPressEventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.NativeWindow.KeyPress"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndClosing(System.Object,System.EventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.NativeWindow.Closing"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndClosed(System.Object,System.EventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.NativeWindow.Closed"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnInitialized">
+            <summary>
+            When overriden in a class, this method provides means to run code whenever the <see cref="T:Photon.Window"/> has been initialized
+            </summary>
+        </member>
+        <member name="M:Photon.Window.OnPropertyChanged(System.String,System.Object,System.Object)">
+            <summary>
+            Handles the <see cref="E:Photon.DependencyObject.PropertyChanged"/> event
+            </summary>
+            <param name="propertyName">The dependency property's name</param>
+            <param name="originalValue">The dependency property's original value</param>
+            <param name="value">The dependency property's new value</param>
+        </member>
+        <member name="M:Photon.Window.OnRender(Photon.DrawingContext)">
+            <summary>
+            When overriden in a class, renders the window in the specified <see cref="T:Photon.DrawingContext"/>
+            </summary>
+            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which to render the window</param>
+        </member>
+        <member name="M:Photon.Window.GetWindow(Photon.UIElement)">
+            <summary>
+            Retrieves the <see cref="T:Photon.Window"/> to which the specified <see cref="T:Photon.UIElement"/> belongs
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> to retrieve the parent <see cref="T:Photon.Window"/> of</param>
+            <returns>The <see cref="T:Photon.Window"/> the specified <see cref="T:Photon.UIElement"/> belongs to</returns>
+        </member>
+        <member name="T:Photon.IBorderedElement">
+            <summary>
+            This interface is implemented by all <see cref="T:Photon.IUIElement"/>s that define a border
+            </summary>
+        </member>
+        <member name="P:Photon.IBorderedElement.BorderBrush">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Brush"/> with which to paint the element's borders
+            </summary>
+        </member>
+        <member name="P:Photon.IBorderedElement.BorderThickness">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Thickness"/> of the element's border
+            </summary>
+        </member>
+        <member name="T:Photon.Controls.IElementPresenter">
+            <summary>
+            This interface is implemented by all <see cref="T:Photon.IUIElement"/> that presents at least one child <see cref="T:Photon.UIElement"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.IElementPresenter.ContentsAffectsLayout">
+            <summary>
+            Gets a boolean indicating whether or not the contents affects the element's layout
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.IElementPresenter.ContentsSize">
+            <summary>
+            Gets the element's <see cref="T:Photon.Media.Size"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.IElementPresenter.ComputeChildOffset(Photon.UIElement)">
+            <summary>
+            Computes the x and y offset for the specified child <see cref="T:Photon.UIElement"/>
+            </summary>
+            <param name="child">The child for which to compute the offset</param>
+            <returns>A <see cref="T:Photon.Media.Point"/> representing the x and y offset of the specified child <see cref="T:Photon.UIElement"/></returns>
+        </member>
+        <member name="T:Photon.Controls.IDecorator">
+            <summary>
+            This interface is implemented by all <see cref="T:Photon.IUIElement"/> that decorates a single child
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.IDecorator.Child">
+            <summary>
+            Gets the element's child <see cref="T:Photon.UIElement"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Controls.IPaddedElement">
+            <summary>
+            This interfaces is implements by all <see cref="T:Photon.UIElement"/>s that define a padding
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.IPaddedElement.Padding">
+            <summary>
+            Gets/sets a <see cref="T:Photon.Media.Thickness"/> representing the element's padding
+            </summary>
+        </member>
+        <member name="T:Photon.Controls.IPanel">
+            <summary>
+            This interface is implemented by all <see cref="T:Photon.UIElement"/> presenting multiple childs
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.IPanel.Children">
+            <summary>
+            Gets a <see cref="T:Photon.UIElementCollection"/> containing all of the element's children
+            </summary>
+        </member>
+        <member name="T:Photon.Controls.ITextPresenter">
+            <summary>
+            This interface is implemented by all <see cref="T:Photon.UIElement"/>s that present text
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.Foreground">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Brush"/> with which to render the text
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.FontFamily">
+            <summary>
+            Gets/sets the text's <see cref="T:Photon.Media.FontFamily"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.FontStyle">
+            <summary>
+            Gets/sets the text's <see cref="T:System.Drawing.FontStyle"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.FontSize">
+            <summary>
+            Gets/sets the text's EM size
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.Font">
+            <summary>
+            Gets the text's <see cref="T:System.Drawing.Font"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.Text">
+            <summary>
+            Gets/sets the text presented by the element
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.WrappedText">
+            <summary>
+            Gets the wrapped version of the text presented by the element
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.ITextPresenter.ComputeTextOffset">
+            <summary>
+            Computes the offset of the text within the element
+            </summary>
+            <returns>A <see cref="T:Photon.Media.Point"/> representing the x and y offset of the text presented by the element</returns>
+        </member>
+        <member name="T:Photon.DependencyObject">
+            <summary>
+            Represents an object that participates in the dependency property system
+            </summary>
+        </member>
+        <member name="E:Photon.DependencyObject.PropertyChanged">
+            <summary>
+            This event is fired every time one of the DepencyObject's property has been changed
+            </summary>
+        </member>
+        <member name="M:Photon.DependencyObject.#ctor">
+            <summary>
+            The parameterless constructor for the <see cref="T:Photon.DependencyObject"/> type
+            </summary>
+        </member>
+        <member name="P:Photon.DependencyObject.DependencyProperties">
+            <summary>
+            Gets a dictionary containing a list of all the <see cref="T:Photon.DependencyProperty"/> contained by the <see cref="T:Photon.DependencyObject"/>
+            </summary>
+        </member>
+        <member name="P:Photon.DependencyObject.AnimationClocks">
+            <summary>
+            Gets a list containing a list of all the <see cref="T:Photon.Media.Animations.AnimationClock"/> attached to the <see cref="T:Photon.DependencyObject"/>
+            </summary>
+        </member>
+        <member name="M:Photon.DependencyObject.GetValue(System.String)">
+            <summary>
+            Gets the value of the specified property
+            </summary>
+            <param name="propertyName">The case sensitive name of the property to get</param>
+            <returns>An object representing the property's value</returns>
+        </member>
+        <member name="M:Photon.DependencyObject.GetValue(Photon.DependencyProperty)">
+            <summary>
+            Gets the value of the specified property
+            </summary>
+            <param name="dependencyProperty">The <see cref="T:Photon.DependencyProperty"/> to get</param>
+            <returns>An object representing the property's value</returns>
+        </member>
+        <member name="M:Photon.DependencyObject.GetValue``1(System.String)">
+            <summary>
+            Gets the value of the specified property
+            </summary>
+            <param name="propertyName">The case sensitive name of the property to get</param>
+            <typeparam name="TResult">The expected type of the returned value</typeparam>
+            <returns>An object representing the property's value</returns>
+        </member>
+        <member name="M:Photon.DependencyObject.GetValue``1(Photon.DependencyProperty)">
+            <summary>
+            Gets the value of the specified property
+            </summary>
+            <param name="dependencyProperty">The <see cref="T:Photon.DependencyProperty"/> to get</param>
+            <typeparam name="TResult">The expected type of the returned value</typeparam>
+            <returns>An object representing the property's value</returns>
+        </member>
+        <member name="M:Photon.DependencyObject.SetValue(System.String,System.Object)">
+            <summary>
+            Sets the value of the specified property
+            </summary>
+            <param name="propertyName">The case sensitive name of the property to get</param>
+            <param name="value">The value to set the property with</param>
+        </member>
+        <member name="M:Photon.DependencyObject.SetValue(Photon.DependencyProperty,System.Object)">
+            <summary>
+            Sets the value of the specified property
+            </summary>
+            <param name="dependencyProperty">The <see cref="T:Photon.DependencyProperty"/> to get</param>
+            <param name="value">The value to set the property with</param>
+        </member>
+        <member name="M:Photon.DependencyObject.NotifyPropertyChanged(System.String,System.Object,System.Object)">
+            <summary>
+            This method notifies any changes suffered by a given <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+            <param name="propertyName">The case sensitive name of the modified property</param>
+            <param name="originalValue">An object representing the property's value before the suffered change(s)</param>
+            <param name="newValue">An object representing the property's actual (new) value</param>
+        </member>
+        <member name="M:Photon.DependencyObject.OnPropertyChanged(System.String,System.Object,System.Object)">
+            <summary>
+            When overriden in a class, this method provides means to run code whenever a <see cref="T:Photon.DependencyProperty"/> has changed
+            </summary>
+            <param name="propertyName">The case sensitive name of the modified property</param>
+            <param name="originalValue">An object representing the property's value before the suffered change(s)</param>
+            <param name="value">An object representing the property's actual (new) value</param>
+        </member>
+        <member name="M:Photon.DependencyObject.GetDepencyProperties(System.Type)">
+            <summary>
+            This static method searches the specified type for all <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+            <param name="depencyObjectType">The type of the <see cref="T:Photon.DependencyObject"/> to search for <see cref="T:Photon.DependencyProperty"/></param>
+            <returns>A dictionary of <see cref="T:Photon.DependencyProperty"/></returns>
+        </member>
+        <member name="T:Photon.UIElement">
+            <summary>
+            UIElement is a base class for core level implementations building on Photon elements and basic presentation characteristics.
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.LayoutInvalidated">
+            <summary>
+            This event is fired every time the element's layout is invalidated
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.VisualInvalidated">
+            <summary>
+            This event is fired every time the element's visual is invalidated
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseMove">
+            <summary>
+            This event is fired every time the mouse moves over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseEnter">
+            <summary>
+            This event is fired every time the mouse enters the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseLeave">
+            <summary>
+            This event is fired every time the mouse leaves the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseButtonDown">
+            <summary>
+            This event is fired every time a mouse button is down over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseButtonUp">
+            <summary>
+            This event is fired every time a mouse button is up over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseLeftButtonDown">
+            <summary>
+            This event is fired every time the left mouse button is down over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseLeftButtonUp">
+            <summary>
+            This event is fired every time the left mouse button is up over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseMiddleButtonDown">
+            <summary>
+            This event is fired every time the middle mouse button is down over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseMiddleButtonUp">
+            <summary>
+            This event is fired every time the middle mouse button is up over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseRightButtonDown">
+            <summary>
+            This event is fired every time the right mouse button is down over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseRightButtonUp">
+            <summary>
+            This event is fired every time the right mouse button is down over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.MouseWheel">
+            <summary>
+            This event is fired every time the mouse wheel is used over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.KeyDown">
+            <summary>
+            This event is fired every time a key is down over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.KeyUp">
+            <summary>
+            This event is fired every time a key is up over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.KeyPressed">
+            <summary>
+            This event is fired every time a key is pressed over the element
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.VisibilityChanged">
+            <summary>
+            This event is fired every time the element's visibility has changed
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.GotFocus">
+            <summary>
+            This event is fired every time the element gets focus
+            </summary>
+        </member>
+        <member name="E:Photon.UIElement.LostFocus">
+            <summary>
+            This event is fired every time the element looses focus
+            </summary>
+        </member>
+        <member name="M:Photon.UIElement.#ctor">
+            <summary>
+            The default, parameterless constructor for the <see cref="T:Photon.UIElement"/> type
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.Parent">
+            <summary>
+            Gets/Sets the <see cref="T:Photon.UIElement"/>'s logical parent 
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.HorizontalAlignment">
+            <summary>
+            Gets/Sets the element's <see cref="P:Photon.UIElement.HorizontalAlignment"/>
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.VerticalAlignment">
+            <summary>
+            Gets/Sets the element's <see cref="P:Photon.UIElement.VerticalAlignment"/>
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.Width">
+            <summary>
+            Gets/Sets the element's width
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.MinWidth">
+            <summary>
+            Gets/Sets the element's minimal width
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.MaxWidth">
+            <summary>
+            Gets/Sets the element's maximal width
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.Height">
+            <summary>
+            Gets/Sets the element's height
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.MinHeight">
+            <summary>
+            Gets/Sets the element's minimal height
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.MaxHeight">
+            <summary>
+            Gets/Sets the element's maximal height
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.Background">
+            <summary>
+            Gets/Sets the element's background
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.Margin">
+            <summary>
+            Gets/Sets the element's margin
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.Cursor">
+            <summary>
+            Gets/Sets the mouse cursor when over the element
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.Opacity">
+            <summary>
+            Gets/Sets the element's opacity
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.Visibility">
+            <summary>
+            Gets/Sets the element's <see cref="P:Photon.UIElement.Visibility"/>
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.IsMouseOver">
+            <summary>
+            Gets/Sets a value indicating whether or not the mouse is currently over the element
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.IsFocusable">
+            <summary>
+            Gets/Sets a value indicating whether or not the element can be focused
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.IsHitTestVisible">
+            <summary>
+            Gets/Sets a value indicating whether or not the element is hit test visible
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.HasParent">
+            <summary>
+            Gets a value indicating whether or not the element has a parent and is within a visual tree
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.LayoutPosition">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Point"/> representing the element's layout position
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.LayoutSize">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Size"/> representing the element's layout size
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.LayoutTarget">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the element's layout target
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.RenderPosition">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Point"/> representing the element's render position
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.RenderSize">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Size"/> representing the element's render size
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.RenderTarget">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the element's render target
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.ActualWidth">
+            <summary>
+            Gets the element's actual width
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.ActualHeight">
+            <summary>
+            Gets the element's actual height
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.LastInvalidated">
+            <summary>
+            Gets/Sets the date and time at which the element has last been invalidated
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.LastLocated">
+            <summary>
+            Gets/Sets the date and time at which the element has last been located
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.LastMeasured">
+            <summary>
+            Gets/Sets the date and time at which the element has last been measured
+            </summary>
+        </member>
+        <member name="M:Photon.UIElement.InvalidateLayout">
+            <summary>
+            This method is fired whenever the element's layout has been invalidated
+            </summary>
+        </member>
+        <member name="M:Photon.UIElement.InvalidateVisual">
+            <summary>
+            This method is fired whenever the element's visual has been invalidated
+            </summary>
+        </member>
+        <member name="M:Photon.UIElement.Locate">
+            <summary>
+            This method is fired whenever the element needs to be located
+            </summary>
+        </member>
+        <member name="M:Photon.UIElement.Measure">
+            <summary>
+            This method is fired whenever the element needs to be measured
+            </summary>
+        </member>
+        <member name="M:Photon.UIElement.Load">
+            <summary>
+            This method executes when the control is loading, meaning when it is first being rendered on screen
+            </summary>
+        </member>
+        <member name="M:Photon.UIElement.Focus">
+            <summary>
+            This method sets the focus on the element
+            </summary>
+        </member>
+        <member name="M:Photon.UIElement.Unfocus">
+            <summary>
+            If the element is focused, this method unfocuses it
+            </summary>
+        </member>
+        <member name="M:Photon.UIElement.Render(Photon.DrawingContext)">
+            <summary>
+            Renders the element
+            </summary>
+            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which to render the element</param>
+        </member>
+        <member name="M:Photon.UIElement.OnLoaded">
+            <summary>
+            When overriden in a class, this method allows the execution of code whenever the element has been loaded
+            </summary>
+        </member>
+        <member name="M:Photon.UIElement.OnInvalidateLayout">
+            <summary>
+            When overriden in a class, this method allows the execution of code whenever the element's layout has been invalidated
+            </summary>
+        </member>
+        <member name="M:Photon.UIElement.OnRender(Photon.DrawingContext)">
+             <summary>
+             When overriden in a class, this method allows the execution of code whenever the element has been rendered
+             </summary>
+            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which the element has been rendered</param>
+        </member>
+        <member name="M:Photon.UIElement.OnPropertyChanged(System.String,System.Object,System.Object)">
+            <summary>
+            When overriden in a class, this method provides means to run code whenever a <see cref="T:Photon.DependencyProperty"/> has changed
+            </summary>
+            <param name="propertyName">The case sensitive name of the modified property</param>
+            <param name="originalValue">An object representing the property's value before the suffered change(s)</param>
+            <param name="value">An object representing the property's actual (new) value</param>
+        </member>
+        <member name="M:Photon.UIElement.OnKeyDown(OpenTK.Input.KeyboardKeyEventArgs)">
+            <summary>
+            This method is fired when a key is down over the element
+            </summary>
+            <param name="e">The <see cref="T:OpenTK.Input.KeyboardKeyEventArgs"/> associated with the KeyDown event</param>
+        </member>
+        <member name="M:Photon.UIElement.OnKeyUp(OpenTK.Input.KeyboardKeyEventArgs)">
+            <summary>
+            This method is fired when a key is up over the element
+            </summary>
+            <param name="e">The <see cref="T:OpenTK.Input.KeyboardKeyEventArgs"/> associated with the KeyUp event</param>
+        </member>
+        <member name="M:Photon.UIElement.OnKeyPressed(OpenTK.KeyPressEventArgs)">
+            <summary>
+            This method is fired when a key is pressed over the element
+            </summary>
+            <param name="e">The <see cref="T:OpenTK.KeyPressEventArgs"/> associated with the KeyPress event</param>
+        </member>
+        <member name="M:Photon.UIElement.HitTest(Photon.Input.PointHitTestParameters)">
+            <summary>
+            Determines whether or not the control is hit by the specified <see cref="!:PointHitTestParameters"/>
+            </summary>
+            <param name="parameters">The <see cref="!:PointHitTestParameters"/> configuring the element</param>
+            <returns>A <see cref="!:HitTestResult"/> representing the result of the hit test</returns>
+        </member>
+        <member name="M:Photon.UIElement.ProcessUIEvent(Photon.Input.UIEventArgs)">
+            <summary>
+            This method is used to process any ui event handled by the element's logicial parent
+            </summary>
+            <param name="e">The <see cref="!:UIEventArgs"/> associated with the event</param>
+        </member>
+        <member name="T:Photon.ObservableHashSet`1">
+            <summary>
+            Represents a <see cref="T:System.Collections.Generic.HashSet`1"/> that notifies changes thanks to the <see cref="T:System.Collections.Specialized.INotifyCollectionChanged"/> interface
+            </summary>
+            <typeparam name="TElement">The <see cref="T:System.Collections.Generic.HashSet`1"/>'s element type</typeparam>
+        </member>
+        <member name="E:Photon.ObservableHashSet`1.CollectionChanged">
+            <summary>
+            This event is fired whenever a change occurs in the <see cref="T:System.Collections.Generic.HashSet`1"/>
+            </summary>
+        </member>
+        <member name="M:Photon.ObservableHashSet`1.Add(`0)">
+            <summary>
+            Tries to add the specified element into the hashset, and returns a boolean indicating the operation's success
+            </summary>
+            <param name="element">The element to add</param>
+            <returns>A boolean indicating whether or not the specified element could be added to the hashset</returns>
+        </member>
+        <member name="M:Photon.ObservableHashSet`1.Remove(`0)">
+            <summary>
+            Tries to remove the specified element from the hashset, and returns a boolean indicating the operation's success
+            </summary>
+            <param name="element">The element to remove</param>
+            <returns>A boolean indicating whether or not the specified element could be removed from the hashset</returns>
+        </member>
+        <member name="T:Photon.UIElementCollection">
+            <summary>
+            Represents a collection of <see cref="T:Photon.UIElement"/>s<para></para>    
+            </summary>
+        </member>
+        <member name="T:Photon.DependencyProperty">
+            <summary>
+            Represents a property that can be set through methods such as, styling, data binding, animation, and inheritance.
+            </summary>
+        </member>
+        <member name="M:Photon.DependencyProperty.#ctor(Photon.DependencyPropertyType,System.String,System.Type,System.Type,System.Reflection.MethodInfo,System.Reflection.MethodInfo)">
+            <summary>
+            A constructor for the <see cref="T:Photon.DependencyProperty"/> type
+            </summary>
+            <param name="type">The property's <see cref="T:Photon.DependencyPropertyType"/></param>
+            <param name="name">The case-sensitive name of the property</param>
+            <param name="propertyType">The property's return type</param>
+            <param name="declaringType">The type declaring the property</param>
+            <param name="getMethod">The method used to retrieve the property's value</param>
+            <param name="setMethod">The method used to set the property's value</param>
+        </member>
+        <member name="M:Photon.DependencyProperty.#ctor(Photon.DependencyPropertyType,System.String,System.Type,System.Type,System.Reflection.MethodInfo,System.Reflection.MethodInfo,System.Object)">
+            <summary>
+            A constructor for the <see cref="T:Photon.DependencyProperty"/> type
+            </summary>
+            <param name="type">The property's <see cref="T:Photon.DependencyPropertyType"/></param>
+            <param name="name">The case-sensitive name of the property</param>
+            <param name="propertyType">The property's return type</param>
+            <param name="declaringType">The type declaring the property</param>
+            <param name="getMethod">The method used to retrieve the property's value</param>
+            <param name="setMethod">The method used to set the property's value</param>
+            <param name="defaultValue">The property's default (initial) value</param>
+        </member>
+        <member name="P:Photon.DependencyProperty.Type">
+            <summary>
+            Gets the <see cref="T:Photon.DependencyProperty"/>'s <see cref="T:Photon.DependencyPropertyType"/>
+            </summary>
+        </member>
+        <member name="P:Photon.DependencyProperty.Name">
+            <summary>
+            Gets a string representing the name of the property
+            </summary>
+        </member>
+        <member name="P:Photon.DependencyProperty.PropertyType">
+            <summary>
+            Gets the property's return type
+            </summary>
+        </member>
+        <member name="P:Photon.DependencyProperty.DeclaringType">
+            <summary>
+            Gets the type declaring the property
+            </summary>
+        </member>
+        <member name="P:Photon.DependencyProperty.DefaultValue">
+            <summary>
+            Gets an object representing the property's default value
+            </summary>
+        </member>
+        <member name="P:Photon.DependencyProperty.Path">
+            <summary>
+            Gets a string representing the property's path
+            </summary>
+        </member>
+        <member name="P:Photon.DependencyProperty.GetMethod">
+            <summary>
+            Gets/Sets the method used to retrieve the property's value
+            </summary>
+        </member>
+        <member name="P:Photon.DependencyProperty.SetMethod">
+            <summary>
+            Gets/Sets the method used to set the property's value
+            </summary>
+        </member>
+        <member name="M:Photon.DependencyProperty.GetValue(Photon.DependencyObject)">
+            <summary>
+            Gets the value returned by the property
+            </summary>
+            <param name="target">The <see cref="T:Photon.DependencyObject"/> for which to retrieve the property's value</param>
+            <returns>An object representing the property's value</returns>
+        </member>
+        <member name="M:Photon.DependencyProperty.GetValue``1(Photon.DependencyObject)">
+            <summary>
+            Gets the value returned by the property
+            </summary>
+            <param name="target">The <see cref="T:Photon.DependencyObject"/> for which to retrieve the property's value</param>
+            <typeparam name="TResult">The expected type of the property's value</typeparam>
+            <returns>An object representing the property's value</returns>
+        </member>
+        <member name="M:Photon.DependencyProperty.SetValue(Photon.DependencyObject,System.Object)">
+            <summary>
+            Sets the property's value
+            </summary>
+            <param name="target">The <see cref="T:Photon.DependencyObject"/> for which to set the property's value</param>
+            <param name="value">An object representing the value to set</param>
+        </member>
+        <member name="M:Photon.DependencyProperty.ToString">
+            <summary>
+            Returns the property's string representation
+            </summary>
+            <returns>A string representing the property</returns>
+        </member>
+        <member name="M:Photon.DependencyProperty.Register(System.String,System.Type)">
+            <summary>
+            Registers a new <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+            <param name="propertyName">The case-sensitive name of the property to register</param>
+            <param name="declaringType">The type declaring the property to register</param>
+            <returns>The newly registered <see cref="T:Photon.DependencyProperty"/></returns>
+        </member>
+        <member name="M:Photon.DependencyProperty.Register(System.String,System.Type,System.Object)">
+            <summary>
+            Registers a new <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+            <param name="propertyName">The case-sensitive name of the property to register</param>
+            <param name="declaringType">The type declaring the property to register</param>
+            <param name="defaultValue">An object representing the property's initial value</param>
+            <returns>The newly registered <see cref="T:Photon.DependencyProperty"/></returns>
+        </member>
+        <member name="M:Photon.DependencyProperty.RegisterAttached(System.String,System.Type,System.Type)">
+            <summary>
+            Register a new attached <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+            <param name="propertyName">The case-sensitive name of the property to register</param>
+            <param name="propertyType">The return type of the property to register</param>
+            <param name="declaringType">The type declaring the property to register</param>
+            <returns>The newly registered attached <see cref="T:Photon.DependencyProperty"/></returns>
+        </member>
+        <member name="M:Photon.DependencyProperty.ResolveAttachedGetMethodName(System.String)">
+            <summary>
+            Resolve the name of the specified attached property Get method
+            </summary>
+            <param name="propertyName">The case-sensitive name of the property for which to resolve the Get method name</param>
+            <returns>A string representing the name of the Get method</returns>
+        </member>
+        <member name="M:Photon.DependencyProperty.ResolveAttachedSetMethodName(System.String)">
+            <summary>
+            Resolve the name of the specified attached property Set method
+            </summary>
+            <param name="propertyName">The case-sensitive name of the property for which to resolve the Set method name</param>
+            <returns>A string representing the name of the Get method</returns>
+        </member>
+        <member name="T:Photon.DrawingContext">
+            <summary>
+            Represents the context into which all <see cref="T:Photon.UIElement"/> are rendered<para></para>
+            This class defines high-level methods to render basic elements into OpenGL, thanks to the OpenTK framework
+            </summary>
+        </member>
+        <member name="F:Photon.DrawingContext.TextPrinter">
+            <summary>
+            The <see cref="T:OpenTK.Graphics.TextPrinter"/> used by <see cref="T:Photon.DrawingContext"/> instances to render text
+            </summary>
+        </member>
+        <member name="M:Photon.DrawingContext.#ctor(Photon.Window)">
+            <summary>
+            Intializes a new <see cref="T:Photon.DrawingContext"/>
+            </summary>
+        </member>
+        <member name="P:Photon.DrawingContext.Window">
+            <summary>
+            Gets the <see cref="P:Photon.DrawingContext.Window"/> the <see cref="T:Photon.DrawingContext"/> belongs to
+            </summary>
+        </member>
+        <member name="M:Photon.DrawingContext.BeginRenderPass">
+            <summary>
+            Begins a new rendering pass
+            </summary>
+        </member>
+        <member name="M:Photon.DrawingContext.DrawRectangle(Photon.Media.Rectangle,Photon.Media.Thickness,Photon.Media.Brush,Photon.Media.Brush)">
+            <summary>
+            Draws a rectangle with the specified width, height, border thickness and brushes
+            </summary>
+            <param name="rectangle">The <see cref="T:Photon.Media.Rectangle"/> representing the rectangle's width and height</param>
+            <param name="borderThickness">The <see cref="T:Photon.Media.Thickness"/> representing the rectangle's border thickness</param>
+            <param name="fillBrush">The <see cref="T:Photon.Media.Brush"/> with which to paint the rectangle's fill</param>
+            <param name="borderBrush">The <see cref="T:Photon.Media.Brush"/> with which to paaint the rectangle's border brush</param>
+        </member>
+        <member name="M:Photon.DrawingContext.DrawText(System.String,Photon.Media.Point,System.Drawing.Font,Photon.Media.Brush)">
+            <summary>
+            Draws the specified text
+            </summary>
+            <param name="text">The text to draw</param>
+            <param name="position">The position at which to start drawing the text</param>
+            <param name="font">The <see cref="T:System.Drawing.Font"/> of the text to draw</param>
+            <param name="brush">The <see cref="T:Photon.Media.Brush"/> with which to draw the text</param>
+        </member>
+        <member name="M:Photon.DrawingContext.EndRenderPass">
+            <summary>
+            Ends a rendering pass
+            </summary>
+        </member>
+        <member name="M:Photon.DrawingContext.MeasureText(System.String,System.Drawing.Font)">
+            <summary>
+            Measures the size of the specified text
+            </summary>
+            <param name="text">The text to measure</param>
+            <param name="font">The font according to which to measure to text</param>
+            <returns>The text's <see cref="T:Photon.Media.Size"/></returns>
+        </member>
+        <member name="M:Photon.DrawingContext.MeasureTextExtents(System.String,System.Drawing.Font)">
+            <summary>
+            Measures the extents of the specified text
+            </summary>
+            <param name="text">The text to measure</param>
+            <param name="font">The font according to which to measure to text</param>
+            <returns>The text's <see cref="T:OpenTK.Graphics.TextExtents"/></returns>
+        </member>
+        <member name="T:Photon.ApplicationState">
+            <summary>
+            Describes the state of an <see cref="T:Photon.Application"/>
+            </summary>
+        </member>
+        <member name="F:Photon.ApplicationState.Running">
+            <summary>
+            The application is up and running
+            </summary>
+        </member>
+        <member name="F:Photon.ApplicationState.ShuttingDown">
+            <summary>
+            The application is shutting down
+            </summary>
+        </member>
+        <member name="F:Photon.ApplicationState.NotRunning">
+            <summary>
+            The application is not running
+            </summary>
+        </member>
+        <member name="T:Photon.DependencyPropertyType">
+            <summary>
+            Indicates the type a <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="F:Photon.DependencyPropertyType.Property">
+            <summary>
+            The <see cref="T:Photon.DependencyProperty"/> is a standard property
+            </summary>
+        </member>
+        <member name="F:Photon.DependencyPropertyType.AttachedProperty">
+            <summary>
+            The <see cref="T:Photon.DependencyProperty"/> is an attached property
+            </summary>
+        </member>
+        <member name="T:Photon.HorizontalAlignment">
+            <summary>
+            Indicates where an element should be displayed on the horizontal axis relative to the allocated layout slot of the parent element
+            </summary>
+        </member>
+        <member name="F:Photon.HorizontalAlignment.Center">
+            <summary>
+            An element aligned to the center of the layout slot for the parent element
+            </summary>
+        </member>
+        <member name="F:Photon.HorizontalAlignment.Left">
+            <summary>
+            An element aligned to the left of the layout slot for the parent element
+            </summary>
+        </member>
+        <member name="F:Photon.HorizontalAlignment.Right">
+            <summary>
+            An element aligned to the right of the layout slot for the parent element
+            </summary>
+        </member>
+        <member name="F:Photon.HorizontalAlignment.Stretch">
+            <summary>
+            An element stretched to fill the entire layout slot of the parent element
+            </summary>
+        </member>
+        <member name="T:Photon.ShutdownMode">
+            <summary>
+            Describes the way an <see cref="T:Photon.Application"/> shuts down
+            </summary>
+        </member>
+        <member name="F:Photon.ShutdownMode.OnMainWindowClosed">
+            <summary>
+            The <see cref="T:Photon.Application"/> shuts down as soon as its main <see cref="T:Photon.Window"/> closes
+            </summary>
+        </member>
+        <member name="F:Photon.ShutdownMode.OnLastWindowClosed">
+            <summary>
+            The <see cref="T:Photon.Application"/> shuts down when the last of its registered, active <see cref="T:Photon.Window"/>s closes
+            </summary>
+        </member>
+        <member name="F:Photon.ShutdownMode.OnExplicitShutdown">
+            <summary>
+            The <see cref="T:Photon.Application"/> only shuts down if explicitly asked to
+            </summary>
+        </member>
+        <member name="T:Photon.VerticalAlignment">
+            <summary>
+            Describes how a child element is vertically positioned or stretched within a parent's layout slot
+            </summary>
+        </member>
+        <member name="F:Photon.VerticalAlignment.Center">
+            <summary>
+            The child element is aligned to the center of the parent's layout slot
+            </summary>
+        </member>
+        <member name="F:Photon.VerticalAlignment.Top">
+            <summary>
+            The child element is aligned to the top of the parent's layout slot
+            </summary>
+        </member>
+        <member name="F:Photon.VerticalAlignment.Bottom">
+            <summary>
+            The child element is aligned to the bottom of the parent's layout slot
+            </summary>
+        </member>
+        <member name="F:Photon.VerticalAlignment.Stretch">
+            <summary>
+            The child element stretches to fill the parent's layout slot
+            </summary>
+        </member>
+        <member name="T:Photon.Visibility">
+            <summary>
+            Specifies the display state of an element
+            </summary>
+        </member>
+        <member name="F:Photon.Visibility.Visible">
+            <summary>
+            Display the element
+            </summary>
+        </member>
+        <member name="F:Photon.Visibility.Hidden">
+            <summary>
+            Do not display the element, but reserve space for the element in layout
+            </summary>
+        </member>
+        <member name="F:Photon.Visibility.Collapsed">
+            <summary>
+            Do not display the element, and do not reserve space for it in layout
+            </summary>
+        </member>
+        <member name="T:Photon.BitmapExtensions">
+            <summary>
+            This static class defines extensions methods for the <see cref="T:System.Drawing.Bitmap"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.BitmapExtensions.FromUri(System.Uri)">
+            <summary>
+            Creates a new <see cref="T:System.Drawing.Bitmap"/> instance based on the specified <see cref="T:System.Uri"/>
+            </summary>
+            <param name="uri">The <see cref="T:System.Uri"/> thanks to which to create the new <see cref="T:System.Drawing.Bitmap"/></param>
+            <returns>A new instance of the <see cref="T:System.Drawing.Bitmap"/> class</returns>
+        </member>
+        <member name="T:Photon.HashSetExtensions">
+            <summary>
+            This static class defines extensions methods for the <see cref="T:System.Collections.Generic.HashSet`1"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.HashSetExtensions.AddRange``1(System.Collections.Generic.HashSet{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds a range of elements to the hashset
+            </summary>
+            <typeparam name="TElement">The generic type of the extended <see cref="T:System.Collections.Generic.HashSet`1"/></typeparam>
+            <param name="extended">The extended <see cref="T:System.Collections.Generic.HashSet`1"/></param>
+            <param name="range">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to add to the hashset</param>
+        </member>
+        <member name="M:Photon.HashSetExtensions.AddRange``1(System.Collections.Generic.HashSet{``0},System.Xml.XmlNodeList)">
+            <summary>
+            Adds a range of elements to the hashset
+            </summary>
+            <typeparam name="TElement">The generic type of the extended <see cref="T:System.Collections.Generic.HashSet`1"/></typeparam>
+            <param name="extended">The extended <see cref="T:System.Collections.Generic.HashSet`1"/></param>
+            <param name="range">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to add to the hashset</param>
+        </member>
+        <member name="M:Photon.HashSetExtensions.IndexOf``1(System.Collections.Generic.HashSet{``0},``0)">
+            <summary>
+            Determines the index of the specified element within the hashset
+            </summary>
+            <typeparam name="TElement">The generic type of the extended <see cref="T:System.Collections.Generic.HashSet`1"/></typeparam>
+            <param name="extended">The extended <see cref="T:System.Collections.Generic.HashSet`1"/></param>
+            <param name="element">The element whose index is to return</param>
+            <returns>An integer representing the index of the specified element</returns>
+        </member>
+        <member name="T:Photon.PointExtensions">
+            <summary>
+            This static class defines extensions methods for the <see cref="T:System.Drawing.Point"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.PointExtensions.ToMediaPoint(System.Drawing.Point)">
+            <summary>
+            Retrieves the <see cref="T:Photon.Media.Point"/> equivalency of the <see cref="T:System.Drawing.Point"/>
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Drawing.Point"/></param>
+            <returns>The <see cref="T:Photon.Media.Point"/> equivalency of the point</returns>
+        </member>
+        <member name="T:Photon.PointFExtensions">
+            <summary>
+            This static class defines extensions methods for the <see cref="T:System.Drawing.PointF"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.PointFExtensions.ToMediaSize(System.Drawing.SizeF)">
+            <summary>
+            Retrieves the <see cref="T:Photon.Media.Size"/> equivalency of the <see cref="T:System.Drawing.SizeF"/>
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Drawing.SizeF"/></param>
+            <returns>The <see cref="T:Photon.Media.Size"/> equivalency of the SizeF</returns>
+        </member>
+        <member name="T:Photon.TextPrinterExtensions">
+            <summary>
+            This static class defines extensions methods for the <see cref="T:OpenTK.Graphics.TextPrinter"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.TextPrinterExtensions.WrapText(OpenTK.Graphics.TextPrinter,System.String,System.Drawing.Font,System.Nullable{System.Double},System.Nullable{System.Double})">
+            <summary>
+            Wraps the text according to the specified width and height
+            </summary>
+            <param name="extended">The extended <see cref="T:OpenTK.Graphics.TextPrinter"/></param>
+            <param name="textToWrap">A string representing the text to wrap</param>
+            <param name="font">The <see cref="T:System.Drawing.Font"/> thanks to which the text is rendered</param>
+            <param name="width">A double representing the maximal width of the wrapped text</param>
+            <param name="height">A double representing the maximal height of the wrapped text</param>
+            <returns>The wrapped text</returns>
+        </member>
+        <member name="M:Photon.TextPrinterExtensions.BreakLine(System.String,System.Drawing.Font,System.Int32,System.Double)">
+            <summary>
+            Breaks the specified line into a line of a specified maximal width, starting from the specified position
+            </summary>
+            <param name="line">A string representing the line to break</param>
+            <param name="font">The <see cref="T:System.Drawing.Font"/> thanks to which the text is rendered</param>
+            <param name="position">The position from which to start breaking the line</param>
+            <param name="maxWidth">The resulting line's max width</param>
+            <returns>The broken line</returns>
+        </member>
+        <member name="T:Photon.XmlAttributeExtensions">
+            <summary>
+            This static class defines extensions methods for the <see cref="T:System.Xml.XmlAttribute"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.XmlAttributeExtensions.IsMarkupAttribute(System.Xml.XmlAttribute)">
+            <summary>
+            Determines whether or not the attribute is a markup attribute
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Xml.XmlAttribute"/></param>
+            <returns>A boolean indicating whether or not the attribute is a markup attribute</returns>
+        </member>
+        <member name="T:Photon.XmlDocumentExtensions">
+            <summary>
+            This static class defines extensions methods for the <see cref="T:System.Xml.XmlDocument"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.XmlDocumentExtensions.GetAllSiblings(System.Xml.XmlDocument)">
+            <summary>
+            Retrieves all of the document's siblings
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Xml.XmlDocument"/></param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing all the document's sibling <see cref="T:System.Xml.XmlNode"/>s</returns>
+        </member>
+        <member name="T:Photon.XmlNodeExtensions">
+            <summary>
+            This static class defines extensions methods for the <see cref="T:System.Xml.XmlNode"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.XmlNodeExtensions.GetAllSiblings(System.Xml.XmlNode)">
+            <summary>
+            Retrieves all the siblings of the specified <see cref="T:System.Xml.XmlNode"/>
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Xml.XmlNode"/></param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing all of the <see cref="T:System.Xml.XmlNode"/> siblings</returns>
+        </member>
+        <member name="M:Photon.XmlNodeExtensions.ParseXaml(System.Xml.XmlNode)">
+            <summary>
+            Parses the xmlnode into its equivalent <see cref="T:Photon.IDependencyElement"/>
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Xml.XmlNode"/></param>
+            <returns>The parsed <see cref="T:Photon.IDependencyElement"/></returns>
+        </member>
+        <member name="T:Photon.IDependencyElement">
+            <summary>
+            This interface defines methods and properties for all <see cref="T:Photon.DependencyObject"/> in Photon
+            </summary>
+        </member>
+        <member name="P:Photon.IDependencyElement.DependencyProperties">
+            <summary>
+            Gets a dictionary containing all of the element's <see cref="T:Photon.DependencyProperty"/> 
+            </summary>
+        </member>
+        <member name="P:Photon.IDependencyElement.AnimationClocks">
+            <summary>
+            Gets a list containing all the <see cref="T:Photon.Media.Animations.AnimationClock"/> attached to the <see cref="T:Photon.IDependencyElement"/>
+            </summary>
+        </member>
+        <member name="M:Photon.IDependencyElement.GetValue(System.String)">
+            <summary>
+            Gets the value of the specified property
+            </summary>
+            <param name="propertyName">The case sensitive name of the property to get</param>
+            <returns>An object representing the property's value</returns>
+        </member>
+        <member name="M:Photon.IDependencyElement.GetValue``1(System.String)">
+            <summary>
+            Gets the value of the specified property
+            </summary>
+            <param name="propertyName">The case sensitive name of the property to get</param>
+            <typeparam name="TResult">The expected type of the returned value</typeparam>
+            <returns>An object representing the property's value</returns>
+        </member>
+        <member name="M:Photon.IDependencyElement.GetValue(Photon.DependencyProperty)">
+            <summary>
+            Gets the value of the specified property
+            </summary>
+            <param name="dependencyProperty">The <see cref="T:Photon.DependencyProperty"/> to get</param>
+            <returns>An object representing the property's value</returns>
+        </member>
+        <member name="M:Photon.IDependencyElement.GetValue``1(Photon.DependencyProperty)">
+            <summary>
+            Gets the value of the specified property
+            </summary>
+            <param name="dependencyProperty">The <see cref="T:Photon.DependencyProperty"/> to get</param>
+            <typeparam name="TResult">The expected type of the returned value</typeparam>
+            <returns>An object representing the property's value</returns>
+        </member>
+        <member name="M:Photon.IDependencyElement.SetValue(System.String,System.Object)">
+            <summary>
+            Sets the value of the specified property
+            </summary>
+            <param name="propertyName">The case sensitive name of the property to get</param>
+            <param name="value">The value to set the property with</param>
+        </member>
+        <member name="M:Photon.IDependencyElement.SetValue(Photon.DependencyProperty,System.Object)">
+            <summary>
+            Sets the value of the specified property
+            </summary>
+            <param name="dependencyProperty">The <see cref="T:Photon.DependencyProperty"/> to get</param>
+            <param name="value">The value to set the property with</param>
+        </member>
+        <member name="T:Photon.IUIElement">
+            <summary>
+            UIElement is a base interface for core level implementations building on Photon elements and basic presentation characteristics.
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.MouseMove">
+            <summary>
+            This event is fired every time the mouse moves over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.MouseButtonDown">
+            <summary>
+            This event is fired every time a mouse button is down over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.MouseButtonUp">
+            <summary>
+            This event is fired every time a mouse button is up over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.MouseLeftButtonDown">
+            <summary>
+            This event is fired every time the left mouse button is down over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.MouseLeftButtonUp">
+            <summary>
+            This event is fired every time the left mouse button is up over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.MouseMiddleButtonDown">
+            <summary>
+            This event is fired every time the middle mouse button is down over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.MouseMiddleButtonUp">
+            <summary>
+            This event is fired every time the middle mouse button is up over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.MouseRightButtonDown">
+            <summary>
+            This event is fired every time the right mouse button is down over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.MouseRightButtonUp">
+            <summary>
+            This event is fired every time the right mouse button is up over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.MouseWheel">
+            <summary>
+            This event is fired every time the mouse wheel is used over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.KeyDown">
+            <summary>
+            This event is fired every time a key is down over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.KeyUp">
+            <summary>
+            This event is fired every time a key is up over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.KeyPressed">
+            <summary>
+            This event is fired every time a key is pressed over the element
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.VisibilityChanged">
+            <summary>
+            This event is fired every time the element's visibility has changed
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.GotFocus">
+            <summary>
+            This event is fired every time the element gets focus
+            </summary>
+        </member>
+        <member name="E:Photon.IUIElement.LostFocus">
+            <summary>
+            This event is fired every time the element looses focus
+            </summary>
+        </member>
+        <member name="P:Photon.IUIElement.Width">
+            <summary>
+            Gets/Sets the element's width
+            </summary>
+        </member>
+        <member name="P:Photon.IUIElement.Height">
+            <summary>
+            Gets/Sets the element's height
+            </summary>
+        </member>
+        <member name="P:Photon.IUIElement.IsHitTestVisible">
+            <summary>
+            Gets/Sets a value indicating whether or not the element is hit test visible
+            </summary>
+        </member>
+        <member name="P:Photon.IUIElement.LayoutTarget">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the element's layout target
+            </summary>
+        </member>
+        <member name="P:Photon.IUIElement.RenderTarget">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the element's render target
+            </summary>
+        </member>
+        <member name="M:Photon.IUIElement.InvalidateVisual">
+            <summary>
+            This method is fired whenever the element's visual has been invalidated
+            </summary>
+        </member>
+        <member name="M:Photon.IUIElement.InvalidateLayout">
+            <summary>
+            This method is fired whenever the element's layout has been invalidated
+            </summary>
+        </member>
+        <member name="M:Photon.IUIElement.ProcessUIEvent(Photon.Input.UIEventArgs)">
+            <summary>
+            This method is used to process any ui event handled by the element's logicial parent
+            </summary>
+            <param name="e">The <see cref="!:UIEventArgs"/> associated with the event</param>
+        </member>
+        <member name="T:Photon.SystemParameters">
+            <summary>
+            This static class defines methods to access system variables
+            </summary>
+        </member>
+        <member name="P:Photon.SystemParameters.WorkArea">
+            <summary>
+            Gets the work area's <see cref="T:Photon.Media.Size"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Input.FocusManager">
+            <summary>
+            This class defines static members for handling the focus of <see cref="T:Photon.IUIElement"/>s
+            </summary>
+        </member>
+        <member name="M:Photon.Input.FocusManager.GetFocusedElement(Photon.IUIElement)">
+            <summary>
+            Gets the focused <see cref="T:Photon.UIElement"/>, if any, within the specified focus scope
+            </summary>
+            <param name="focusScope">The <see cref="T:Photon.IUIElement"/> that represents the scope within which to find the focused element</param>
+            <returns>A <see cref="T:Photon.UIElement"/> representing the focused element of the specified focus scope</returns>
+        </member>
+        <member name="M:Photon.Input.FocusManager.SetFocusedElement(Photon.IUIElement,Photon.UIElement)">
+            <summary>
+            Sets the focused <see cref="T:Photon.UIElement"/> within the specified focus scope
+            </summary>
+            <param name="focusScope">The <see cref="T:Photon.IUIElement"/> that represents the scope for which to set the focused element</param>
+            <param name="focusedElement">The <see cref="T:Photon.UIElement"/> to set the focus to</param>
+        </member>
+        <member name="M:Photon.Input.FocusManager.GetIsFocusScope(Photon.IUIElement)">
+            <summary>
+            Gets a boolean indicating whether or not the specified <see cref="T:Photon.IUIElement"/> is a focus scope element
+            </summary>
+            <param name="element">The <see cref="T:Photon.IUIElement"/> to check</param>
+            <returns>A boolean indicating whether or not the specified <see cref="T:Photon.IUIElement"/> is a focus scope element</returns>
+        </member>
+        <member name="M:Photon.Input.FocusManager.SetIsFocusScope(Photon.IUIElement,System.Boolean)">
+            <summary>
+            Sets a boolean indicating whether or not the specified <see cref="T:Photon.IUIElement"/> is a focus scope element
+            </summary>
+            <param name="element">The <see cref="T:Photon.IUIElement"/> to set</param>
+            <param name="isFocusScope">A boolean indicating whether or not the specified <see cref="T:Photon.IUIElement"/> is a focus scope element</param>
+        </member>
+        <member name="M:Photon.Input.FocusManager.GetFocusableElements(Photon.IUIElement)">
+            <summary>
+            Gets a list of all the focusable <see cref="T:Photon.UIElement"/> contained within the specified focus scope
+            </summary>
+            <param name="focusScope">The focus scope <see cref="T:Photon.IUIElement"/></param>
+            <returns>A list of all the focusable <see cref="T:Photon.UIElement"/> contained within the specified focus scope</returns>
+        </member>
+        <member name="M:Photon.Input.FocusManager.SetFocusableElements(Photon.IUIElement,System.Collections.Generic.HashSet{Photon.UIElement})">
+            <summary>
+            Sets a list of all the focusable <see cref="T:Photon.UIElement"/> contained within the specified focus scope
+            </summary>
+            <param name="focusScope">The focus scope <see cref="T:Photon.IUIElement"/></param>
+            <param name="focusables">A list of all the focusable <see cref="T:Photon.UIElement"/> to add to the specified focus scope</param>
+        </member>
+        <member name="M:Photon.Input.FocusManager.GetIsFocusable(Photon.UIElement)">
+            <summary>
+            Gets a boolean indicating whether or not the specified <see cref="T:Photon.UIElement"/> is focusable
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> to check</param>
+            <returns>A boolean indicating whether or not the specified <see cref="T:Photon.UIElement"/> is focusable</returns>
+        </member>
+        <member name="M:Photon.Input.FocusManager.SetIsFocusable(Photon.UIElement,System.Boolean)">
+            <summary>
+            Sets a boolean indicating whether or not the specified <see cref="T:Photon.UIElement"/> is focusable
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> to set</param>
+            <param name="isFocusable">A boolean indicating whether or not the specified <see cref="T:Photon.UIElement"/> is focusable</param>
+        </member>
+        <member name="M:Photon.Input.FocusManager.AppendFocusProperties(Photon.IUIElement)">
+            <summary>
+            This method is used to append all the <see cref="T:Photon.DependencyProperty"/> required by the <see cref="T:Photon.Input.FocusManager"/>
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> to which to append the <see cref="T:Photon.DependencyProperty"/> to</param>
+        </member>
+        <member name="M:Photon.Input.FocusManager.GetFocusScopeElement(Photon.UIElement)">
+            <summary>
+            Retrieves the focus scope element within which is contained the specified <see cref="T:Photon.UIElement"/>
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> for which to retrieve the focus scope</param>
+            <returns>A <see cref="T:Photon.IUIElement"/> representing the specified <see cref="T:Photon.UIElement"/>'s focus scope</returns>
+        </member>
+        <member name="T:Photon.Input.HitTestResult">
+            <summary>
+            Provides the base class for several derived classes that represents the return value from a hit test
+            </summary>
+        </member>
+        <member name="M:Photon.Input.HitTestResult.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Input.HitTestResult"/> instance
+            </summary>
+        </member>
+        <member name="M:Photon.Input.HitTestResult.#ctor(Photon.IUIElement)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Input.HitTestResult"/> with the specified <see cref="T:Photon.IUIElement"/>
+            </summary>
+            <param name="elementHit">The <see cref="T:Photon.IUIElement"/> that has been hit during the test/></param>
+        </member>
+        <member name="P:Photon.Input.HitTestResult.ElementHit">
+            <summary>
+            Gets the <see cref="T:Photon.IUIElement"/> that has been hit during the test/>
+            </summary>
+        </member>
+        <member name="P:Photon.Input.HitTestResult.HasHit">
+            <summary>
+            Gets a boolean indicating whether or not an <see cref="T:Photon.IUIElement"/> has been hit during the test
+            </summary>
+        </member>
+        <member name="T:Photon.Input.KeyboardNavigation">
+            <summary>
+            This class defines static members for handling keyboard navigation
+            </summary>
+        </member>
+        <member name="M:Photon.Input.KeyboardNavigation.GetIsTabStop(Photon.UIElement)">
+            <summary>
+            Gets a boolean indicating whether or not the specified element is a Tab stop
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> to check</param>
+            <returns>A boolean</returns>
+        </member>
+        <member name="M:Photon.Input.KeyboardNavigation.SetIsTabStop(Photon.UIElement,System.Boolean)">
+            <summary>
+            Sets a boolean indicating whether or not the specified element is a Tab stop
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> to set</param>
+            <param name="isTabStop">A boolean indicating whether or not the element is a Tab stop element</param>
+        </member>
+        <member name="M:Photon.Input.KeyboardNavigation.GetTabIndex(Photon.UIElement)">
+            <summary>
+            Gets an integer representing the specified <see cref="T:Photon.UIElement"/>'s Tab index
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> who's Tab index is to return</param>
+            <returns>An integer</returns>
+        </member>
+        <member name="M:Photon.Input.KeyboardNavigation.SetTabIndex(Photon.UIElement,System.Int32)">
+            <summary>
+            Sets an integer representing the specified <see cref="T:Photon.UIElement"/>'s Tab index
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> who's Tab index is to set</param>
+            <param name="index">An integer representing the <see cref="T:Photon.UIElement"/>'s Tab index</param>
+        </member>
+        <member name="M:Photon.Input.KeyboardNavigation.AppendKeyboardNavigationProperties(Photon.UIElement)">
+            <summary>
+            This method is used to append all the <see cref="T:Photon.DependencyProperty"/> required for <see cref="T:Photon.Input.KeyboardNavigation"/>
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> to which to append the <see cref="T:Photon.DependencyProperty"/> to</param>
+        </member>
+        <member name="M:Photon.Input.KeyboardNavigation.NavigateToNextElement(Photon.IUIElement)">
+            <summary>
+            Sets the focus to the next focusable <see cref="T:Photon.UIElement"/> available
+            </summary>
+            <param name="focusScope">The <see cref="T:Photon.IUIElement"/> within which to navigate</param>
+        </member>
+        <member name="T:Photon.Input.PointHitTestParameters">
+            <summary>
+            Specifies a <see cref="T:Photon.Media.Point"/> as the parameter to be used for hit testing of a visual object
+            </summary>
+        </member>
+        <member name="M:Photon.Input.PointHitTestParameters.#ctor(Photon.Media.Point)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Input.PointHitTestParameters"/> with the specified <see cref="T:Photon.Media.Point"/>
+            </summary>
+            <param name="hitPoint">The <see cref="T:Photon.Media.Point"/> to be used for hit testing of a visual object</param>
+        </member>
+        <member name="P:Photon.Input.PointHitTestParameters.HitPoint">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Point"/> to be used for hit testing of a visual object
+            </summary>
+        </member>
+        <member name="T:Photon.Input.TextSelection">
+            <summary>
+            Represents the selection of a portion of text
+            </summary>
+        </member>
+        <member name="M:Photon.Input.TextSelection.#ctor(Photon.Input.TextSelectionMode,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Input.TextSelection"/> based on the specified <see cref="T:Photon.Input.TextSelectionMode"/>, start index, max left and max right lengths
+            </summary>
+            <param name="mode">The selection's <see cref="T:Photon.Input.TextSelectionMode"/></param>
+            <param name="startIndex">The index of the character from which to start the text selection</param>
+            <param name="maxLeftLength">An integer representing the maximal length of the selection, on the left handed side</param>
+            <param name="maxRightLength">An integer representing the maximal length of the selection, on the right handed side</param>
+        </member>
+        <member name="P:Photon.Input.TextSelection.Mode">
+            <summary>
+            Gets the selection's <see cref="T:Photon.Input.TextSelectionMode"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Input.TextSelection.StartIndex">
+            <summary>
+            Gets the index of the character from which to start the text selection
+            </summary>
+        </member>
+        <member name="P:Photon.Input.TextSelection.MaxLeftLength">
+            <summary>
+            Gets an integer representing the maximal length of the selection, on the left handed side
+            </summary>
+        </member>
+        <member name="P:Photon.Input.TextSelection.MaxRightLength">
+            <summary>
+            Gets an integer representing the maximal length of the selection, on the right handed side
+            </summary>
+        </member>
+        <member name="P:Photon.Input.TextSelection.Length">
+            <summary>
+            Gets an integer representing the current length of the selection
+            </summary>
+        </member>
+        <member name="P:Photon.Input.TextSelection.LeftIndex">
+            <summary>
+            Gets an integer representing the left handed character index of the text selection
+            </summary>
+        </member>
+        <member name="P:Photon.Input.TextSelection.RightIndex">
+            <summary>
+            Gets an integer representing the right handed character index of the text selection
+            </summary>
+        </member>
+        <member name="P:Photon.Input.TextSelection.SelectedText">
+            <summary>
+            Gets a string representing the selected text
+            </summary>
+        </member>
+        <member name="M:Photon.Input.TextSelection.ModifySelection(Photon.Input.TextSelectionMode,System.Int32)">
+            <summary>
+            Modifies the text selection according to the specified <see cref="T:Photon.Input.TextSelectionMode"/> and length
+            </summary>
+            <param name="mode">The <see cref="T:Photon.Input.TextSelectionMode"/> of the newly selected characters</param>
+            <param name="length">The amount of newly selected characters</param>
+        </member>
+        <member name="M:Photon.Input.TextSelection.OnRender(Photon.DrawingContext)">
+            <summary>
+            Renders the <see cref="T:Photon.Input.TextSelection"/>
+            </summary>
+            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which to render the <see cref="T:Photon.Input.TextSelection"/></param>
+        </member>
+        <member name="T:Photon.Input.UIEventArgs">
+            <summary>
+            Represents the <see cref="T:System.EventArgs"/> associated with the <see cref="M:Photon.UIElement.ProcessUIEvent(Photon.Input.UIEventArgs)"/> method
+            </summary>
+        </member>
+        <member name="M:Photon.Input.UIEventArgs.#ctor(Photon.Input.UIEvent,System.EventArgs)">
+            <summary>
+            Initializes the <see cref="T:Photon.Input.UIEventArgs"/> with the specified <see cref="T:Photon.Input.UIEvent"/> and source <see cref="T:System.EventArgs"/>
+            </summary>
+            <param name="sourceEvent">The <see cref="T:Photon.Input.UIEvent"/> for which to create the <see cref="T:Photon.Input.UIEventArgs"/></param>
+            <param name="sourceEventArgs">The <see cref="T:System.EventArgs"/> associated with the triggering event</param>
+        </member>
+        <member name="P:Photon.Input.UIEventArgs.SourceEvent">
+            <summary>
+            Gets the <see cref="T:Photon.Input.UIEvent"/> for which to create the <see cref="T:Photon.Input.UIEventArgs"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Input.UIEventArgs.SourceEventArgs">
+            <summary>
+            Gets the <see cref="T:System.EventArgs"/> associated with the triggering event
+            </summary>
+        </member>
+        <member name="P:Photon.Input.UIEventArgs.IsHandled">
+            <summary>
+            Gets/Sets a boolean indicating whether or not the <see cref="T:Photon.Input.UIEventArgs"/> has been handled
+            </summary>
+        </member>
+        <member name="T:Photon.Input.TextSelectionMode">
+            <summary>
+            Describes the way a portion of text is selected
+            </summary>
+        </member>
+        <member name="F:Photon.Input.TextSelectionMode.LeftHanded">
+            <summary>
+            The text is selected from left to right (forward)
+            </summary>
+        </member>
+        <member name="F:Photon.Input.TextSelectionMode.RightHanded">
+            <summary>
+            The text is selected from right to left (backward)
+            </summary>
+        </member>
+        <member name="T:Photon.Input.UIEvent">
+            <summary>
+            Enumerates all supported ui events
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.MouseMove">
+            <summary>
+            The MouseMove event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.MouseButtonDown">
+            <summary>
+            The MouseButtonDown event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.MouseLeftButtonDown">
+            <summary>
+            The MouseLeftButtonDown event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.MouseMiddleButtonDown">
+            <summary>
+            The MouseMiddleButtonDown event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.MouseRightButtonDown">
+            <summary>
+            The MouseRightButtonDown event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.MouseButtonUp">
+            <summary>
+            The MouseButtonUp event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.MouseLeftButtonUp">
+            <summary>
+            The MouseLeftButtonUp event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.MouseMiddleButtonUp">
+            <summary>
+            The MouseMiddleButtonUp event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.MouseRightButtonUp">
+            <summary>
+            The MouseRightButtonUp event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.MouseWheel">
+            <summary>
+            The MouseWheel event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.KeyDown">
+            <summary>
+            The KeyDown event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.KeyUp">
+            <summary>
+            The KeyUp event
+            </summary>
+        </member>
+        <member name="F:Photon.Input.UIEvent.KeyPressed">
+            <summary>
+            The KeyPressed event
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Animations.Animation`1">
+            <summary>
+            Represents the base class for all animations
+            </summary>
+            <typeparam name="T">The type of the animated value</typeparam>
+        </member>
+        <member name="P:Photon.Media.Animations.Animation`1.From">
+            <summary>
+            Gets/Sets the value from which to begin animating
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.Animation`1.To">
+            <summary>
+            Gets/Sets the value until which to animate
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.Animation`1.CurrentValue">
+            <summary>
+            Gets the current value
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.Animation`1.OnBegin">
+            <summary>
+            When overriden in a class, this method allows execution of code when the animation begins
+            </summary>
+            <returns>A boolean indicating whether or not the animation could begin</returns>
+        </member>
+        <member name="M:Photon.Media.Animations.Animation`1.OnStop">
+            <summary>
+            When overriden in a class, this method allows execution of code when the animation begins
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.Animation`1.OnCompleted">
+            <summary>
+            When overriden in a class, this method allows execution of code when the animation is completed
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Animations.AnimationClock">
+            <summary>
+            Maintains the run-time state of an AnimationTimeline and processes its output values
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Animations.AnimationClock.Completed">
+            <summary>
+            This event is fired whenever the animation is completed
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationClock.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Animations.AnimationClock"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationClock.IsRunning">
+            <summary>
+            Gets a boolean indicating whether or not the animation clock is running
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationClock.Elapsed">
+            <summary>
+            Gets a <see cref="T:System.TimeSpan"/> representing the amount of time elapsed since the animation clock has beun
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationClock.Begin">
+            <summary>
+            When implemented in a class, this method starts the animation clock
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationClock.Render">
+            <summary>
+            When implemented in a class, this method processes the animation clock's output values
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationClock.Stop">
+            <summary>
+            When implemented in a class, this method stops the animation clock
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Animations.AnimationTimeline">
+            <summary>
+            AnimationTimeline is a base class for core level implementations building on Photon animations and basic animation characteristics.
+            </summary>
+        </member>
+        <member name="E:Photon.Media.Animations.AnimationTimeline.Completed">
+            <summary>
+            This event is fired whenever the <see cref="T:Photon.Media.Animations.AnimationTimeline"/> is completed
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.Clock">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Animations.AnimationClock"/> associated with the animation timeline
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.BeginTime">
+            <summary>
+            Gets/Sets a <see cref="T:System.TimeSpan"/> representing the animation's begin time
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.Duration">
+            <summary>
+            Gets/Sets a <see cref="T:System.TimeSpan"/> representing the animation's duration
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.AutoReverse">
+            <summary>
+            Gets/Sets a boolean indicating whether or not to reverse the animation upon completion
+            <para></para>Use the <see cref="P:Photon.Media.Animations.AnimationTimeline.RepeatBehavior"/> property to configure the way the animation repeats
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.RepeatBehavior">
+            <summary>
+            Gets/Sets the <see cref="P:Photon.Media.Animations.AnimationTimeline.RepeatBehavior"/> determining how the animation repeats
+            <para></para>The <see cref="P:Photon.Media.Animations.AnimationTimeline.AutoReverse"/> should be set to true for the animation to repeat
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.FillBehavior">
+            <summary>
+            Gets/Sets a <see cref="P:Photon.Media.Animations.AnimationTimeline.FillBehavior"/> representing the way the animation behaves upon completion
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.Ease">
+            <summary>
+            Gets/Sets the animation's <see cref="T:Photon.Media.Animations.EasingFunction"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.IsRunning">
+            <summary>
+            Gets a boolean indicating whether or not the animation is running
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.IsReverting">
+            <summary>
+            Gets a boolean indicating whether or not the animation is reverting
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.RevertTime">
+            <summary>
+            Gets/Sets a <see cref="T:System.TimeSpan"/> representing the time at which the animation begun reverting for the last time
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.Target">
+            <summary>
+            Gets the <see cref="T:Photon.DependencyObject"/> which's <see cref="T:Photon.DependencyProperty"/> is being animated
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.TargetProperty">
+            <summary>
+            Gets the <see cref="T:Photon.DependencyProperty"/> animated by the animation timeline
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.Time">
+            <summary>
+            Gets a <see cref="T:System.TimeSpan"/> indicating the time elasped since the animation timeline has begun
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.AnimationTimeline.OriginalValue">
+            <summary>
+            Gets/Sets an object representing the value returned by the <see cref="P:Photon.Media.Animations.AnimationTimeline.Target"/>'s <see cref="T:Photon.DependencyProperty"/> prior to begining the animation
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationTimeline.GetNormalizedTime">
+            <summary>
+            Gets a double representing the animation timeline's normalized time (ranging from 0.0 to 1.0)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationTimeline.Begin(Photon.Media.Animations.AnimationClock)">
+            <summary>
+            Begins the animation, based on the specified <see cref="T:Photon.Media.Animations.AnimationClock"/>
+            </summary>
+            <param name="animationClock">The <see cref="T:Photon.Media.Animations.AnimationClock"/> the animation belongs to</param>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationTimeline.Render">
+            <summary>
+            Renders the animation by processing the targeted output value
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationTimeline.Stop">
+            <summary>
+            Stops the animation
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationTimeline.OnBegin">
+            <summary>
+            When overriden in a class, this method allows the execution of code whenever the animation begins
+            </summary>
+            <returns>A boolean indicating whether or not the animation could begun</returns>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationTimeline.OnRender">
+            <summary>
+            When overriden in a class, this method allows the execution of code whenever the animation renders
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationTimeline.OnStop">
+            <summary>
+            When overriden in a class, this method allows the execution of code whenever the animation stops
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.AnimationTimeline.OnCompleted">
+            <summary>
+            When overriden in a class, this method allows the execution of code whenever the animation is completed
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Animations.EasingFunction">
+            <summary>
+            Provides the base class for all the easing functions
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.EasingFunction.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Animations.EasingFunction"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.EasingFunction.Mode">
+            <summary>
+            Gets/Sets the function's <see cref="T:Photon.Media.Animations.EasingMode"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.EasingFunction.EasingCore(System.Double)">
+            <summary>
+            Provides the logic portion of the easing function that you can override to produce the EaseIn mode of the custom easing function
+            </summary>
+            <param name="normalizedTime">A double representing the animation's normalized time (ranging from 0.0 to 1.0)</param>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Media.Animations.RepeatBehavior">
+            <summary>
+            Describes how a <see cref="T:Photon.Media.Animations.Animation`1"/> repeats its simple duration
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.RepeatBehavior.Mode">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Animations.RepeatBehavior"/>'s <see cref="T:Photon.Media.Animations.RepeatMode"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.RepeatBehavior.RepeatAnimation(Photon.Media.Animations.AnimationTimeline)">
+            <summary>
+            Determines whether or not the animation should be repeated
+            </summary>
+            <param name="animation">The <see cref="T:Photon.Media.Animations.Animation`1"/> to check</param>
+            <returns>A boolean indicating whether or not the animation should be repeated</returns>
+        </member>
+        <member name="P:Photon.Media.Animations.RepeatBehavior.Forever">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Animations.RepeatBehavior"/> that specifies an infinite number of repetitions.
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Animations.EasingMode">
+            <summary>
+            Defines the modes in which classes derived from <see cref="T:Photon.Media.Animations.EasingFunction"/> perform their easing
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Animations.EasingMode.EaseIn">
+            <summary>
+            Interpolation follows the mathematical formula associated with the easing function
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Animations.EasingMode.EaseOut">
+            <summary>
+            Interpolation follows 100% interpolation minus the output of the formula associated with the easing function
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Animations.EasingMode.EaseInAndOut">
+            <summary>
+            Interpolation uses EaseIn for the first half of the animation and EaseOut for the second half
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Animations.FillBehavior">
+            <summary>
+            Specifies how a <see cref="T:Photon.Media.Animations.AnimationTimeline"/> behaves when it is outside its active period but its parent is inside its active or hold period.
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Animations.FillBehavior.Default">
+            <summary>
+            No specific action is taken, and the animated property's value remains the last set by the animation (as defined by the <see cref="P:Photon.Media.Animations.Animation`1.To"/> property)
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Animations.FillBehavior.Reset">
+            <summary>
+            When the animation completes, the animated property's value is reset to the value returned by the <see cref="P:Photon.Media.Animations.Animation`1.From"/> property)
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Animations.FillBehavior.OriginalValue">
+            <summary>
+            When the animation completes, the animated property's value is reset to the value it held before starting the animation
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Animations.RepeatMode">
+            <summary>
+            Describes how a <see cref="T:Photon.Media.Animations.Animation`1"/> repeats its simple duration
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Animations.RepeatMode.Forever">
+            <summary>
+            The animation will repeat itself forever
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Brush">
+            <summary>
+            Defines objects used to paint graphical objects. Classes that derive from Brush describe how the area is painted
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Brush.Opacity">
+            <summary>
+            Gets/Sets the opacity of the Brush
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Brush.Clone">
+            <summary>
+            Clones the brush
+            </summary>
+            <returns>The clone of the <see cref="T:Photon.Media.Brush"/></returns>
+        </member>
+        <member name="T:Photon.Media.ColorExtensions">
+            <summary>
+            This class defines extention methods for the <see cref="T:System.Drawing.Color"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.Media.ColorExtensions.FromHex(System.String)">
+            <summary>
+            Returns a new <see cref="T:System.Drawing.Color"/> instance based on the specified hex color string
+            </summary>
+            <param name="hexColorString">A string containing an hexadecimal color code</param>
+            <returns>A new <see cref="T:System.Drawing.Color"/> instance based on the specified hex color string</returns>
+        </member>
+        <member name="T:Photon.Media.FontFamily">
+            <summary>
+            This class is a wrapper for the <see cref="T:System.Drawing.FontFamily"/> class.<para></para>
+            Its sole purpose is to provide conversion mechanisms to the wrapped class
+            </summary>
+        </member>
+        <member name="M:Photon.Media.FontFamily.#ctor(System.String)">
+            <summary>
+            The default constructor for the <see cref="T:Photon.Media.FontFamily"/> type
+            </summary>
+            <param name="name">The name of the font family</param>
+        </member>
+        <member name="P:Photon.Media.FontFamily.Name">
+            <summary>
+            Gets the font family's name
+            </summary>
+        </member>
+        <member name="M:Photon.Media.FontFamily.ToGdiFontFamily">
+            <summary>
+            Converts the <see cref="T:Photon.Media.FontFamily"/> to its <see cref="T:System.Drawing.FontFamily"/> counterpart
+            </summary>
+            <returns>The GDI+ <see cref="T:System.Drawing.FontFamily"/></returns>
+        </member>
+        <member name="T:Photon.Media.ImageBrush">
+            <summary>
+            This class represents a brush that paints an area with an image
+            </summary>
+        </member>
+        <member name="M:Photon.Media.ImageBrush.#ctor(System.Drawing.Bitmap)">
+            <summary>
+            The default constructor for the <see cref="T:Photon.Media.ImageBrush"/> class
+            </summary>
+            <param name="image">A <see cref="T:System.Drawing.Bitmap"/> representing the image to paint</param>
+        </member>
+        <member name="P:Photon.Media.ImageBrush.Image">
+            <summary>
+            Gets/Sets the <see cref="T:System.Drawing.Bitmap"/> reprenting the image to paint
+            </summary>
+        </member>
+        <member name="T:Photon.Media.MouseCursor">
+            <summary>
+            This class wraps the <see cref="T:OpenTK.MouseCursor"/> class<para></para>
+            Its sole purpose is to provide conversion mechanisms to the wrapped class
+            </summary>
+        </member>
+        <member name="M:Photon.Media.MouseCursor.#ctor(OpenTK.MouseCursor)">
+            <summary>
+            The default constructor for the <see cref="T:Photon.Media.MouseCursor"/> class
+            </summary>
+            <param name="cursorObject"></param>
+        </member>
+        <member name="P:Photon.Media.MouseCursor.CursorObject">
+            <summary>
+            Gets the wrapped <see cref="T:OpenTK.MouseCursor"/> object
+            </summary>
+        </member>
+        <member name="M:Photon.Media.MouseCursor.FromUri(System.Uri)">
+            <summary>
+            Creates a <see cref="T:Photon.Media.MouseCursor"/> based on the specified image
+            </summary>
+            <param name="cursorUri">The <see cref="T:System.Uri"/> of the image</param>
+            <returns>A <see cref="T:Photon.Media.MouseCursor"/></returns>
+        </member>
+        <member name="F:Photon.Media.MouseCursor.Default">
+            <summary>
+            Gets the default <see cref="T:Photon.Media.MouseCursor"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Point">
+            <summary>
+            Represents an ordered pair of double x and y coordinates that defines a point in a two-dimensional plane
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Point.#ctor(System.Double,System.Double)">
+            <summary>
+            The default constructor for the <see cref="T:Photon.Media.Point"/> class
+            </summary>
+            <param name="x">The horizontal position of the point</param>
+            <param name="y">The vertical position of the point</param>
+        </member>
+        <member name="P:Photon.Media.Point.X">
+            <summary>
+            Gets the horizontal position of the point
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Point.Y">
+            <summary>
+            Gets the vertical position of the point
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Point.ToPointF">
+            <summary>
+            Gets the point's <see cref="T:System.Drawing.PointF"/> equivalency
+            </summary>
+            <returns>The <see cref="T:System.Drawing.PointF"/> equivalency of the point</returns>
+        </member>
+        <member name="M:Photon.Media.Point.op_Addition(Photon.Media.Point,Photon.Media.Point)">
+            <summary>
+            A + operator for the <see cref="T:Photon.Media.Point"/> class
+            </summary>
+            <param name="point1">The first point</param>
+            <param name="point2">The second point</param>
+            <returns>The <see cref="T:Photon.Media.Point"/> resulting from the addition</returns>
+        </member>
+        <member name="T:Photon.Media.Rectangle">
+            <summary>
+            Stores a set of four double numbers that represent the location and size of a rectangle
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Rectangle.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Rectangle"/> instance base on the specified x, y, width and height
+            </summary>
+            <param name="x">The horizontal position of the rectangle</param>
+            <param name="y">The vertical position of the rectangle</param>
+            <param name="width">The width of the rectangle</param>
+            <param name="height">The height of the rectangle</param>
+        </member>
+        <member name="M:Photon.Media.Rectangle.#ctor(System.Double,System.Double,Photon.Media.Size)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Rectangle"/> instance base on the specified x, y and size
+            </summary>
+            <param name="x">The horizontal position of the rectangle</param>
+            <param name="y">The vertical position of the rectangle</param>
+            <param name="size">A <see cref="P:Photon.Media.Rectangle.Size"/> instance representing the size of the rectangle</param>
+        </member>
+        <member name="M:Photon.Media.Rectangle.#ctor(Photon.Media.Point,Photon.Media.Size)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Rectangle"/> instance base on the specified position and size
+            </summary>
+            <param name="position">A <see cref="T:Photon.Media.Point"/> instance representing the position of the rectangle</param>
+            <param name="size">A <see cref="T:Photon.Media.Size"/> instance representing the size of the rectangle</param>
+        </member>
+        <member name="P:Photon.Media.Rectangle.X">
+            <summary>
+            Gets the horizontal position of the rectangle
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Rectangle.Y">
+            <summary>
+            Gets the vertical position of the rectangle
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Rectangle.Width">
+            <summary>
+            Gets the rectangle's width
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Rectangle.Height">
+            <summary>
+            Gets the rectangle's height
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Rectangle.Left">
+            <summary>
+            Gets the rectangle's left, which is the horizontal position of the rectangle
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Rectangle.Top">
+            <summary>
+            Gets the rectangle's top, which is the vertical position of the rectangle
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Rectangle.Right">
+            <summary>
+            Gets the the rectangle's right, which is equals to the <see cref="P:Photon.Media.Rectangle.Left"/> property added to the <see cref="P:Photon.Media.Rectangle.Width"/> property
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Rectangle.Bottom">
+            <summary>
+            Gets the the rectangle's bottom, which is equals to the <see cref="P:Photon.Media.Rectangle.Top"/> property added to the <see cref="P:Photon.Media.Rectangle.Height"/> property
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Rectangle.Location">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Point"/> representing the rectangle's position
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Rectangle.Size">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Size"/> representing the rectangle's size
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Rectangle.Contains(Photon.Media.Point)">
+            <summary>
+            Determines whether or not the specified point is within the rectangle's bound
+            </summary>
+            <param name="point">The <see cref="T:Photon.Media.Point"/> to check</param>
+            <returns>A boolean indicating whether or not the specified point is within the rectangle's bound</returns>
+        </member>
+        <member name="M:Photon.Media.Rectangle.ToRectangleF">
+            <summary>
+            Returns the <see cref="T:System.Drawing.RectangleF"/> equivalency of the rectangle
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Media.Rectangle.Empty">
+            <summary>
+            An empty (default) instance of the rectangle struct
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Media.Size">
+            <summary>
+            Implements a structure that is used to describe the Size of an object
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Size.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Size"/> with the specified width and height
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="P:Photon.Media.Size.Width">
+            <summary>
+            Gets the width of this size instance
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Size.Height">
+            <summary>
+            Gets the height of this size instance
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Size.ToSizeF">
+            <summary>
+            Gets the <see cref="T:System.Drawing.SizeF"/> equivalency of the size class
+            </summary>
+        </member>
+        <member name="T:Photon.Media.SolidColorBrush">
+            <summary>
+            This class represents a brush that paints an area with a solid color
+            </summary>
+        </member>
+        <member name="M:Photon.Media.SolidColorBrush.#ctor(System.Drawing.Color)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.SolidColorBrush"/> with the specified <see cref="T:System.Drawing.Color"/>
+            </summary>
+            <param name="color">The <see cref="T:System.Drawing.Color"/> associated with the brush</param>
+        </member>
+        <member name="P:Photon.Media.SolidColorBrush.Color">
+            <summary>
+            Gets/Sets the <see cref="T:System.Drawing.Color"/> associated with the brush
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Thickness">
+            <summary>
+            Describes the thickness of a frame around a rectangle. Four Double values describe the Left, Top, Right, and Bottom sides of the rectangle, respectively.
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Thickness.#ctor(System.Double)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Thickness"/> with Left, Top, Right and Bottom properties set to the specified value
+            </summary>
+            <param name="all">The width, in pixels, of the left, top, right and left sides of the bounding rectangle</param>
+        </member>
+        <member name="M:Photon.Media.Thickness.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Thickness"/> with the specified values for both the Left and Right, and both the Top and Bottom properties
+            </summary>
+            <param name="leftAndRight">The width, in pixels, of both the left and top sides of the bounding rectangle</param>
+            <param name="topAndBottom">The width, in pixels, of both the top and bottom sides of the bounding rectangle</param>
+        </member>
+        <member name="M:Photon.Media.Thickness.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Thickness"/> with the specified values for the Left, Top, Right and Bottom properties
+            </summary>
+            <param name="left">The width, in pixels, of the left side of the bounding rectangle</param>
+            <param name="top">The width, in pixels, of the upper side of the bounding rectangle</param>
+            <param name="right">The width, in pixels, of the right side of the bounding rectangle</param>
+            <param name="bottom">The width, in pixels, of the upper side of the bounding rectangle</param>
+        </member>
+        <member name="P:Photon.Media.Thickness.Left">
+            <summary>
+            Gets or sets the width, in pixels, of the left side of the bounding rectangle
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Thickness.Top">
+            <summary>
+            Gets or sets the width, in pixels, of the upper side of the bounding rectangle
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Thickness.Right">
+            <summary>
+            Gets or sets the width, in pixels, of the right side of the bounding rectangle
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Thickness.Bottom">
+            <summary>
+            Gets or sets the width, in pixels, of the upper side of the bounding rectangle
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Thickness.Empty">
+            <summary>
+            An empty (default) instance of the thickness struct
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Media.StringExtensions">
+            <summary>
+            This class defines extensions for the <see cref="T:System.String"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.Media.StringExtensions.IsNumeric(System.String)">
+            <summary>
+            Returns a boolean indicating whether or not the string is numeric
+            </summary>
+            <param name="extended">The extended string</param>
+            <returns>A boolean indicating whether or not the string is numeric</returns>
+        </member>
+        <member name="M:Photon.Media.StringExtensions.IsAlphaNumeric(System.String)">
+            <summary>
+            Returns a boolean indicating whether or not the string is alphanumeric
+            </summary>
+            <param name="extended">The extended string</param>
+            <returns>A boolean indicating whether or not the string is alphanumeric</returns>
+        </member>
+        <member name="M:Photon.Media.StringExtensions.IsHexColorString(System.String)">
+            <summary>
+            Returns a boolean indicating whether or not the string contains an hexadecimal color code
+            </summary>
+            <param name="extended">The extended string</param>
+            <returns>A boolean indicating whether or not the string contains an hexadecimal color code</returns>
+        </member>
+        <member name="M:Photon.Media.StringExtensions.IsArgbColorString(System.String)">
+            <summary>
+            Returns a boolean indicating whether or not the string contains an ARGB/RGB color code
+            </summary>
+            <param name="extended">The extended string</param>
+            <returns>A boolean indicating whether or not the string contains an ARGB/RGB color code</returns>
+        </member>
+        <member name="T:Photon.XamlParser">
+            <summary>
+            This static class provides means to parse a Xaml document<para></para>
+            This is a very basic - and poor - implementation which's only purpose is to provide fundamental parsing mechanisms. An entirely revised version of the parser will soon appear
+            </summary>
+            <remarks>Temporary implementation. Does not support attached properties, bindings, styling, templating, etc. Only basic element tags and attributes are currently supported</remarks>
+        </member>
+        <member name="F:Photon.XamlParser.PREFIX_MARKUP">
+            <summary>
+            The prefix corresponding to the markup namespace
+            </summary>
+        </member>
+        <member name="F:Photon.XamlParser.ATTRIBUTE_CLASS_NAME">
+            <summary>
+            The name of the class attribute
+            </summary>
+        </member>
+        <member name="F:Photon.XamlParser.ATTRIBUTE_CLASS_FULLNAME">
+            <summary>
+            The full name of the class attribute (including prefix)
+            </summary>
+        </member>
+        <member name="P:Photon.XamlParser.DependencyElementTypes">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.HashSet`1"/> of all the dependency element types
+            </summary>
+        </member>
+        <member name="M:Photon.XamlParser.LoadDependencyElementFrom``1(System.IO.Stream)">
+            <summary>
+            Loads the specified xaml <see cref="T:System.IO.Stream"/> and parses it into the expect type
+            </summary>
+            <typeparam name="TElement">The expected type of the parsed <see cref="T:Photon.IUIElement"/></typeparam>
+            <param name="xamlStream">The <see cref="T:System.IO.Stream"/> containing the element's Xaml</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.XamlParser.ParseElement(System.Xml.XmlNode)">
+            <summary>
+            Parses the specified <see cref="T:System.Xml.XmlNode"/> into a new <see cref="T:Photon.IDependencyElement"/>
+            </summary>
+            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/> to parse</param>
+            <returns>The parsed <see cref="T:Photon.IDependencyElement"/></returns>
+        </member>
+        <member name="M:Photon.XamlParser.DetermineElementType(System.Xml.XmlNode)">
+            <summary>
+            Determines the <see cref="T:Photon.IUIElement"/> type for the specified <see cref="T:System.Xml.XmlNode"/>
+            </summary>
+            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/> for which to determine the <see cref="T:Photon.IUIElement"/> type</param>
+            <returns>The <see cref="T:Photon.IUIElement"/> type of the specified <see cref="T:System.Xml.XmlNode"/></returns>
+        </member>
+        <member name="M:Photon.XamlParser.ParseValue(System.Reflection.PropertyInfo,System.String)">
+            <summary>
+            Parses the specified string value into the type expected by the property passed as parameter
+            </summary>
+            <param name="property">The <see cref="T:System.Reflection.PropertyInfo"/> for which to parse the specified value string</param>
+            <param name="valueString">The string to parse</param>
+            <returns>The parsed object</returns>
+        </member>
+    </members>
+</doc>
