@@ -3,7 +3,7 @@ Photon is a high-level, cross-platform .NET/Mono library for rendering user inte
 
 It aims not only to become a cross-platform alternative to WPF (Window Presentation Foundation) but as well to provide it with the full extent of OpenGL. 
 
-It runs on top of the AWESOME <b>OpenTK</b> library (http://www.opentk.com/)
+It runs on top of the AWESOME <a href="http://www.opentk.com/">OpenTK</a> library
 
 #Current Status
 
@@ -11,7 +11,7 @@ WORK IN PROGRESS
 
 #License
 
-Photon is licensed under the GNU GPL license. Refer to <b>docs/license.txt</b> for more information.
+Photon is licensed under the GNU GPL license. Refer to <a href="https://github.com/Neuroglia/Photon/blob/master/Docs/license.txt">docs/license.txt</a> for more information.
 
 #Forum
 
@@ -32,4 +32,4 @@ Furthermore, any one with good knowledge of GitHub / community management is rea
 
 This code has been written by Charles d'Avernas
 
-Special thanks to the amazing <b>inDev</b> (http://www.indev.be) team for their unyielding support to my work
+Special thanks to the amazing <a href="http://www.indev.be">inDev</a> team for their unyielding support to my work
