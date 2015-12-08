@@ -13,6 +13,9 @@ namespace Photon.Input
     public static class FocusManager
     {
 
+        /// <summary>
+        /// Describes the <see cref="FocusManager"/>'s FocusedElement attached <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty FocusedElementProperty = DependencyProperty.RegisterAttached("FocusedElement", typeof(UIElement), typeof(FocusManager));
         /// <summary>
         /// Gets the focused <see cref="UIElement"/>, if any, within the specified focus scope
@@ -48,6 +51,9 @@ namespace Photon.Input
             focusedElement.Focus();
         }
 
+        /// <summary>
+        /// Describes the <see cref="FocusManager"/>'s IsFocusScope attached <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty IsFocusScopeProperty = DependencyProperty.RegisterAttached("IsFocusScope", typeof(bool), typeof(FocusManager));
         /// <summary>
         /// Gets a boolean indicating whether or not the specified <see cref="IUIElement"/> is a focus scope element
@@ -76,6 +82,9 @@ namespace Photon.Input
             element.SetValue(FocusManager.IsFocusScopeProperty, isFocusScope);
         }
 
+        /// <summary>
+        /// Describes the <see cref="FocusManager"/>'s FocusableElements attached <see cref="DependencyProperty"/>
+        /// </summary>
         internal static DependencyProperty FocusableElementsProperty = DependencyProperty.RegisterAttached("FocusableElements", typeof(HashSet<UIElement>), typeof(FocusManager));
         /// <summary>
         /// Gets a list of all the focusable <see cref="UIElement"/> contained within the specified focus scope
@@ -104,6 +113,9 @@ namespace Photon.Input
             focusScope.SetValue(FocusManager.FocusableElementsProperty, focusables);
         }
 
+        /// <summary>
+        /// Describes the <see cref="FocusManager"/>'s IsFocusable attached <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty IsFocusableProperty = DependencyProperty.RegisterAttached("IsFocusable", typeof(bool), typeof(FocusManager));
         /// <summary>
         /// Gets a boolean indicating whether or not the specified <see cref="UIElement"/> is focusable

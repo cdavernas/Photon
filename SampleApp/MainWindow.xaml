@@ -1,6 +1,45 @@
-﻿<Window x:Class="TestUnit.MainWindow"
+﻿<Window x:Class="SampleApp.MainWindow"
         xmlns="clr-namespace:Photon;assembly=Photon"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        Background="#FFFFFFFF">
+        Background="#FF000000">
 
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal"  Background="#FFFFFFFF" Margin="0">
+        <Border Background="#FFFF0000" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">1</Label>
+        </Border>
+        <Border Background="#FF00FF00" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">2</Label>
+        </Border>
+        <Border Background="#FF0000FF" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">3</Label>
+        </Border>
+        <Border Background="#FFFF0000" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">4</Label>
+        </Border>
+        <Border Background="#FF00FF00" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">5</Label>
+        </Border>
+        <Border Background="#FF0000FF" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">6</Label>
+        </Border>
+        <Border Background="#FFFF0000" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">7</Label>
+        </Border>
+        <Border Background="#FF00FF00" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">8</Label>
+        </Border>
+        <Border Background="#FF0000FF" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">9</Label>
+        </Border>
+        <Border Background="#FFFF0000" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">10</Label>
+        </Border>
+        <Border Background="#FF00FF00" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">11</Label>
+        </Border>
+        <Border Background="#FF0000FF" Width="50" Height="50" Margin="5">
+            <Label Foreground="#FFFFFFFF" FontSize="14">12</Label>
+        </Border>
+    </StackPanel>
+    
 </Window>

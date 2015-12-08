@@ -39,6 +39,17 @@ namespace Photon.Media
             return new System.Drawing.FontFamily(this.Name); 
         }
 
+        /// <summary>
+        /// Gets the default <see cref="Media.FontFamily"/> (Arial)
+        /// </summary>
+        public static Media.FontFamily Default
+        {
+            get
+            {
+                return new FontFamily("Arial");
+            }
+        }
+
     }
 
 }

@@ -20,6 +20,11 @@ namespace Photon
     {
 
         /// <summary>
+        /// The default title for a <see cref="Window"/>
+        /// </summary>
+        private const string DEFAULT_TITLE = "Photon - Untitled Window";
+
+        /// <summary>
         /// The default width of a window
         /// </summary>
         public const int DEFAULT_WIDTH = 1024;
@@ -131,7 +136,10 @@ namespace Photon
         /// </summary>
         internal GameWindow Hwnd { get; private set; }
 
-        public static DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(Window));
+        /// <summary>
+        /// Describes the <see cref="Window.Title"/> <see cref="DependencyProperty"/>
+        /// </summary>
+        public static DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(Window), Window.DEFAULT_TITLE);
         /// <summary>
         /// Gets/sets the window's title
         /// </summary>
@@ -148,6 +156,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="Window.Width"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty WidthProperty = DependencyProperty.Register("Width", typeof(Window));
         /// <summary>
         /// Gets/sets the window's width
@@ -164,6 +175,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="Window.Height"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty HeightProperty = DependencyProperty.Register("Height", typeof(Window));
         /// <summary>
         /// Gets/sets the window's height
@@ -180,6 +194,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="Window.Background"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty BackgroundProperty = DependencyProperty.Register("Background", typeof(Window));
         /// <summary>
         /// Gets/sets the <see cref="Media.Brush"/> used to paint the window's background
@@ -196,6 +213,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="Window.IsHitTestVisible"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty IsHitTestVisibleProperty = DependencyProperty.Register("IsHitTestVisible", typeof(Window));
         /// <summary>
         /// Gets/sets a boolean indicating whether or not the window is hit test visible
@@ -212,6 +232,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="Window.Child"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty ChildProperty = DependencyProperty.Register("Child", typeof(Window));
         /// <summary>
         /// Gets/sets the window's child <see cref="UIElement"/>
@@ -273,6 +296,28 @@ namespace Photon
         }
 
         /// <summary>
+        /// Gets a boolean indicating whether or not the <see cref="Window"/>'s content can align horizontally
+        /// </summary>
+        public bool ContentsAlignHorizontally
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Gets a boolean indicating whether or not the <see cref="Window"/>'s content can align vertically
+        /// </summary>
+        public bool ContentsAlignVertically
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
         /// Initializes the <see cref="Window"/>
         /// </summary>
         private void Initialize()
@@ -283,54 +328,59 @@ namespace Photon
         }
 
         /// <summary>
+        /// Initializes the <see cref="Window"/>'s underlying <see cref="GameWindow"/> object
+        /// </summary>
+        private void InitializeHwnd()
+        {
+            double width, height;
+            string title;
+            if (this.Width.HasValue)
+            {
+                width = this.Width.Value;
+            }
+            else
+            {
+                width = Window.DEFAULT_WIDTH;
+            }
+            if (this.Height.HasValue)
+            {
+                height = this.Height.Value;
+            }
+            else
+            {
+                height = Window.DEFAULT_HEIGHT;
+            }
+            title = this.Title;
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                title = Window.DEFAULT_TITLE;
+            }
+            this.Hwnd = new GameWindow((int)width, (int)height, new GraphicsMode(32, 24, 8, 4));
+            this.Hwnd.Title = title;
+            this.Hwnd.Location = new System.Drawing.Point((int)(SystemParameters.WorkArea.Width / 2) - (this.Hwnd.Width / 2), (int)(SystemParameters.WorkArea.Height / 2) - (this.Hwnd.Height / 2));
+            this.Hwnd.Load += this.OnHwndLoad;
+            this.Hwnd.UpdateFrame += this.OnHwndUpdateFrame;
+            this.Hwnd.RenderFrame += this.OnHwndRenderFrame;
+            this.Hwnd.Resize += this.OnHwndResize;
+            this.Hwnd.Closing += this.OnHwndClosing;
+            this.Hwnd.Closed += this.OnHwndClosed;
+            this.Hwnd.MouseMove += this.OnHwndMouseMove;
+            this.Hwnd.MouseDown += this.OnHwndMouseButtonDown;
+            this.Hwnd.MouseUp += this.OnHwndMouseButtonUp;
+            this.Hwnd.MouseWheel += this.OnHwndMouseWheel;
+            this.Hwnd.KeyDown += this.OnHwndKeyDown;
+            this.Hwnd.KeyUp += this.OnHwndKeyUp;
+            this.Hwnd.KeyPress += this.OnHwndKeyPress;
+        }
+
+        /// <summary>
         /// Shows the window
         /// </summary>
         public void Show()
         {
-            double width, height;
-            string title;
             Task.Run(() =>
             {
-                if (this.Width.HasValue)
-                {
-                    width = this.Width.Value;
-                }
-                else
-                {
-                    width = Window.DEFAULT_WIDTH;
-                }
-                if (this.Height.HasValue)
-                {
-                    height = this.Height.Value;
-                }
-                else
-                {
-                    height = Window.DEFAULT_HEIGHT;
-                }
-                title = this.Title;
-                if (string.IsNullOrWhiteSpace(title))
-                {
-                    title = "Amacrine: Untitled";
-                }
-                this.Hwnd = new GameWindow((int)width, (int)height, new GraphicsMode(32, 24, 8, 4));
-                this.Hwnd.Title = title;
-                //this.Hwnd.Width = (int)width;
-                //this.Hwnd.Height = (int)height;
-                this.Hwnd.Location = new System.Drawing.Point((int)(SystemParameters.WorkArea.Width / 2) - (this.Hwnd.Width / 2), (int)(SystemParameters.WorkArea.Height / 2) - (this.Hwnd.Height / 2));
-                //this.Hwnd.WindowBorder = WindowBorder.Hidden;
-                //this.Hwnd.WindowState = WindowState.Fullscreen;
-                this.Hwnd.Load += this.OnHwndLoad;
-                this.Hwnd.UpdateFrame += this.OnHwndUpdateFrame;
-                this.Hwnd.RenderFrame += this.OnHwndRenderFrame;
-                this.Hwnd.Closing += this.OnHwndClosing;
-                this.Hwnd.Closed += this.OnHwndClosed;
-                this.Hwnd.MouseMove += this.OnHwndMouseMove;
-                this.Hwnd.MouseDown += this.OnHwndMouseButtonDown;
-                this.Hwnd.MouseUp += this.OnHwndMouseButtonUp;
-                this.Hwnd.MouseWheel += this.OnHwndMouseWheel;
-                this.Hwnd.KeyDown += this.OnHwndKeyDown;
-                this.Hwnd.KeyUp += this.OnHwndKeyUp;
-                this.Hwnd.KeyPress += this.OnHwndKeyPress;
+                this.InitializeHwnd();
                 Application.Current.RegisterWindow(this);
                 this.Hwnd.Run(Window.DEFAULT_UDATES_PER_SECOND, Window.DEFAULT_FRAMES_PER_SECOND);
             });
@@ -341,7 +391,9 @@ namespace Photon
         /// </summary>
         public void ShowDialog()
         {
-
+            this.InitializeHwnd();
+            Application.Current.RegisterWindow(this);
+            this.Hwnd.Run(Window.DEFAULT_UDATES_PER_SECOND, Window.DEFAULT_FRAMES_PER_SECOND);
         }
 
         /// <summary>
@@ -445,7 +497,10 @@ namespace Photon
         /// </summary>
         public void InvalidateLayout()
         {
-            throw new NotImplementedException();
+            if(this.Child != null)
+            {
+                this.Child.InvalidateLayout();
+            }
         }
 
         /// <summary>
@@ -504,7 +559,7 @@ namespace Photon
         }
 
         /// <summary>
-        /// Handles the underlying <see cref="GameWindow.MouseMove"/> event
+        /// Handles the underlying <see cref="NativeWindow.MouseMove"/> event
         /// </summary>
         /// <param name="sender">The sender of the event</param>
         /// <param name="e">The event's arguments</param>
@@ -626,6 +681,16 @@ namespace Photon
         }
 
         /// <summary>
+        /// Handles the underlying <see cref="NativeWindow.Resize"/> event
+        /// </summary>
+        /// <param name="sender">The sender of the event</param>
+        /// <param name="e">The event's arguments</param>
+        private void OnHwndResize(object sender, EventArgs e)
+        {
+            this.InvalidateLayout();
+        }
+
+        /// <summary>
         /// Handles the underlying <see cref="NativeWindow.Closing"/> event
         /// </summary>
         /// <param name="sender">The sender of the event</param>
@@ -711,6 +776,15 @@ namespace Photon
                 }
             }
             return null;
+        }
+
+        /// <summary>
+        /// Measures the <see cref="Window"/>'s contents
+        /// </summary>
+        /// <returns>The <see cref="Media.Size"/> of the <see cref="Window"/>'s contents</returns>
+        public Size MeasureContents()
+        {
+            throw new NotImplementedException();
         }
 
     }

@@ -108,10 +108,13 @@ namespace Photon
         }
 
         /// <summary>
-        /// Gets/Sets the <see cref="UIElement"/>'s logical parent 
+        /// Gets/Sets the <see cref="Controls.IContentPresenter"/>'s logical parent 
         /// </summary>
-        public IUIElement Parent { get; set; }
+        public Controls.IContentPresenter Parent { get; set; }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.HorizontalAlignment"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty HorizontalAlignmentProperty = DependencyProperty.Register("HorizontalAlignment", typeof(UIElement));
         /// <summary>
         /// Gets/Sets the element's <see cref="HorizontalAlignment"/>
@@ -128,6 +131,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.VerticalAlignment"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty VerticalAlignmentProperty = DependencyProperty.Register("VerticalAlignment", typeof(UIElement));
         /// <summary>
         /// Gets/Sets the element's <see cref="VerticalAlignment"/>
@@ -144,6 +150,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.Width"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty WidthProperty = DependencyProperty.Register("Width", typeof(UIElement));
         /// <summary>
         /// Gets/Sets the element's width
@@ -160,6 +169,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.MinWidth"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty MinWidthProperty = DependencyProperty.Register("MinWidth", typeof(UIElement));
         /// <summary>
         /// Gets/Sets the element's minimal width
@@ -176,6 +188,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.MaxWidth"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty MaxWidthProperty = DependencyProperty.Register("MaxWidth", typeof(UIElement));
         /// <summary>
         /// Gets/Sets the element's maximal width
@@ -192,6 +207,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.Height"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty HeightProperty = DependencyProperty.Register("Height", typeof(UIElement));
         /// <summary>
         /// Gets/Sets the element's height
@@ -208,6 +226,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.MinHeight"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty MinHeightProperty = DependencyProperty.Register("MinHeight", typeof(UIElement));
         /// <summary>
         /// Gets/Sets the element's minimal height
@@ -224,6 +245,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.MaxHeight"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty MaxHeightProperty = DependencyProperty.Register("MaxHeight", typeof(UIElement));
         /// <summary>
         /// Gets/Sets the element's maximal height
@@ -240,6 +264,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.Background"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty BackgroundProperty = DependencyProperty.Register("Background", typeof(UIElement));
         /// <summary>
         /// Gets/Sets the element's background
@@ -256,6 +283,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.Margin"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty MarginProperty = DependencyProperty.Register("Margin", typeof(UIElement), new Thickness());
         /// <summary>
         /// Gets/Sets the element's margin
@@ -272,6 +302,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.Cursor"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty CursorProperty = DependencyProperty.Register("Cursor", typeof(UIElement), Media.MouseCursor.Default);
         /// <summary>
         /// Gets/Sets the mouse cursor when over the element
@@ -288,6 +321,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.Opacity"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty OpacityProperty = DependencyProperty.Register("Opacity", typeof(UIElement), 1.0);
         /// <summary>
         /// Gets/Sets the element's opacity
@@ -304,6 +340,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.Visibility"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty VisibilityProperty = DependencyProperty.Register("Visibility", typeof(UIElement));
         /// <summary>
         /// Gets/Sets the element's <see cref="Visibility"/>
@@ -320,6 +359,9 @@ namespace Photon
             }
         }
 
+        /// <summary>
+        /// Describes the <see cref="UIElement.IsMouseOver"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty IsMouseOverProperty = DependencyProperty.Register("IsMouseOver", typeof(UIElement));
         /// <summary>
         /// Gets/Sets a value indicating whether or not the mouse is currently over the element
@@ -337,20 +379,8 @@ namespace Photon
         }
 
         /// <summary>
-        /// Gets/Sets a value indicating whether or not the element can be focused
+        /// Describes the <see cref="UIElement.IsHitTestVisible"/> <see cref="DependencyProperty"/>
         /// </summary>
-        public bool IsFocusable
-        {
-            get
-            {
-                return Input.FocusManager.GetIsFocusable(this);
-            }
-            set
-            {
-                Input.FocusManager.SetIsFocusable(this, value);
-            }
-        }
-
         public static DependencyProperty IsHitTestVisibleProperty = DependencyProperty.Register("IsHitTestVisible", typeof(UIElement), true);
         /// <summary>
         /// Gets/Sets a value indicating whether or not the element is hit test visible
@@ -364,6 +394,21 @@ namespace Photon
             set
             {
                 this.SetValue(UIElement.IsHitTestVisibleProperty, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets/Sets a value indicating whether or not the element can be focused
+        /// </summary>
+        public bool IsFocusable
+        {
+            get
+            {
+                return Input.FocusManager.GetIsFocusable(this);
+            }
+            set
+            {
+                Input.FocusManager.SetIsFocusable(this, value);
             }
         }
 
@@ -474,8 +519,10 @@ namespace Photon
             Controls.IDecorator decorator;
             Controls.IPanel panel;
             this.LastInvalidated = DateTime.UtcNow;
+
             this.Locate();
             this.Measure();
+
             if (typeof(Controls.IDecorator).IsAssignableFrom(this.GetType()))
             {
                 decorator = (Controls.IDecorator)this;
@@ -515,56 +562,61 @@ namespace Photon
         /// </summary>
         private void Locate()
         {
-            Point parentPosition, offset, position;
+            Media.Rectangle layoutSlot;
+            double x, y;
             //Check whether or not the last position was computed after the last invalidation
             if (this.LastLocated.CompareTo(this.LastInvalidated) != -1)
             {
                 //No need to recompute the position
                 return;
             }
-            //Determine whether or not the control is within a visual tree
+            //Check whether or not the element is within a visual tree
             if (this.Parent == null)
             {
-                //Because the position is not relative to anything, it is set to 0,0 by default
-                position = new Point();
-                this.LayoutPosition = position;
-                //Modify the position to include the element's left and top margin values
-                this.RenderPosition = position;
+                //The element is not within a visual tree. Set the element's render position to an empty point then return
+                this.RenderPosition = Media.Point.Empty;
                 return;
             }
-            //Determine whether the parent is an UIElement or the visual tree root (such as a Window)
-            if (typeof(UIElement).IsAssignableFrom(this.Parent.GetType()))
+            //Retrieve the parent's layout slot
+            layoutSlot = Controls.LayoutInformation.GetLayoutSlot(this.Parent);
+            //Sets the x value to the layout slot's x position plus the element's left margin value
+            x = layoutSlot.Position.X + this.Margin.Left;
+            //Modify the x value according to the element's HorizontalAlignment
+            if (this.Parent.ContentsAlignHorizontally)
             {
-                //Retrieve the parent's position
-                parentPosition = ((UIElement)this.Parent).RenderPosition;
+                switch (this.HorizontalAlignment)
+                {
+                    case HorizontalAlignment.Stretch:
+                    case HorizontalAlignment.Left:
+                        break;
+                    case HorizontalAlignment.Center:
+                        x += (layoutSlot.Width / 2) - (this.RenderSize.Width / 2);
+                        break;
+                    case HorizontalAlignment.Right:
+                        x += layoutSlot.Width - this.RenderSize.Width;
+                        break;
+                }
             }
-            else
+            //Sets the y value to the layout slot's y position plus the element's top margin value
+            y = layoutSlot.Position.Y + this.Margin.Top;
+            //Modify the x value according to the element's VerticalAlignment
+            if (this.Parent.ContentsAlignVertically)
             {
-                //Set the default position
-                parentPosition = new Point(0, 0);
+                switch (this.VerticalAlignment)
+                {
+                    case VerticalAlignment.Stretch:
+                    case VerticalAlignment.Top:
+                        break;
+                    case VerticalAlignment.Center:
+                        y += (layoutSlot.Height / 2) - (this.RenderSize.Height / 2);
+                        break;
+                    case VerticalAlignment.Bottom:
+                        y += layoutSlot.Height - this.RenderSize.Height;
+                        break;
+                }
             }
-            //Determine whether or not the parent implements the IPaddedElement interface
-            if (typeof(Controls.IPaddedElement).IsAssignableFrom(this.Parent.GetType()))
-            {
-                //Modify the parent's position by including the parent's padding values
-                parentPosition = new Point(parentPosition.X + ((Controls.IPaddedElement)this.Parent).Padding.Left, parentPosition.Y + ((Controls.IPaddedElement)this.Parent).Padding.Top);
-            }
-            //Retrieve the element's offset, as computed by its parent
-            offset = ((Controls.IElementPresenter)this.Parent).ComputeChildOffset(this);
-            //Create the element's position
-            position = new Point(parentPosition.X + offset.X, parentPosition.Y + offset.Y);
-            //Set the element's LayoutPosition
-            this.LayoutPosition = position;
-            //Modify the position to include the element's left and top margin values
-            position = new Point(position.X + this.Margin.Left, position.Y + this.Margin.Top);
-            ////Determine whether or not the element implements the IPaddedElement interface
-            //if (typeof(Controls.IPaddedElement).IsAssignableFrom(this.GetType()))
-            //{
-            //    //Modify the offset by including the element's padding values
-            //    position = new Point(position.X + ((Controls.IPaddedElement)this).Padding.Left, position.Y + ((Controls.IPaddedElement)this).Padding.Top);
-            //}
-            //Set the element's RenderPosition 
-            this.RenderPosition = position;
+            //Set the element's RenderPosition
+            this.RenderPosition = new Point(x, y) + ((Controls.IContentPresenter)this.Parent).ComputeChildOffset(this);
             //Set the date and time at which the last measure occured
             this.LastLocated = DateTime.UtcNow;
         }
@@ -574,137 +626,125 @@ namespace Photon
         /// </summary>
         private void Measure()
         {
-            Controls.IElementPresenter container;
-            Size contentsSize, size;
-            double? width, height;
-            Controls.IPaddedElement paddedElement;
-            double horizontalPadding, verticalPadding;
-            container = this as Controls.IElementPresenter;
-            width = null;
-            height = null;
-            if (container == null)
-            {
-                contentsSize = new Size();
-            }
-            else
-            {
-                contentsSize = container.ContentsSize;
-            }
+            Media.Rectangle layoutSlot;
+            double width, height;
+            bool relocate;
             //Check whether or not the last measure was made after the last invalidation
-            if(this.LastMeasured.CompareTo(this.LastInvalidated) != -1)
+            if (this.LastMeasured.CompareTo(this.LastInvalidated) != -1)
             {
                 //No need to recompute the measurements
                 return;
             }
-            //Check whether or not the element stretches horizontally
-            if(this.HorizontalAlignment == HorizontalAlignment.Stretch)
+            //Check whether or not the element is within a visual tree
+            if (this.Parent == null)
             {
-                width = null;
+                //The element is not within a visual tree. Set the element's render size to an empty size then return
+                this.RenderSize = Media.Size.Empty;
+                return;
+            }
+            //Retrieve the parent's layout slot
+            layoutSlot = Controls.LayoutInformation.GetLayoutSlot(this.Parent);
+            width = height = 0;
+            relocate = false;
+            //Check whether or not the element has been given a Width value
+            if (this.Width.HasValue)
+            {
+                //The Width has been set
+                width = this.Width.Value;
             }
             else
             {
-                //Determine whether or not the element's layout is affected by content modifications
-                if(container != null ? container.ContentsAffectsLayout : false)
+                if ( this.Parent.ContentsAlignHorizontally
+                    && this.HorizontalAlignment == HorizontalAlignment.Stretch)
                 {
-                    if (this.Width.HasValue)
-                    {
-                        width = this.Width.Value;
-                    }
-                    if (contentsSize.Width > (this.Width.HasValue ? this.Width.Value : 0))
-                    {
-                        width = contentsSize.Width;
-                    }
+                    //The element's HorizontalAlignment has been set to strecth, therefore its width equals its layout slot's
+                    width = layoutSlot.Width - this.Margin.Left  - this.Margin.Right;
                 }
                 else
                 {
-                    if (this.Width.HasValue)
+                    //Check whether or not the element is an IContentPresenter
+                    if (typeof(Controls.IContentPresenter).IsAssignableFrom(this.GetType()))
                     {
-                        width = this.Width.Value;
+                        width = ((Controls.IContentPresenter)this).MeasureContents().Width;
+                        if (typeof(Controls.IPaddedElement).IsAssignableFrom(this.GetType()))
+                        {
+                            width += ((Controls.IPaddedElement)this).Padding.Left + ((Controls.IPaddedElement)this).Padding.Right;
+                        }
+                        relocate = true;
                     }
-                    else
+                }
+                //Check whether or not the MinWidth property has been set
+                if (this.MinWidth.HasValue)
+                {
+                    if (width < this.MinWidth.Value)
                     {
-                        width = contentsSize.Width;
+                        width = this.MinWidth.Value;
+                    }
+                }
+                //Check whether or not the MaxWidth property has been set
+                if (this.MaxWidth.HasValue)
+                {
+                    if (width > this.MaxWidth.Value)
+                    {
+                        width = this.MaxWidth.Value;
                     }
                 }
             }
-            //Check whether or not the element stretches vertically
-            if (this.HorizontalAlignment == HorizontalAlignment.Stretch)
+            //Check whether or not the element has been given a Height value
+            if (this.Height.HasValue)
             {
-                height = null;
+                //The Height has been set
+                height = this.Height.Value;
             }
             else
             {
-                //Determine whether or not the element's layout is affected by content modifications
-                if (container != null ? container.ContentsAffectsLayout : false)
+                if (this.Parent.ContentsAlignVertically
+                    && this.VerticalAlignment == VerticalAlignment.Stretch)
                 {
-                    if (this.Height.HasValue)
-                    {
-                        height = this.Height.Value;
-                    }
-                    if (contentsSize.Height > (this.Height.HasValue ? this.Height.Value : 0))
-                    {
-                        height = contentsSize.Height;
-                    }
+                    //The element's VerticalAlignment has been set to strecth, therefore its height equals its layout slot's
+                    height = layoutSlot.Height - this.Margin.Top - this.Margin.Bottom;
                 }
                 else
                 {
-                    if (this.Height.HasValue)
+                    //Check whether or not the element is an IContentPresenter
+                    if (typeof(Controls.IContentPresenter).IsAssignableFrom(this.GetType()))
                     {
-                        height = this.Height.Value;
+                        height = ((Controls.IContentPresenter)this).MeasureContents().Height;
+                        if (typeof(Controls.IPaddedElement).IsAssignableFrom(this.GetType()))
+                        {
+                            height += ((Controls.IPaddedElement)this).Padding.Top + ((Controls.IPaddedElement)this).Padding.Bottom;
+                        }
+                        relocate = true;
                     }
-                    else
+                }
+                //Check whether or not the MinHeight property has been set
+                if (this.MinHeight.HasValue)
+                {
+                    if (height < this.MinHeight.Value)
                     {
-                        height = contentsSize.Height;
+                        height = this.MinHeight.Value;
+                    }
+                }
+                //Check whether or not the MaxHeight property has been set
+                if (this.MaxHeight.HasValue)
+                {
+                    if (height > this.MaxHeight.Value)
+                    {
+                        height = this.MaxHeight.Value;
                     }
                 }
             }
-            //Check whether a width value has been provided
-            if (!width.HasValue)
-            {
-                width = contentsSize.Width;
-            }
-            //Check whether a height value has been provided
-            if (!height.HasValue)
-            {
-                height = contentsSize.Height;
-            }
-            //Check whether or not the element implements the IPaddedElement interface
-            if (typeof(Controls.IPaddedElement).IsAssignableFrom(this.GetType()))
-            {
-                paddedElement = (Controls.IPaddedElement)this;
-                horizontalPadding = paddedElement.Padding.Left + paddedElement.Padding.Right;
-                verticalPadding = paddedElement.Padding.Top + paddedElement.Padding.Bottom;
-                width += horizontalPadding;
-                height += verticalPadding;
-            }
-            //Check whether or not width value falls between the range specified by the MinWidth et MaxWidth properties
-            if (width.Value < (this.MinWidth.HasValue ? this.MinWidth.Value : 0))
-            {
-                width = this.MinWidth;
-            }
-            else if (width.Value > (this.MaxWidth.HasValue ? this.MaxWidth.Value : int.MaxValue))
-            {
-                width = this.MaxWidth;
-            }
-            //Check whether or not height value falls between the range specified by the MinHeight et MaxHeight properties
-            if (height.Value < (this.MinHeight.HasValue ? this.MinHeight.Value : 0))
-            {
-                height = this.MinHeight;
-            }
-            else if (height.Value > (this.MaxHeight.HasValue ? this.MaxHeight.Value : int.MaxValue))
-            {
-                height = this.MaxHeight;
-            }
-            //Create the new size
-            size = new Size(width.Value, height.Value);
-            //Set the RenderSize
-            this.RenderSize = size;
-            //Modify the size to include margin values
-            size = new Size(this.Margin.Left + width.Value + this.Margin.Right, this.Margin.Top + height.Value + this.Margin.Bottom);
-            //Set the LayoutSize
-            this.LayoutSize = size;
+            //Set the element's RenderSize
+            this.RenderSize = new Size(width, height);
+            //Set the element's LayoutSize, which include margin values
+            this.LayoutSize = new Size(this.Margin.Left + width + this.Margin.Right, this.Margin.Top + height + this.Margin.Bottom);
             //Set the date and time at which the last measure occured
             this.LastMeasured = DateTime.UtcNow;
+            if (relocate)
+            {
+                this.LastInvalidated = DateTime.UtcNow;
+                this.Locate();
+            }
         }
 
         /// <summary>
@@ -715,7 +755,10 @@ namespace Photon
             this.InvalidateLayout();
             if (typeof(Controls.IDecorator).IsAssignableFrom(this.GetType()))
             {
-                ((Controls.IDecorator)this).Child.Load();
+                if (((Controls.IDecorator)this).Child != null)
+                {
+                    ((Controls.IDecorator)this).Child.Load();
+                }
             }
             else if (typeof(Controls.IPanel).IsAssignableFrom(this.GetType()))
             {
@@ -785,29 +828,29 @@ namespace Photon
                 //The UIElement is not within a visual tree and will therefore not be rendered
                 return;
             }
-            //Retrieve the parent's render target
-            parentRenderTarget = this.Parent.RenderTarget;
-            //Set the left and top according to the parent's render target
-            left = parentRenderTarget.Left;
-            top = parentRenderTarget.Top;
-            //Determine if the parent implements the IPaddedElement. if it does, increment the left and top values by the equivalent padding values
-            if (typeof(Controls.IPaddedElement).IsAssignableFrom(this.Parent.GetType()))
-            {
-                paddedElement = (Controls.IPaddedElement)this.Parent;
-                left += paddedElement.Padding.Left;
-                top += paddedElement.Padding.Top;
-            }
+            ////Retrieve the parent's render target
+            //parentRenderTarget = this.Parent.RenderTarget;
+            ////Set the left and top according to the parent's render target
+            //left = parentRenderTarget.Left;
+            //top = parentRenderTarget.Top;
+            ////Determine if the parent implements the IPaddedElement. if it does, increment the left and top values by the equivalent padding values
+            //if (typeof(Controls.IPaddedElement).IsAssignableFrom(this.Parent.GetType()))
+            //{
+            //    paddedElement = (Controls.IPaddedElement)this.Parent;
+            //    left += paddedElement.Padding.Left;
+            //    top += paddedElement.Padding.Top;
+            //}
             //Compute the element's offset according to the parent
-            offset = ((Controls.IDecorator)this.Parent).ComputeChildOffset(this);
+            //offset = ((Controls.IDecorator)this.Parent).ComputeChildOffset(this);
             //Increment the left and top values by the equivalent offset values
-            left += offset.X;
-            top += offset.Y;
-            //Modify the left and top to include margin values
-            left += this.Margin.Left;
-            top += this.Margin.Top;
-            //Set the width and height
-            width = this.ActualWidth;
-            height = this.ActualHeight;
+            //left += offset.X;
+            //top += offset.Y;
+            ////Modify the left and top to include margin values
+            //left += this.Margin.Left;
+            //top += this.Margin.Top;
+            ////Set the width and height
+            //width = this.ActualWidth;
+            //height = this.ActualHeight;
             //Create the new layout target
             //this.LayoutTarget = new Rectangle(left, top, width, height);
             //Make sure the visual will get redrawn
@@ -888,14 +931,14 @@ namespace Photon
         }
 
         /// <summary>
-        /// Determines whether or not the control is hit by the specified <see cref="PointHitTestParameters"/>
+        /// Determines whether or not the control is hit by the specified <see cref="Input.PointHitTestParameters"/>
         /// </summary>
-        /// <param name="parameters">The <see cref="PointHitTestParameters"/> configuring the element</param>
-        /// <returns>A <see cref="HitTestResult"/> representing the result of the hit test</returns>
+        /// <param name="parameters">The <see cref="Input.PointHitTestParameters"/> configuring the element</param>
+        /// <returns>A <see cref="Input.HitTestResult"/> representing the result of the hit test</returns>
         public Input.HitTestResult HitTest(Input.PointHitTestParameters parameters)
         {
             Input.HitTestResult result;
-            if (typeof(Controls.IElementPresenter).IsAssignableFrom(this.GetType()))
+            if (typeof(Controls.IContentPresenter).IsAssignableFrom(this.GetType()))
             {
                 if (typeof(Controls.IPanel).IsAssignableFrom(this.GetType()))
                 {
@@ -937,11 +980,11 @@ namespace Photon
         /// <summary>
         /// This method is used to process any ui event handled by the element's logicial parent
         /// </summary>
-        /// <param name="e">The <see cref="UIEventArgs"/> associated with the event</param>
+        /// <param name="e">The <see cref="Input.UIEventArgs"/> associated with the event</param>
         public void ProcessUIEvent(Input.UIEventArgs e)
         {
             Input.HitTestResult hitTestResult;
-            if (typeof(Controls.IElementPresenter).IsAssignableFrom(this.GetType()))
+            if (typeof(Controls.IContentPresenter).IsAssignableFrom(this.GetType()))
             {
                 if (typeof(Controls.IPanel).IsAssignableFrom(this.GetType()))
                 {

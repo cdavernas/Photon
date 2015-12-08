@@ -121,7 +121,7 @@ namespace Photon
         /// <summary>
         /// This method is used to process any ui event handled by the element's logicial parent
         /// </summary>
-        /// <param name="e">The <see cref="UIEventArgs"/> associated with the event</param>
+        /// <param name="e">The <see cref="Input.UIEventArgs"/> associated with the event</param>
         void ProcessUIEvent(Input.UIEventArgs e);
 
     }

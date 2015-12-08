@@ -45,6 +45,17 @@ namespace Photon.Media
             return new SizeF(Convert.ToSingle(this.Width), Convert.ToSingle(this.Height));
         }
 
+        /// <summary>
+        /// Gets an empty <see cref="Media.Size"/>
+        /// </summary>
+        public static Size Empty
+        {
+            get
+            {
+                return new Size();
+            }
+        }
+
     }
 
 }

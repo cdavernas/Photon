@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Photon", "Photon.csproj", "{33948291-4CDE-49F4-82DA-F8DE0CD6C18E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "..\SampleApp\SampleApp.csproj", "{0213DE1A-95E7-4FAA-AE06-5614CAE6F83A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{33948291-4CDE-49F4-82DA-F8DE0CD6C18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33948291-4CDE-49F4-82DA-F8DE0CD6C18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33948291-4CDE-49F4-82DA-F8DE0CD6C18E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0213DE1A-95E7-4FAA-AE06-5614CAE6F83A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0213DE1A-95E7-4FAA-AE06-5614CAE6F83A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0213DE1A-95E7-4FAA-AE06-5614CAE6F83A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0213DE1A-95E7-4FAA-AE06-5614CAE6F83A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,6 +26,9 @@ namespace Photon.Media
             this.Image = image;
         }
 
+        /// <summary>
+        /// Describes the <see cref="ImageBrush.Image"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty ImageProperty = DependencyProperty.Register("Image", typeof(ImageBrush));
         /// <summary>
         /// Gets/Sets the <see cref="Bitmap"/> reprenting the image to paint
@@ -42,11 +45,19 @@ namespace Photon.Media
             }
         }
 
+        /// <summary>
+        /// Uses the brush to paint a geometry
+        /// </summary>
+        /// <param name="geometryBounds">The <see cref="Media.Rectangle"/> representing the geometry's bounds</param>
         internal override void Use(Rectangle geometryBounds)
         {
 
         }
 
+        /// <summary>
+        /// Clones the brush
+        /// </summary>
+        /// <returns>The clone of the <see cref="Brush"/></returns>
         public override Brush Clone()
         {
             return new ImageBrush(this.Image) { Opacity = this.Opacity };

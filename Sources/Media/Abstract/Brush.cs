@@ -16,6 +16,9 @@ namespace Photon.Media
         : DependencyObject
     {
 
+        /// <summary>
+        /// Describes the <see cref="Brush.Opacity"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty OpacityProperty = DependencyProperty.Register("Opacity", typeof(Brush), 1.0);
         /// <summary>
         /// Gets/Sets the opacity of the Brush
@@ -32,8 +35,11 @@ namespace Photon.Media
             }
         }
 
+        /// <summary>
+        /// Uses the brush to paint a geometry
+        /// </summary>
+        /// <param name="geometryBounds">The <see cref="Media.Rectangle"/> representing the geometry's bounds</param>
         internal abstract void Use(Rectangle geometryBounds);
-
 
         /// <summary>
         /// Clones the brush

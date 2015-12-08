@@ -11,7 +11,7 @@ namespace Photon.Controls
     /// This interface is implemented by all <see cref="UIElement"/> presenting multiple childs
     /// </summary>
     public interface IPanel
-        : IElementPresenter
+        : IContentPresenter
     {
 
         /// <summary>

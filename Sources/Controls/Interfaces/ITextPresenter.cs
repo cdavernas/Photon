@@ -45,17 +45,6 @@ namespace Photon.Controls
         /// </summary>
         string Text { get; set; }
 
-        /// <summary>
-        /// Gets the wrapped version of the text presented by the element
-        /// </summary>
-        string WrappedText { get; }
-
-        /// <summary>
-        /// Computes the offset of the text within the element
-        /// </summary>
-        /// <returns>A <see cref="Media.Point"/> representing the x and y offset of the text presented by the element</returns>
-        Media.Point ComputeTextOffset();
-
     }
 
 }

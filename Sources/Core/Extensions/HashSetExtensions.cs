@@ -31,7 +31,6 @@ namespace Photon
         /// <summary>
         /// Adds a range of elements to the hashset
         /// </summary>
-        /// <typeparam name="TElement">The generic type of the extended <see cref="HashSet{T}"/></typeparam>
         /// <param name="extended">The extended <see cref="HashSet{T}"/></param>
         /// <param name="range">The <see cref="IEnumerable{T}"/> to add to the hashset</param>
         public static void AddRange<XmlNode>(this HashSet<XmlNode> extended, XmlNodeList range)
