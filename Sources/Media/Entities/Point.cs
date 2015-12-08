@@ -59,6 +59,58 @@ namespace Photon.Media
             return new Point(point1.X + point2.X, point1.Y + point2.Y);
         }
 
+        /// <summary>
+        /// A - operator for the <see cref="Point"/> class
+        /// </summary>
+        /// <param name="point1">The first point</param>
+        /// <param name="point2">The second point</param>
+        /// <returns>The <see cref="Point"/> resulting from the substraction</returns>
+        public static Point operator -(Point point1, Point point2)
+        {
+            return new Point(point1.X - point2.X, point1.Y - point2.Y);
+        }
+
+        /// <summary>
+        /// A == operator for the <see cref="Point"/> class
+        /// </summary>
+        /// <param name="point1">The first point</param>
+        /// <param name="point2">The second point</param>
+        /// <returns>A boolean indicating whether or not the point1 equals the point2</returns>
+        public static bool operator==(Point point1, Point point2)
+        {
+            if(point1.X == point2.X && point1.Y == point2.Y)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// A != operator for the <see cref="Point"/> class
+        /// </summary>
+        /// <param name="point1">The first point</param>
+        /// <param name="point2">The second point</param>
+        /// <returns>A boolean indicating whether or not the point1 equals the point2</returns>
+        public static bool operator !=(Point point1, Point point2)
+        {
+            if (point1.X == point2.X && point1.Y == point2.Y)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Gets an empty <see cref="Media.Point"/>
+        /// </summary>
+        public static Point Empty
+        {
+            get
+            {
+                return new Point();
+            }
+        }
+
     }
 
 }

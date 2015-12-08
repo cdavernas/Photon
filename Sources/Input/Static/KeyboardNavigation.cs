@@ -13,6 +13,9 @@ namespace Photon.Input
     public static class KeyboardNavigation
     {
 
+        /// <summary>
+        /// Describes the <see cref="KeyboardNavigation"/> IsTabStop attached <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty IsTabStopProperty = DependencyProperty.RegisterAttached("IsTabStop", typeof(bool), typeof(KeyboardNavigation));
         /// <summary>
         /// Gets a boolean indicating whether or not the specified element is a Tab stop
@@ -63,6 +66,9 @@ namespace Photon.Input
             element.SetValue(KeyboardNavigation.TabIndexProperty, index);
         }
 
+        /// <summary>
+        /// Describes the <see cref="KeyboardNavigation"/> TabIndex attached <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty TabIndexProperty = DependencyProperty.RegisterAttached("TabIndex", typeof(int), typeof(KeyboardNavigation));
         /// <summary>
         /// Gets an integer representing the specified <see cref="UIElement"/>'s Tab index

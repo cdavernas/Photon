@@ -125,7 +125,7 @@ namespace Photon.Media
         /// <summary>
         /// Gets a <see cref="Media.Point"/> representing the rectangle's position
         /// </summary>
-        public Point Location
+        public Point Position
         {
             get
             {

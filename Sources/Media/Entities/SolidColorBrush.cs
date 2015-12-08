@@ -25,6 +25,9 @@ namespace Photon.Media
             this.Color = color;
         }
 
+        /// <summary>
+        /// Describes the <see cref="SolidColorBrush.Color"/> <see cref="DependencyProperty"/>
+        /// </summary>
         public static DependencyProperty ColorProperty = DependencyProperty.Register("Color", typeof(SolidColorBrush));
         /// <summary>
         /// Gets/Sets the <see cref="System.Drawing.Color"/> associated with the brush
@@ -41,6 +44,10 @@ namespace Photon.Media
             }
         }
 
+        /// <summary>
+        /// Uses the brush to paint a geometry
+        /// </summary>
+        /// <param name="geometryBounds">The <see cref="Media.Rectangle"/> representing the geometry's bounds</param>
         internal override void Use(Rectangle geometryBounds)
         {
             Color color;
@@ -55,6 +62,10 @@ namespace Photon.Media
             GL.Color4(color);
         }
 
+        /// <summary>
+        /// Clones the brush
+        /// </summary>
+        /// <returns>The clone of the <see cref="Brush"/></returns>
         public override Brush Clone()
         {
             return new SolidColorBrush(this.Color) { Opacity = this.Opacity };

@@ -11,7 +11,7 @@ namespace Photon.Controls
     /// This interface is implemented by all <see cref="IUIElement"/> that decorates a single child
     /// </summary>
     public interface IDecorator
-        : IElementPresenter
+        : IContentPresenter
     {
 
         /// <summary>
