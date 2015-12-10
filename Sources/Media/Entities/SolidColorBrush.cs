@@ -17,6 +17,14 @@ namespace Photon.Media
     {
 
         /// <summary>
+        /// Initializes a new <see cref="SolidColorBrush"/>
+        /// </summary>
+        public SolidColorBrush()
+        {
+
+        }
+
+        /// <summary>
         /// Initializes a new <see cref="SolidColorBrush"/> with the specified <see cref="System.Drawing.Color"/>
         /// </summary>
         /// <param name="color">The <see cref="System.Drawing.Color"/> associated with the brush</param>

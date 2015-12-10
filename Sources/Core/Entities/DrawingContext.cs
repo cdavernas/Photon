@@ -19,7 +19,9 @@ namespace Photon
         /// <summary>
         /// The <see cref="OpenTK.Graphics.TextPrinter"/> used by <see cref="DrawingContext"/> instances to render text
         /// </summary>
+        #pragma warning disable 612,618
         private static OpenTK.Graphics.TextPrinter TextPrinter = new OpenTK.Graphics.TextPrinter();
+        #pragma warning restore 612, 618
 
         /// <summary>
         /// Intializes a new <see cref="DrawingContext"/>

@@ -34,18 +34,6 @@ namespace Photon
             return siblings;
         }
 
-        /// <summary>
-        /// Parses the xmlnode into its equivalent <see cref="IDependencyElement"/>
-        /// </summary>
-        /// <param name="extended">The extended <see cref="XmlNode"/></param>
-        /// <returns>The parsed <see cref="IDependencyElement"/></returns>
-        public static IDependencyElement ParseXaml(this XmlNode extended)
-        {
-            IDependencyElement element;
-            element = XamlParser.ParseElement(extended);
-            return element;
-        }
-
     }
 
 }

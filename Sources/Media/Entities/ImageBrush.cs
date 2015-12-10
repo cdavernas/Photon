@@ -18,6 +18,14 @@ namespace Photon.Media
     {
 
         /// <summary>
+        /// Initializes a new <see cref="ImageBrush"/>
+        /// </summary>
+        public ImageBrush()
+        {
+
+        }
+
+        /// <summary>
         /// The default constructor for the <see cref="ImageBrush"/> class
         /// </summary>
         /// <param name="image">A <see cref="Bitmap"/> representing the image to paint</param>

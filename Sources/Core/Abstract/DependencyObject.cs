@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Photon
 {
@@ -33,6 +34,7 @@ namespace Photon
         /// <summary>
         /// Gets a dictionary containing a list of all the <see cref="DependencyProperty"/> contained by the <see cref="DependencyObject"/>
         /// </summary>
+        [XmlIgnore]
         public Dictionary<DependencyProperty, object> DependencyProperties { get; private set; }
 
         /// <summary>

@@ -68,6 +68,28 @@ namespace Photon.Controls
         }
 
         /// <summary>
+        /// Adds the specified child object
+        /// </summary>
+        /// <param name="child">An object representing the child to add</param>
+        public void AddChild(object child)
+        {
+            if (this.Child != null)
+            {
+                throw new NotSupportedException("An element of type '" + this.GetType().FullName + "' does not support multiple contents");
+            }
+            this.Child = (UIElement)child;
+        }
+
+        /// <summary>
+        /// Adds the specified text content
+        /// </summary>
+        /// <param name="text">A string representing the text to add</param>
+        public void AddText(string text)
+        {
+            throw new NotSupportedException("An element of type '" + this.GetType().FullName + "' does not support direct text content");
+        }
+
+        /// <summary>
         /// Computes the specified <see cref="UIElement"/>'s offset
         /// </summary>
         /// <param name="child">The <see cref="UIElement"/> to compute the offset of</param>

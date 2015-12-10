@@ -16,7 +16,7 @@ namespace Photon.Media.Animations
         /// <summary>
         /// This event is fired whenever the animation is completed
         /// </summary>
-        public EventHandler Completed;
+        public event EventHandler Completed;
 
         /// <summary>
         /// Initializes a new <see cref="AnimationClock"/>

@@ -24,7 +24,9 @@ namespace Photon
         /// <param name="width">A double representing the maximal width of the wrapped text</param>
         /// <param name="height">A double representing the maximal height of the wrapped text</param>
         /// <returns>The wrapped text</returns>
+        #pragma warning disable 612, 618
         public static string WrapText(this TextPrinter extended, string textToWrap, Font font, double? width, double? height)
+        #pragma warning restore 612, 618
         {
             StringBuilder writer;
             int position, next, endOfLine, length, lineCount;

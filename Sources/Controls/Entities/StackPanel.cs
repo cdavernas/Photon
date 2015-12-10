@@ -209,7 +209,10 @@ namespace Photon.Controls
                 }
             }
             child.DependencyProperties.Add(StackPanel.OffsetProperty, offset);
-            this.InvalidateLayout();
+            if (this.IsLoaded)
+            {
+                this.InvalidateLayout();
+            }
         }
 
         /// <summary>

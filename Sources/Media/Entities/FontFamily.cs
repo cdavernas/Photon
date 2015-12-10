@@ -17,6 +17,14 @@ namespace Photon.Media
     {
 
         /// <summary>
+        /// Initializes a new <see cref="FontFamily"/>
+        /// </summary>
+        public FontFamily()
+        {
+
+        }
+
+        /// <summary>
         /// The default constructor for the <see cref="FontFamily"/> type
         /// </summary>
         /// <param name="name">The name of the font family</param>

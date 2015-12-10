@@ -1,45 +1,72 @@
 ﻿<Window x:Class="SampleApp.MainWindow"
         xmlns="clr-namespace:Photon;assembly=Photon"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        Background="#FF000000">
+        xmlns:ctrl="clr-namespace:Photon.Controls;assembly=Photon"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Background="Red" MouseLeftButtonDown="Window_MouseLeftButtonDown">
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal"  Background="#FFFFFFFF" Margin="0">
-        <Border Background="#FFFF0000" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">1</Label>
-        </Border>
-        <Border Background="#FF00FF00" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">2</Label>
-        </Border>
-        <Border Background="#FF0000FF" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">3</Label>
-        </Border>
-        <Border Background="#FFFF0000" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">4</Label>
-        </Border>
-        <Border Background="#FF00FF00" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">5</Label>
-        </Border>
-        <Border Background="#FF0000FF" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">6</Label>
-        </Border>
-        <Border Background="#FFFF0000" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">7</Label>
-        </Border>
-        <Border Background="#FF00FF00" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">8</Label>
-        </Border>
-        <Border Background="#FF0000FF" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">9</Label>
-        </Border>
-        <Border Background="#FFFF0000" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">10</Label>
-        </Border>
-        <Border Background="#FF00FF00" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">11</Label>
-        </Border>
-        <Border Background="#FF0000FF" Width="50" Height="50" Margin="5">
-            <Label Foreground="#FFFFFFFF" FontSize="14">12</Label>
-        </Border>
-    </StackPanel>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <Style x:Key="stackpanel" TargetType="{x:Type ctrl:StackPanel}">
+                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        <Setter Property="Orientation" Value="Horizontal"></Setter>
+                        <Setter Property="Background" Value="#FFFFFFFF"></Setter>
+                    </Style>
+                    <Style x:Key="item" TargetType="{x:Type ctrl:Border}">
+                        <Setter Property="Width" Value="50"></Setter>
+                        <Setter Property="Height" Value="50"></Setter>
+                        <Setter Property="Margin" Value="5"></Setter>
+                    </Style>
+                    <Style x:Key="item_text" TargetType="{x:Type ctrl:Label}">
+                        <Setter Property="Foreground" Value="#FFFFFFFF"></Setter>
+                        <Setter Property="FontSize" Value="14"></Setter>
+                    </Style>
+                </ResourceDictionary>
+                <ResourceDictionary></ResourceDictionary>
+                <ResourceDictionary></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <ctrl:StackPanel Style="{StaticResource stackpanel}">
+        <ctrl:Border Background="#FFFF0000" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">1</ctrl:Label>
+        </ctrl:Border>
+        <ctrl:Border Background="#FF00FF00" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">2</ctrl:Label>
+        </ctrl:Border>
+        <ctrl:Border Background="#FF0000FF" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">3</ctrl:Label>
+        </ctrl:Border>
+        <ctrl:Border Background="#FFFF0000" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">4</ctrl:Label>
+        </ctrl:Border>
+        <ctrl:Border Background="#FF00FF00" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">5</ctrl:Label>
+        </ctrl:Border>
+        <ctrl:Border Background="#FF0000FF" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">6</ctrl:Label>
+        </ctrl:Border>
+        <ctrl:Border Background="#FFFF0000" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">7</ctrl:Label>
+        </ctrl:Border>
+        <ctrl:Border Background="#FF00FF00" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">8</ctrl:Label>
+        </ctrl:Border>
+        <ctrl:Border Background="#FF0000FF" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">9</ctrl:Label>
+        </ctrl:Border>
+        <ctrl:Border Background="#FFFF0000" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">10</ctrl:Label>
+        </ctrl:Border>
+        <ctrl:Border Background="#FF00FF00" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">11</ctrl:Label>
+        </ctrl:Border>
+        <ctrl:Border Background="#FF0000FF" Style="{StaticResource item}">
+            <ctrl:Label Style="{StaticResource item_text}">12</ctrl:Label>
+        </ctrl:Border>
+    </ctrl:StackPanel>
     
 </Window>

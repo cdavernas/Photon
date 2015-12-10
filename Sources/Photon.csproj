@@ -61,7 +61,20 @@
     <Compile Include="Controls\Entities\StackPanel.cs" />
     <Compile Include="Controls\Enumerations\Orientation.cs" />
     <Compile Include="Controls\Static\LayoutInformation.cs" />
+    <Compile Include="Core\Abstract\SetterBase.cs" />
+    <Compile Include="Core\Abstract\TriggerAction.cs" />
+    <Compile Include="Core\Abstract\TriggerBase.cs" />
+    <Compile Include="Core\Collections\SetterBaseCollection.cs" />
+    <Compile Include="Core\Collections\TriggerActionCollection.cs" />
+    <Compile Include="Core\Collections\TriggerBaseCollection.cs" />
     <Compile Include="Core\Entities\Application.cs" />
+    <Compile Include="Core\Entities\EventSetter.cs" />
+    <Compile Include="Core\Entities\EventTrigger.cs" />
+    <Compile Include="Core\Entities\ResourceDictionary.cs" />
+    <Compile Include="Core\Entities\RoutedEvent.cs" />
+    <Compile Include="Core\Entities\Setter.cs" />
+    <Compile Include="Core\Entities\Style.cs" />
+    <Compile Include="Core\Entities\DependencyElementTree.cs" />
     <Compile Include="Core\Entities\Window.cs" />
     <Compile Include="Controls\Interfaces\IBorderedElement.cs" />
     <Compile Include="Controls\Interfaces\IContentPresenter.cs" />
@@ -99,6 +112,21 @@
     <Compile Include="Input\Entities\UIEventArgs.cs" />
     <Compile Include="Input\Enumerations\TextSelectionMode.cs" />
     <Compile Include="Input\Enumerations\UIEvent.cs" />
+    <Compile Include="Markup\Abstract\MarkupExtension.cs" />
+    <Compile Include="Markup\Collections\NamespaceDeclarationCollection.cs" />
+    <Compile Include="Markup\Entities\NamespaceDeclaration.cs" />
+    <Compile Include="Markup\Entities\TypeMarkupExtension.cs" />
+    <Compile Include="Markup\Entities\XamlParser.cs" />
+    <Compile Include="Markup\Entities\StaticResource.cs" />
+    <Compile Include="Markup\Entities\XamlParserContext.cs" />
+    <Compile Include="Markup\Enumerations\NamespaceDeclarationType.cs" />
+    <Compile Include="Markup\Extensions\XmlAttributeCollectionExtensions.cs" />
+    <Compile Include="Markup\Extensions\XmlNodeExtensions.cs" />
+    <Compile Include="Markup\Extensions\XmlNodeListExtensions.cs" />
+    <Compile Include="Markup\Interfaces\IAddChild.cs" />
+    <Compile Include="Markup\Interfaces\IContext.cs" />
+    <Compile Include="Markup\Interfaces\IHandler.cs" />
+    <Compile Include="Markup\Static\Context.cs" />
     <Compile Include="Media.Animations\Abstract\Animation.cs" />
     <Compile Include="Media.Animations\Abstract\AnimationClock.cs" />
     <Compile Include="Media.Animations\Abstract\AnimationTimeline.cs" />
@@ -136,7 +164,6 @@
     <Compile Include="Media\TypeConverters\SizeConverter.cs" />
     <Compile Include="Media\TypeConverters\ThicknessConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Xaml\Static\XamlParser.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

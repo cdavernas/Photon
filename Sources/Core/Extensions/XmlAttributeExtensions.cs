@@ -21,7 +21,8 @@ namespace Photon
         /// <returns>A boolean indicating whether or not the attribute is a markup attribute</returns>
         public static bool IsMarkupAttribute(this XmlAttribute extended)
         {
-            if(extended.Name == "xmlns")
+            if(extended.Name == Markup.XamlParser.PREFIX_MARKUP
+                || extended.Name == Markup.XamlParser.PREFIX_XML_NAMESPACE)
             {
                 return true;
             }
