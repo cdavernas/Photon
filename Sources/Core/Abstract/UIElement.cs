@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Photon
 {
@@ -104,13 +105,43 @@ namespace Photon
         /// </summary>
         protected UIElement()
         {
-
+            this.Resources = new ResourceDictionary();
         }
 
         /// <summary>
         /// Gets/Sets the <see cref="Controls.IContentPresenter"/>'s logical parent 
         /// </summary>
+        [XmlIgnore]
         public Controls.IContentPresenter Parent { get; set; }
+
+        /// <summary>
+        /// Gets/sets the <see cref="UIElement"/>'s <see cref="ResourceDictionary"/>
+        /// </summary>
+        public ResourceDictionary Resources { get; set; }
+
+        /// <summary>
+        /// Gets a boolean indicating whether or not the <see cref="UIElement"/> has been loaded
+        /// </summary>
+        public bool IsLoaded { get; private set; }
+
+        /// <summary>
+        /// Describes the <see cref="UIElement.Style"/> <see cref="DependencyProperty"/>
+        /// </summary>
+        public static DependencyProperty StyleProperty = DependencyProperty.Register("Style", typeof(UIElement));
+        /// <summary>
+        /// Gets/sets the <see cref="UIElement"/>'s style
+        /// </summary>
+        public Style Style
+        {
+            get
+            {
+                return this.GetValue<Style>(UIElement.StyleProperty);
+            }
+            set
+            {
+                this.SetValue(UIElement.StyleProperty, value);
+            }
+        }
 
         /// <summary>
         /// Describes the <see cref="UIElement.HorizontalAlignment"/> <see cref="DependencyProperty"/>
@@ -767,6 +798,7 @@ namespace Photon
                     element.Load();
                 }
             }
+            this.IsLoaded = true;
             this.OnLoaded();
         }
 
@@ -818,42 +850,13 @@ namespace Photon
         /// </summary>
         protected virtual void OnInvalidateLayout()
         {
-            Rectangle parentRenderTarget;
-            double left, top, width, height;
-            Controls.IPaddedElement paddedElement;
-            Point offset;
             //Check if the UIElement is within a visual tree
             if (this.Parent == null)
             {
                 //The UIElement is not within a visual tree and will therefore not be rendered
                 return;
             }
-            ////Retrieve the parent's render target
-            //parentRenderTarget = this.Parent.RenderTarget;
-            ////Set the left and top according to the parent's render target
-            //left = parentRenderTarget.Left;
-            //top = parentRenderTarget.Top;
-            ////Determine if the parent implements the IPaddedElement. if it does, increment the left and top values by the equivalent padding values
-            //if (typeof(Controls.IPaddedElement).IsAssignableFrom(this.Parent.GetType()))
-            //{
-            //    paddedElement = (Controls.IPaddedElement)this.Parent;
-            //    left += paddedElement.Padding.Left;
-            //    top += paddedElement.Padding.Top;
-            //}
-            //Compute the element's offset according to the parent
-            //offset = ((Controls.IDecorator)this.Parent).ComputeChildOffset(this);
-            //Increment the left and top values by the equivalent offset values
-            //left += offset.X;
-            //top += offset.Y;
-            ////Modify the left and top to include margin values
-            //left += this.Margin.Left;
-            //top += this.Margin.Top;
-            ////Set the width and height
-            //width = this.ActualWidth;
-            //height = this.ActualHeight;
-            //Create the new layout target
-            //this.LayoutTarget = new Rectangle(left, top, width, height);
-            //Make sure the visual will get redrawn
+            //Make sure the visual gets redrawn
             this.InvalidateVisual();
         }
 
@@ -885,12 +888,21 @@ namespace Photon
                 }
                 return;
             }
-            if(propertyName == UIElement.VisibilityProperty.Name)
+            if (propertyName == UIElement.StyleProperty.Name)
+            {
+                if(value != null)
+                {
+                    ((Style)value).ApplyTo(this);
+                }
+                return;
+            }
+            if (propertyName == UIElement.VisibilityProperty.Name)
             {
                 if(this.VisibilityChanged != null)
                 {
                     this.VisibilityChanged(this, new EventArgs());
                 }
+                return;
             }
         }
 

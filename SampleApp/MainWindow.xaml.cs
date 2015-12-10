@@ -11,6 +11,11 @@ namespace SampleApp
         : Photon.Window
     {
 
+        private void Window_MouseLeftButtonDown(object sender, OpenTK.Input.MouseButtonEventArgs e)
+        {
+            this.Background = new Photon.Media.SolidColorBrush(System.Drawing.Color.Pink);
+        }
+
     }
 
 }

@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Photon
 {
@@ -52,7 +53,24 @@ namespace Photon
         /// <summary>
         /// Gets/sets the <see cref="Uri"/> of application's startup <see cref="IUIElement"/>
         /// </summary>
+        [XmlIgnore]
         public Uri StartupUri { get; set; }
+
+        /// <summary>
+        /// Gets/sets the string from which the <see cref="Application.StartupUri"/> is created
+        /// </summary>
+        [XmlElement("StartupUri")]
+        public string StartupUriString
+        {
+            get
+            {
+                return this.StartupUri.ToString();
+            }
+            set
+            {
+                this.StartupUri = new Uri(value);
+            }
+        }
 
         /// <summary>
         /// Gets/sets the application's <see cref="Photon.ShutdownMode"/>
@@ -114,7 +132,7 @@ namespace Photon
             }
             try
             {
-                this.MainWindow = XamlParser.LoadDependencyElementFrom<Window>(xamlStream);
+                this.MainWindow = Markup.XamlParser.LoadDependencyElementFrom<Window>(xamlStream);
                 this.MainWindow.Show();
             }
             catch (Exception ex)
@@ -302,7 +320,7 @@ namespace Photon
             application = null;
             try
             {
-                application = XamlParser.LoadDependencyElementFrom<TApplication>(xamlStream);
+                application = Markup.XamlParser.LoadDependencyElementFrom<TApplication>(xamlStream);
                 application.StartupArguments = startupArguments;
             }
             catch(Exception ex)

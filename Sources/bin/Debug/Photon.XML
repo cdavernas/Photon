@@ -4,6 +4,571 @@
         <name>Photon</name>
     </assembly>
     <members>
+        <member name="T:Photon.Controls.Border">
+            <summary>
+            Draws a border, background, or both around another element
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Border.BorderBrushProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Controls.Border.BorderBrush"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Border.BorderBrush">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Brush"/> used to paint the element's borders
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Border.BorderThicknessProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Controls.Border.BorderThickness"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Border.BorderThickness">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Thickness"/> of the element's borders
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Border.PaddingProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Controls.Border.Padding"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Border.Padding">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Thickness"/> representing the <see cref="T:Photon.Controls.Border"/>'s padding
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.Border.OnRender(Photon.DrawingContext)">
+            <summary>
+            When overriden in a class, renders the visual
+            </summary>
+            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in whihc to render the visual</param>
+        </member>
+        <member name="T:Photon.Controls.Decorator">
+            <summary>
+            Provides a base class for elements that apply effects onto or around a single child element, such as <see cref="T:Photon.Controls.Border"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Decorator.ChildProperty">
+            <summary>
+            Describes the <see cref="T:Photon.Controls.Decorator"/>'s Child <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Decorator.Child">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Controls.Decorator"/>'s child <see cref="T:Photon.UIElement"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Decorator.ContentsAffectsLayout">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Controls.Decorator"/>'s contents affect layout
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Decorator.ContentsAlignHorizontally">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Controls.Decorator"/>'s content can align horizontally
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Decorator.ContentsAlignVertically">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Controls.Decorator"/>'s content can align vertically
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.Decorator.AddChild(System.Object)">
+            <summary>
+            Adds the specified child object
+            </summary>
+            <param name="child">An object representing the child to add</param>
+        </member>
+        <member name="M:Photon.Controls.Decorator.AddText(System.String)">
+            <summary>
+            Adds the specified text content
+            </summary>
+            <param name="text">A string representing the text to add</param>
+        </member>
+        <member name="M:Photon.Controls.Decorator.ComputeChildOffset(Photon.UIElement)">
+            <summary>
+            Computes the specified <see cref="T:Photon.UIElement"/>'s offset
+            </summary>
+            <param name="child">The <see cref="T:Photon.UIElement"/> to compute the offset of</param>
+            <returns>The <see cref="T:Photon.Media.Point"/> representing the specified <see cref="T:Photon.UIElement"/>'s offset</returns>
+        </member>
+        <member name="M:Photon.Controls.Decorator.MeasureContents">
+            <summary>
+            Measures the <see cref="T:Photon.Controls.Decorator"/>'s contents
+            </summary>
+            <returns>The <see cref="T:Photon.Media.Size"/> of the <see cref="T:Photon.Controls.Decorator"/>'s contents</returns>
+        </member>
+        <member name="M:Photon.Controls.Decorator.OnPropertyChanged(System.String,System.Object,System.Object)">
+            <summary>
+            When overriden in a class, this method provides means to run code whenever a <see cref="T:Photon.DependencyProperty"/> has changed
+            </summary>
+            <param name="propertyName">The case sensitive name of the modified property</param>
+            <param name="originalValue">An object representing the property's value before the suffered change(s)</param>
+            <param name="value">An object representing the property's actual (new) value</param>
+        </member>
+        <member name="M:Photon.Controls.Decorator.OnRender(Photon.DrawingContext)">
+            <summary>
+            When overriden in a class, renders the visual
+            </summary>
+            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in whihc to render the visual</param>
+        </member>
+        <member name="T:Photon.Controls.Panel">
+            <summary>
+            Provides a base class for all Panel elements. Use Panel elements to position and arrange child objects in Windows Presentation Foundation (WPF) applications
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.Panel.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Controls.Panel"/> instance
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Panel.Children">
+            <summary>
+            Gets a <see cref="T:Photon.UIElementCollection"/> containing all of the <see cref="T:Photon.Controls.Panel"/>'s children
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Panel.ContentsAffectsLayout">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Controls.Panel"/>'s contents affect its layout
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Panel.ContentsAlignHorizontally">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Controls.Panel"/>'s content can align horizontally
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Panel.ContentsAlignVertically">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Controls.Panel"/>'s content can align vertically
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.Panel.ComputeChildOffset(Photon.UIElement)">
+            <summary>
+            Computes the specified <see cref="T:Photon.UIElement"/>'s offset
+            </summary>
+            <param name="child">The <see cref="T:Photon.UIElement"/> to compute the offset of</param>
+            <returns>The <see cref="T:Photon.Media.Point"/> representing the specified <see cref="T:Photon.UIElement"/>'s offset</returns>
+        </member>
+        <member name="M:Photon.Controls.Panel.MeasureContents">
+            <summary>
+            Measures the <see cref="T:Photon.Controls.Panel"/>'s contents
+            </summary>
+            <returns>The <see cref="T:Photon.Media.Size"/> of the <see cref="T:Photon.Controls.Panel"/>'s contents</returns>
+        </member>
+        <member name="M:Photon.Controls.Panel.AddChild(System.Object)">
+            <summary>
+            Adds the specified child object
+            </summary>
+            <param name="child">An object representing the child to add</param>
+        </member>
+        <member name="M:Photon.Controls.Panel.AddText(System.String)">
+            <summary>
+            Adds the specified text content
+            </summary>
+            <param name="text">A string representing the text to add</param>
+        </member>
+        <member name="M:Photon.Controls.Panel.OnChildrenCollectionChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Handles the <see cref="P:Photon.Controls.Panel.Children"/>'s <see cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged"/> event
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.Panel.OnChildAdded(Photon.UIElement)">
+            <summary>
+            When overriden in a class, allows the execution of code whenever a child <see cref="T:Photon.UIElement"/> has been added to the <see cref="T:Photon.Controls.Panel"/>
+            </summary>
+            <param name="child">The <see cref="T:Photon.UIElement"/> that has been added</param>
+        </member>
+        <member name="M:Photon.Controls.Panel.OnChildRemoved(Photon.UIElement)">
+            <summary>
+            When overriden in a class, allows the execution of code whenever a child <see cref="T:Photon.UIElement"/> has been removed from the <see cref="T:Photon.Controls.Panel"/>
+            </summary>
+            <param name="child">The <see cref="T:Photon.UIElement"/> that has been removed</param>
+        </member>
+        <member name="M:Photon.Controls.Panel.OnRender(Photon.DrawingContext)">
+             <summary>
+             When overriden in a class, this method allows the execution of code whenever the element has been rendered
+             </summary>
+            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which the element has been rendered</param>
+        </member>
+        <member name="T:Photon.Controls.Label">
+            <summary>
+            Represents the text label for a control and provides support for access keys
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Label.FontFamilyProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Controls.Label.FontFamily"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Label.FontFamily">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.FontFamily"/> of the <see cref="T:System.Drawing.Font"/> with which to paint the <see cref="T:Photon.Controls.Label"/>'s text
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Label.FontSizeProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Controls.Label.FontSize"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Label.FontSize">
+            <summary>
+            Gets/sets the em size of the <see cref="T:System.Drawing.Font"/> with which to paint the <see cref="T:Photon.Controls.Label"/>'s text
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Label.FontStyleProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Controls.Label.FontStyle"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Label.FontStyle">
+            <summary>
+            Gets/sets the <see cref="T:System.Drawing.FontStyle"/> of the <see cref="T:System.Drawing.Font"/> with which to paint the <see cref="T:Photon.Controls.Label"/>'s text
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Label.ForegroundProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Controls.Label.Foreground"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Label.Foreground">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Brush"/> with which to paint the <see cref="T:Photon.Controls.Label"/>'s text
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Label.PaddingProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Controls.Label.Padding"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Label.Padding">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Thickness"/> representing the <see cref="T:Photon.Controls.Label"/>'s padding
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Label.TextProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Controls.Label.Text"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Label.Text">
+            <summary>
+            Gets/sets the text displayed by the <see cref="T:Photon.Controls.Label"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.Label.Font">
+            <summary>
+            Gets the text's <see cref="T:System.Drawing.Font"/>, based on the <see cref="P:Photon.Controls.Label.FontFamily"/>, <see cref="P:Photon.Controls.Label.FontSize"/> and <see cref="P:Photon.Controls.Label.FontStyle"/> properties
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.Label.AddChild(System.Object)">
+            <summary>
+            Adds the specified child object
+            </summary>
+            <param name="child">An object representing the child to add</param>
+        </member>
+        <member name="M:Photon.Controls.Label.AddText(System.String)">
+            <summary>
+            Adds the specified text content
+            </summary>
+            <param name="text">A string representing the text to add</param>
+        </member>
+        <member name="M:Photon.Controls.Label.OnRender(Photon.DrawingContext)">
+             <summary>
+             When overriden in a class, this method allows the execution of code whenever the element has been rendered
+             </summary>
+            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which the element has been rendered</param>
+        </member>
+        <member name="T:Photon.Controls.StackPanel">
+            <summary>
+            Arranges child elements into a single line that can be oriented horizontally or vertically
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.StackPanel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Photon.Controls.StackPanel"/> type
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.StackPanel.OffsetProperty">
+            <summary>
+            Describes the <see cref="F:Photon.Controls.StackPanel.OffsetProperty"/> attached <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.StackPanel.GetOffset(Photon.UIElement)">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Point"/> representing the specified <see cref="T:Photon.UIElement"/>'s offset
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> to get the offset of</param>
+            <returns>A <see cref="T:Photon.Media.Point"/> representing the specified <see cref="T:Photon.UIElement"/>'s offset</returns>
+        </member>
+        <member name="M:Photon.Controls.StackPanel.SetOffset(Photon.UIElement,Photon.Media.Point)">
+            <summary>
+            Sets the offset of the specified <see cref="T:Photon.UIElement"/>
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> to set the offset of</param>
+            <param name="offset">A <see cref="T:Photon.Media.Point"/> representing the <see cref="T:Photon.UIElement"/>'s offset</param>
+        </member>
+        <member name="F:Photon.Controls.StackPanel.OrientationProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Controls.StackPanel.Orientation"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.StackPanel.Orientation">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Controls.StackPanel"/>'s content <see cref="T:Photon.Controls.Orientation"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.StackPanel.ContentsAffectsLayout">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Controls.StackPanel"/>'s contents affect its layout
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.StackPanel.ContentsAlignHorizontally">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Controls.StackPanel"/>'s content can align horizontally
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.StackPanel.ContentsAlignVertically">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Controls.StackPanel"/>'s content can align vertically
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.StackPanel.ComputeChildOffset(Photon.UIElement)">
+            <summary>
+            Computes the specified <see cref="T:Photon.UIElement"/>'s offset
+            </summary>
+            <param name="child">The <see cref="T:Photon.UIElement"/> to compute the offset of</param>
+            <returns>The <see cref="T:Photon.Media.Point"/> representing the specified <see cref="T:Photon.UIElement"/>'s offset</returns>
+        </member>
+        <member name="M:Photon.Controls.StackPanel.MeasureContents">
+            <summary>
+            Measures the <see cref="T:Photon.Controls.Panel"/>'s contents
+            </summary>
+            <returns>The <see cref="T:Photon.Media.Size"/> of the <see cref="T:Photon.Controls.Panel"/>'s contents</returns>
+        </member>
+        <member name="M:Photon.Controls.StackPanel.OnChildAdded(Photon.UIElement)">
+            <summary>
+            When overriden in a class, allows the execution of code whenever a child <see cref="T:Photon.UIElement"/> has been added to the <see cref="T:Photon.Controls.StackPanel"/>
+            </summary>
+            <param name="child">The <see cref="T:Photon.UIElement"/> that has been added</param>
+        </member>
+        <member name="M:Photon.Controls.StackPanel.OnChildRemoved(Photon.UIElement)">
+            <summary>
+            When overriden in a class, allows the execution of code whenever a child <see cref="T:Photon.UIElement"/> has been removed from the <see cref="T:Photon.Controls.StackPanel"/>
+            </summary>
+            <param name="child">The <see cref="T:Photon.UIElement"/> that has been removed</param>
+        </member>
+        <member name="M:Photon.Controls.StackPanel.OnRender(Photon.DrawingContext)">
+             <summary>
+             When overriden in a class, this method allows the execution of code whenever the element has been rendered
+             </summary>
+            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which the element has been rendered</param>
+        </member>
+        <member name="T:Photon.Controls.Orientation">
+            <summary>
+            Defines the different orientations that a control or layout can have
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Orientation.Horizontal">
+            <summary>
+            Control or layout should be horizontally oriented
+            </summary>
+        </member>
+        <member name="F:Photon.Controls.Orientation.Vertical">
+            <summary>
+            Control or layout should be vertically oriented
+            </summary>
+        </member>
+        <member name="T:Photon.Controls.LayoutInformation">
+            <summary>
+            Defines methods that provide additional information about the layout state of an element
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.LayoutInformation.GetLayoutClip(Photon.UIElement)">
+            <summary>
+            Returns a <see cref="T:Photon.Media.Geometry"/> that represents the visible region of a <see cref="T:Photon.UIElement"/>.
+            </summary>
+            <param name="element">The <see cref="T:Photon.UIElement"/> to determine the visible region of</param>
+            <returns>A <see cref="T:Photon.Media.Geometry"/> that represents the visible region of a <see cref="T:Photon.UIElement"/>.</returns>
+        </member>
+        <member name="M:Photon.Controls.LayoutInformation.GetLayoutSlot(Photon.IUIElement)">
+            <summary>
+            Returns a <see cref="T:Photon.Media.Rectangle"/> that represents the layout partition that is reserved for a child element<para></para>
+            It is equivalent to the rectangle returned by the <see cref="P:Photon.IUIElement.RenderTarget"/> property, modified to include eventual padding values
+            </summary>
+            <param name="element">The <see cref="T:Photon.IUIElement"/> instance to compute the layout slot of</param>
+            <returns>A <see cref="T:Photon.Media.Rectangle"/> that represents the layout partition that is reserved for a child element</returns>
+        </member>
+        <member name="T:Photon.Controls.IContentPresenter">
+            <summary>
+            This interface is implemented by all <see cref="T:Photon.IUIElement"/> that presents contents, such as other <see cref="T:Photon.UIElement"/>s or text
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.IContentPresenter.ContentsAlignHorizontally">
+            <summary>
+            Gets a boolean indicating whether or not the element's content can align horizontally
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.IContentPresenter.ContentsAlignVertically">
+            <summary>
+            Gets a boolean indicating whether or not the element's content can align vertically
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.IContentPresenter.ContentsAffectsLayout">
+            <summary>
+            Gets a boolean indicating whether or not the contents affects the element's layout
+            </summary>
+        </member>
+        <member name="M:Photon.Controls.IContentPresenter.ComputeChildOffset(Photon.UIElement)">
+            <summary>
+            Computes the x and y offset for the specified child <see cref="T:Photon.UIElement"/>
+            </summary>
+            <param name="child">The child for which to compute the offset</param>
+            <returns>A <see cref="T:Photon.Media.Point"/> representing the x and y offset of the specified child <see cref="T:Photon.UIElement"/></returns>
+        </member>
+        <member name="M:Photon.Controls.IContentPresenter.MeasureContents">
+            <summary>
+            Measures the <see cref="T:Photon.Controls.IContentPresenter"/>'s contents
+            </summary>
+            <returns>The <see cref="T:Photon.Media.Size"/> of the <see cref="T:Photon.Controls.IContentPresenter"/>'s contents</returns>
+        </member>
+        <member name="T:Photon.Controls.IDecorator">
+            <summary>
+            This interface is implemented by all <see cref="T:Photon.IUIElement"/> that decorates a single child
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.IDecorator.Child">
+            <summary>
+            Gets the element's child <see cref="T:Photon.UIElement"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Controls.IPaddedElement">
+            <summary>
+            This interfaces is implements by all <see cref="T:Photon.UIElement"/>s that define a padding
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.IPaddedElement.Padding">
+            <summary>
+            Gets/sets a <see cref="T:Photon.Media.Thickness"/> representing the element's padding
+            </summary>
+        </member>
+        <member name="T:Photon.Controls.IPanel">
+            <summary>
+            This interface is implemented by all <see cref="T:Photon.UIElement"/> presenting multiple childs
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.IPanel.Children">
+            <summary>
+            Gets a <see cref="T:Photon.UIElementCollection"/> containing all of the element's children
+            </summary>
+        </member>
+        <member name="T:Photon.Controls.ITextPresenter">
+            <summary>
+            This interface is implemented by all <see cref="T:Photon.UIElement"/>s that present text
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.Foreground">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Brush"/> with which to render the text
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.FontFamily">
+            <summary>
+            Gets/sets the text's <see cref="T:Photon.Media.FontFamily"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.FontStyle">
+            <summary>
+            Gets/sets the text's <see cref="T:System.Drawing.FontStyle"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.FontSize">
+            <summary>
+            Gets/sets the text's EM size
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.Font">
+            <summary>
+            Gets the text's <see cref="T:System.Drawing.Font"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Controls.ITextPresenter.Text">
+            <summary>
+            Gets/sets the text presented by the element
+            </summary>
+        </member>
+        <member name="T:Photon.SetterBase">
+            <summary>
+            Represents the base class for value setters
+            </summary>
+        </member>
+        <member name="P:Photon.SetterBase.Style">
+            <summary>
+            Gets the <see cref="T:Photon.SetterBase"/>'s parent <see cref="T:Photon.Style"/>
+            </summary>
+        </member>
+        <member name="P:Photon.SetterBase.IsSealed">
+            <summary>
+            Gets a boolean indicating whether or not this object is in an immutable state
+            </summary>
+        </member>
+        <member name="M:Photon.SetterBase.Set(Photon.DependencyObject)">
+            <summary>
+            Applies the <see cref="T:Photon.SetterBase"/> to the specified <see cref="T:Photon.DependencyObject"/>
+            </summary>
+            <param name="dependencyObject">The <see cref="T:Photon.DependencyObject"/> to apply the <see cref="T:Photon.SetterBase"/> to</param>
+        </member>
+        <member name="T:Photon.TriggerAction">
+            <summary>
+            Describes an action to perform for a trigger
+            </summary>
+        </member>
+        <member name="M:Photon.TriggerAction.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Photon.TriggerAction"/> class
+            </summary>
+        </member>
+        <member name="T:Photon.TriggerBase">
+            <summary>
+            Represents the base class for specifying a conditional value within a <see cref="T:Photon.Style"/> object.
+            </summary>
+        </member>
+        <member name="M:Photon.TriggerBase.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.TriggerBase"/> instance
+            </summary>
+        </member>
+        <member name="P:Photon.TriggerBase.EnterActions">
+            <summary>
+            Gets a collection of <see cref="T:Photon.TriggerAction"/> objects to apply when the trigger object becomes active. This property does not apply to the <see cref="T:Photon.EventTrigger"/> class
+            </summary>
+        </member>
+        <member name="P:Photon.TriggerBase.Actions">
+            <summary>
+            Gets the collection of actions to apply when the event occurs
+            </summary>
+        </member>
+        <member name="P:Photon.TriggerBase.ExitActions">
+            <summary>
+            Gets a collection of <see cref="T:Photon.TriggerAction"/> objects to apply when the trigger object becomes inactive. This property does not apply to the <see cref="T:Photon.EventTrigger"/> class
+            </summary>
+        </member>
+        <member name="T:Photon.SetterBaseCollection">
+            <summary>
+            Represents a collection of <see cref="T:Photon.SetterBase"/> objects.
+            </summary>
+        </member>
+        <member name="T:Photon.TriggerActionCollection">
+            <summary>
+            Represents a collection of <see cref="T:Photon.TriggerAction"/> objects
+            </summary>
+        </member>
+        <member name="T:Photon.TriggerBaseCollection">
+            <summary>
+            Represents a collection of <see cref="T:Photon.TriggerBase"/> objects
+            </summary>
+        </member>
         <member name="T:Photon.Application">
             <summary>
             Encapsulates a Photon application
@@ -37,6 +602,11 @@
         <member name="P:Photon.Application.StartupUri">
             <summary>
             Gets/sets the <see cref="T:System.Uri"/> of application's startup <see cref="T:Photon.IUIElement"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Application.StartupUriString">
+            <summary>
+            Gets/sets the string from which the <see cref="P:Photon.Application.StartupUri"/> is created
             </summary>
         </member>
         <member name="P:Photon.Application.ShutdownMode">
@@ -118,9 +688,333 @@
             <typeparam name="TApplication">The type of the application to create</typeparam>
             <param name="startupArguments">An array of string representing the application's startup arguments</param>
         </member>
+        <member name="T:Photon.EventSetter">
+            <summary>
+            Represents an event setter in a <see cref="T:Photon.Style"/>. Event setters invoke the specified event handlers in response to events
+            </summary>
+        </member>
+        <member name="M:Photon.EventSetter.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.EventSetter"/> instance
+            </summary>
+        </member>
+        <member name="P:Photon.EventSetter.Event">
+            <summary>
+            Gets or sets the particular <see cref="T:Photon.RoutedEvent"/> that the <see cref="T:Photon.EventSetter"/> responds to
+            </summary>
+        </member>
+        <member name="P:Photon.EventSetter.Handler">
+            <summary>
+            Gets or sets the reference to a handler for a routed event in the <see cref="T:Photon.Setter"/>
+            </summary>
+        </member>
+        <member name="M:Photon.EventSetter.Set(Photon.DependencyObject)">
+            <summary>
+            Applies the <see cref="T:Photon.EventSetter"/> to the specified <see cref="T:Photon.DependencyObject"/>
+            </summary>
+            <param name="dependencyObject">The <see cref="T:Photon.DependencyObject"/> to apply the <see cref="T:Photon.EventSetter"/> to</param>
+        </member>
+        <member name="T:Photon.EventTrigger">
+            <summary>
+            Represents a trigger that applies a set of actions in response to an event
+            </summary>
+        </member>
+        <member name="M:Photon.EventTrigger.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.EventTrigger"/> instance
+            </summary>
+        </member>
+        <member name="M:Photon.EventTrigger.#ctor(Photon.RoutedEvent)">
+            <summary>
+            Initializes a new <see cref="T:Photon.EventTrigger"/> for the specified <see cref="P:Photon.EventTrigger.RoutedEvent"/>
+            </summary>
+            <param name="routedEvent">The <see cref="P:Photon.EventTrigger.RoutedEvent"/> that will activate the trigger</param>
+        </member>
+        <member name="P:Photon.EventTrigger.RoutedEvent">
+            <summary>
+            Gets or sets the <see cref="P:Photon.EventTrigger.RoutedEvent"/> that will activate the trigger
+            </summary>
+        </member>
+        <member name="T:Photon.ResourceDictionary">
+            <summary>
+            Provides a dictionary implementation that contains Photon resources used by components and other elements of a Photon application
+            </summary>
+        </member>
+        <member name="M:Photon.ResourceDictionary.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.ResourceDictionary"/>
+            </summary>
+        </member>
+        <member name="F:Photon.ResourceDictionary._Resources">
+            <summary>
+            The dictionary containing all locally registered resources
+            </summary>
+        </member>
+        <member name="P:Photon.ResourceDictionary.Item(System.String)">
+            <summary>
+            Gets/sets the value for the specified key
+            </summary>
+            <param name="key">The key of the value to get/set</param>
+            <returns>An object representing the value for the specified key</returns>
+        </member>
+        <member name="P:Photon.ResourceDictionary.Count">
+            <summary>
+            Gets the <see cref="T:Photon.ResourceDictionary"/>'s element count
+            </summary>
+        </member>
+        <member name="P:Photon.ResourceDictionary.IsReadOnly">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.ResourceDictionary"/> is read-only
+            </summary>
+        </member>
+        <member name="P:Photon.ResourceDictionary.Keys">
+            <summary>
+            Gets a collection of the keys contained by the <see cref="T:Photon.ResourceDictionary"/>
+            </summary>
+        </member>
+        <member name="P:Photon.ResourceDictionary.Values">
+            <summary>
+            Gets a collection of the values contained by the <see cref="T:Photon.ResourceDictionary"/>
+            </summary>
+        </member>
+        <member name="P:Photon.ResourceDictionary.MergedDictionaries">
+            <summary>
+            Gets a collection of the <see cref="T:Photon.ResourceDictionary"/> instances contained by the <see cref="T:Photon.ResourceDictionary"/>
+            </summary>
+        </member>
+        <member name="M:Photon.ResourceDictionary.ContainsKey(System.String)">
+            <summary>
+            Returns a boolean indicating whether or not the <see cref="T:Photon.ResourceDictionary"/> contains the specified key
+            </summary>
+            <param name="key">The key to check for</param>
+            <returns>A boolean indicating whether or not the <see cref="T:Photon.ResourceDictionary"/> contains the specified key</returns>
+        </member>
+        <member name="M:Photon.ResourceDictionary.Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            Returns a boolean indicating whether or not the <see cref="T:Photon.ResourceDictionary"/> contains the specified item
+            </summary>
+            <param name="item">The <see cref="T:System.Collections.Generic.KeyValuePair`2"/> to check for existence</param>
+            <returns>A boolean indicating whether or not the <see cref="T:Photon.ResourceDictionary"/> contains the specified item</returns>
+        </member>
+        <member name="M:Photon.ResourceDictionary.Add(System.String,System.Object)">
+            <summary>
+            Adds the specified key and value to the <see cref="T:Photon.ResourceDictionary"/>
+            </summary>
+            <param name="key">The key to add</param>
+            <param name="value">The value associated with the key</param>
+        </member>
+        <member name="M:Photon.ResourceDictionary.Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            Adds the specified item to the <see cref="T:Photon.ResourceDictionary"/>
+            </summary>
+            <param name="item">The <see cref="T:System.Collections.Generic.KeyValuePair`2"/> to add</param>
+        </member>
+        <member name="M:Photon.ResourceDictionary.Remove(System.String)">
+            <summary>
+            Removes the item with the specified key from the <see cref="T:Photon.ResourceDictionary"/>
+            </summary>
+            <param name="key">The key of the item to remove</param>
+            <returns>A boolean indicating whether or not the item with the specified key could be removed</returns>
+        </member>
+        <member name="M:Photon.ResourceDictionary.Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})">
+            <summary>
+            Removes the specified item from the <see cref="T:Photon.ResourceDictionary"/>
+            </summary>
+            <param name="item">The <see cref="T:System.Collections.Generic.KeyValuePair`2"/> to remove</param>
+            <returns>A boolean indicating whether or not the specified item could be removed</returns>
+        </member>
+        <member name="M:Photon.ResourceDictionary.Clear">
+            <summary>
+            Clears the <see cref="T:Photon.ResourceDictionary"/> of its contents
+            </summary>
+        </member>
+        <member name="M:Photon.ResourceDictionary.CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)">
+            <summary>
+            Copies the contents of the <see cref="T:Photon.ResourceDictionary"/> into the specified <see cref="T:System.Collections.Generic.KeyValuePair`2"/> array, starting at the specified index
+            </summary>
+            <param name="array">The <see cref="T:System.Collections.Generic.KeyValuePair`2"/> array into which to copy the <see cref="T:Photon.ResourceDictionary"/></param>
+            <param name="arrayIndex">The index starting at which to start copying from the <see cref="T:Photon.ResourceDictionary"/>'s contents</param>
+        </member>
+        <member name="M:Photon.ResourceDictionary.GetEnumerator">
+            <summary>
+            Returns an enumerator for the <see cref="T:Photon.ResourceDictionary"/> contents
+            </summary>
+            <returns>An enumerator for the <see cref="T:Photon.ResourceDictionary"/> contents</returns>
+        </member>
+        <member name="M:Photon.ResourceDictionary.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator for the <see cref="T:Photon.ResourceDictionary"/> contents
+            </summary>
+            <returns>An enumerator for the <see cref="T:Photon.ResourceDictionary"/> contents</returns>
+        </member>
+        <member name="M:Photon.ResourceDictionary.TryGetValue(System.String,System.Object@)">
+            <summary>
+            Attempt to retrieve the value associated with the specified key and return a boolean indicating whether or not the attempt was successfull
+            </summary>
+            <param name="key">The key associated with the value to retrieve</param>
+            <param name="value">The value associated with the specified key, if the key exists</param>
+            <returns>A boolean indicating whether or not the attempt was successfull</returns>
+        </member>
+        <member name="M:Photon.ResourceDictionary.AddChild(System.Object)">
+            <summary>
+            Adds the specified child object
+            </summary>
+            <param name="child">An object representing the child to add</param>
+        </member>
+        <member name="M:Photon.ResourceDictionary.AddText(System.String)">
+            <summary>
+            Adds the specified text content
+            </summary>
+            <param name="text">A string representing the text to add</param>
+        </member>
+        <member name="T:Photon.RoutedEvent">
+            <summary>
+            Represents and identifies a routed event and declares its characteristics
+            </summary>
+        </member>
+        <member name="M:Photon.RoutedEvent.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes a new <see cref="T:Photon.RoutedEvent"/> instance based on the specified handler type and name
+            </summary>
+            <param name="handlerType">The handler type of the <see cref="T:Photon.RoutedEvent"/></param>
+            <param name="name">The identifying name of the <see cref="T:Photon.RoutedEvent"/></param>
+        </member>
+        <member name="P:Photon.RoutedEvent.HandlerType">
+            <summary>
+            Gets the handler type of the <see cref="T:Photon.RoutedEvent"/>
+            </summary>
+        </member>
+        <member name="P:Photon.RoutedEvent.Name">
+            <summary>
+            Gets the identifying name of the <see cref="T:Photon.RoutedEvent"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Setter">
+            <summary>
+            Represents a setter that applies a property value
+            </summary>
+        </member>
+        <member name="M:Photon.Setter.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Setter"/> instance
+            </summary>
+        </member>
+        <member name="M:Photon.Setter.#ctor(Photon.DependencyProperty,System.Object)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Setter"/> instance with the specified property and value
+            </summary>
+            <param name="property">The <see cref="T:Photon.DependencyProperty"/> to which the Value will be applied</param>
+            <param name="value">The value to apply to the specified property</param>
+        </member>
+        <member name="M:Photon.Setter.#ctor(Photon.DependencyProperty,System.Object,System.String)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Setter"/> instance with the specified property, value and target name
+            </summary>
+            <param name="property">The <see cref="T:Photon.DependencyProperty"/> to which the Value will be applied</param>
+            <param name="value">The value to apply to the specified property</param>
+            <param name="targetName">The name of the object the <see cref="T:Photon.Setter"/> is intended for</param>
+        </member>
+        <member name="P:Photon.Setter.Property">
+            <summary>
+            Gets or sets the <see cref="T:Photon.DependencyProperty"/> to which the Value will be applied
+            </summary>
+        </member>
+        <member name="P:Photon.Setter.TargetName">
+            <summary>
+            Gets or sets the name of the object the <see cref="T:Photon.Setter"/> is intended for
+            </summary>
+        </member>
+        <member name="P:Photon.Setter.Value">
+            <summary>
+            Gets or sets the value to apply to the property that is specified by the <see cref="T:Photon.Setter"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Setter.Set(Photon.DependencyObject)">
+            <summary>
+            Applies the <see cref="T:Photon.Setter"/> to the specified <see cref="T:Photon.DependencyObject"/>
+            </summary>
+            <param name="dependencyObject">The <see cref="T:Photon.DependencyObject"/> to apply the <see cref="T:Photon.Setter"/> to</param>
+        </member>
+        <member name="T:Photon.Style">
+            <summary>
+            Enables the sharing of properties, resources, and event handlers between instances of a type
+            </summary>
+        </member>
+        <member name="M:Photon.Style.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Photon.Style"/> class
+            </summary>
+        </member>
+        <member name="M:Photon.Style.#ctor(System.Type)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Style"/> instance to use on the specified type
+            </summary>
+            <param name="targetType">The element type the <see cref="T:Photon.Style"/> targets</param>
+        </member>
+        <member name="M:Photon.Style.#ctor(System.Type,Photon.Style)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Style"/> instance based on the specified <see cref="T:Photon.Style"/>
+            </summary>
+            <param name="targetType">The element type the <see cref="T:Photon.Style"/> targets</param>
+            <param name="style">The <see cref="T:Photon.Style"/>'s base <see cref="T:Photon.Style"/></param>
+        </member>
+        <member name="P:Photon.Style.TargetType">
+            <summary>
+            Gets or sets the type for which this style is intended
+            </summary>
+        </member>
+        <member name="P:Photon.Style.Setters">
+            <summary>
+            Gets a collection of Setter and EventSetter objects
+            </summary>
+        </member>
+        <member name="P:Photon.Style.Triggers">
+            <summary>
+            Gets a collection of <see cref="T:Photon.TriggerBase"/> objects that apply property values based on specified conditions
+            </summary>
+        </member>
+        <member name="M:Photon.Style.ApplyTo(Photon.DependencyObject)">
+            <summary>
+            Applies the <see cref="T:Photon.Style"/> to the specified <see cref="T:Photon.DependencyObject"/>
+            </summary>
+            <param name="dependencyObject">The <see cref="T:Photon.DependencyObject"/> to apply the <see cref="T:Photon.Style"/> to</param>
+        </member>
+        <member name="M:Photon.Style.AddChild(System.Object)">
+            <summary>
+            Adds the specified child object
+            </summary>
+            <param name="child">An object representing the child to add</param>
+        </member>
+        <member name="M:Photon.Style.AddText(System.String)">
+            <summary>
+            Adds the specified text content
+            </summary>
+            <param name="text">A string representing the text to add</param>
+        </member>
+        <member name="T:Photon.DependencyElementTree">
+            <summary>
+            Represents the <see cref="T:Photon.DependencyObject"/>s tree of a given <see cref="T:Photon.IUIElement"/>
+            </summary>
+        </member>
+        <member name="M:Photon.DependencyElementTree.#ctor(Photon.DependencyObject)">
+            <summary>
+            Initializes a new <see cref="T:Photon.DependencyElementTree"/> instance based on the specified root <see cref="T:Photon.IUIElement"/>
+            </summary>
+            <param name="root">The root <see cref="T:Photon.IUIElement"/> of the <see cref="T:Photon.DependencyElementTree"/></param>
+        </member>
+        <member name="P:Photon.DependencyElementTree.Root">
+            <summary>
+            Gets the <see cref="T:Photon.DependencyElementTree"/>'s root <see cref="T:Photon.DependencyObject"/>
+            </summary>
+        </member>
         <member name="T:Photon.Window">
             <summary>
             Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes
+            </summary>
+        </member>
+        <member name="F:Photon.Window.DEFAULT_TITLE">
+            <summary>
+            The default title for a <see cref="T:Photon.Window"/>
             </summary>
         </member>
         <member name="F:Photon.Window.DEFAULT_WIDTH">
@@ -253,9 +1147,34 @@
             Gets the window's underlying <see cref="T:OpenTK.GameWindow"/>
             </summary>
         </member>
+        <member name="P:Photon.Window.Resources">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Window"/>'s <see cref="T:Photon.ResourceDictionary"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Window.StyleProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Window.Style"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Window.Style">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Window"/>'s <see cref="P:Photon.Window.Style"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Window.TitleProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Window.Title"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.Window.Title">
             <summary>
             Gets/sets the window's title
+            </summary>
+        </member>
+        <member name="F:Photon.Window.WidthProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Window.Width"/> <see cref="T:Photon.DependencyProperty"/>
             </summary>
         </member>
         <member name="P:Photon.Window.Width">
@@ -263,9 +1182,19 @@
             Gets/sets the window's width
             </summary>
         </member>
+        <member name="F:Photon.Window.HeightProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Window.Height"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.Window.Height">
             <summary>
             Gets/sets the window's height
+            </summary>
+        </member>
+        <member name="F:Photon.Window.BackgroundProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Window.Background"/> <see cref="T:Photon.DependencyProperty"/>
             </summary>
         </member>
         <member name="P:Photon.Window.Background">
@@ -273,9 +1202,19 @@
             Gets/sets the <see cref="T:Photon.Media.Brush"/> used to paint the window's background
             </summary>
         </member>
+        <member name="F:Photon.Window.IsHitTestVisibleProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Window.IsHitTestVisible"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.Window.IsHitTestVisible">
             <summary>
             Gets/sets a boolean indicating whether or not the window is hit test visible
+            </summary>
+        </member>
+        <member name="F:Photon.Window.ChildProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Window.Child"/> <see cref="T:Photon.DependencyProperty"/>
             </summary>
         </member>
         <member name="P:Photon.Window.Child">
@@ -303,9 +1242,24 @@
             Gets a <see cref="T:Photon.Media.Rectangle"/> representing the position and size of the window's render target
             </summary>
         </member>
+        <member name="P:Photon.Window.ContentsAlignHorizontally">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Window"/>'s content can align horizontally
+            </summary>
+        </member>
+        <member name="P:Photon.Window.ContentsAlignVertically">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Window"/>'s content can align vertically
+            </summary>
+        </member>
         <member name="M:Photon.Window.Initialize">
             <summary>
             Initializes the <see cref="T:Photon.Window"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Window.InitializeHwnd">
+            <summary>
+            Initializes the <see cref="T:Photon.Window"/>'s underlying <see cref="T:OpenTK.GameWindow"/> object
             </summary>
         </member>
         <member name="M:Photon.Window.Show">
@@ -347,6 +1301,24 @@
             </summary>
             <param name="cursor">The <see cref="T:Photon.Media.MouseCursor"/> to set</param>
         </member>
+        <member name="M:Photon.Window.MeasureContents">
+            <summary>
+            Measures the <see cref="T:Photon.Window"/>'s contents
+            </summary>
+            <returns>The <see cref="T:Photon.Media.Size"/> of the <see cref="T:Photon.Window"/>'s contents</returns>
+        </member>
+        <member name="M:Photon.Window.AddChild(System.Object)">
+            <summary>
+            Adds the specified child object
+            </summary>
+            <param name="child">An object representing the child to add</param>
+        </member>
+        <member name="M:Photon.Window.AddText(System.String)">
+            <summary>
+            Adds the specified text content
+            </summary>
+            <param name="text">A string representing the text to add</param>
+        </member>
         <member name="M:Photon.Window.InvalidateLayout">
             <summary>
             Invalidates the window's layout
@@ -380,7 +1352,7 @@
         </member>
         <member name="M:Photon.Window.OnHwndMouseMove(System.Object,OpenTK.Input.MouseMoveEventArgs)">
             <summary>
-            Handles the underlying <see cref="!:GameWindow.MouseMove"/> event
+            Handles the underlying <see cref="E:OpenTK.NativeWindow.MouseMove"/> event
             </summary>
             <param name="sender">The sender of the event</param>
             <param name="e">The event's arguments</param>
@@ -423,6 +1395,13 @@
         <member name="M:Photon.Window.OnHwndKeyPress(System.Object,OpenTK.KeyPressEventArgs)">
             <summary>
             Handles the underlying <see cref="E:OpenTK.NativeWindow.KeyPress"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event's arguments</param>
+        </member>
+        <member name="M:Photon.Window.OnHwndResize(System.Object,System.EventArgs)">
+            <summary>
+            Handles the underlying <see cref="E:OpenTK.NativeWindow.Resize"/> event
             </summary>
             <param name="sender">The sender of the event</param>
             <param name="e">The event's arguments</param>
@@ -481,104 +1460,6 @@
             <summary>
             Gets/sets the <see cref="T:Photon.Media.Thickness"/> of the element's border
             </summary>
-        </member>
-        <member name="T:Photon.Controls.IElementPresenter">
-            <summary>
-            This interface is implemented by all <see cref="T:Photon.IUIElement"/> that presents at least one child <see cref="T:Photon.UIElement"/>
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.IElementPresenter.ContentsAffectsLayout">
-            <summary>
-            Gets a boolean indicating whether or not the contents affects the element's layout
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.IElementPresenter.ContentsSize">
-            <summary>
-            Gets the element's <see cref="T:Photon.Media.Size"/>
-            </summary>
-        </member>
-        <member name="M:Photon.Controls.IElementPresenter.ComputeChildOffset(Photon.UIElement)">
-            <summary>
-            Computes the x and y offset for the specified child <see cref="T:Photon.UIElement"/>
-            </summary>
-            <param name="child">The child for which to compute the offset</param>
-            <returns>A <see cref="T:Photon.Media.Point"/> representing the x and y offset of the specified child <see cref="T:Photon.UIElement"/></returns>
-        </member>
-        <member name="T:Photon.Controls.IDecorator">
-            <summary>
-            This interface is implemented by all <see cref="T:Photon.IUIElement"/> that decorates a single child
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.IDecorator.Child">
-            <summary>
-            Gets the element's child <see cref="T:Photon.UIElement"/>
-            </summary>
-        </member>
-        <member name="T:Photon.Controls.IPaddedElement">
-            <summary>
-            This interfaces is implements by all <see cref="T:Photon.UIElement"/>s that define a padding
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.IPaddedElement.Padding">
-            <summary>
-            Gets/sets a <see cref="T:Photon.Media.Thickness"/> representing the element's padding
-            </summary>
-        </member>
-        <member name="T:Photon.Controls.IPanel">
-            <summary>
-            This interface is implemented by all <see cref="T:Photon.UIElement"/> presenting multiple childs
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.IPanel.Children">
-            <summary>
-            Gets a <see cref="T:Photon.UIElementCollection"/> containing all of the element's children
-            </summary>
-        </member>
-        <member name="T:Photon.Controls.ITextPresenter">
-            <summary>
-            This interface is implemented by all <see cref="T:Photon.UIElement"/>s that present text
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.ITextPresenter.Foreground">
-            <summary>
-            Gets/sets the <see cref="T:Photon.Media.Brush"/> with which to render the text
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.ITextPresenter.FontFamily">
-            <summary>
-            Gets/sets the text's <see cref="T:Photon.Media.FontFamily"/>
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.ITextPresenter.FontStyle">
-            <summary>
-            Gets/sets the text's <see cref="T:System.Drawing.FontStyle"/>
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.ITextPresenter.FontSize">
-            <summary>
-            Gets/sets the text's EM size
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.ITextPresenter.Font">
-            <summary>
-            Gets the text's <see cref="T:System.Drawing.Font"/>
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.ITextPresenter.Text">
-            <summary>
-            Gets/sets the text presented by the element
-            </summary>
-        </member>
-        <member name="P:Photon.Controls.ITextPresenter.WrappedText">
-            <summary>
-            Gets the wrapped version of the text presented by the element
-            </summary>
-        </member>
-        <member name="M:Photon.Controls.ITextPresenter.ComputeTextOffset">
-            <summary>
-            Computes the offset of the text within the element
-            </summary>
-            <returns>A <see cref="T:Photon.Media.Point"/> representing the x and y offset of the text presented by the element</returns>
         </member>
         <member name="T:Photon.DependencyObject">
             <summary>
@@ -784,7 +1665,32 @@
         </member>
         <member name="P:Photon.UIElement.Parent">
             <summary>
-            Gets/Sets the <see cref="T:Photon.UIElement"/>'s logical parent 
+            Gets/Sets the <see cref="T:Photon.Controls.IContentPresenter"/>'s logical parent 
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.Resources">
+            <summary>
+            Gets/sets the <see cref="T:Photon.UIElement"/>'s <see cref="T:Photon.ResourceDictionary"/>
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.IsLoaded">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.UIElement"/> has been loaded
+            </summary>
+        </member>
+        <member name="F:Photon.UIElement.StyleProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.Style"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.Style">
+            <summary>
+            Gets/sets the <see cref="T:Photon.UIElement"/>'s style
+            </summary>
+        </member>
+        <member name="F:Photon.UIElement.HorizontalAlignmentProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.HorizontalAlignment"/> <see cref="T:Photon.DependencyProperty"/>
             </summary>
         </member>
         <member name="P:Photon.UIElement.HorizontalAlignment">
@@ -792,9 +1698,19 @@
             Gets/Sets the element's <see cref="P:Photon.UIElement.HorizontalAlignment"/>
             </summary>
         </member>
+        <member name="F:Photon.UIElement.VerticalAlignmentProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.VerticalAlignment"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.UIElement.VerticalAlignment">
             <summary>
             Gets/Sets the element's <see cref="P:Photon.UIElement.VerticalAlignment"/>
+            </summary>
+        </member>
+        <member name="F:Photon.UIElement.WidthProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.Width"/> <see cref="T:Photon.DependencyProperty"/>
             </summary>
         </member>
         <member name="P:Photon.UIElement.Width">
@@ -802,9 +1718,19 @@
             Gets/Sets the element's width
             </summary>
         </member>
+        <member name="F:Photon.UIElement.MinWidthProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.MinWidth"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.UIElement.MinWidth">
             <summary>
             Gets/Sets the element's minimal width
+            </summary>
+        </member>
+        <member name="F:Photon.UIElement.MaxWidthProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.MaxWidth"/> <see cref="T:Photon.DependencyProperty"/>
             </summary>
         </member>
         <member name="P:Photon.UIElement.MaxWidth">
@@ -812,9 +1738,19 @@
             Gets/Sets the element's maximal width
             </summary>
         </member>
+        <member name="F:Photon.UIElement.HeightProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.Height"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.UIElement.Height">
             <summary>
             Gets/Sets the element's height
+            </summary>
+        </member>
+        <member name="F:Photon.UIElement.MinHeightProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.MinHeight"/> <see cref="T:Photon.DependencyProperty"/>
             </summary>
         </member>
         <member name="P:Photon.UIElement.MinHeight">
@@ -822,9 +1758,19 @@
             Gets/Sets the element's minimal height
             </summary>
         </member>
+        <member name="F:Photon.UIElement.MaxHeightProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.MaxHeight"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.UIElement.MaxHeight">
             <summary>
             Gets/Sets the element's maximal height
+            </summary>
+        </member>
+        <member name="F:Photon.UIElement.BackgroundProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.Background"/> <see cref="T:Photon.DependencyProperty"/>
             </summary>
         </member>
         <member name="P:Photon.UIElement.Background">
@@ -832,9 +1778,19 @@
             Gets/Sets the element's background
             </summary>
         </member>
+        <member name="F:Photon.UIElement.MarginProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.Margin"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.UIElement.Margin">
             <summary>
             Gets/Sets the element's margin
+            </summary>
+        </member>
+        <member name="F:Photon.UIElement.CursorProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.Cursor"/> <see cref="T:Photon.DependencyProperty"/>
             </summary>
         </member>
         <member name="P:Photon.UIElement.Cursor">
@@ -842,9 +1798,19 @@
             Gets/Sets the mouse cursor when over the element
             </summary>
         </member>
+        <member name="F:Photon.UIElement.OpacityProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.Opacity"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.UIElement.Opacity">
             <summary>
             Gets/Sets the element's opacity
+            </summary>
+        </member>
+        <member name="F:Photon.UIElement.VisibilityProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.Visibility"/> <see cref="T:Photon.DependencyProperty"/>
             </summary>
         </member>
         <member name="P:Photon.UIElement.Visibility">
@@ -852,19 +1818,29 @@
             Gets/Sets the element's <see cref="P:Photon.UIElement.Visibility"/>
             </summary>
         </member>
+        <member name="F:Photon.UIElement.IsMouseOverProperty">
+            <summary>
+            Describes the <see cref="P:Photon.UIElement.IsMouseOver"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.UIElement.IsMouseOver">
             <summary>
             Gets/Sets a value indicating whether or not the mouse is currently over the element
             </summary>
         </member>
-        <member name="P:Photon.UIElement.IsFocusable">
+        <member name="F:Photon.UIElement.IsHitTestVisibleProperty">
             <summary>
-            Gets/Sets a value indicating whether or not the element can be focused
+            Describes the <see cref="P:Photon.UIElement.IsHitTestVisible"/> <see cref="T:Photon.DependencyProperty"/>
             </summary>
         </member>
         <member name="P:Photon.UIElement.IsHitTestVisible">
             <summary>
             Gets/Sets a value indicating whether or not the element is hit test visible
+            </summary>
+        </member>
+        <member name="P:Photon.UIElement.IsFocusable">
+            <summary>
+            Gets/Sets a value indicating whether or not the element can be focused
             </summary>
         </member>
         <member name="P:Photon.UIElement.HasParent">
@@ -1012,16 +1988,16 @@
         </member>
         <member name="M:Photon.UIElement.HitTest(Photon.Input.PointHitTestParameters)">
             <summary>
-            Determines whether or not the control is hit by the specified <see cref="!:PointHitTestParameters"/>
+            Determines whether or not the control is hit by the specified <see cref="T:Photon.Input.PointHitTestParameters"/>
             </summary>
-            <param name="parameters">The <see cref="!:PointHitTestParameters"/> configuring the element</param>
-            <returns>A <see cref="!:HitTestResult"/> representing the result of the hit test</returns>
+            <param name="parameters">The <see cref="T:Photon.Input.PointHitTestParameters"/> configuring the element</param>
+            <returns>A <see cref="T:Photon.Input.HitTestResult"/> representing the result of the hit test</returns>
         </member>
         <member name="M:Photon.UIElement.ProcessUIEvent(Photon.Input.UIEventArgs)">
             <summary>
             This method is used to process any ui event handled by the element's logicial parent
             </summary>
-            <param name="e">The <see cref="!:UIEventArgs"/> associated with the event</param>
+            <param name="e">The <see cref="T:Photon.Input.UIEventArgs"/> associated with the event</param>
         </member>
         <member name="T:Photon.ObservableHashSet`1">
             <summary>
@@ -1408,7 +2384,6 @@
             <summary>
             Adds a range of elements to the hashset
             </summary>
-            <typeparam name="TElement">The generic type of the extended <see cref="T:System.Collections.Generic.HashSet`1"/></typeparam>
             <param name="extended">The extended <see cref="T:System.Collections.Generic.HashSet`1"/></param>
             <param name="range">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to add to the hashset</param>
         </member>
@@ -1506,13 +2481,6 @@
             </summary>
             <param name="extended">The extended <see cref="T:System.Xml.XmlNode"/></param>
             <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing all of the <see cref="T:System.Xml.XmlNode"/> siblings</returns>
-        </member>
-        <member name="M:Photon.XmlNodeExtensions.ParseXaml(System.Xml.XmlNode)">
-            <summary>
-            Parses the xmlnode into its equivalent <see cref="T:Photon.IDependencyElement"/>
-            </summary>
-            <param name="extended">The extended <see cref="T:System.Xml.XmlNode"/></param>
-            <returns>The parsed <see cref="T:Photon.IDependencyElement"/></returns>
         </member>
         <member name="T:Photon.IDependencyElement">
             <summary>
@@ -1658,6 +2626,16 @@
             This event is fired every time the element looses focus
             </summary>
         </member>
+        <member name="P:Photon.IUIElement.Style">
+            <summary>
+            Gets/sets the <see cref="T:Photon.IUIElement"/>'s <see cref="T:Photon.Style"/>
+            </summary>
+        </member>
+        <member name="P:Photon.IUIElement.Resources">
+            <summary>
+            Gets/sets the <see cref="T:Photon.IUIElement"/>'s <see cref="T:Photon.ResourceDictionary"/>
+            </summary>
+        </member>
         <member name="P:Photon.IUIElement.Width">
             <summary>
             Gets/Sets the element's width
@@ -1697,7 +2675,7 @@
             <summary>
             This method is used to process any ui event handled by the element's logicial parent
             </summary>
-            <param name="e">The <see cref="!:UIEventArgs"/> associated with the event</param>
+            <param name="e">The <see cref="T:Photon.Input.UIEventArgs"/> associated with the event</param>
         </member>
         <member name="T:Photon.SystemParameters">
             <summary>
@@ -1714,6 +2692,11 @@
             This class defines static members for handling the focus of <see cref="T:Photon.IUIElement"/>s
             </summary>
         </member>
+        <member name="F:Photon.Input.FocusManager.FocusedElementProperty">
+            <summary>
+            Describes the <see cref="T:Photon.Input.FocusManager"/>'s FocusedElement attached <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="M:Photon.Input.FocusManager.GetFocusedElement(Photon.IUIElement)">
             <summary>
             Gets the focused <see cref="T:Photon.UIElement"/>, if any, within the specified focus scope
@@ -1727,6 +2710,11 @@
             </summary>
             <param name="focusScope">The <see cref="T:Photon.IUIElement"/> that represents the scope for which to set the focused element</param>
             <param name="focusedElement">The <see cref="T:Photon.UIElement"/> to set the focus to</param>
+        </member>
+        <member name="F:Photon.Input.FocusManager.IsFocusScopeProperty">
+            <summary>
+            Describes the <see cref="T:Photon.Input.FocusManager"/>'s IsFocusScope attached <see cref="T:Photon.DependencyProperty"/>
+            </summary>
         </member>
         <member name="M:Photon.Input.FocusManager.GetIsFocusScope(Photon.IUIElement)">
             <summary>
@@ -1742,6 +2730,11 @@
             <param name="element">The <see cref="T:Photon.IUIElement"/> to set</param>
             <param name="isFocusScope">A boolean indicating whether or not the specified <see cref="T:Photon.IUIElement"/> is a focus scope element</param>
         </member>
+        <member name="F:Photon.Input.FocusManager.FocusableElementsProperty">
+            <summary>
+            Describes the <see cref="T:Photon.Input.FocusManager"/>'s FocusableElements attached <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="M:Photon.Input.FocusManager.GetFocusableElements(Photon.IUIElement)">
             <summary>
             Gets a list of all the focusable <see cref="T:Photon.UIElement"/> contained within the specified focus scope
@@ -1755,6 +2748,11 @@
             </summary>
             <param name="focusScope">The focus scope <see cref="T:Photon.IUIElement"/></param>
             <param name="focusables">A list of all the focusable <see cref="T:Photon.UIElement"/> to add to the specified focus scope</param>
+        </member>
+        <member name="F:Photon.Input.FocusManager.IsFocusableProperty">
+            <summary>
+            Describes the <see cref="T:Photon.Input.FocusManager"/>'s IsFocusable attached <see cref="T:Photon.DependencyProperty"/>
+            </summary>
         </member>
         <member name="M:Photon.Input.FocusManager.GetIsFocusable(Photon.UIElement)">
             <summary>
@@ -1814,6 +2812,11 @@
             This class defines static members for handling keyboard navigation
             </summary>
         </member>
+        <member name="F:Photon.Input.KeyboardNavigation.IsTabStopProperty">
+            <summary>
+            Describes the <see cref="T:Photon.Input.KeyboardNavigation"/> IsTabStop attached <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="M:Photon.Input.KeyboardNavigation.GetIsTabStop(Photon.UIElement)">
             <summary>
             Gets a boolean indicating whether or not the specified element is a Tab stop
@@ -1827,6 +2830,11 @@
             </summary>
             <param name="element">The <see cref="T:Photon.UIElement"/> to set</param>
             <param name="isTabStop">A boolean indicating whether or not the element is a Tab stop element</param>
+        </member>
+        <member name="F:Photon.Input.KeyboardNavigation.TabIndexProperty">
+            <summary>
+            Describes the <see cref="T:Photon.Input.KeyboardNavigation"/> TabIndex attached <see cref="T:Photon.DependencyProperty"/>
+            </summary>
         </member>
         <member name="M:Photon.Input.KeyboardNavigation.GetTabIndex(Photon.UIElement)">
             <summary>
@@ -1869,73 +2877,6 @@
             <summary>
             Gets the <see cref="T:Photon.Media.Point"/> to be used for hit testing of a visual object
             </summary>
-        </member>
-        <member name="T:Photon.Input.TextSelection">
-            <summary>
-            Represents the selection of a portion of text
-            </summary>
-        </member>
-        <member name="M:Photon.Input.TextSelection.#ctor(Photon.Input.TextSelectionMode,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Initializes a new <see cref="T:Photon.Input.TextSelection"/> based on the specified <see cref="T:Photon.Input.TextSelectionMode"/>, start index, max left and max right lengths
-            </summary>
-            <param name="mode">The selection's <see cref="T:Photon.Input.TextSelectionMode"/></param>
-            <param name="startIndex">The index of the character from which to start the text selection</param>
-            <param name="maxLeftLength">An integer representing the maximal length of the selection, on the left handed side</param>
-            <param name="maxRightLength">An integer representing the maximal length of the selection, on the right handed side</param>
-        </member>
-        <member name="P:Photon.Input.TextSelection.Mode">
-            <summary>
-            Gets the selection's <see cref="T:Photon.Input.TextSelectionMode"/>
-            </summary>
-        </member>
-        <member name="P:Photon.Input.TextSelection.StartIndex">
-            <summary>
-            Gets the index of the character from which to start the text selection
-            </summary>
-        </member>
-        <member name="P:Photon.Input.TextSelection.MaxLeftLength">
-            <summary>
-            Gets an integer representing the maximal length of the selection, on the left handed side
-            </summary>
-        </member>
-        <member name="P:Photon.Input.TextSelection.MaxRightLength">
-            <summary>
-            Gets an integer representing the maximal length of the selection, on the right handed side
-            </summary>
-        </member>
-        <member name="P:Photon.Input.TextSelection.Length">
-            <summary>
-            Gets an integer representing the current length of the selection
-            </summary>
-        </member>
-        <member name="P:Photon.Input.TextSelection.LeftIndex">
-            <summary>
-            Gets an integer representing the left handed character index of the text selection
-            </summary>
-        </member>
-        <member name="P:Photon.Input.TextSelection.RightIndex">
-            <summary>
-            Gets an integer representing the right handed character index of the text selection
-            </summary>
-        </member>
-        <member name="P:Photon.Input.TextSelection.SelectedText">
-            <summary>
-            Gets a string representing the selected text
-            </summary>
-        </member>
-        <member name="M:Photon.Input.TextSelection.ModifySelection(Photon.Input.TextSelectionMode,System.Int32)">
-            <summary>
-            Modifies the text selection according to the specified <see cref="T:Photon.Input.TextSelectionMode"/> and length
-            </summary>
-            <param name="mode">The <see cref="T:Photon.Input.TextSelectionMode"/> of the newly selected characters</param>
-            <param name="length">The amount of newly selected characters</param>
-        </member>
-        <member name="M:Photon.Input.TextSelection.OnRender(Photon.DrawingContext)">
-            <summary>
-            Renders the <see cref="T:Photon.Input.TextSelection"/>
-            </summary>
-            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which to render the <see cref="T:Photon.Input.TextSelection"/></param>
         </member>
         <member name="T:Photon.Input.UIEventArgs">
             <summary>
@@ -2049,6 +2990,428 @@
             The KeyPressed event
             </summary>
         </member>
+        <member name="T:Photon.Markup.MarkupExtension">
+            <summary>
+            Provides a base class for XAML markup extension implementations that can be supported by Photon XAML Services and other XAML readers and XAML writers
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.MarkupExtension.ProvideValue(Photon.Markup.IContext)">
+            <summary>
+            Returns the value provided by the <see cref="T:Photon.Markup.MarkupExtension"/> in the specified <see cref="T:Photon.Markup.IContext"/>
+            </summary>
+            <param name="context">The <see cref="T:Photon.Markup.IContext"/> for which to provide the value</param>
+            <returns>An object representing the value provided by the <see cref="T:Photon.Markup.MarkupExtension"/> in the specified <see cref="T:Photon.Markup.IContext"/></returns>
+        </member>
+        <member name="T:Photon.Markup.NamespaceDeclarationCollection">
+            <summary>
+            Represents a collection of markup <see cref="T:Photon.Markup.NamespaceDeclaration"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Markup.NamespaceDeclaration">
+            <summary>
+            Represents a namespace declared in a markup document
+            </summary>
+        </member>
+        <member name="F:Photon.Markup.NamespaceDeclaration.ASSEMBLY_NAMESPACE_PREFIX">
+            <summary>
+            The text preceeding the reference of an <see cref="T:System.Reflection.Assembly"/>'s namespace
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.NamespaceDeclaration.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Markup.NamespaceDeclaration"/> based on the specified namespace prefix and <see cref="P:Photon.Markup.NamespaceDeclaration.Uri"/>
+            </summary>
+            <param name="prefix">The prefix of the namespace</param>
+            <param name="uri">A string representing the namespace's uri</param>
+        </member>
+        <member name="P:Photon.Markup.NamespaceDeclaration.Type">
+            <summary>
+            Gets the <see cref="T:Photon.Markup.NamespaceDeclaration"/>'s <see cref="T:Photon.Markup.NamespaceDeclarationType"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.NamespaceDeclaration.Prefix">
+            <summary>
+            Gets the markup prefix of the namespace
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.NamespaceDeclaration.Uri">
+            <summary>
+            Gets a string representing the <see cref="T:Photon.Markup.NamespaceDeclaration"/>'s uri 
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.NamespaceDeclaration.GetReferenceNamespace">
+            <summary>
+            Returns the namespace referenced by the <see cref="T:Photon.Markup.NamespaceDeclaration"/><para></para> 
+            Works only if the <see cref="P:Photon.Markup.NamespaceDeclaration.Type"/> property has been set to <see cref="F:Photon.Markup.NamespaceDeclarationType.AssemblyNamespaceReference"/> 
+            </summary>
+            <returns>A string representing the namespace referenced by the <see cref="T:Photon.Markup.NamespaceDeclaration"/></returns>
+        </member>
+        <member name="M:Photon.Markup.NamespaceDeclaration.GetReferencedAssembly">
+            <summary>
+            Returns the <see cref="T:System.Reflection.Assembly"/> referenced by the <see cref="T:Photon.Markup.NamespaceDeclaration"/><para></para> 
+            Works only if the <see cref="P:Photon.Markup.NamespaceDeclaration.Type"/> property has been set to <see cref="F:Photon.Markup.NamespaceDeclarationType.AssemblyNamespaceReference"/> 
+            </summary>
+            <returns>The <see cref="T:System.Reflection.Assembly"/> referenced by the <see cref="T:Photon.Markup.NamespaceDeclaration"/></returns>
+        </member>
+        <member name="T:Photon.Markup.TypeMarkupExtension">
+            <summary>
+            Implements a <see cref="T:Photon.Markup.MarkupExtension"/> that supports type references
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.TypeMarkupExtension.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Markup.TypeMarkupExtension"/>
+            </summary>
+            <param name="namespacePrefix">The referenced type's namespace prefix</param>
+            <param name="typeName">The referenced type name</param>
+        </member>
+        <member name="P:Photon.Markup.TypeMarkupExtension.NamespacePrefix">
+            <summary>
+            Gets the prefix of the namespace of the type referenced by the <see cref="T:Photon.Markup.TypeMarkupExtension"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.TypeMarkupExtension.TypeName">
+            <summary>
+            Gets the name of the type referenced by the <see cref="T:Photon.Markup.TypeMarkupExtension"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.TypeMarkupExtension.ProvideValue(Photon.Markup.IContext)">
+            <summary>
+            Returns the value provided by the <see cref="T:Photon.Markup.TypeMarkupExtension"/> in the specified <see cref="T:Photon.Markup.IContext"/>
+            </summary>
+            <param name="context">The <see cref="T:Photon.Markup.IContext"/> for which to provide the value</param>
+            <returns>The type provided by the <see cref="T:Photon.Markup.TypeMarkupExtension"/> in the specified <see cref="T:Photon.Markup.IContext"/></returns>
+        </member>
+        <member name="M:Photon.Markup.TypeMarkupExtension.TryParse(System.String,Photon.Markup.TypeMarkupExtension@)">
+            <summary>
+            Try to parse the specified string, and return a boolean indicating whether or not the attempt was successfull
+            </summary>
+            <param name="value">The string to parse</param>
+            <param name="typeExtension">The <see cref="T:Photon.Markup.TypeMarkupExtension"/> returned in case the specified string could be parsed</param>
+            <returns>A boolean indicating whether or not the conversion attempt was successfull</returns>
+        </member>
+        <member name="T:Photon.Markup.XamlParser">
+            <summary>
+            Provides means to parse xaml markup into Photon <see cref="T:Photon.DependencyObject"/>s
+            </summary>
+        </member>
+        <member name="F:Photon.Markup.XamlParser.PREFIX_XML_NAMESPACE">
+            <summary>
+            The prefix corresponding to the xml namespace
+            </summary>
+        </member>
+        <member name="F:Photon.Markup.XamlParser.PREFIX_MARKUP">
+            <summary>
+            The prefix corresponding to the markup namespace
+            </summary>
+        </member>
+        <member name="F:Photon.Markup.XamlParser.ATTRIBUTE_CLASS_NAME">
+            <summary>
+            The name of the class attribute
+            </summary>
+        </member>
+        <member name="F:Photon.Markup.XamlParser.ATTRIBUTE_KEY_NAME">
+            <summary>
+            The name of the key attribute
+            </summary>
+        </member>
+        <member name="F:Photon.Markup.XamlParser.ATTRIBUTE_CLASS_FULLNAME">
+            <summary>
+            The full name of the class attribute (including prefix)
+            </summary>
+        </member>
+        <member name="F:Photon.Markup.XamlParser.ATTRIBUTE_KEY_FULLNAME">
+            <summary>
+            The full name of the key attribute (including prefix)
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.XamlParser.#ctor(System.Xml.XmlDocument)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Photon.Markup.XamlParser"/> class
+            </summary>
+            <param name="xmlDocument"></param>
+        </member>
+        <member name="P:Photon.Markup.XamlParser.Document">
+            <summary>
+            Gets the <see cref="T:Photon.Markup.XamlParser"/>'s underlying <see cref="T:System.Xml.XmlDocument"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.XamlParser.DefaultNamespaceDeclaration">
+            <summary>
+            Gets the default <see cref="T:Photon.Markup.NamespaceDeclaration"/> in the <see cref="T:Photon.Markup.IHandler"/>'s scope
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.XamlParser.NamespaceDeclarations">
+            <summary>
+            Gets a collection of all the <see cref="T:Photon.Markup.NamespaceDeclaration"/> in the <see cref="T:Photon.Markup.IHandler"/>'s scope
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.XamlParser.ElementTree">
+            <summary>
+            Gets the xaml document's <see cref="T:Photon.DependencyElementTree"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.XamlParser.ElementKeys">
+            <summary>
+            Gets a dictionary containing the both the hashcode and key of registered element
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.XamlParser.Initialize">
+            <summary>
+            Initializes the <see cref="T:Photon.Markup.XamlParser"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.XamlParser.Parse">
+            <summary>
+            Parses the xaml document
+            </summary>
+            <returns>The root <see cref="T:Photon.IDependencyElement"/> of the parsed xaml document</returns>
+        </member>
+        <member name="M:Photon.Markup.XamlParser.ParseNode(Photon.Markup.XamlParserContext,System.Xml.XmlNode,Photon.Markup.IAddChild)">
+            <summary>
+            Parses the specified <see cref="T:System.Xml.XmlNode"/>
+            </summary>
+            <param name="context">The <see cref="T:Photon.Markup.XamlParserContext"/> for which to parse the <see cref="T:System.Xml.XmlNode"/></param>
+            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/> to parse</param>
+            <param name="parentNode">The parsed parent element of the <see cref="T:System.Xml.XmlNode"/> to parse</param>
+            <returns>The parsed <see cref="T:Photon.IDependencyElement"/></returns>
+        </member>
+        <member name="M:Photon.Markup.XamlParser.ParsePropertyNode(Photon.Markup.XamlParserContext,System.Object,System.Xml.XmlNode)">
+            <summary>
+            Parses the specified property <see cref="T:System.Xml.XmlNode"/>
+            </summary>
+            <param name="context">The <see cref="T:Photon.Markup.XamlParserContext"/> for which to parse the property <see cref="T:System.Xml.XmlNode"/></param>
+            <param name="parsedElement">The <see cref="T:Photon.IDependencyElement"/> to which the property to parse belongs to</param>
+            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/> to parse</param>
+        </member>
+        <member name="M:Photon.Markup.XamlParser.ParseNodeAttribute(Photon.Markup.XamlParserContext,System.Xml.XmlAttribute,System.Object)">
+            <summary>
+            Parses the specified <see cref="T:System.Xml.XmlAttribute"/>
+            </summary>
+            <param name="context">The <see cref="T:Photon.Markup.XamlParserContext"/> for which to parse the <see cref="T:System.Xml.XmlAttribute"/></param>
+            <param name="attribute">The <see cref="T:System.Xml.XmlAttribute"/> to parse</param>
+            <param name="parsedElement">The parsed object for which to parse the specified <see cref="T:System.Xml.XmlAttribute"/></param>
+        </member>
+        <member name="M:Photon.Markup.XamlParser.ParseValue(Photon.Markup.XamlParserContext,System.Type,System.String)">
+            <summary>
+            Parses the specified string into the expected type
+            </summary>
+            <param name="context">The <see cref="T:Photon.Markup.XamlParserContext"/> for which to parse the value</param>
+            <param name="expectedType">The expected <see cref="T:System.Type"/> of the returned value</param>
+            <param name="valueString">The value to parse</param>
+            <returns>An <see cref="T:System.Object"/> representing the parsed value</returns>
+        </member>
+        <member name="M:Photon.Markup.XamlParser.ParseDependencyProperty(Photon.Markup.XamlParserContext,System.Object,System.String)">
+            <summary>
+            Parses the specified string into a <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+            <param name="context">The <see cref="T:Photon.Markup.XamlParserContext"/> for which to parse the value</param>
+            <param name="parsedElement">The parsed element to parse the <see cref="T:Photon.DependencyProperty"/> for</param>
+            <param name="valueString">The value to parse</param>
+            <returns>The parsed <see cref="T:Photon.DependencyProperty"/></returns>
+        </member>
+        <member name="M:Photon.Markup.XamlParser.ElementTypeOf(System.String,System.String)">
+            <summary>
+            Determines the type equivalency based on both the specified namespace prefix and type name
+            </summary>
+            <param name="namespacePrefix">The prefix of the referenced type's namespace</param>
+            <param name="typeName">The name of the referenced type</param>
+            <returns>The <see cref="T:System.Type"/> equivalency based on both the specified namespace prefix and type name</returns>
+        </member>
+        <member name="M:Photon.Markup.XamlParser.ElementTypeOf(System.Xml.XmlNode)">
+            <summary>
+            Determines the <see cref="T:Photon.DependencyObject"/>'s type of the specified <see cref="T:System.Xml.XmlNode"/>
+            </summary>
+            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/> to retrieve the <see cref="T:Photon.DependencyObject"/>'s equivalency for</param>
+            <returns>The <see cref="T:System.Type"/> equivalency of the specified <see cref="T:System.Xml.XmlNode"/></returns>
+        </member>
+        <member name="M:Photon.Markup.XamlParser.LoadDependencyElementFrom``1(System.IO.Stream)">
+            <summary>
+            Loads the specified xaml <see cref="T:System.IO.Stream"/> and parses it into the expect type
+            </summary>
+            <typeparam name="TElement">The expected type of the parsed <see cref="T:Photon.IUIElement"/></typeparam>
+            <param name="xamlStream">The <see cref="T:System.IO.Stream"/> containing the element's Xaml</param>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Markup.StaticResource">
+            <summary>
+            Implements a <see cref="T:Photon.Markup.MarkupExtension"/> that supports static (XAML load time) resource references made from XAML
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.StaticResource.#ctor(System.String)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Markup.StaticResource"/> instance based on the specified resource key
+            </summary>
+            <param name="resourceKey">The key of the resource referenced by the <see cref="T:Photon.Markup.StaticResource"/></param>
+        </member>
+        <member name="P:Photon.Markup.StaticResource.ResourceKey">
+            <summary>
+            Gets the key of the resource referenced by the <see cref="T:Photon.Markup.StaticResource"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.StaticResource.ProvideValue(Photon.Markup.IContext)">
+            <summary>
+            Returns the value provided by the <see cref="T:Photon.Markup.StaticResource"/> in the specified <see cref="T:Photon.Markup.IContext"/>
+            </summary>
+            <param name="context">The <see cref="T:Photon.Markup.IContext"/> for which to provide the value</param>
+            <returns>An object representing the value provided by the <see cref="T:Photon.Markup.StaticResource"/> in the specified <see cref="T:Photon.Markup.IContext"/></returns>
+        </member>
+        <member name="M:Photon.Markup.StaticResource.TryParse(System.String,Photon.Markup.StaticResource@)">
+            <summary>
+            Try to parse the specified string, and return a boolean indicating whether or not the attempt was successfull
+            </summary>
+            <param name="value">The string to parse</param>
+            <param name="staticResource">The <see cref="T:Photon.Markup.StaticResource"/> returned in case the specified string could be parsed</param>
+            <returns>A boolean indicating whether or not the conversion attempt was successfull</returns>
+        </member>
+        <member name="T:Photon.Markup.XamlParserContext">
+            <summary>
+            Represents the <see cref="T:Photon.Markup.XamlParser"/>'s <see cref="T:Photon.Markup.IContext"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.XamlParserContext.#ctor(Photon.Markup.XamlParser)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Markup.XamlParserContext"/>
+            </summary>
+            <param name="handler">The <see cref="T:Photon.Markup.XamlParser"/> associated with the <see cref="T:Photon.Markup.XamlParserContext"/></param>
+        </member>
+        <member name="P:Photon.Markup.XamlParserContext.Handler">
+            <summary>
+            Gets the <see cref="T:Photon.Markup.IHandler"/> (in this case a <see cref="T:Photon.Markup.XamlParser"/> instance) associated with the <see cref="T:Photon.Markup.IContext"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Markup.NamespaceDeclarationType">
+            <summary>
+            Describes the type of a <see cref="T:Photon.Markup.NamespaceDeclaration"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Markup.NamespaceDeclarationType.Standard">
+            <summary>
+            The <see cref="T:Photon.Markup.NamespaceDeclaration"/> is a normal xml namespace declaration
+            </summary>
+        </member>
+        <member name="F:Photon.Markup.NamespaceDeclarationType.AssemblyNamespaceReference">
+            <summary>
+            The <see cref="T:Photon.Markup.NamespaceDeclaration"/> references a namespace contained within an <see cref="T:System.Reflection.Assembly"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Markup.XmlAttributeCollectionExtensions">
+            <summary>
+            Defines extensions methods for the <see cref="T:System.Xml.XmlAttributeCollection"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.XmlAttributeCollectionExtensions.FirstOrDefault(System.Xml.XmlAttributeCollection,System.Func{System.Xml.XmlAttribute,System.Boolean})">
+            <summary>
+            Returns the first <see cref="T:System.Xml.XmlAttribute"/> matching the specified predicate or returns null
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Xml.XmlAttributeCollection"/></param>
+            <param name="predicate">The predicate to match</param>
+            <returns>The first <see cref="T:System.Xml.XmlAttribute"/> matching the specified predicate</returns>
+        </member>
+        <member name="T:Photon.Markup.XmlNodeExtensions">
+            <summary>
+            Defines extension methods for the <see cref="T:System.Xml.XmlNode"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.XmlNodeExtensions.IsPropertyNodeOf(System.Xml.XmlNode,System.Xml.XmlNode)">
+            <summary>
+            Determines whether or not the <see cref="T:System.Xml.XmlNode"/> is a property node of the specified parent
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Xml.XmlNode"/></param>
+            <param name="parentNode">The parent <see cref="T:System.Xml.XmlNode"/></param>
+            <returns>A boolean indicating whether or not the <see cref="T:System.Xml.XmlNode"/> is a property node of the specified parent</returns>
+        </member>
+        <member name="T:Photon.Markup.XmlNodeListExtensions">
+            <summary>
+            Defines extensions methods for the <see cref="T:System.Xml.XmlNodeList"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.XmlNodeListExtensions.Where(System.Xml.XmlNodeList,System.Func{System.Xml.XmlNode,System.Boolean})">
+            <summary>
+            Returns an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.Xml.XmlNode"/> matching the specified predicate
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.Xml.XmlNode"/></param>
+            <param name="predicate">The predicate to match</param>
+            <returns></returns>
+        </member>
+        <member name="M:Photon.Markup.XmlNodeListExtensions.FirstOrDefault(System.Xml.XmlNodeList,System.Func{System.Xml.XmlNode,System.Boolean})">
+            <summary>
+            Returns the first <see cref="T:System.Xml.XmlNode"/> that matches the specified predicate or returns null
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Xml.XmlNode"/></param>
+            <param name="predicate">The predicate to match</param>
+            <returns>The first <see cref="T:System.Xml.XmlNode"/> that matches the specified predicate or returns null</returns>
+        </member>
+        <member name="T:Photon.Markup.IAddChild">
+            <summary>
+            Provides a means to parse elements that permit mixtures of child elements or text
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.IAddChild.AddChild(System.Object)">
+            <summary>
+            Adds a child object
+            </summary>
+            <param name="child">An object representing the child to add</param>
+        </member>
+        <member name="M:Photon.Markup.IAddChild.AddText(System.String)">
+            <summary>
+            Adds the text content of a node to the object
+            </summary>
+            <param name="text">A string representing the text to add</param>
+        </member>
+        <member name="T:Photon.Markup.IContext">
+            <summary>
+            Defines the context in which markup code is handled
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.IContext.Handler">
+            <summary>
+            When implemented in a class, gets the <see cref="T:Photon.Markup.IHandler"/> associated with the <see cref="T:Photon.Markup.IContext"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Markup.IHandler">
+            <summary>
+            Defines an object that can handle markup code; that is read and write to xaml
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.IHandler.Document">
+            <summary>
+            Gets the <see cref="T:System.Xml.XmlDocument"/> containing the markup code
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.IHandler.NamespaceDeclarations">
+            <summary>
+            Gets a collection of all the <see cref="T:Photon.Markup.NamespaceDeclaration"/> in the <see cref="T:Photon.Markup.IHandler"/>'s scope
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.IHandler.ElementTree">
+            <summary>
+            Gets the xaml document's <see cref="T:Photon.DependencyElementTree"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Markup.IHandler.ElementKeys">
+            <summary>
+            Gets a dictionary containing the both the key and hashcode of registered element
+            </summary>
+        </member>
+        <member name="M:Photon.Markup.IHandler.ElementTypeOf(System.String,System.String)">
+            <summary>
+            Determines the type equivalency based on both the specified namespace prefix and type name
+            </summary>
+            <param name="namespacePrefix">The prefix of the referenced type's namespace</param>
+            <param name="typeName">The name of the referenced type</param>
+            <returns>The <see cref="T:System.Type"/> equivalency based on both the specified namespace prefix and type name</returns>
+        </member>
+        <member name="T:Photon.Markup.Context">
+            <summary>
+            Defines helper methods to handle <see cref="T:Photon.Markup.IContext"/>s
+            </summary>
+        </member>
+        <member name="F:Photon.Markup.Context.Current">
+            <summary>
+            Gets the current <see cref="T:Photon.Markup.IContext"/>
+            </summary>
+        </member>
         <member name="T:Photon.Media.Animations.Animation`1">
             <summary>
             Represents the base class for all animations
@@ -2091,7 +3454,7 @@
             Maintains the run-time state of an AnimationTimeline and processes its output values
             </summary>
         </member>
-        <member name="F:Photon.Media.Animations.AnimationClock.Completed">
+        <member name="E:Photon.Media.Animations.AnimationClock.Completed">
             <summary>
             This event is fired whenever the animation is completed
             </summary>
@@ -2350,16 +3713,199 @@
             Defines objects used to paint graphical objects. Classes that derive from Brush describe how the area is painted
             </summary>
         </member>
+        <member name="F:Photon.Media.Brush.OpacityProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Media.Brush.Opacity"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.Media.Brush.Opacity">
             <summary>
             Gets/Sets the opacity of the Brush
             </summary>
+        </member>
+        <member name="M:Photon.Media.Brush.Use(Photon.Media.Rectangle)">
+            <summary>
+            Uses the brush to paint a geometry
+            </summary>
+            <param name="geometryBounds">The <see cref="T:Photon.Media.Rectangle"/> representing the geometry's bounds</param>
         </member>
         <member name="M:Photon.Media.Brush.Clone">
             <summary>
             Clones the brush
             </summary>
             <returns>The clone of the <see cref="T:Photon.Media.Brush"/></returns>
+        </member>
+        <member name="T:Photon.Media.Geometry">
+            <summary>
+            Classes that derive from this abstract base class define geometric shapes. Geometry objects can be used for clipping, hit-testing, and rendering 2-D graphic data
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Geometry.FillContains(Photon.Media.Point)">
+            <summary>
+            Returns a boolean indicating whether or not the specified <see cref="T:Photon.Media.Point"/> is contained by the <see cref="T:Photon.Media.Geometry"/>
+            </summary>
+            <param name="point">The <see cref="T:Photon.Media.Point"/> to test</param>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Media.PathSegment">
+            <summary>
+            Represents a segment of a <see cref="T:Photon.Media.PathFigure"/> object
+            </summary>
+        </member>
+        <member name="M:Photon.Media.PathSegment.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.PathSegment"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.PathSegment.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.PathSegment"/>
+            <param name="isStroked">Indicates wheter or not the <see cref="T:Photon.Media.PathSegment"/> is stroked</param>
+            </summary>
+        </member>
+        <member name="F:Photon.Media.PathSegment.IsStrokedProperty">
+            <summary>
+            Identifies the PathSegment's IsStroked <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.PathSegment.IsStroked">
+            <summary>
+            Gets or sets a value that indicates whether the segment is stroked
+            </summary>
+        </member>
+        <member name="T:Photon.Media.PathFigureCollection">
+            <summary>
+            Represents a collection of <see cref="T:Photon.Media.PathFigure"/> objects that collectively make up the geometry of a <see cref="T:Photon.Media.PathGeometry"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Media.PathSegmentCollection">
+            <summary>
+            Represents a collection of <see cref="T:Photon.Media.PathSegment"/> objects that can be individually accessed by index
+            </summary>
+        </member>
+        <member name="T:Photon.Media.PointCollection">
+            <summary>
+            Represents a collection of <see cref="T:Photon.Media.Point"/> values that can be individually accessed by index
+            </summary>
+        </member>
+        <member name="T:Photon.Media.LineGeometry">
+            <summary>
+            Represents the geometry of a line
+            </summary>
+        </member>
+        <member name="M:Photon.Media.LineGeometry.#ctor">
+            <summary>
+            Initializes a new instance of the LineGeometry class that has no length
+            </summary>
+        </member>
+        <member name="M:Photon.Media.LineGeometry.#ctor(Photon.Media.Point,Photon.Media.Point)">
+             <summary>
+             	
+            Initializes a new instance of the LineGeometry class that has the specified start and end points
+             </summary>
+             <param name="startPoint">The <see cref="T:Photon.Media.Point"/> at which the line starts</param>
+             <param name="endPoint">The <see cref="T:Photon.Media.Point"/> at which the line ends</param>
+        </member>
+        <member name="P:Photon.Media.LineGeometry.StartPoint">
+            <summary>
+            Gets/sets the start point of the line
+            </summary>
+        </member>
+        <member name="P:Photon.Media.LineGeometry.EndPoint">
+            <summary>
+            Gets/sets the end point of the line
+            </summary>
+        </member>
+        <member name="M:Photon.Media.LineGeometry.FillContains(Photon.Media.Point)">
+            <summary>
+            Determines whether or not the specifiec point is on the line defined by the geometry
+            </summary>
+            <param name="point">The <see cref="T:Photon.Media.Point"/> to check</param>
+            <returns>A boolean indicating whether or not the specifiec point is on the line defined by the geometry</returns>
+        </member>
+        <member name="T:Photon.Media.LineSegment">
+            <summary>
+            Creates a line between two points in a <see cref="T:Photon.Media.PathFigure"/>.
+            </summary>
+        </member>
+        <member name="M:Photon.Media.LineSegment.#ctor">
+            <summary>
+            Initializes a new instance of the LineSegment class
+            </summary>
+        </member>
+        <member name="M:Photon.Media.LineSegment.#ctor(Photon.Media.Point,System.Boolean)">
+            <summary>
+            Initializes a new instance of the LineSegment class that has the specified end Point and Boolean that determines whether this LineSegment is stroked.
+            </summary>
+            <param name="point">The end point of the line segment</param>
+            <param name="stroked">Indicates whether or not the line segment is stroked</param>
+        </member>
+        <member name="F:Photon.Media.LineSegment.PointProperty">
+            <summary>
+            Identifies the LineSegement's Point <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.LineSegment.Point">
+            <summary>
+            Gets or sets the end <see cref="T:Photon.Media.Point"/> of the line segment
+            </summary>
+        </member>
+        <member name="T:Photon.Media.PathFigure">
+            <summary>
+            Represents a subsection of a geometry, a single connected series of two-dimensional geometric segments
+            </summary>
+        </member>
+        <member name="M:Photon.Media.PathFigure.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.PathFigure"/> instance
+            </summary>
+        </member>
+        <member name="P:Photon.Media.PathFigure.StartPoint">
+            <summary>
+            Gets/Sets the <see cref="T:Photon.Media.Point"/> at which the <see cref="T:Photon.Media.PathFigure"/> starts
+            </summary>
+        </member>
+        <member name="P:Photon.Media.PathFigure.Segments">
+            <summary>
+            Gets a collection of the <see cref="T:Photon.Media.PathSegment"/>s the <see cref="T:Photon.Media.PathFigure"/> is made of
+            </summary>
+        </member>
+        <member name="T:Photon.Media.PathGeometry">
+            <summary>
+            Represents a complex shape that may be composed of arcs, curves, ellipses, lines, and rectangles
+            </summary>
+        </member>
+        <member name="M:Photon.Media.PathGeometry.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Photon.Media.PathGeometry"/> class
+            </summary>
+        </member>
+        <member name="P:Photon.Media.PathGeometry.Figures">
+            <summary>
+            Gets a collection of the <see cref="T:Photon.Media.PathFigure"/>s the <see cref="T:Photon.Media.PathGeometry"/> is made of
+            </summary>
+        </member>
+        <member name="M:Photon.Media.PathGeometry.FillContains(Photon.Media.Point)">
+            <summary>
+            Returns a boolean indicating whether or not the specified <see cref="T:Photon.Media.Point"/> is contained by the <see cref="T:Photon.Media.PathGeometry"/>
+            </summary>
+            <param name="point">The <see cref="T:Photon.Media.Point"/> to test</param>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Media.PolyLineSegment">
+            <summary>
+            Represents a set of line segments defined by a <see cref="T:Photon.Media.PointCollection"/> with each <see cref="T:Photon.Media.Point"/> specifying the end point of a line segment
+            </summary>
+        </member>
+        <member name="M:Photon.Media.PolyLineSegment.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.PolyLineSegment"/> instance
+            </summary>
+        </member>
+        <member name="P:Photon.Media.PolyLineSegment.Points">
+            <summary>
+            Gets or sets the collection of <see cref="T:Photon.Media.Point"/> structures that defines this <see cref="T:Photon.Media.PolyLineSegment"/> object
+            </summary>
         </member>
         <member name="T:Photon.Media.ColorExtensions">
             <summary>
@@ -2379,6 +3925,11 @@
             Its sole purpose is to provide conversion mechanisms to the wrapped class
             </summary>
         </member>
+        <member name="M:Photon.Media.FontFamily.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.FontFamily"/>
+            </summary>
+        </member>
         <member name="M:Photon.Media.FontFamily.#ctor(System.String)">
             <summary>
             The default constructor for the <see cref="T:Photon.Media.FontFamily"/> type
@@ -2396,9 +3947,19 @@
             </summary>
             <returns>The GDI+ <see cref="T:System.Drawing.FontFamily"/></returns>
         </member>
+        <member name="P:Photon.Media.FontFamily.Default">
+            <summary>
+            Gets the default <see cref="T:Photon.Media.FontFamily"/> (Arial)
+            </summary>
+        </member>
         <member name="T:Photon.Media.ImageBrush">
             <summary>
             This class represents a brush that paints an area with an image
+            </summary>
+        </member>
+        <member name="M:Photon.Media.ImageBrush.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.ImageBrush"/>
             </summary>
         </member>
         <member name="M:Photon.Media.ImageBrush.#ctor(System.Drawing.Bitmap)">
@@ -2407,15 +3968,37 @@
             </summary>
             <param name="image">A <see cref="T:System.Drawing.Bitmap"/> representing the image to paint</param>
         </member>
+        <member name="F:Photon.Media.ImageBrush.ImageProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Media.ImageBrush.Image"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.Media.ImageBrush.Image">
             <summary>
             Gets/Sets the <see cref="T:System.Drawing.Bitmap"/> reprenting the image to paint
             </summary>
         </member>
+        <member name="M:Photon.Media.ImageBrush.Use(Photon.Media.Rectangle)">
+            <summary>
+            Uses the brush to paint a geometry
+            </summary>
+            <param name="geometryBounds">The <see cref="T:Photon.Media.Rectangle"/> representing the geometry's bounds</param>
+        </member>
+        <member name="M:Photon.Media.ImageBrush.Clone">
+            <summary>
+            Clones the brush
+            </summary>
+            <returns>The clone of the <see cref="T:Photon.Media.Brush"/></returns>
+        </member>
         <member name="T:Photon.Media.MouseCursor">
             <summary>
             This class wraps the <see cref="T:OpenTK.MouseCursor"/> class<para></para>
             Its sole purpose is to provide conversion mechanisms to the wrapped class
+            </summary>
+        </member>
+        <member name="M:Photon.Media.MouseCursor.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.MouseCursor"/> instance based on the default cursor
             </summary>
         </member>
         <member name="M:Photon.Media.MouseCursor.#ctor(OpenTK.MouseCursor)">
@@ -2469,6 +4052,19 @@
             </summary>
             <returns>The <see cref="T:System.Drawing.PointF"/> equivalency of the point</returns>
         </member>
+        <member name="M:Photon.Media.Point.Equals(System.Object)">
+            <summary>
+            Determines whether the <see cref="T:Photon.Media.Point"/> equals the specified object
+            </summary>
+            <param name="obj">The object to check for equality with the <see cref="T:Photon.Media.Point"/></param>
+            <returns>A boolean indicating whether or not the <see cref="T:Photon.Media.Point"/> equals the specified object</returns>
+        </member>
+        <member name="M:Photon.Media.Point.GetHashCode">
+            <summary>
+            Returns the hashcode for this instance
+            </summary>
+            <returns>The instance's hashcode</returns>
+        </member>
         <member name="M:Photon.Media.Point.op_Addition(Photon.Media.Point,Photon.Media.Point)">
             <summary>
             A + operator for the <see cref="T:Photon.Media.Point"/> class
@@ -2476,6 +4072,35 @@
             <param name="point1">The first point</param>
             <param name="point2">The second point</param>
             <returns>The <see cref="T:Photon.Media.Point"/> resulting from the addition</returns>
+        </member>
+        <member name="M:Photon.Media.Point.op_Subtraction(Photon.Media.Point,Photon.Media.Point)">
+            <summary>
+            A - operator for the <see cref="T:Photon.Media.Point"/> class
+            </summary>
+            <param name="point1">The first point</param>
+            <param name="point2">The second point</param>
+            <returns>The <see cref="T:Photon.Media.Point"/> resulting from the substraction</returns>
+        </member>
+        <member name="M:Photon.Media.Point.op_Equality(Photon.Media.Point,Photon.Media.Point)">
+            <summary>
+            A == operator for the <see cref="T:Photon.Media.Point"/> class
+            </summary>
+            <param name="point1">The first point</param>
+            <param name="point2">The second point</param>
+            <returns>A boolean indicating whether or not the point1 equals the point2</returns>
+        </member>
+        <member name="M:Photon.Media.Point.op_Inequality(Photon.Media.Point,Photon.Media.Point)">
+            <summary>
+            A != operator for the <see cref="T:Photon.Media.Point"/> class
+            </summary>
+            <param name="point1">The first point</param>
+            <param name="point2">The second point</param>
+            <returns>A boolean indicating whether or not the point1 equals the point2</returns>
+        </member>
+        <member name="P:Photon.Media.Point.Empty">
+            <summary>
+            Gets an empty <see cref="T:Photon.Media.Point"/>
+            </summary>
         </member>
         <member name="T:Photon.Media.Rectangle">
             <summary>
@@ -2546,7 +4171,7 @@
             Gets the the rectangle's bottom, which is equals to the <see cref="P:Photon.Media.Rectangle.Top"/> property added to the <see cref="P:Photon.Media.Rectangle.Height"/> property
             </summary>
         </member>
-        <member name="P:Photon.Media.Rectangle.Location">
+        <member name="P:Photon.Media.Rectangle.Position">
             <summary>
             Gets a <see cref="T:Photon.Media.Point"/> representing the rectangle's position
             </summary>
@@ -2602,9 +4227,19 @@
             Gets the <see cref="T:System.Drawing.SizeF"/> equivalency of the size class
             </summary>
         </member>
+        <member name="P:Photon.Media.Size.Empty">
+            <summary>
+            Gets an empty <see cref="T:Photon.Media.Size"/>
+            </summary>
+        </member>
         <member name="T:Photon.Media.SolidColorBrush">
             <summary>
             This class represents a brush that paints an area with a solid color
+            </summary>
+        </member>
+        <member name="M:Photon.Media.SolidColorBrush.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.SolidColorBrush"/>
             </summary>
         </member>
         <member name="M:Photon.Media.SolidColorBrush.#ctor(System.Drawing.Color)">
@@ -2613,10 +4248,27 @@
             </summary>
             <param name="color">The <see cref="T:System.Drawing.Color"/> associated with the brush</param>
         </member>
+        <member name="F:Photon.Media.SolidColorBrush.ColorProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Media.SolidColorBrush.Color"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
         <member name="P:Photon.Media.SolidColorBrush.Color">
             <summary>
             Gets/Sets the <see cref="T:System.Drawing.Color"/> associated with the brush
             </summary>
+        </member>
+        <member name="M:Photon.Media.SolidColorBrush.Use(Photon.Media.Rectangle)">
+            <summary>
+            Uses the brush to paint a geometry
+            </summary>
+            <param name="geometryBounds">The <see cref="T:Photon.Media.Rectangle"/> representing the geometry's bounds</param>
+        </member>
+        <member name="M:Photon.Media.SolidColorBrush.Clone">
+            <summary>
+            Clones the brush
+            </summary>
+            <returns>The clone of the <see cref="T:Photon.Media.Brush"/></returns>
         </member>
         <member name="T:Photon.Media.Thickness">
             <summary>
@@ -2704,62 +4356,159 @@
             <param name="extended">The extended string</param>
             <returns>A boolean indicating whether or not the string contains an ARGB/RGB color code</returns>
         </member>
-        <member name="T:Photon.XamlParser">
+        <member name="T:Photon.Media.BrushConverter">
             <summary>
-            This static class provides means to parse a Xaml document<para></para>
-            This is a very basic - and poor - implementation which's only purpose is to provide fundamental parsing mechanisms. An entirely revised version of the parser will soon appear
-            </summary>
-            <remarks>Temporary implementation. Does not support attached properties, bindings, styling, templating, etc. Only basic element tags and attributes are currently supported</remarks>
-        </member>
-        <member name="F:Photon.XamlParser.PREFIX_MARKUP">
-            <summary>
-            The prefix corresponding to the markup namespace
+            The <see cref="T:System.ComponentModel.TypeConverter"/> dedicated to the <see cref="T:Photon.Media.Brush"/> type
             </summary>
         </member>
-        <member name="F:Photon.XamlParser.ATTRIBUTE_CLASS_NAME">
+        <member name="M:Photon.Media.BrushConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
             <summary>
-            The name of the class attribute
+            Returns a boolean indicating whether or not the converter can convert from the specified source type
+            </summary>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="sourceType">The source type to check</param>
+            <returns>A boolean indicating whether or not the converter can convert from the specified source type</returns>
+        </member>
+        <member name="M:Photon.Media.BrushConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Try to convert the specified value into a <see cref="T:Photon.Media.Brush"/>
+            </summary>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> associated with the request</param>
+            <param name="value">The value to convert</param>
+            <returns>An <see cref="T:System.Object"/> representing the converted value</returns>
+        </member>
+        <member name="T:Photon.Media.FontFamilyConverter">
+            <summary>
+            The <see cref="T:System.ComponentModel.TypeConverter"/> dedicated to the <see cref="T:Photon.Media.FontFamily"/> type
             </summary>
         </member>
-        <member name="F:Photon.XamlParser.ATTRIBUTE_CLASS_FULLNAME">
+        <member name="M:Photon.Media.FontFamilyConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
             <summary>
-            The full name of the class attribute (including prefix)
+            Returns a boolean indicating whether or not the converter can convert from the specified source type
+            </summary>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="sourceType">The source type to check</param>
+            <returns>A boolean indicating whether or not the converter can convert from the specified source type</returns>
+        </member>
+        <member name="M:Photon.Media.FontFamilyConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Try to convert the specified value into a <see cref="T:Photon.Media.FontFamily"/>
+            </summary>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> associated with the request</param>
+            <param name="value">The value to convert</param>
+            <returns>An <see cref="T:System.Object"/> representing the converted value</returns>
+        </member>
+        <member name="T:Photon.Media.MouseCursorConverter">
+            <summary>
+            The <see cref="T:System.ComponentModel.TypeConverter"/> dedicated to the <see cref="T:Photon.Media.MouseCursor"/> type
             </summary>
         </member>
-        <member name="P:Photon.XamlParser.DependencyElementTypes">
+        <member name="M:Photon.Media.MouseCursorConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
             <summary>
-            Gets a <see cref="T:System.Collections.Generic.HashSet`1"/> of all the dependency element types
+            Returns a boolean indicating whether or not the converter can convert from the specified source type
+            </summary>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="sourceType">The source type to check</param>
+            <returns>A boolean indicating whether or not the converter can convert from the specified source type</returns>
+        </member>
+        <member name="M:Photon.Media.MouseCursorConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Try to convert the specified value into a <see cref="T:Photon.Media.MouseCursor"/>
+            </summary>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> associated with the request</param>
+            <param name="value">The value to convert</param>
+            <returns>An <see cref="T:System.Object"/> representing the converted value</returns>
+        </member>
+        <member name="T:Photon.Media.PointConverter">
+            <summary>
+            The <see cref="T:System.ComponentModel.TypeConverter"/> dedicated to the <see cref="T:Photon.Media.Point"/> type
             </summary>
         </member>
-        <member name="M:Photon.XamlParser.LoadDependencyElementFrom``1(System.IO.Stream)">
+        <member name="M:Photon.Media.PointConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
             <summary>
-            Loads the specified xaml <see cref="T:System.IO.Stream"/> and parses it into the expect type
+            Returns a boolean indicating whether or not the converter can convert from the specified source type
             </summary>
-            <typeparam name="TElement">The expected type of the parsed <see cref="T:Photon.IUIElement"/></typeparam>
-            <param name="xamlStream">The <see cref="T:System.IO.Stream"/> containing the element's Xaml</param>
-            <returns></returns>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="sourceType">The source type to check</param>
+            <returns>A boolean indicating whether or not the converter can convert from the specified source type</returns>
         </member>
-        <member name="M:Photon.XamlParser.ParseElement(System.Xml.XmlNode)">
+        <member name="M:Photon.Media.PointConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
             <summary>
-            Parses the specified <see cref="T:System.Xml.XmlNode"/> into a new <see cref="T:Photon.IDependencyElement"/>
+            Try to convert the specified value into a <see cref="T:Photon.Media.Point"/>
             </summary>
-            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/> to parse</param>
-            <returns>The parsed <see cref="T:Photon.IDependencyElement"/></returns>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> associated with the request</param>
+            <param name="value">The value to convert</param>
+            <returns>An <see cref="T:System.Object"/> representing the converted value</returns>
         </member>
-        <member name="M:Photon.XamlParser.DetermineElementType(System.Xml.XmlNode)">
+        <member name="T:Photon.Media.RectangleConverter">
             <summary>
-            Determines the <see cref="T:Photon.IUIElement"/> type for the specified <see cref="T:System.Xml.XmlNode"/>
+            The <see cref="T:System.ComponentModel.TypeConverter"/> dedicated to the <see cref="T:Photon.Media.Rectangle"/> type
             </summary>
-            <param name="xmlNode">The <see cref="T:System.Xml.XmlNode"/> for which to determine the <see cref="T:Photon.IUIElement"/> type</param>
-            <returns>The <see cref="T:Photon.IUIElement"/> type of the specified <see cref="T:System.Xml.XmlNode"/></returns>
         </member>
-        <member name="M:Photon.XamlParser.ParseValue(System.Reflection.PropertyInfo,System.String)">
+        <member name="M:Photon.Media.RectangleConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
             <summary>
-            Parses the specified string value into the type expected by the property passed as parameter
+            Returns a boolean indicating whether or not the converter can convert from the specified source type
             </summary>
-            <param name="property">The <see cref="T:System.Reflection.PropertyInfo"/> for which to parse the specified value string</param>
-            <param name="valueString">The string to parse</param>
-            <returns>The parsed object</returns>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="sourceType">The source type to check</param>
+            <returns>A boolean indicating whether or not the converter can convert from the specified source type</returns>
+        </member>
+        <member name="M:Photon.Media.RectangleConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Try to convert the specified value into a <see cref="T:Photon.Media.Rectangle"/>
+            </summary>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> associated with the request</param>
+            <param name="value">The value to convert</param>
+            <returns>An <see cref="T:System.Object"/> representing the converted value</returns>
+        </member>
+        <member name="T:Photon.Media.SizeConverter">
+            <summary>
+            The <see cref="T:System.ComponentModel.TypeConverter"/> dedicated to the <see cref="T:Photon.Media.Size"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.Media.SizeConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Returns a boolean indicating whether or not the converter can convert from the specified source type
+            </summary>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="sourceType">The source type to check</param>
+            <returns>A boolean indicating whether or not the converter can convert from the specified source type</returns>
+        </member>
+        <member name="M:Photon.Media.SizeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Try to convert the specified value into a <see cref="T:Photon.Media.Size"/>
+            </summary>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> associated with the request</param>
+            <param name="value">The value to convert</param>
+            <returns>An <see cref="T:System.Object"/> representing the converted value</returns>
+        </member>
+        <member name="T:Photon.Media.ThicknessConverter">
+            <summary>
+            The <see cref="T:System.ComponentModel.TypeConverter"/> dedicated to the <see cref="T:Photon.Media.Thickness"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.Media.ThicknessConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Returns a boolean indicating whether or not the converter can convert from the specified source type
+            </summary>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="sourceType">The source type to check</param>
+            <returns>A boolean indicating whether or not the converter can convert from the specified source type</returns>
+        </member>
+        <member name="M:Photon.Media.ThicknessConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Try to convert the specified value into a <see cref="T:Photon.Media.Thickness"/>
+            </summary>
+            <param name="context">The <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> associated with the request</param>
+            <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> associated with the request</param>
+            <param name="value">The value to convert</param>
+            <returns>An <see cref="T:System.Object"/> representing the converted value</returns>
         </member>
     </members>
 </doc>

@@ -59,6 +59,24 @@ namespace Photon.Controls
         public abstract Size MeasureContents();
 
         /// <summary>
+        /// Adds the specified child object
+        /// </summary>
+        /// <param name="child">An object representing the child to add</param>
+        public void AddChild(object child)
+        {
+            this.Children.Add((UIElement)child);
+        }
+
+        /// <summary>
+        /// Adds the specified text content
+        /// </summary>
+        /// <param name="text">A string representing the text to add</param>
+        public void AddText(string text)
+        {
+            throw new NotSupportedException("An element of type '" + this.GetType().FullName + "' does not support direct text content");
+        }
+
+        /// <summary>
         /// Handles the <see cref="Panel.Children"/>'s <see cref="INotifyCollectionChanged.CollectionChanged"/> event
         /// </summary>
         private void OnChildrenCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

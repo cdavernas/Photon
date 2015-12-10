@@ -84,6 +84,16 @@ namespace Photon
         event EventHandler LostFocus;
 
         /// <summary>
+        /// Gets/sets the <see cref="IUIElement"/>'s <see cref="Photon.Style"/>
+        /// </summary>
+        Style Style { get; set; }
+
+        /// <summary>
+        /// Gets/sets the <see cref="IUIElement"/>'s <see cref="ResourceDictionary"/>
+        /// </summary>
+        ResourceDictionary Resources { get; set; }
+
+        /// <summary>
         /// Gets/Sets the element's width
         /// </summary>
         double? Width { get; set; }

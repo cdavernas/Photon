@@ -149,6 +149,24 @@ namespace Photon.Controls
         }
 
         /// <summary>
+        /// Adds the specified child object
+        /// </summary>
+        /// <param name="child">An object representing the child to add</param>
+        public void AddChild(object child)
+        {
+            throw new NotSupportedException("An element of type '" + this.GetType().FullName + "' only supports direct text contents");
+        }
+
+        /// <summary>
+        /// Adds the specified text content
+        /// </summary>
+        /// <param name="text">A string representing the text to add</param>
+        public void AddText(string text)
+        {
+            this.Text = text;
+        }
+
+        /// <summary>
         /// When overriden in a class, this method allows the execution of code whenever the element has been rendered
         /// </summary>
         ///<param name="drawingContext">The <see cref="DrawingContext"/> in which the element has been rendered</param>

@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Photon.Media
 {
@@ -20,6 +21,14 @@ namespace Photon.Media
     {
 
         /// <summary>
+        /// Initializes a new <see cref="MouseCursor"/> instance based on the default cursor
+        /// </summary>
+        public MouseCursor()
+        {
+            this.CursorObject = MouseCursor.Default.CursorObject;
+        }
+
+        /// <summary>
         /// The default constructor for the <see cref="MouseCursor"/> class
         /// </summary>
         /// <param name="cursorObject"></param>
@@ -31,6 +40,7 @@ namespace Photon.Media
         /// <summary>
         /// Gets the wrapped <see cref="OpenTK.MouseCursor"/> object
         /// </summary>
+        [XmlIgnore]
         public OpenTK.MouseCursor CursorObject { get; private set; }
 
         /// <summary>
@@ -42,7 +52,6 @@ namespace Photon.Media
         {
             Stream bitmapStream;
             Bitmap bitmap;
-            IntPtr hIcon;
             OpenTK.MouseCursor cursorObject;
             MouseCursor cursor;
             bitmapStream = Application.GetResourceStream(cursorUri);

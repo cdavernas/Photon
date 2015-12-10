@@ -49,6 +49,38 @@ namespace Photon.Media
         }
 
         /// <summary>
+        /// Determines whether the <see cref="Point"/> equals the specified object
+        /// </summary>
+        /// <param name="obj">The object to check for equality with the <see cref="Point"/></param>
+        /// <returns>A boolean indicating whether or not the <see cref="Point"/> equals the specified object</returns>
+        public override bool Equals(object obj)
+        {
+            if(obj == null)
+            {
+                return false;
+            }
+            if (!typeof(Point).IsAssignableFrom(obj.GetType()))
+            {
+                return false;
+            }
+            if(((Point)obj).X != this.X 
+                || ((Point)obj).Y != this.Y)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Returns the hashcode for this instance
+        /// </summary>
+        /// <returns>The instance's hashcode</returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        /// <summary>
         /// A + operator for the <see cref="Point"/> class
         /// </summary>
         /// <param name="point1">The first point</param>

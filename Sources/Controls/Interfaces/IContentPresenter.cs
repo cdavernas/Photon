@@ -12,7 +12,7 @@ namespace Photon.Controls
     /// This interface is implemented by all <see cref="IUIElement"/> that presents contents, such as other <see cref="UIElement"/>s or text
     /// </summary>
     public interface IContentPresenter
-        : IUIElement
+        : IUIElement, Markup.IAddChild
     {
 
         /// <summary>

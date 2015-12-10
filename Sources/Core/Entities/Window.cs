@@ -137,6 +137,31 @@ namespace Photon
         internal GameWindow Hwnd { get; private set; }
 
         /// <summary>
+        /// Gets/sets the <see cref="Window"/>'s <see cref="ResourceDictionary"/>
+        /// </summary>
+        public ResourceDictionary Resources { get; set; }
+
+        /// <summary>
+        /// Describes the <see cref="Window.Style"/> <see cref="DependencyProperty"/>
+        /// </summary>
+        public static DependencyProperty StyleProperty = DependencyProperty.Register("Style", typeof(Window));
+        /// <summary>
+        /// Gets/sets the <see cref="Window"/>'s <see cref="Style"/>
+        /// </summary>
+        public Style Style
+        {
+            get
+            {
+                return this.GetValue<Style>(Window.StyleProperty);
+            }
+
+            set
+            {
+                this.SetValue(Window.StyleProperty, value);
+            }
+        }
+
+        /// <summary>
         /// Describes the <see cref="Window.Title"/> <see cref="DependencyProperty"/>
         /// </summary>
         public static DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(Window), Window.DEFAULT_TITLE);
@@ -493,6 +518,37 @@ namespace Photon
         }
 
         /// <summary>
+        /// Measures the <see cref="Window"/>'s contents
+        /// </summary>
+        /// <returns>The <see cref="Media.Size"/> of the <see cref="Window"/>'s contents</returns>
+        public Size MeasureContents()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Adds the specified child object
+        /// </summary>
+        /// <param name="child">An object representing the child to add</param>
+        public void AddChild(object child)
+        {
+            if (this.Child != null)
+            {
+                throw new NotSupportedException("An element of type '" + this.GetType().FullName + "' does not support multiple contents");
+            }
+            this.Child = (UIElement)child;
+        }
+
+        /// <summary>
+        /// Adds the specified text content
+        /// </summary>
+        /// <param name="text">A string representing the text to add</param>
+        public void AddText(string text)
+        {
+            throw new NotSupportedException("An element of type '" + this.GetType().FullName + "' does not support direct text content");
+        }
+
+        /// <summary>
         /// Invalidates the window's layout
         /// </summary>
         public void InvalidateLayout()
@@ -740,6 +796,14 @@ namespace Photon
                 }
                 return;
             }
+            if (propertyName == UIElement.StyleProperty.Name)
+            {
+                if (value != null)
+                {
+                    ((Style)value).ApplyTo(this);
+                }
+                return;
+            }
             base.OnPropertyChanged(propertyName, originalValue, value);
         }
 
@@ -776,15 +840,6 @@ namespace Photon
                 }
             }
             return null;
-        }
-
-        /// <summary>
-        /// Measures the <see cref="Window"/>'s contents
-        /// </summary>
-        /// <returns>The <see cref="Media.Size"/> of the <see cref="Window"/>'s contents</returns>
-        public Size MeasureContents()
-        {
-            throw new NotImplementedException();
         }
 
     }
