@@ -3907,6 +3907,136 @@
             Gets or sets the collection of <see cref="T:Photon.Media.Point"/> structures that defines this <see cref="T:Photon.Media.PolyLineSegment"/> object
             </summary>
         </member>
+        <member name="T:Photon.Media.Vertex`1">
+            <summary>
+            The <see cref="T:Photon.Media.Vertex`1"/> structure describes the position of a point in 2D or 3D space
+            </summary>
+            <typeparam name="T">The type of the x, y and z values wrapped by the <see cref="T:Photon.Media.Vertex`1"/>.<para></para>
+            The available types to choose from are short, int, double and float</typeparam>
+        </member>
+        <member name="M:Photon.Media.Vertex`1.#ctor(`0,`0)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Vertex`1"/> based on both the specified x and y values
+            </summary>
+            <param name="x">An object representing the horizontal axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/></param>
+            <param name="y">An object representing the vertical axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/></param>
+        </member>
+        <member name="M:Photon.Media.Vertex`1.#ctor(`0,`0,`0)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Vertex`1"/> based on both the specified x and y values
+            </summary>
+            <param name="x">An object representing the horizontal axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/></param>
+            <param name="y">An object representing the vertical axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/></param>
+            <param name="z">An object representing the depth value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/></param>
+        </member>
+        <member name="P:Photon.Media.Vertex`1.X">
+            <summary>
+            Gets an object representing the horizontal axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Vertex`1.Y">
+            <summary>
+            Gets an object representing the vertical axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Vertex`1.Z">
+            <summary>
+            Gets an object representing the depth value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Vertex`1.Stride">
+            <summary>
+            Gets an int representing the <see cref="T:Photon.Media.Vertex`1"/>'s size, in bytes 
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Vertex`1.PointerType">
+            <summary>
+            Gets the <see cref="T:OpenTK.Graphics.OpenGL.VertexPointerType"/> corresponding to the <see cref="T:Photon.Media.Vertex`1"/> generic type argument
+            </summary>
+        </member>
+        <member name="T:Photon.Media.VertexBufferObject`1">
+            <summary>
+            Also known as VBO, the <see cref="T:Photon.Media.VertexBufferObject`1"/> provides methods for uploading vertex data (position, normal vector, color, etc.) to the video device for non-immediate-mode rendering. 
+            VBOs offer substantial performance gains over immediate mode rendering primarily because the data resides in the video device memory rather than the system memory and so it can be rendered directly by the video device
+            </summary>
+            <typeparam name="T">The type of the x, y and z values wrapped by the <see cref="T:Photon.Media.Vertex`1"/> instances to be contained by the <see cref="T:Photon.Media.VertexBufferObject`1"/></typeparam>
+        </member>
+        <member name="M:Photon.Media.VertexBufferObject`1.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Media.VertexBufferObject`1.VertexBufferLength">
+            <summary>
+            Represents the initial length of the VertexBufferObject
+            </summary>
+        </member>
+        <member name="F:Photon.Media.VertexBufferObject`1.ElementBufferLength">
+            <summary>
+            Represents the initial length of the ElementBufferObject
+            </summary>
+        </member>
+        <member name="F:Photon.Media.VertexBufferObject`1.VertexBufferObjectId">
+            <summary>
+            Represents the id of the vertex buffer index
+            </summary>
+        </member>
+        <member name="F:Photon.Media.VertexBufferObject`1.ElementBufferObjectId">
+            <summary>
+            Represents the id of the element buffer object
+            </summary>
+        </member>
+        <member name="F:Photon.Media.VertexBufferObject`1.Vertices">
+            <summary>
+            An array of <see cref="T:Photon.Media.Vertex`1"/> instances contained by the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Media.VertexBufferObject`1.Indices">
+            <summary>
+            Represents the indices contained by the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.VertexBufferObject`1.PrimitiveType">
+            <summary>
+            Gets/sets the <see cref="T:OpenTK.Graphics.OpenGL.PrimitiveType"/> used to render the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.VertexBufferObject`1.Initialize">
+            <summary>
+            Initializes the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.VertexBufferObject`1.SetVertex(System.Int32,Photon.Media.Vertex{`0})">
+            <summary>
+            Replaces the <see cref="T:Photon.Media.Vertex`1"/> at the specified index by the specified <see cref="T:Photon.Media.Vertex`1"/>
+            </summary>
+            <param name="vertexIndex">The index of the vertex to replace</param>
+            <param name="vertex">The <see cref="T:Photon.Media.Vertex`1"/> used to replace the <see cref="T:Photon.Media.Vertex`1"/> at the specified index</param>
+        </member>
+        <member name="M:Photon.Media.VertexBufferObject`1.SetVertices(Photon.Media.Vertex{`0}[])">
+            <summary>
+            Sets the array of <see cref="T:Photon.Media.Vertex`1"/> associated with the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            </summary>
+            <param name="vertices">The array of <see cref="T:Photon.Media.Vertex`1"/> to upload to the <see cref="T:Photon.Media.VertexBufferObject`1"/></param>
+        </member>
+        <member name="M:Photon.Media.VertexBufferObject`1.SetIndice(System.Int32,System.UInt16)">
+            <summary>
+            Replaces the indice at the specified index by the specified value
+            </summary>
+            <param name="indiceIndex">The index of the indice to replace</param>
+            <param name="indice">The indice used to replace the indice at the specified index</param>
+        </member>
+        <member name="M:Photon.Media.VertexBufferObject`1.SetIndices(System.UInt16[])">
+            <summary>
+            Sets the array of indices associated with the element buffer object
+            </summary>
+            <param name="indices">The array of indices to upload to the element buffer object</param>
+        </member>
+        <member name="M:Photon.Media.VertexBufferObject`1.Render">
+            <summary>
+            Renders the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            </summary>
+        </member>
         <member name="T:Photon.Media.ColorExtensions">
             <summary>
             This class defines extention methods for the <see cref="T:System.Drawing.Color"/> type
@@ -4509,6 +4639,278 @@
             <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> associated with the request</param>
             <param name="value">The value to convert</param>
             <returns>An <see cref="T:System.Object"/> representing the converted value</returns>
+        </member>
+        <member name="T:Photon.Threading.DispatcherObject">
+            <summary>
+            Represents an object that is associated with a <see cref="T:Photon.Threading.Dispatcher"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Threading.DispatcherObject.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Threading.DispatcherObject"/> associated with a new <see cref="T:Photon.Threading.Dispatcher"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Threading.DispatcherObject.Dispatcher">
+            <summary>
+            Gets the <see cref="T:Photon.Threading.Dispatcher"/> associated with the <see cref="T:Photon.Threading.DispatcherObject"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Threading.PriorityQueue`1">
+            <summary>
+            Represents a queue of values prioritized thanks to the specified <see cref="T:System.Collections.Generic.IComparer`1"/>
+            </summary>
+            <typeparam name="TValue">The type of the prioritized values</typeparam>
+            <remarks>This implementation is based on the solution provided by Alexey Kurakin on http://www.codeproject.com/Articles/126751/Priority-queue-in-C-with-the-help-of-heap-data-str</remarks>
+        </member>
+        <member name="F:Photon.Threading.PriorityQueue`1._BaseHeap">
+            <summary>
+            The <see cref="T:Photon.Threading.PriorityQueue`1"/>'s base heap
+            </summary>
+        </member>
+        <member name="F:Photon.Threading.PriorityQueue`1._GetPriorityPredicate">
+            <summary>
+            The predicate used to get the priority of a value
+            </summary>
+        </member>
+        <member name="F:Photon.Threading.PriorityQueue`1._PriorityComparer">
+            <summary>
+            The <see cref="T:System.Collections.Generic.IComparer`1"/> used to prioritize the values
+            </summary>
+        </member>
+        <member name="M:Photon.Threading.PriorityQueue`1.#ctor(System.Func{`0,System.Int32},System.Func{System.Int32,System.Int32,System.Int32})">
+            <summary>
+            Initializes a new <see cref="T:Photon.Threading.PriorityQueue`1"/>
+            </summary>
+            <param name="getPriorityPredicate">The predicate used to retrieve the priority of a value</param>
+            <param name="comparePredicate">The predicate used to prioritize values</param>
+        </member>
+        <member name="P:Photon.Threading.PriorityQueue`1.Count">
+            <summary>
+            Gets the <see cref="T:Photon.Threading.PriorityQueue`1"/>'s element count
+            </summary>
+        </member>
+        <member name="P:Photon.Threading.PriorityQueue`1.IsEmpty">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Threading.PriorityQueue`1"/> is empty
+            </summary>
+        </member>
+        <member name="M:Photon.Threading.PriorityQueue`1.Enqueue(`0)">
+            <summary>
+            Enqueues the specified value
+            </summary>
+            <param name="value">The value to enqueue to the <see cref="T:Photon.Threading.PriorityQueue`1"/></param>
+        </member>
+        <member name="M:Photon.Threading.PriorityQueue`1.Dequeue">
+            <summary>
+            Dequeues and returns the element with the lowest/highest priority residing in the <see cref="T:Photon.Threading.PriorityQueue`1"/>
+            </summary>
+            <returns>The element with the lowest/highest priority residing in the <see cref="T:Photon.Threading.PriorityQueue`1"/></returns>
+        </member>
+        <member name="M:Photon.Threading.PriorityQueue`1.TryToDequeue(`0@)">
+            <summary>
+            Tries to dequeue the element with the lowest/highest priority residing in the <see cref="T:Photon.Threading.PriorityQueue`1"/> and returns a boolean indicating whether or not the operation was succesfull
+            </summary>
+            <param name="value">The element with the lowest/highest priority residing in the <see cref="T:Photon.Threading.PriorityQueue`1"/></param>
+            <returns>True if an element was dequeued, false</returns>
+        </member>
+        <member name="M:Photon.Threading.PriorityQueue`1.Insert(`0)">
+            <summary>
+            Inserts the value with the specified priority into the <see cref="T:Photon.Threading.PriorityQueue`1"/>
+            </summary>
+            <param name="value">The value to enqueue to the <see cref="T:Photon.Threading.PriorityQueue`1"/></param>
+        </member>
+        <member name="M:Photon.Threading.PriorityQueue`1.HeapifyFromBeginningToEnd(System.Int32)">
+            <summary>
+            Heapifies the base heap, from the specified position to the end
+            </summary>
+            <param name="position">The position at which to start heapifying</param>
+        </member>
+        <member name="M:Photon.Threading.PriorityQueue`1.HeapifyFromEndToBeginning(System.Int32)">
+            <summary>
+            Heapifies the base heap, from the start position to the specified position
+            </summary>
+            <param name="position">The position until which to heapify</param>
+        </member>
+        <member name="M:Photon.Threading.PriorityQueue`1.ExchangeElements(System.Int32,System.Int32)">
+            <summary>
+            Exchange the elements at the specified positions
+            </summary>
+            <param name="position1">The index of the first element to exchange</param>
+            <param name="position2">The index of the second element to exchange</param>
+        </member>
+        <member name="M:Photon.Threading.PriorityQueue`1.DeleteRoot">
+            <summary>
+            Deletes the root of the <see cref="T:Photon.Threading.PriorityQueue`1"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Threading.Dispatcher">
+            <summary>
+            Provides services for managing the queue of work items for a <see cref="T:System.Threading.Thread"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Threading.Dispatcher.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Threading.Dispatcher"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Threading.Dispatcher.Context">
+            <summary>
+            Gets the <see cref="T:Photon.Threading.DispatcherContext"/> associated with the <see cref="T:Photon.Threading.Dispatcher"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Threading.Dispatcher.Invoke(System.Delegate,Photon.Threading.DispatcherPriority,System.Object[])">
+            <summary>
+            Executes the specified Action synchronously on the thread the <see cref="T:Photon.Threading.Dispatcher"/> is associated with
+            </summary>
+            <param name="delegateMethod">The <see cref="T:System.Delegate"/> to execute</param>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Action"/></param>
+            <param name="args">An array of object containg the ordered parameters of the <see cref="T:System.Action"/> to execute</param>
+        </member>
+        <member name="M:Photon.Threading.Dispatcher.BeginInvoke(System.Delegate,Photon.Threading.DispatcherPriority,System.Object[])">
+            <summary>
+            Executes the specified <see cref="T:System.Action"/> asynchronously with the specified arguments, at the specified <see cref="T:Photon.Threading.DispatcherPriority"/>, on the thread that the <see cref="T:Photon.Threading.Dispatcher"/> was created on
+            </summary>
+            <param name="delegateMethod">The <see cref="T:System.Delegate"/> to execute</param>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Action"/></param>
+            <param name="args">An array of object containg the ordered parameters of the <see cref="T:System.Action"/> to execute</param>
+        </member>
+        <member name="T:Photon.Threading.DispatcherContext">
+            <summary>
+            The <see cref="T:System.Threading.SynchronizationContext"/> used by the <see cref="T:Photon.Threading.Dispatcher"/> to dispatch operations.<para></para> 
+            It contains a <see cref="T:Photon.Threading.PriorityQueue`1"/> of <see cref="T:Photon.Threading.DispatcherOperation"/>s representing the work items to dispatch
+            </summary>
+        </member>
+        <member name="F:Photon.Threading.DispatcherContext._WorkingThread">
+            <summary>
+            The <see cref="T:Photon.Threading.Dispatcher"/>'s working <see cref="T:System.Threading.Thread"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Threading.DispatcherContext._OperationsQueue">
+            <summary>
+            The <see cref="T:Photon.Threading.PriorityQueue`1"/> of <see cref="T:Photon.Threading.DispatcherOperation"/>s queued in the <see cref="T:Photon.Threading.DispatcherContext"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Threading.DispatcherContext.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Threading.DispatcherContext"/> synchronized with the current <see cref="T:System.Threading.Thread"/><para></para>
+            When using this constructor, the <see cref="!:DispatcherContext.DispatchOperations"/> method will have to be explicitly called by the <see cref="T:System.Threading.Thread"/> it is synchronized with
+            </summary>
+        </member>
+        <member name="M:Photon.Threading.DispatcherContext.#ctor(System.Threading.ApartmentState)">
+            <summary>
+            Initialies a new <see cref="T:Photon.Threading.DispatcherContext"/> synchronized with a new <see cref="T:System.Threading.Thread"/> instance
+            </summary>
+            <param name="threadApartmentState">The <see cref="T:System.Threading.ApartmentState"/> of the <see cref="T:Photon.Threading.Dispatcher"/>'s <see cref="T:System.Threading.Thread"/></param>
+        </member>
+        <member name="M:Photon.Threading.DispatcherContext.#ctor(Photon.Threading.DispatcherContext)">
+            <summary>
+            Initialies a new <see cref="T:Photon.Threading.DispatcherContext"/> synchronized based on the specified <see cref="T:Photon.Threading.DispatcherContext"/> instance
+            </summary>
+            <param name="sourceContext">The source <see cref="T:Photon.Threading.DispatcherContext"/> the <see cref="T:Photon.Threading.DispatcherContext"/> to create is based on</param>
+        </member>
+        <member name="M:Photon.Threading.DispatcherContext.Send(System.Threading.SendOrPostCallback,System.Object)">
+            <summary>
+            When overridden in a derived class, dispatches a synchronous message to a <see cref="T:System.Threading.SynchronizationContext"/>
+            </summary>
+            <param name="callback">The <see cref="T:System.Threading.SendOrPostCallback"/> to dispatch</param>
+            <param name="state">The state argument of the specified <see cref="T:System.Threading.SendOrPostCallback"/>, that is a <see cref="T:Photon.Threading.DispatcherOperation"/></param>
+        </member>
+        <member name="M:Photon.Threading.DispatcherContext.Post(System.Threading.SendOrPostCallback,System.Object)">
+            <summary>
+            When overridden in a derived class, dispatches an asynchronous message to a <see cref="T:System.Threading.SynchronizationContext"/>
+            </summary>
+            <param name="callback"></param>
+            <param name="state"></param>
+        </member>
+        <member name="M:Photon.Threading.DispatcherContext.ExecuteOperations(System.Object)">
+            <summary>
+            Executes all the <see cref="T:Photon.Threading.DispatcherOperation"/>s residing in the <see cref="T:Photon.Threading.DispatcherOperation"/>'s <see cref="T:Photon.Threading.PriorityQueue`1"/>
+            </summary>
+            <param name="state">The state of the method call, that is the current <see cref="T:Photon.Threading.DispatcherContext"/></param>
+        </member>
+        <member name="M:Photon.Threading.DispatcherContext.Dispose">
+            <summary>
+            Disposes of the <see cref="T:Photon.Threading.DispatcherContext"/> and underlying components
+            </summary>
+        </member>
+        <member name="M:Photon.Threading.DispatcherContext.ExecuteOperation(System.Object)">
+            <summary>
+            Executes the specified <see cref="T:Photon.Threading.DispatcherOperation"/>
+            </summary>
+            <param name="state">The state associated with the <see cref="M:Photon.Threading.DispatcherContext.ExecuteOperation(System.Object)"/> method call, that is a <see cref="T:Photon.Threading.DispatcherOperation"/></param>
+        </member>
+        <member name="T:Photon.Threading.DispatcherOperation">
+            <summary>
+            Represents an object that is used to interact with an operation that has been posted to the <see cref="T:Photon.Threading.Dispatcher"/> queue
+            </summary>
+        </member>
+        <member name="M:Photon.Threading.DispatcherOperation.#ctor(Photon.Threading.DispatcherPriority,System.Delegate,System.Object[])">
+            <summary>
+            Initializes a new <see cref="T:Photon.Threading.DispatcherOperation"/> with the specified <see cref="T:Photon.Threading.DispatcherPriority"/>, callback delegate and callback arguments
+            </summary>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the <see cref="T:Photon.Threading.DispatcherOperation"/></param>
+            <param name="callback">The <see cref="T:System.Delegate"/> to execute</param>
+            <param name="arguments">An array of objects representing the ordered arguments of the callback to invoke</param>
+        </member>
+        <member name="P:Photon.Threading.DispatcherOperation.Priority">
+            <summary>
+            Gets the <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the <see cref="T:Photon.Threading.DispatcherOperation"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Threading.DispatcherOperation.Callback">
+            <summary>
+            Gets the <see cref="T:System.Delegate"/> to execute
+            </summary>
+        </member>
+        <member name="P:Photon.Threading.DispatcherOperation.Arguments">
+            <summary>
+            Gets an array of objects representing the ordered arguments of the callback to invoke
+            </summary>
+        </member>
+        <member name="P:Photon.Threading.DispatcherOperation.HandledEvent">
+            <summary>
+            Gets/sets the <see cref="T:System.Threading.ManualResetEvent"/> associated with the <see cref="T:Photon.Threading.DispatcherOperation"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Threading.DispatcherOperation.IsHandled">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Threading.DispatcherOperation"/> is handled thanks to a <see cref="T:System.Threading.ManualResetEvent"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Threading.DispatcherOperation.Execute">
+            <summary>
+            Executes the <see cref="T:Photon.Threading.DispatcherOperation"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Threading.DispatcherPriority">
+            <summary>
+            Describes the priorities at which <see cref="T:Photon.Threading.DispatcherOperation"/>s can be invoked by way of the <see cref="T:Photon.Threading.Dispatcher"/>.
+            </summary>
+        </member>
+        <member name="F:Photon.Threading.DispatcherPriority.Lowest">
+            <summary>
+            The <see cref="T:Photon.Threading.DispatcherOperation"/> will be executed with the lowest priority
+            </summary>
+        </member>
+        <member name="F:Photon.Threading.DispatcherPriority.Low">
+            <summary>
+            The <see cref="T:Photon.Threading.DispatcherOperation"/> will be executed with a low priority
+            </summary>
+        </member>
+        <member name="F:Photon.Threading.DispatcherPriority.Normal">
+            <summary>
+            The <see cref="T:Photon.Threading.DispatcherOperation"/> will be executed with a normal priority
+            </summary>
+        </member>
+        <member name="F:Photon.Threading.DispatcherPriority.High">
+            <summary>
+            The <see cref="T:Photon.Threading.DispatcherOperation"/> will be executed with a high priority
+            </summary>
+        </member>
+        <member name="F:Photon.Threading.DispatcherPriority.Highest">
+            <summary>
+            The <see cref="T:Photon.Threading.DispatcherOperation"/> will be executed with a the highest priority
+            </summary>
         </member>
     </members>
 </doc>
