@@ -406,7 +406,10 @@ namespace Photon
             Task.Run(() =>
             {
                 this.InitializeHwnd();
-                Application.Current.RegisterWindow(this);
+                if(Application.Current != null)
+                {
+                    Application.Current.RegisterWindow(this);
+                }
                 this.Hwnd.Run(Window.DEFAULT_UDATES_PER_SECOND, Window.DEFAULT_FRAMES_PER_SECOND);
             });
         }
