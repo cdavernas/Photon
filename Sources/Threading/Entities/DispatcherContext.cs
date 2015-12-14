@@ -28,10 +28,12 @@ namespace Photon.Threading
 
         /// <summary>
         /// Initializes a new <see cref="DispatcherContext"/> synchronized with the current <see cref="Thread"/><para></para>
-        /// When using this constructor, the <see cref="DispatcherContext.DispatchOperations"/> method will have to be explicitly called by the <see cref="Thread"/> it is synchronized with
+        /// When using this constructor, the <see cref="DispatcherContext.ExecuteOperations"/> method will have to be explicitly called by the <see cref="Thread"/> it is synchronized with
         /// </summary>
-        public DispatcherContext()
+        ///<param name="owner">The <see cref="Dispatcher"/> that owns the <see cref="DispatcherContext"/></param>
+        public DispatcherContext(Dispatcher owner)
         {
+            this.Owner = owner;
             this._WorkingThread = Thread.CurrentThread;
         }
 
@@ -39,9 +41,11 @@ namespace Photon.Threading
         /// Initialies a new <see cref="DispatcherContext"/> synchronized with a new <see cref="Thread"/> instance
         /// </summary>
         /// <param name="threadApartmentState">The <see cref="ApartmentState"/> of the <see cref="Dispatcher"/>'s <see cref="Thread"/></param>
-        public DispatcherContext(ApartmentState threadApartmentState)
+        ///<param name="owner">The <see cref="Dispatcher"/> that owns the <see cref="DispatcherContext"/></param>
+        public DispatcherContext(Dispatcher owner, ApartmentState threadApartmentState)
         {
             Thread dispatcherThread;
+            this.Owner = owner;
             dispatcherThread = new Thread(new ParameterizedThreadStart(this.ExecuteOperations));
             dispatcherThread.SetApartmentState(threadApartmentState);
         }
@@ -52,8 +56,14 @@ namespace Photon.Threading
         /// <param name="sourceContext">The source <see cref="DispatcherContext"/> the <see cref="DispatcherContext"/> to create is based on</param>
         public DispatcherContext(DispatcherContext sourceContext)
         {
+            this.Owner = sourceContext.Owner;
             this._WorkingThread = sourceContext._WorkingThread;
         }
+
+        /// <summary>
+        /// Gets the <see cref="Dispatcher"/> that owns the <see cref="DispatcherContext"/>
+        /// </summary>
+        public Dispatcher Owner { get; private set; }
 
         /// <summary>
         /// When overridden in a derived class, dispatches a synchronous message to a <see cref="SynchronizationContext"/>
@@ -143,6 +153,21 @@ namespace Photon.Threading
                 {
                     operation.HandledEvent.Set();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Gets the <see cref="DispatcherContext"/> for the current <see cref="Thread"/>
+        /// </summary>
+        public static new DispatcherContext Current
+        {
+            get
+            {
+                if(Dispatcher.ActiveContext == null)
+                {
+                    return null;
+                }
+                return Dispatcher.ActiveContext;
             }
         }
 

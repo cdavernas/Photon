@@ -232,7 +232,7 @@ namespace Photon.Controls
         ///<param name="drawingContext">The <see cref="DrawingContext"/> in which the element has been rendered</param>
         protected override void OnRender(DrawingContext drawingContext)
         {
-            if(this.Background != null)
+            if (this.Background != null)
             {
                 drawingContext.DrawRectangle(this.RenderTarget, Thickness.Empty, this.Background, null);
             }

@@ -11,7 +11,7 @@ D:\Dev\Photon\Sources\bin\Debug\OpenTK.GLControl.dll
 D:\Dev\Photon\Sources\bin\Debug\OpenTK.pdb
 D:\Dev\Photon\Sources\bin\Debug\OpenTK.xml
 D:\Dev\Photon\Sources\bin\Debug\OpenTK.GLControl.xml
-D:\Dev\Photon\Sources\obj\Debug\Photon.csprojResolveAssemblyReference.cache
 D:\Dev\Photon\Sources\obj\Debug\Photon.dll
 D:\Dev\Photon\Sources\obj\Debug\Photon.pdb
 D:\Dev\Photon\Sources\bin\Debug\Photon.XML
+D:\Dev\Photon\Sources\obj\Debug\Photon.csprojResolveAssemblyReference.cache

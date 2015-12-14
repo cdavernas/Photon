@@ -2,7 +2,7 @@
         xmlns="clr-namespace:Photon;assembly=Photon"
         xmlns:ctrl="clr-namespace:Photon.Controls;assembly=Photon"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Background="Red" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        Background="C:\Users\Charles-Frédéric\Pictures\TestNext.jpg">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -11,7 +11,7 @@
                     <Style x:Key="stackpanel" TargetType="{x:Type ctrl:StackPanel}">
                         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
                         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                        <Setter Property="Orientation" Value="Vertical"></Setter>
+                        <Setter Property="Orientation" Value="Horizontal"></Setter>
                         <Setter Property="Background" Value="#FFFFFFFF"></Setter>
                     </Style>
                     <Style x:Key="item" TargetType="{x:Type ctrl:Border}">
@@ -31,7 +31,7 @@
     </Window.Resources>
 
     <ctrl:StackPanel Style="{StaticResource stackpanel}">
-        <ctrl:Border Background="#FFFF0000" Style="{StaticResource item}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+        <ctrl:Border Background="#FFFF0000" Style="{StaticResource item}">
             <ctrl:Label Style="{StaticResource item_text}">1</ctrl:Label>
         </ctrl:Border>
         <ctrl:Border Background="#FF00FF00" Style="{StaticResource item}">

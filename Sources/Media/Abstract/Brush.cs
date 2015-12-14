@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenTK.Graphics.OpenGL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Photon.Media
     /// </summary>
     [TypeConverter(typeof(BrushConverter))]
     public abstract class Brush
-        : DependencyObject
+        : DependencyObject, IDisposable
     {
 
         /// <summary>
@@ -36,16 +37,29 @@ namespace Photon.Media
         }
 
         /// <summary>
-        /// Uses the brush to paint a geometry
+        /// Begins using the <see cref="Brush"/> to render the specified <see cref="Drawing"/>. Must be followed by a call to the <see cref="Brush.EndUse"/> method
         /// </summary>
-        /// <param name="geometryBounds">The <see cref="Media.Rectangle"/> representing the geometry's bounds</param>
-        internal abstract void Use(Rectangle geometryBounds);
+        /// <param name="drawing">The <see cref="Drawing"/> to render</param>
+        internal abstract void BeginUse(Drawing drawing);
+
+        /// <summary>
+        /// Ends using the <see cref="Brush"/>
+        /// </summary>
+        internal abstract void EndUse();
 
         /// <summary>
         /// Clones the brush
         /// </summary>
         /// <returns>The clone of the <see cref="Brush"/></returns>
         public abstract Brush Clone();
+
+        /// <summary>
+        /// When overriden in a class, disposes of the <see cref="Brush"/> and its resources
+        /// </summary>
+        public virtual void Dispose()
+        {
+
+        }
 
     }
 

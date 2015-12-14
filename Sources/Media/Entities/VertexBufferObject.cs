@@ -9,21 +9,24 @@ namespace Photon.Media
 {
 
     /// <summary>
-    /// Also known as VBO, the <see cref="VertexBufferObject{T}"/> provides methods for uploading vertex data (position, normal vector, color, etc.) to the video device for non-immediate-mode rendering. 
+    /// Also known as VBO, the <see cref="VertexBufferObject"/> provides methods for uploading vertex data (position, normal vector, color, etc.) to the video device for non-immediate-mode rendering. 
     /// VBOs offer substantial performance gains over immediate mode rendering primarily because the data resides in the video device memory rather than the system memory and so it can be rendered directly by the video device
     /// </summary>
-    /// <typeparam name="T">The type of the x, y and z values wrapped by the <see cref="Vertex{T}"/> instances to be contained by the <see cref="VertexBufferObject{T}"/></typeparam>
-    public class VertexBufferObject<T>
-        where T : struct
+    public class VertexBufferObject
+        : IDisposable
     {
 
         /// <summary>
-        /// Initializes a new <see cref="VertexBufferObject{T}"/>
+        /// Initializes a new <see cref="VertexBufferObject"/>
         /// </summary>
-        public VertexBufferObject(int vertexBufferLength, int elementBufferLength)
+        /// <param name="vertexBufferLength">The lenght of the vertex buffer</param>
+        /// <param name="elementBufferLength">The lenght of the element buffer</param>
+        /// <param name="primitiveType">The <see cref="OpenTK.Graphics.OpenGL.PrimitiveType"/> used to render the <see cref="VertexBufferObject"/></param>
+        public VertexBufferObject(int vertexBufferLength, int elementBufferLength, PrimitiveType primitiveType)
         {
             this.VertexBufferLength = vertexBufferLength;
             this.ElementBufferLength = elementBufferLength;
+            this.PrimitiveType = primitiveType;
             this.Initialize();
         }
 
@@ -44,21 +47,21 @@ namespace Photon.Media
         /// </summary>
         private int ElementBufferObjectId;
         /// <summary>
-        /// An array of <see cref="Vertex{T}"/> instances contained by the <see cref="VertexBufferObject{T}"/>
+        /// An array of <see cref="Vertex"/> instances contained by the <see cref="VertexBufferObject"/>
         /// </summary>
-        private Vertex<T>[] Vertices;
+        private Vertex[] Vertices;
         /// <summary>
-        /// Represents the indices contained by the <see cref="VertexBufferObject{T}"/>
+        /// Represents the indices contained by the <see cref="VertexBufferObject"/>
         /// </summary>
         private ushort[] Indices;
 
         /// <summary>
-        /// Gets/sets the <see cref="OpenTK.Graphics.OpenGL.PrimitiveType"/> used to render the <see cref="VertexBufferObject{T}"/>
+        /// Gets/sets the <see cref="OpenTK.Graphics.OpenGL.PrimitiveType"/> used to render the <see cref="VertexBufferObject"/>
         /// </summary>
         public PrimitiveType PrimitiveType { get; set; }
 
         /// <summary>
-        /// Initializes the <see cref="VertexBufferObject{T}"/>
+        /// Initializes the <see cref="VertexBufferObject"/>
         /// </summary>
         private void Initialize()
         {
@@ -67,7 +70,7 @@ namespace Photon.Media
             //Binds the VBO, and sets it as a BufferTarget.ArrayBuffer
             GL.BindBuffer(BufferTarget.ArrayBuffer, this.VertexBufferObjectId);
             //Buffers the data associated with the VBO (this.Vertices)
-            GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(this.VertexBufferLength * Vertex<T>.Stride), new Vertex<T>[] { }, BufferUsageHint.StaticDraw);
+            GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(this.VertexBufferLength * Vertex.Stride), new Vertex[] { }, BufferUsageHint.StaticDraw);
             //Unbinds the VBO
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             //Generate the element buffer object (EBO)
@@ -81,34 +84,34 @@ namespace Photon.Media
         }
 
         /// <summary>
-        /// Replaces the <see cref="Vertex{T}"/> at the specified index by the specified <see cref="Vertex{T}"/>
+        /// Replaces the <see cref="Vertex"/> at the specified index by the specified <see cref="Vertex"/>
         /// </summary>
         /// <param name="vertexIndex">The index of the vertex to replace</param>
-        /// <param name="vertex">The <see cref="Vertex{T}"/> used to replace the <see cref="Vertex{T}"/> at the specified index</param>
-        public void SetVertex(int vertexIndex, Vertex<T> vertex)
+        /// <param name="vertex">The <see cref="Vertex"/> used to replace the <see cref="Vertex"/> at the specified index</param>
+        public void SetVertex(int vertexIndex, Vertex vertex)
         {
             //Updates the local vertex buffer
             this.Vertices[vertexIndex] = vertex;
             //Binds the VertexBufferObject
             GL.BindBuffer(BufferTarget.ArrayBuffer, this.VertexBufferObjectId);
             //Updates the VertexBufferObject
-            GL.BufferSubData(BufferTarget.ArrayBuffer, new IntPtr(vertexIndex * Vertex<T>.Stride), new IntPtr(Vertex<T>.Stride), new Vertex<T>[] { vertex });
+            GL.BufferSubData(BufferTarget.ArrayBuffer, new IntPtr(vertexIndex * Vertex.Stride), new IntPtr(Vertex.Stride), new Vertex[] { vertex });
             //Unbinds the VertexBufferObject
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
         }
 
         /// <summary>
-        /// Sets the array of <see cref="Vertex{T}"/> associated with the <see cref="VertexBufferObject{T}"/>
+        /// Sets the array of <see cref="Vertex"/> associated with the <see cref="VertexBufferObject"/>
         /// </summary>
-        /// <param name="vertices">The array of <see cref="Vertex{T}"/> to upload to the <see cref="VertexBufferObject{T}"/></param>
-        public void SetVertices(Vertex<T>[] vertices)
+        /// <param name="vertices">The array of <see cref="Vertex"/> to upload to the <see cref="VertexBufferObject"/></param>
+        public void SetVertices(Vertex[] vertices)
         {
             //Updates the local vertex buffer
             this.Vertices = vertices;
             //Binds the VertexBufferObject
             GL.BindBuffer(BufferTarget.ArrayBuffer, this.VertexBufferObjectId);
             //Updates the VertexBufferObject
-            GL.BufferSubData(BufferTarget.ArrayBuffer, (IntPtr)0, new IntPtr(vertices.Length * Vertex<T>.Stride), vertices);
+            GL.BufferSubData(BufferTarget.ArrayBuffer, (IntPtr)0, new IntPtr(vertices.Length * Vertex.Stride), vertices);
             //Unbinds the VertexBufferObject
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
         }
@@ -147,7 +150,7 @@ namespace Photon.Media
         }
 
         /// <summary>
-        /// Renders the <see cref="VertexBufferObject{T}"/>
+        /// Renders the <see cref="VertexBufferObject"/>
         /// </summary>
         public void Render()
         {
@@ -157,16 +160,24 @@ namespace Photon.Media
                 return;
             }
             GL.PushMatrix();
-            GL.Color4((byte)255, (byte)0, (byte)0, (byte)255);
             GL.EnableClientState(ArrayCap.VertexArray);
             GL.BindBuffer(BufferTarget.ArrayBuffer, this.VertexBufferObjectId);
-            GL.VertexPointer(3, Vertex<T>.PointerType, Vertex<T>.Stride, 0);
+            GL.VertexPointer(3, Vertex.PointerType, Vertex.Stride, 0);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, this.ElementBufferObjectId);
             GL.DrawElements(this.PrimitiveType, this.Indices.Length, DrawElementsType.UnsignedShort, 0);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
             GL.DisableClientState(ArrayCap.VertexArray);
             GL.PopMatrix();
+        }
+
+        /// <summary>
+        /// Disposes of the <see cref="VertexBufferObject"/> and of all its resources
+        /// </summary>
+        public void Dispose()
+        {
+            GL.DeleteBuffer(this.VertexBufferObjectId);
+            GL.DeleteBuffer(this.ElementBufferObjectId);
         }
 
     }

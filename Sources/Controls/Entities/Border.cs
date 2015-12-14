@@ -92,6 +92,14 @@ namespace Photon.Controls
             }
         }
 
+        /// <summary>
+        /// Generates a new <see cref="Media.Drawing"/> of the <see cref="Visual"/>
+        /// </summary>
+        protected override void OnInvalidateVisual()
+        {
+            this.VisualDrawing = new GeometryDrawing(OpenTK.Graphics.OpenGL.PrimitiveType.Quads, new RectangleGeometry(this.RenderTarget));
+        }
+
     }
 
 }

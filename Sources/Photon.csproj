@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Photon</RootNamespace>
     <AssemblyName>Photon</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,6 +62,7 @@
     <Compile Include="Core\Abstract\SetterBase.cs" />
     <Compile Include="Core\Abstract\TriggerAction.cs" />
     <Compile Include="Core\Abstract\TriggerBase.cs" />
+    <Compile Include="Core\Abstract\Visual.cs" />
     <Compile Include="Core\Collections\SetterBaseCollection.cs" />
     <Compile Include="Core\Collections\TriggerActionCollection.cs" />
     <Compile Include="Core\Collections\TriggerBaseCollection.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="Core\Extensions\XmlNodeExtensions.cs" />
     <Compile Include="Core\Interfaces\IDependencyElement.cs" />
     <Compile Include="Core\Interfaces\IUIElement.cs" />
+    <Compile Include="Core\Static\ResourceManager.cs" />
     <Compile Include="Core\Static\SystemParameters.cs" />
     <Compile Include="Input\Static\FocusManager.cs" />
     <Compile Include="Input\Entities\HitTestResult.cs" />
@@ -133,18 +136,24 @@
     <Compile Include="Media.Animations\Enumerations\FillBehavior.cs" />
     <Compile Include="Media.Animations\Enumerations\RepeatMode.cs" />
     <Compile Include="Media\Abstract\Brush.cs" />
+    <Compile Include="Media\Abstract\Drawing.cs" />
     <Compile Include="Media\Abstract\Geometry.cs" />
     <Compile Include="Media\Abstract\PathSegment.cs" />
     <Compile Include="Media\Collections\PathFigureCollection.cs" />
     <Compile Include="Media\Collections\PathSegmentCollection.cs" />
     <Compile Include="Media\Collections\PointCollection.cs" />
+    <Compile Include="Media\Entities\GeometryDrawing.cs" />
     <Compile Include="Media\Entities\LineGeometry.cs" />
     <Compile Include="Media\Entities\LineSegment.cs" />
     <Compile Include="Media\Entities\PathFigure.cs" />
     <Compile Include="Media\Entities\PathGeometry.cs" />
     <Compile Include="Media\Entities\PolyLineSegment.cs" />
+    <Compile Include="Media\Entities\RectangleGeometry.cs" />
+    <Compile Include="Media\Entities\Texture.cs" />
     <Compile Include="Media\Entities\Vertex.cs" />
     <Compile Include="Media\Entities\VertexBufferObject.cs" />
+    <Compile Include="Media\Enumerations\CacheMode.cs" />
+    <Compile Include="Media\Enumerations\TextureWrapFilter.cs" />
     <Compile Include="Media\Extensions\ColorExtensions.cs" />
     <Compile Include="Media\Entities\FontFamily.cs" />
     <Compile Include="Media\Entities\ImageBrush.cs" />
@@ -154,6 +163,7 @@
     <Compile Include="Media\Entities\Size.cs" />
     <Compile Include="Media\Entities\SolidColorBrush.cs" />
     <Compile Include="Media\Entities\Thickness.cs" />
+    <Compile Include="Media\Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Media\Extensions\StringExtensions.cs" />
     <Compile Include="Media\TypeConverters\BrushConverter.cs" />
     <Compile Include="Media\TypeConverters\FontFamilyConverter.cs" />

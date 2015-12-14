@@ -8,6 +8,7 @@ using Photon.Media;
 using OpenTK;
 using OpenTK.Input;
 using OpenTK.Graphics;
+using System.Threading;
 
 namespace Photon
 {
@@ -380,6 +381,10 @@ namespace Photon
             {
                 title = Window.DEFAULT_TITLE;
             }
+            if (string.IsNullOrWhiteSpace(Thread.CurrentThread.Name))
+            {
+                Thread.CurrentThread.Name = "photon-ui:win" + this.GetHashCode();
+            }
             this.Hwnd = new GameWindow((int)width, (int)height, new GraphicsMode(32, 24, 8, 4));
             this.Hwnd.Title = title;
             this.Hwnd.Location = new System.Drawing.Point((int)(SystemParameters.WorkArea.Width / 2) - (this.Hwnd.Width / 2), (int)(SystemParameters.WorkArea.Height / 2) - (this.Hwnd.Height / 2));
@@ -615,6 +620,7 @@ namespace Photon
                 this.Child.Render(this.DrawingContext);
             }
             this.DrawingContext.EndRenderPass();
+            this.Dispatcher.Context.ExecuteOperations(this.Dispatcher.Context);
         }
 
         /// <summary>
