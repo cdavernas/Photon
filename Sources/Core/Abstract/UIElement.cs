@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Photon.Threading;
 
 namespace Photon
 {
@@ -16,7 +17,7 @@ namespace Photon
     /// UIElement is a base class for core level implementations building on Photon elements and basic presentation characteristics.
     /// </summary>
     public abstract class UIElement
-        : DependencyObject, IUIElement
+        : Visual, IUIElement
     {
 
         /// <summary>
@@ -118,11 +119,6 @@ namespace Photon
         /// Gets/sets the <see cref="UIElement"/>'s <see cref="ResourceDictionary"/>
         /// </summary>
         public ResourceDictionary Resources { get; set; }
-
-        /// <summary>
-        /// Gets a boolean indicating whether or not the <see cref="UIElement"/> has been loaded
-        /// </summary>
-        public bool IsLoaded { get; private set; }
 
         /// <summary>
         /// Describes the <see cref="UIElement.Style"/> <see cref="DependencyProperty"/>
@@ -528,11 +524,6 @@ namespace Photon
         }
 
         /// <summary>
-        /// Gets/Sets the date and time at which the element has last been invalidated
-        /// </summary>
-        internal DateTime LastInvalidated { get; set; }
-
-        /// <summary>
         /// Gets/Sets the date and time at which the element has last been located
         /// </summary>
         internal DateTime LastLocated { get; set; }
@@ -550,10 +541,8 @@ namespace Photon
             Controls.IDecorator decorator;
             Controls.IPanel panel;
             this.LastInvalidated = DateTime.UtcNow;
-
             this.Locate();
             this.Measure();
-
             if (typeof(Controls.IDecorator).IsAssignableFrom(this.GetType()))
             {
                 decorator = (Controls.IDecorator)this;
@@ -576,16 +565,6 @@ namespace Photon
                 this.LayoutInvalidated(this, new EventArgs());
             }
             this.OnInvalidateLayout();
-        }
-
-        /// <summary>
-        /// This method is fired whenever the element's visual has been invalidated
-        /// </summary>
-        public void InvalidateVisual()
-        {
-
-            //Set the date and time at which the last invalidation occured
-            this.LastInvalidated = DateTime.UtcNow;
         }
 
         /// <summary>
@@ -779,30 +758,6 @@ namespace Photon
         }
 
         /// <summary>
-        /// This method executes when the control is loading, meaning when it is first being rendered on screen
-        /// </summary>
-        internal void Load()
-        {
-            this.InvalidateLayout();
-            if (typeof(Controls.IDecorator).IsAssignableFrom(this.GetType()))
-            {
-                if (((Controls.IDecorator)this).Child != null)
-                {
-                    ((Controls.IDecorator)this).Child.Load();
-                }
-            }
-            else if (typeof(Controls.IPanel).IsAssignableFrom(this.GetType()))
-            {
-                foreach(UIElement element in ((Controls.IPanel)this).Children)
-                {
-                    element.Load();
-                }
-            }
-            this.IsLoaded = true;
-            this.OnLoaded();
-        }
-
-        /// <summary>
         /// This method sets the focus on the element
         /// </summary>
         public void Focus()
@@ -825,24 +780,12 @@ namespace Photon
         }
 
         /// <summary>
-        /// Renders the element
+        /// Generates a new <see cref="Media.Drawing"/> of the <see cref="UIElement"/>
         /// </summary>
-        /// <param name="drawingContext">The <see cref="DrawingContext"/> in which to render the element</param>
-        internal void Render(DrawingContext drawingContext)
+        protected override void OnInvalidateVisual()
         {
-            foreach(Media.Animations.AnimationClock clock in this.AnimationClocks.Where(c => c.IsRunning))
-            {
-                clock.Render();
-            }
-            this.OnRender(drawingContext);
-        }
-
-        /// <summary>
-        /// When overriden in a class, this method allows the execution of code whenever the element has been loaded
-        /// </summary>
-        protected virtual void OnLoaded()
-        {
-
+            base.OnInvalidateVisual();
+            this.InvalidateLayout();
         }
 
         /// <summary>
@@ -856,15 +799,7 @@ namespace Photon
                 //The UIElement is not within a visual tree and will therefore not be rendered
                 return;
             }
-            //Make sure the visual gets redrawn
-            this.InvalidateVisual();
         }
-
-        /// <summary>
-        /// When overriden in a class, this method allows the execution of code whenever the element has been rendered
-        /// </summary>
-        ///<param name="drawingContext">The <see cref="DrawingContext"/> in which the element has been rendered</param>
-        protected abstract void OnRender(DrawingContext drawingContext);
 
         /// <summary>
         /// When overriden in a class, this method provides means to run code whenever a <see cref="DependencyProperty"/> has changed

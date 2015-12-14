@@ -50,6 +50,12 @@ namespace Photon.Media
             }
         }
 
+        /// <summary>
+        /// Gets an <see cref="IEnumerable{T}"/> of the <see cref="Point"/>s that define the <see cref="PathSegment"/>
+        /// </summary>
+        /// <returns>An <see cref="IEnumerable{T}"/> of the <see cref="Point"/>s that define the <see cref="PathSegment"/></returns>
+        public abstract IEnumerable<Point> ToPoints();
+
     }
 
 }

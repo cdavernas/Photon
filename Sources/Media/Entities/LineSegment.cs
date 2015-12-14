@@ -52,6 +52,15 @@ namespace Photon.Media
             }
         }
 
+        /// <summary>
+        /// Gets an <see cref="IEnumerable{T}"/> of the <see cref="Media.Point"/>s that define the <see cref="LineSegment"/>
+        /// </summary>
+        /// <returns>An <see cref="IEnumerable{T}"/> of the <see cref="Media.Point"/>s that define the <see cref="LineSegment"/></returns>
+        public override IEnumerable<Point> ToPoints()
+        {
+            return new Point[] { this.Point };
+        }
+
     }
 
 }

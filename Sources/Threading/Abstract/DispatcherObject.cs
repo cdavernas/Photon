@@ -18,13 +18,29 @@ namespace Photon.Threading
         /// </summary>
         protected DispatcherObject()
         {
-            this.Dispatcher = new Dispatcher();
+            if(this.Dispatcher == null)
+            {
+                this.Dispatcher = new Dispatcher();
+            }
         }
 
         /// <summary>
         /// Gets the <see cref="Threading.Dispatcher"/> associated with the <see cref="DispatcherObject"/>
         /// </summary>
-        public Dispatcher Dispatcher { get; private set; } 
+        public Dispatcher Dispatcher
+        {
+            get
+            {
+                DispatcherContext dispatcherContext;
+                dispatcherContext = DispatcherContext.Current;
+                if (dispatcherContext == null)
+                {
+                    return null;
+                }
+                return dispatcherContext.Owner;
+            }
+            private set { }
+        }
 
     }
 

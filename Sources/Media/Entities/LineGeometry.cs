@@ -35,6 +35,37 @@ namespace Photon.Media
         }
 
         /// <summary>
+        /// Gets a <see cref="Rectangle"/> representing the <see cref="LineGeometry"/>'s bounds
+        /// </summary>
+        public override Rectangle Bounds
+        {
+            get
+            {
+                double x1, y1, x2, y2;
+                if (this.Points.Count() < 1)
+                {
+                    return Rectangle.Empty;
+                }
+                x1 = this.Points.Min(p => p.X);
+                y1 = this.Points.Min(p => p.Y);
+                x2 = this.Points.Max(p => p.X);
+                y2 = this.Points.Max(p => p.X);
+                return new Rectangle(x1, y1, x2 - x1, y2 - y1);
+            }
+        }
+
+        /// <summary>
+        /// Gets a <see cref="IEnumerable{T}"/> containing the <see cref="Point"/>s that define the <see cref="Geometry"/>
+        /// </summary>
+        public override IEnumerable<Point> Points
+        {
+            get
+            {
+                return new Point[] { this.StartPoint, this.EndPoint };
+            }
+        }
+
+        /// <summary>
         /// Gets/sets the start point of the line
         /// </summary>
         public Media.Point StartPoint { get; private set; }

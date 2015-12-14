@@ -58,6 +58,42 @@ namespace Photon
             GL.Ortho(0, (int)this.Window.RenderTarget.Width, (int)this.Window.RenderTarget.Height, 0, -1, 1);
         }
 
+        ///// <summary>
+        ///// Draws the specified <see cref="Media.Drawing"/>
+        ///// </summary>
+        ///// <param name="drawing">The <see cref="Media.Drawing"/> to draw</param>
+        //public void Draw(Media.Drawing drawing)
+        //{
+        //    if (typeof(Media.GeometryDrawing).IsAssignableFrom(drawing.GetType()))
+        //    {
+        //        Media.GeometryDrawing geometryDrawing;
+        //        geometryDrawing = (Media.GeometryDrawing)drawing;
+        //        if (geometryDrawing.FillBrush != null)
+        //        {
+        //            geometryDrawing.FillBrush.BeginUse(drawing);
+        //            geometryDrawing.Render();
+        //            geometryDrawing.FillBrush.EndUse();
+        //        }
+        //        return;
+        //    }
+        //}
+
+        ///// <summary>
+        ///// Draw the specified <see cref="Media.Geometry"/> with the specified stroke thickness, fill brush and stroke brush
+        ///// </summary>
+        ///// <param name="geometry">The <see cref="Media.Geometry"/> to draw</param>
+        ///// <param name="primitiveType">The <see cref="PrimitiveType"/> used to render the specified <see cref="Media.Geometry"/></param>
+        ///// <param name="strokeThickness">The thickness of the specified <see cref="Media.Geometry"/>'s contour</param>
+        ///// <param name="fillBrush">The <see cref="Media.Brush"/> used to paint the inside of the specified <see cref="Media.Geometry"/></param>
+        ///// <param name="strokeBrush">The <see cref="Media.Brush"/> used to draw the specified <see cref="Media.Geometry"/>'s contour</param>
+        //public void DrawGeometry(Media.Geometry geometry, PrimitiveType primitiveType, double strokeThickness, Media.Brush fillBrush, Media.Brush strokeBrush)
+        //{
+        //    Media.GeometryDrawing geometryDrawing;
+        //    geometryDrawing = new Media.GeometryDrawing(primitiveType, geometry) { StrokeThickness = strokeThickness, FillBrush = fillBrush, StrokeBrush = strokeBrush };
+        //    this.Draw(geometryDrawing);
+        //    geometryDrawing.Dispose();
+        //}
+
         /// <summary>
         /// Draws a rectangle with the specified width, height, border thickness and brushes
         /// </summary>
@@ -67,7 +103,11 @@ namespace Photon
         /// <param name="borderBrush">The <see cref="Media.Brush"/> with which to paaint the rectangle's border brush</param>
         public void DrawRectangle(Media.Rectangle rectangle, Media.Thickness borderThickness, Media.Brush fillBrush, Media.Brush borderBrush)
         {
+            Media.Geometry geometry;
+            Media.GeometryDrawing geometryDrawing;
             float leftThickness, topThickness, rightThickness, bottomThickness;
+            geometry = rectangle.ToGeometry();
+            geometryDrawing = new Media.GeometryDrawing(PrimitiveType.Quads, geometry);
             leftThickness = Convert.ToSingle(borderThickness.Left);
             topThickness = Convert.ToSingle(borderThickness.Top);
             rightThickness = Convert.ToSingle(borderThickness.Right);
@@ -75,29 +115,18 @@ namespace Photon
             //Check whether or not to fill the rectangle
             if (fillBrush != null)
             {
-                //Activate the brush
-                fillBrush.Use(rectangle);
-                if (fillBrush.GetType() != typeof(Media.ImageBrush))
-                {
-                    //Begin to draw quads
-                    GL.Begin(PrimitiveType.Quads);
-                    //Create the vertex at 0,0
-                    GL.Vertex2(rectangle.Left, rectangle.Top);
-                    //Create the vertex at 1,0
-                    GL.Vertex2(rectangle.Right, rectangle.Top);
-                    //Create the vertex at 1,1
-                    GL.Vertex2(rectangle.Right, rectangle.Bottom);
-                    //Create the vertex at 0,1
-                    GL.Vertex2(rectangle.Left, rectangle.Bottom);
-                    //End the drawing
-                    GL.End();
-                }
+                //Begin using the brush
+                fillBrush.BeginUse(geometryDrawing);
+                //Draw the rectangle
+                geometryDrawing.Render();
+                //End using the brush
+                fillBrush.EndUse();
             }
             //Check whether or not we are expected to draw a border
             if (borderBrush != null)
             {
-                //Activate the border brush
-                borderBrush.Use(rectangle);
+                //Begin using the border brush
+                borderBrush.BeginUse(geometryDrawing);
                 //Create the left border
                 if (rectangle.Left > 0)
                 {
@@ -134,7 +163,10 @@ namespace Photon
                     GL.Vertex2(rectangle.Left - (borderThickness.Left / 2), rectangle.Bottom);
                     GL.End();
                 }
+                //End using the border brush
+                borderBrush.EndUse();
             }
+            geometryDrawing.Dispose();
         }
 
         /// <summary>

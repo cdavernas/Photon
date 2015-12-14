@@ -14,6 +14,16 @@ namespace Photon.Media
     {
 
         /// <summary>
+        /// Gets a <see cref="Rectangle"/> representing the <see cref="Geometry"/>'s bounds
+        /// </summary>
+        public abstract Rectangle Bounds { get; }
+
+        /// <summary>
+        /// Gets a <see cref="IEnumerable{T}"/> containing the <see cref="Point"/>s that define the <see cref="Geometry"/>
+        /// </summary>
+        public abstract IEnumerable<Point> Points { get; }
+
+        /// <summary>
         /// Returns a boolean indicating whether or not the specified <see cref="Media.Point"/> is contained by the <see cref="Geometry"/>
         /// </summary>
         /// <param name="point">The <see cref="Media.Point"/> to test</param>

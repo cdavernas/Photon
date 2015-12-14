@@ -10,33 +10,30 @@ namespace Photon.Media
 {
 
     /// <summary>
-    /// The <see cref="Vertex{T}"/> structure describes the position of a point in 2D or 3D space
+    /// The <see cref="Vertex"/> structure describes the position of a point in 2D or 3D space
     /// </summary>
-    /// <typeparam name="T">The type of the x, y and z values wrapped by the <see cref="Vertex{T}"/>.<para></para>
-    /// The available types to choose from are short, int, double and float</typeparam>
-    public struct Vertex<T>
-        where T : struct
+    public struct Vertex
     {
 
         /// <summary>
-        /// Initializes a new <see cref="Vertex{T}"/> based on both the specified x and y values
+        /// Initializes a new <see cref="Vertex"/> based on both the specified x and y values
         /// </summary>
-        /// <param name="x">An object representing the horizontal axis value of the position wrapped by the <see cref="Vertex{T}"/></param>
-        /// <param name="y">An object representing the vertical axis value of the position wrapped by the <see cref="Vertex{T}"/></param>
-        public Vertex(T x, T y)
+        /// <param name="x">An object representing the horizontal axis value of the position wrapped by the <see cref="Vertex"/></param>
+        /// <param name="y">An object representing the vertical axis value of the position wrapped by the <see cref="Vertex"/></param>
+        public Vertex(double x, double y)
         {
             this.X = x;
             this.Y = y;
-            this.Z = default(T);
+            this.Z = 0;
         }
 
         /// <summary>
-        /// Initializes a new <see cref="Vertex{T}"/> based on both the specified x and y values
+        /// Initializes a new <see cref="Vertex"/> based on both the specified x and y values
         /// </summary>
-        /// <param name="x">An object representing the horizontal axis value of the position wrapped by the <see cref="Vertex{T}"/></param>
-        /// <param name="y">An object representing the vertical axis value of the position wrapped by the <see cref="Vertex{T}"/></param>
-        /// <param name="z">An object representing the depth value of the position wrapped by the <see cref="Vertex{T}"/></param>
-        public Vertex(T x, T y, T z)
+        /// <param name="x">An object representing the horizontal axis value of the position wrapped by the <see cref="Vertex"/></param>
+        /// <param name="y">An object representing the vertical axis value of the position wrapped by the <see cref="Vertex"/></param>
+        /// <param name="z">An object representing the depth value of the position wrapped by the <see cref="Vertex"/></param>
+        public Vertex(double x, double y, double z)
         {
             this.X = x;
             this.Y = y;
@@ -44,55 +41,48 @@ namespace Photon.Media
         }
 
         /// <summary>
-        /// Gets an object representing the horizontal axis value of the position wrapped by the <see cref="Vertex{T}"/>
+        /// Gets an double representing the horizontal axis value of the position wrapped by the <see cref="Vertex"/>
         /// </summary>
-        public T X { get; private set; }
+        public double X { get; private set; }
 
         /// <summary>
-        /// Gets an object representing the vertical axis value of the position wrapped by the <see cref="Vertex{T}"/>
+        /// Gets an double representing the vertical axis value of the position wrapped by the <see cref="Vertex"/>
         /// </summary>
-        public T Y { get; private set; }
+        public double Y { get; private set; }
 
         /// <summary>
-        /// Gets an object representing the depth value of the position wrapped by the <see cref="Vertex{T}"/>
+        /// Gets an double representing the depth value of the position wrapped by the <see cref="Vertex"/>
         /// </summary>
-        public T Z { get; private set; }
+        public double Z { get; private set; }
 
         /// <summary>
-        /// Gets an int representing the <see cref="Vertex{T}"/>'s size, in bytes 
+        /// Returns a new <see cref="Vertex"/> instance based on the specified <see cref="Point"/>
+        /// </summary>
+        /// <param name="point">The <see cref="Point"/> to convert to a <see cref="Vertex"/></param>
+        public static implicit operator Vertex(Point point)
+        {
+            return new Vertex(point.X, point.Y);
+        }
+
+        /// <summary>
+        /// Gets an int representing the <see cref="Vertex"/>'s size, in bytes 
         /// </summary>
         public static int Stride
         {
             get
             {
-                return Marshal.SizeOf(new Vertex<T>());
+                return Marshal.SizeOf(new Vertex());
             }
         }
 
         /// <summary>
-        /// Gets the <see cref="VertexPointerType"/> corresponding to the <see cref="Vertex{T}"/> generic type argument
+        /// Gets the <see cref="VertexPointerType"/> corresponding to the <see cref="Vertex"/> generic type argument
         /// </summary>
         public static VertexPointerType PointerType
         {
             get
             {
-                if (typeof(int).IsAssignableFrom(typeof(T)))
-                {
-                    return VertexPointerType.Int;
-                }
-                else if (typeof(short).IsAssignableFrom(typeof(T)))
-                {
-                    return VertexPointerType.Short;
-                }
-                else if (typeof(double).IsAssignableFrom(typeof(T)))
-                {
-                    return VertexPointerType.Double;
-                }
-                else if (typeof(float).IsAssignableFrom(typeof(T)))
-                {
-                    return VertexPointerType.Float;
-                }
-                throw new NotSupportedException("The specified generic Vertex type '" + typeof(T).FullName + "' is not supported. Consider using a Vertex of int, short double or float");
+                return VertexPointerType.Double; 
             }
         }
 

@@ -14,7 +14,7 @@ namespace Photon
     /// Represents an object that participates in the dependency property system
     /// </summary>
     public abstract class DependencyObject
-        : IDependencyElement
+        : Threading.DispatcherObject, IDependencyElement 
     {
 
         /// <summary>

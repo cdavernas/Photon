@@ -45,6 +45,11 @@
             </summary>
             <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in whihc to render the visual</param>
         </member>
+        <member name="M:Photon.Controls.Border.OnInvalidateVisual">
+            <summary>
+            Generates a new <see cref="T:Photon.Media.Drawing"/> of the <see cref="T:Photon.Visual"/>
+            </summary>
+        </member>
         <member name="T:Photon.Controls.Decorator">
             <summary>
             Provides a base class for elements that apply effects onto or around a single child element, such as <see cref="T:Photon.Controls.Border"/>
@@ -552,6 +557,68 @@
         <member name="P:Photon.TriggerBase.ExitActions">
             <summary>
             Gets a collection of <see cref="T:Photon.TriggerAction"/> objects to apply when the trigger object becomes inactive. This property does not apply to the <see cref="T:Photon.EventTrigger"/> class
+            </summary>
+        </member>
+        <member name="T:Photon.Visual">
+            <summary>
+            Provides rendering support in Photon, which includes hit testing, coordinate transformation, and bounding box calculations
+            </summary>
+        </member>
+        <member name="M:Photon.Visual.#ctor">
+            <summary>
+            Initialies a new <see cref="T:Photon.Visual"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Visual.VisualCacheMode">
+            <summary>
+            Gets the <see cref="T:Photon.Visual"/>'s <see cref="T:Photon.Media.CacheMode"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Visual.VisualDrawing">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Drawing"/> of the <see cref="T:Photon.Visual"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Visual.IsLoaded">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Visual"/> has been loaded
+            </summary>
+        </member>
+        <member name="P:Photon.Visual.LastInvalidated">
+            <summary>
+            Gets/Sets the date and time at which the element has last been invalidated
+            </summary>
+        </member>
+        <member name="M:Photon.Visual.InvalidateVisual">
+            <summary>
+            Invalidates the <see cref="T:Photon.Visual"/> and, depending on its <see cref="P:Photon.Visual.VisualCacheMode"/>, generates a new <see cref="T:Photon.Media.Drawing"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Visual.Load">
+            <summary>
+            This method executes when the control is loading, meaning when it is first being rendered on screen
+            </summary>
+        </member>
+        <member name="M:Photon.Visual.Render(Photon.DrawingContext)">
+            <summary>
+            Renders the <see cref="T:Photon.Visual"/>
+            </summary>
+            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which to render the <see cref="T:Photon.Visual"/></param>
+        </member>
+        <member name="M:Photon.Visual.OnLoaded">
+            <summary>
+            When overriden in a class, this method allows the execution of code whenever the element has been loaded
+            </summary>
+        </member>
+        <member name="M:Photon.Visual.OnRender(Photon.DrawingContext)">
+             <summary>
+             When overriden in a class, this method allows the execution of code whenever the <see cref="T:Photon.Visual"/> is being rendered
+             </summary>
+            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which the element has been rendered</param>
+        </member>
+        <member name="M:Photon.Visual.OnInvalidateVisual">
+            <summary>
+            When inherited by a class, generates a new <see cref="T:Photon.Media.Drawing"/> of the <see cref="T:Photon.Visual"/>
             </summary>
         </member>
         <member name="T:Photon.SetterBaseCollection">
@@ -1673,11 +1740,6 @@
             Gets/sets the <see cref="T:Photon.UIElement"/>'s <see cref="T:Photon.ResourceDictionary"/>
             </summary>
         </member>
-        <member name="P:Photon.UIElement.IsLoaded">
-            <summary>
-            Gets a boolean indicating whether or not the <see cref="T:Photon.UIElement"/> has been loaded
-            </summary>
-        </member>
         <member name="F:Photon.UIElement.StyleProperty">
             <summary>
             Describes the <see cref="P:Photon.UIElement.Style"/> <see cref="T:Photon.DependencyProperty"/>
@@ -1888,11 +1950,6 @@
             Gets the element's actual height
             </summary>
         </member>
-        <member name="P:Photon.UIElement.LastInvalidated">
-            <summary>
-            Gets/Sets the date and time at which the element has last been invalidated
-            </summary>
-        </member>
         <member name="P:Photon.UIElement.LastLocated">
             <summary>
             Gets/Sets the date and time at which the element has last been located
@@ -1908,11 +1965,6 @@
             This method is fired whenever the element's layout has been invalidated
             </summary>
         </member>
-        <member name="M:Photon.UIElement.InvalidateVisual">
-            <summary>
-            This method is fired whenever the element's visual has been invalidated
-            </summary>
-        </member>
         <member name="M:Photon.UIElement.Locate">
             <summary>
             This method is fired whenever the element needs to be located
@@ -1921,11 +1973,6 @@
         <member name="M:Photon.UIElement.Measure">
             <summary>
             This method is fired whenever the element needs to be measured
-            </summary>
-        </member>
-        <member name="M:Photon.UIElement.Load">
-            <summary>
-            This method executes when the control is loading, meaning when it is first being rendered on screen
             </summary>
         </member>
         <member name="M:Photon.UIElement.Focus">
@@ -1938,27 +1985,15 @@
             If the element is focused, this method unfocuses it
             </summary>
         </member>
-        <member name="M:Photon.UIElement.Render(Photon.DrawingContext)">
+        <member name="M:Photon.UIElement.OnInvalidateVisual">
             <summary>
-            Renders the element
-            </summary>
-            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which to render the element</param>
-        </member>
-        <member name="M:Photon.UIElement.OnLoaded">
-            <summary>
-            When overriden in a class, this method allows the execution of code whenever the element has been loaded
+            Generates a new <see cref="T:Photon.Media.Drawing"/> of the <see cref="T:Photon.UIElement"/>
             </summary>
         </member>
         <member name="M:Photon.UIElement.OnInvalidateLayout">
             <summary>
             When overriden in a class, this method allows the execution of code whenever the element's layout has been invalidated
             </summary>
-        </member>
-        <member name="M:Photon.UIElement.OnRender(Photon.DrawingContext)">
-             <summary>
-             When overriden in a class, this method allows the execution of code whenever the element has been rendered
-             </summary>
-            <param name="drawingContext">The <see cref="T:Photon.DrawingContext"/> in which the element has been rendered</param>
         </member>
         <member name="M:Photon.UIElement.OnPropertyChanged(System.String,System.Object,System.Object)">
             <summary>
@@ -2676,6 +2711,18 @@
             This method is used to process any ui event handled by the element's logicial parent
             </summary>
             <param name="e">The <see cref="T:Photon.Input.UIEventArgs"/> associated with the event</param>
+        </member>
+        <member name="T:Photon.ResourceManager">
+            <summary>
+            This class defines methods to manipulate resources
+            </summary>
+        </member>
+        <member name="M:Photon.ResourceManager.GetResourceStream(System.Uri)">
+            <summary>
+            Gets the <see cref="T:System.IO.Stream"/> of the specified resource
+            </summary>
+            <param name="resourceUri">The resource's <see cref="T:System.Uri"/></param>
+            <returns>The specified resource's <see cref="T:System.IO.Stream"/></returns>
         </member>
         <member name="T:Photon.SystemParameters">
             <summary>
@@ -3723,11 +3770,16 @@
             Gets/Sets the opacity of the Brush
             </summary>
         </member>
-        <member name="M:Photon.Media.Brush.Use(Photon.Media.Rectangle)">
+        <member name="M:Photon.Media.Brush.BeginUse(Photon.Media.Drawing)">
             <summary>
-            Uses the brush to paint a geometry
+            Begins using the <see cref="T:Photon.Media.Brush"/> to render the specified <see cref="T:Photon.Media.Drawing"/>. Must be followed by a call to the <see cref="M:Photon.Media.Brush.EndUse"/> method
             </summary>
-            <param name="geometryBounds">The <see cref="T:Photon.Media.Rectangle"/> representing the geometry's bounds</param>
+            <param name="drawing">The <see cref="T:Photon.Media.Drawing"/> to render</param>
+        </member>
+        <member name="M:Photon.Media.Brush.EndUse">
+            <summary>
+            Ends using the <see cref="T:Photon.Media.Brush"/>
+            </summary>
         </member>
         <member name="M:Photon.Media.Brush.Clone">
             <summary>
@@ -3735,9 +3787,54 @@
             </summary>
             <returns>The clone of the <see cref="T:Photon.Media.Brush"/></returns>
         </member>
+        <member name="M:Photon.Media.Brush.Dispose">
+            <summary>
+            When overriden in a class, disposes of the <see cref="T:Photon.Media.Brush"/> and its resources
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Drawing">
+            <summary>
+            Abstract class that describes a 2-D drawing. This class cannot be inherited by your code.
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Drawing.Bounds">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the <see cref="T:Photon.Media.Drawing"/>'s bounds
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Drawing.GenerateBuffer">
+            <summary>
+            Genereates the <see cref="T:Photon.Media.Drawing"/>'s <see cref="T:Photon.Media.VertexBufferObject"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Drawing.VertexBufferObject">
+            <summary>
+            Gets the <see cref="T:Photon.Media.VertexBufferObject"/> associated with the <see cref="T:Photon.Media.Drawing"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Drawing.Render">
+            <summary>
+            Forces the <see cref="T:Photon.Media.Drawing"/>'s <see cref="T:Photon.Media.VertexBufferObject"/> to render
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Drawing.Dispose">
+            <summary>
+            Disposes of the <see cref="T:Photon.Media.Drawing"/> and of all its resources
+            </summary>
+        </member>
         <member name="T:Photon.Media.Geometry">
             <summary>
             Classes that derive from this abstract base class define geometric shapes. Geometry objects can be used for clipping, hit-testing, and rendering 2-D graphic data
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Geometry.Bounds">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the <see cref="T:Photon.Media.Geometry"/>'s bounds
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Geometry.Points">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.Geometry"/>
             </summary>
         </member>
         <member name="M:Photon.Media.Geometry.FillContains(Photon.Media.Point)">
@@ -3773,20 +3870,118 @@
             Gets or sets a value that indicates whether the segment is stroked
             </summary>
         </member>
+        <member name="M:Photon.Media.PathSegment.ToPoints">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.PathSegment"/>
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.PathSegment"/></returns>
+        </member>
         <member name="T:Photon.Media.PathFigureCollection">
             <summary>
             Represents a collection of <see cref="T:Photon.Media.PathFigure"/> objects that collectively make up the geometry of a <see cref="T:Photon.Media.PathGeometry"/>
             </summary>
+        </member>
+        <member name="M:Photon.Media.PathFigureCollection.ToPoints">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.PathFigure"/>s contained by the <see cref="T:Photon.Media.PathFigureCollection"/>
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.PathFigure"/>s contained by the <see cref="T:Photon.Media.PathFigureCollection"/></returns>
         </member>
         <member name="T:Photon.Media.PathSegmentCollection">
             <summary>
             Represents a collection of <see cref="T:Photon.Media.PathSegment"/> objects that can be individually accessed by index
             </summary>
         </member>
+        <member name="M:Photon.Media.PathSegmentCollection.ToPoints">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.PathSegment"/>s contained by the <see cref="T:Photon.Media.PathSegmentCollection"/>
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.PathSegment"/>s contained by the <see cref="T:Photon.Media.PathSegmentCollection"/></returns>
+        </member>
         <member name="T:Photon.Media.PointCollection">
             <summary>
             Represents a collection of <see cref="T:Photon.Media.Point"/> values that can be individually accessed by index
             </summary>
+        </member>
+        <member name="T:Photon.Media.GeometryDrawing">
+            <summary>
+            Renders a <see cref="P:Photon.Media.GeometryDrawing.Geometry"/> using the specified fill brush, stroke brush and stroke thickness
+            </summary>
+        </member>
+        <member name="M:Photon.Media.GeometryDrawing.#ctor(OpenTK.Graphics.OpenGL.PrimitiveType,Photon.Media.Geometry)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.GeometryDrawing"/>
+            </summary>
+            <param name="primitiveType">The <see cref="T:OpenTK.Graphics.OpenGL.PrimitiveType"/> with which to render the <see cref="T:Photon.Media.GeometryDrawing"/></param>
+            <param name="geometry">The <see cref="T:Photon.Media.Geometry"/> to draw</param>
+        </member>
+        <member name="P:Photon.Media.GeometryDrawing.Bounds">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the bounds of the <see cref="T:Photon.Media.GeometryDrawing"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Media.GeometryDrawing.PrimitiveTypeProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Media.GeometryDrawing.PrimitiveType"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.GeometryDrawing.PrimitiveType">
+            <summary>
+            Gets/sets the <see cref="T:OpenTK.Graphics.OpenGL.PrimitiveType"/> with which to render the <see cref="T:Photon.Media.GeometryDrawing"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Media.GeometryDrawing.GeometryProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Media.GeometryDrawing.Geometry"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.GeometryDrawing.Geometry">
+            <summary>
+            Gets/sets he <see cref="P:Photon.Media.GeometryDrawing.Geometry"/> to render
+            </summary>
+        </member>
+        <member name="F:Photon.Media.GeometryDrawing.FillBrushProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Media.GeometryDrawing.FillBrush"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.GeometryDrawing.FillBrush">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Brush"/> used to render the <see cref="T:Photon.Media.Geometry"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Media.GeometryDrawing.StrokeBrushProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Media.GeometryDrawing.StrokeBrush"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.GeometryDrawing.StrokeBrush">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Brush"/> used to render the <see cref="T:Photon.Media.Geometry"/>'s contour
+            </summary>
+        </member>
+        <member name="F:Photon.Media.GeometryDrawing.StrokeThicknessProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Media.GeometryDrawing.StrokeThickness"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.GeometryDrawing.StrokeThickness">
+            <summary>
+            Gets/sets a double representing the thickness of the <see cref="T:Photon.Media.Geometry"/>'s countour
+            </summary>
+        </member>
+        <member name="M:Photon.Media.GeometryDrawing.GenerateBuffer">
+            <summary>
+            Genereates the <see cref="T:Photon.Media.Drawing"/>'s <see cref="T:Photon.Media.VertexBufferObject"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.GeometryDrawing.OnPropertyChanged(System.String,System.Object,System.Object)">
+            <summary>
+            When overriden in a class, this method provides means to run code whenever a <see cref="T:Photon.DependencyProperty"/> has changed
+            </summary>
+            <param name="propertyName">The case sensitive name of the modified property</param>
+            <param name="originalValue">An object representing the property's value before the suffered change(s)</param>
+            <param name="value">An object representing the property's actual (new) value</param>
         </member>
         <member name="T:Photon.Media.LineGeometry">
             <summary>
@@ -3805,6 +4000,16 @@
              </summary>
              <param name="startPoint">The <see cref="T:Photon.Media.Point"/> at which the line starts</param>
              <param name="endPoint">The <see cref="T:Photon.Media.Point"/> at which the line ends</param>
+        </member>
+        <member name="P:Photon.Media.LineGeometry.Bounds">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the <see cref="T:Photon.Media.LineGeometry"/>'s bounds
+            </summary>
+        </member>
+        <member name="P:Photon.Media.LineGeometry.Points">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.Geometry"/>
+            </summary>
         </member>
         <member name="P:Photon.Media.LineGeometry.StartPoint">
             <summary>
@@ -3850,6 +4055,12 @@
             Gets or sets the end <see cref="T:Photon.Media.Point"/> of the line segment
             </summary>
         </member>
+        <member name="M:Photon.Media.LineSegment.ToPoints">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.LineSegment"/>
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.LineSegment"/></returns>
+        </member>
         <member name="T:Photon.Media.PathFigure">
             <summary>
             Represents a subsection of a geometry, a single connected series of two-dimensional geometric segments
@@ -3870,6 +4081,12 @@
             Gets a collection of the <see cref="T:Photon.Media.PathSegment"/>s the <see cref="T:Photon.Media.PathFigure"/> is made of
             </summary>
         </member>
+        <member name="M:Photon.Media.PathFigure.ToPoints">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.PathSegment"/>s contained by the <see cref="T:Photon.Media.PathFigure"/>
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.PathSegment"/>s contained by the <see cref="T:Photon.Media.PathFigure"/></returns>
+        </member>
         <member name="T:Photon.Media.PathGeometry">
             <summary>
             Represents a complex shape that may be composed of arcs, curves, ellipses, lines, and rectangles
@@ -3878,6 +4095,16 @@
         <member name="M:Photon.Media.PathGeometry.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Photon.Media.PathGeometry"/> class
+            </summary>
+        </member>
+        <member name="P:Photon.Media.PathGeometry.Bounds">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the <see cref="T:Photon.Media.RectangleGeometry"/>'s bounds
+            </summary>
+        </member>
+        <member name="P:Photon.Media.PathGeometry.Points">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.Geometry"/>
             </summary>
         </member>
         <member name="P:Photon.Media.PathGeometry.Figures">
@@ -3907,134 +4134,299 @@
             Gets or sets the collection of <see cref="T:Photon.Media.Point"/> structures that defines this <see cref="T:Photon.Media.PolyLineSegment"/> object
             </summary>
         </member>
-        <member name="T:Photon.Media.Vertex`1">
+        <member name="M:Photon.Media.PolyLineSegment.ToPoints">
             <summary>
-            The <see cref="T:Photon.Media.Vertex`1"/> structure describes the position of a point in 2D or 3D space
+            Gets an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.PolyLineSegment"/>s contained by the <see cref="T:Photon.Media.PathSegmentCollection"/>
             </summary>
-            <typeparam name="T">The type of the x, y and z values wrapped by the <see cref="T:Photon.Media.Vertex`1"/>.<para></para>
-            The available types to choose from are short, int, double and float</typeparam>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.PolyLineSegment"/>s contained by the <see cref="T:Photon.Media.PathSegmentCollection"/></returns>
         </member>
-        <member name="M:Photon.Media.Vertex`1.#ctor(`0,`0)">
+        <member name="T:Photon.Media.RectangleGeometry">
             <summary>
-            Initializes a new <see cref="T:Photon.Media.Vertex`1"/> based on both the specified x and y values
-            </summary>
-            <param name="x">An object representing the horizontal axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/></param>
-            <param name="y">An object representing the vertical axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/></param>
-        </member>
-        <member name="M:Photon.Media.Vertex`1.#ctor(`0,`0,`0)">
-            <summary>
-            Initializes a new <see cref="T:Photon.Media.Vertex`1"/> based on both the specified x and y values
-            </summary>
-            <param name="x">An object representing the horizontal axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/></param>
-            <param name="y">An object representing the vertical axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/></param>
-            <param name="z">An object representing the depth value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/></param>
-        </member>
-        <member name="P:Photon.Media.Vertex`1.X">
-            <summary>
-            Gets an object representing the horizontal axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/>
+            Describes a two-dimensional rectangle
             </summary>
         </member>
-        <member name="P:Photon.Media.Vertex`1.Y">
+        <member name="M:Photon.Media.RectangleGeometry.#ctor">
             <summary>
-            Gets an object representing the vertical axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/>
+            The default constructor for the <see cref="T:Photon.Media.RectangleGeometry"/> class
             </summary>
         </member>
-        <member name="P:Photon.Media.Vertex`1.Z">
+        <member name="M:Photon.Media.RectangleGeometry.#ctor(Photon.Media.Rectangle)">
             <summary>
-            Gets an object representing the depth value of the position wrapped by the <see cref="T:Photon.Media.Vertex`1"/>
+            Initialies a new <see cref="T:Photon.Media.RectangleGeometry"/> based on the specified <see cref="T:Photon.Media.Rectangle"/>
+            </summary>
+            <param name="rect"></param>
+        </member>
+        <member name="P:Photon.Media.RectangleGeometry.Bounds">
+            <summary>
+            Gets a <see cref="T:Photon.Media.Rectangle"/> representing the <see cref="T:Photon.Media.RectangleGeometry"/>'s bounds
             </summary>
         </member>
-        <member name="P:Photon.Media.Vertex`1.Stride">
+        <member name="P:Photon.Media.RectangleGeometry.Points">
             <summary>
-            Gets an int representing the <see cref="T:Photon.Media.Vertex`1"/>'s size, in bytes 
+            Gets a <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.Geometry"/>
             </summary>
         </member>
-        <member name="P:Photon.Media.Vertex`1.PointerType">
+        <member name="P:Photon.Media.RectangleGeometry.Rect">
             <summary>
-            Gets the <see cref="T:OpenTK.Graphics.OpenGL.VertexPointerType"/> corresponding to the <see cref="T:Photon.Media.Vertex`1"/> generic type argument
+            Gets/sets the dimensions if the <see cref="T:Photon.Media.RectangleGeometry"/>
             </summary>
         </member>
-        <member name="T:Photon.Media.VertexBufferObject`1">
+        <member name="M:Photon.Media.RectangleGeometry.FillContains(Photon.Media.Point)">
             <summary>
-            Also known as VBO, the <see cref="T:Photon.Media.VertexBufferObject`1"/> provides methods for uploading vertex data (position, normal vector, color, etc.) to the video device for non-immediate-mode rendering. 
+            Returns a boolean indicating whether or not the specified <see cref="T:Photon.Media.Point"/> is contained by the <see cref="T:Photon.Media.Geometry"/>
+            </summary>
+            <param name="point">The <see cref="T:Photon.Media.Point"/> to test</param>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Media.Texture">
+            <summary>
+            Represents a <see cref="P:Photon.Media.Texture.Bitmap"/> that can be painted to a geometry
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Texture.#ctor(System.Drawing.Bitmap)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Texture"/> based on the specified file/resource <see cref="T:System.Uri"/>
+            </summary>
+            <param name="bitmap">The <see cref="P:Photon.Media.Texture.Bitmap"/>to create the <see cref="T:Photon.Media.Texture"/> from</param>
+        </member>
+        <member name="P:Photon.Media.Texture.Id">
+            <summary>
+            Gets an integer representing the id assigned by OpenGL to the <see cref="T:Photon.Media.Texture"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Texture.Target">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Texture"/>'s <see cref="T:OpenTK.Graphics.OpenGL.TextureTarget"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Texture.MinFilter">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Texture"/>'s <see cref="T:OpenTK.Graphics.OpenGL.TextureMinFilter"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Texture.MagFilter">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Texture"/>'s <see cref="T:OpenTK.Graphics.OpenGL.TextureMagFilter"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Texture.WrapFilter">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Texture"/>'s <see cref="T:Photon.Media.TextureWrapFilter"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Texture.Bitmap">
+            <summary>
+            Gets the <see cref="P:Photon.Media.Texture.Bitmap"/> the <see cref="T:Photon.Media.Texture"/> has beeen created from
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Texture.IsLoaded">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Media.Texture"/> has been loaded
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Texture.Load">
+            <summary>
+            Initializes the texture if is hasn't already been done
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Texture.Dispose">
+            <summary>
+            Disposes of the <see cref="T:Photon.Media.Texture"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Texture.FromBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Returns a <see cref="T:Photon.Media.Texture"/> based on the specified <see cref="P:Photon.Media.Texture.Bitmap"/>
+            </summary>
+            <param name="bitmap">The <see cref="P:Photon.Media.Texture.Bitmap"/> to create a <see cref="T:Photon.Media.Texture"/> from</param>
+            <returns>The loaded <see cref="T:Photon.Media.Texture"/></returns>
+        </member>
+        <member name="M:Photon.Media.Texture.FromUri(System.Uri)">
+            <summary>
+            Returns a new <see cref="T:Photon.Media.Texture"/> based on the specified <see cref="T:System.Drawing.Bitmap"/>'s file/resource <see cref="T:System.Uri"/>
+            </summary>
+            <param name="uri">The file/resource <see cref="T:System.Uri"/> of the <see cref="T:System.Drawing.Bitmap"/> to create the <see cref="T:Photon.Media.Texture"/> from</param>
+            <returns></returns>
+        </member>
+        <member name="T:Photon.Media.Vertex">
+            <summary>
+            The <see cref="T:Photon.Media.Vertex"/> structure describes the position of a point in 2D or 3D space
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Vertex.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Vertex"/> based on both the specified x and y values
+            </summary>
+            <param name="x">An object representing the horizontal axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex"/></param>
+            <param name="y">An object representing the vertical axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex"/></param>
+        </member>
+        <member name="M:Photon.Media.Vertex.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Vertex"/> based on both the specified x and y values
+            </summary>
+            <param name="x">An object representing the horizontal axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex"/></param>
+            <param name="y">An object representing the vertical axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex"/></param>
+            <param name="z">An object representing the depth value of the position wrapped by the <see cref="T:Photon.Media.Vertex"/></param>
+        </member>
+        <member name="P:Photon.Media.Vertex.X">
+            <summary>
+            Gets an double representing the horizontal axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Vertex.Y">
+            <summary>
+            Gets an double representing the vertical axis value of the position wrapped by the <see cref="T:Photon.Media.Vertex"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Vertex.Z">
+            <summary>
+            Gets an double representing the depth value of the position wrapped by the <see cref="T:Photon.Media.Vertex"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Vertex.op_Implicit(Photon.Media.Point)~Photon.Media.Vertex">
+            <summary>
+            Returns a new <see cref="T:Photon.Media.Vertex"/> instance based on the specified <see cref="T:Photon.Media.Point"/>
+            </summary>
+            <param name="point">The <see cref="T:Photon.Media.Point"/> to convert to a <see cref="T:Photon.Media.Vertex"/></param>
+        </member>
+        <member name="P:Photon.Media.Vertex.Stride">
+            <summary>
+            Gets an int representing the <see cref="T:Photon.Media.Vertex"/>'s size, in bytes 
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Vertex.PointerType">
+            <summary>
+            Gets the <see cref="T:OpenTK.Graphics.OpenGL.VertexPointerType"/> corresponding to the <see cref="T:Photon.Media.Vertex"/> generic type argument
+            </summary>
+        </member>
+        <member name="T:Photon.Media.VertexBufferObject">
+            <summary>
+            Also known as VBO, the <see cref="T:Photon.Media.VertexBufferObject"/> provides methods for uploading vertex data (position, normal vector, color, etc.) to the video device for non-immediate-mode rendering. 
             VBOs offer substantial performance gains over immediate mode rendering primarily because the data resides in the video device memory rather than the system memory and so it can be rendered directly by the video device
             </summary>
-            <typeparam name="T">The type of the x, y and z values wrapped by the <see cref="T:Photon.Media.Vertex`1"/> instances to be contained by the <see cref="T:Photon.Media.VertexBufferObject`1"/></typeparam>
         </member>
-        <member name="M:Photon.Media.VertexBufferObject`1.#ctor(System.Int32,System.Int32)">
+        <member name="M:Photon.Media.VertexBufferObject.#ctor(System.Int32,System.Int32,OpenTK.Graphics.OpenGL.PrimitiveType)">
             <summary>
-            Initializes a new <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            Initializes a new <see cref="T:Photon.Media.VertexBufferObject"/>
             </summary>
+            <param name="vertexBufferLength">The lenght of the vertex buffer</param>
+            <param name="elementBufferLength">The lenght of the element buffer</param>
+            <param name="primitiveType">The <see cref="T:OpenTK.Graphics.OpenGL.PrimitiveType"/> used to render the <see cref="T:Photon.Media.VertexBufferObject"/></param>
         </member>
-        <member name="F:Photon.Media.VertexBufferObject`1.VertexBufferLength">
+        <member name="F:Photon.Media.VertexBufferObject.VertexBufferLength">
             <summary>
             Represents the initial length of the VertexBufferObject
             </summary>
         </member>
-        <member name="F:Photon.Media.VertexBufferObject`1.ElementBufferLength">
+        <member name="F:Photon.Media.VertexBufferObject.ElementBufferLength">
             <summary>
             Represents the initial length of the ElementBufferObject
             </summary>
         </member>
-        <member name="F:Photon.Media.VertexBufferObject`1.VertexBufferObjectId">
+        <member name="F:Photon.Media.VertexBufferObject.VertexBufferObjectId">
             <summary>
             Represents the id of the vertex buffer index
             </summary>
         </member>
-        <member name="F:Photon.Media.VertexBufferObject`1.ElementBufferObjectId">
+        <member name="F:Photon.Media.VertexBufferObject.ElementBufferObjectId">
             <summary>
             Represents the id of the element buffer object
             </summary>
         </member>
-        <member name="F:Photon.Media.VertexBufferObject`1.Vertices">
+        <member name="F:Photon.Media.VertexBufferObject.Vertices">
             <summary>
-            An array of <see cref="T:Photon.Media.Vertex`1"/> instances contained by the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            An array of <see cref="T:Photon.Media.Vertex"/> instances contained by the <see cref="T:Photon.Media.VertexBufferObject"/>
             </summary>
         </member>
-        <member name="F:Photon.Media.VertexBufferObject`1.Indices">
+        <member name="F:Photon.Media.VertexBufferObject.Indices">
             <summary>
-            Represents the indices contained by the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            Represents the indices contained by the <see cref="T:Photon.Media.VertexBufferObject"/>
             </summary>
         </member>
-        <member name="P:Photon.Media.VertexBufferObject`1.PrimitiveType">
+        <member name="P:Photon.Media.VertexBufferObject.PrimitiveType">
             <summary>
-            Gets/sets the <see cref="T:OpenTK.Graphics.OpenGL.PrimitiveType"/> used to render the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            Gets/sets the <see cref="T:OpenTK.Graphics.OpenGL.PrimitiveType"/> used to render the <see cref="T:Photon.Media.VertexBufferObject"/>
             </summary>
         </member>
-        <member name="M:Photon.Media.VertexBufferObject`1.Initialize">
+        <member name="M:Photon.Media.VertexBufferObject.Initialize">
             <summary>
-            Initializes the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            Initializes the <see cref="T:Photon.Media.VertexBufferObject"/>
             </summary>
         </member>
-        <member name="M:Photon.Media.VertexBufferObject`1.SetVertex(System.Int32,Photon.Media.Vertex{`0})">
+        <member name="M:Photon.Media.VertexBufferObject.SetVertex(System.Int32,Photon.Media.Vertex)">
             <summary>
-            Replaces the <see cref="T:Photon.Media.Vertex`1"/> at the specified index by the specified <see cref="T:Photon.Media.Vertex`1"/>
+            Replaces the <see cref="T:Photon.Media.Vertex"/> at the specified index by the specified <see cref="T:Photon.Media.Vertex"/>
             </summary>
             <param name="vertexIndex">The index of the vertex to replace</param>
-            <param name="vertex">The <see cref="T:Photon.Media.Vertex`1"/> used to replace the <see cref="T:Photon.Media.Vertex`1"/> at the specified index</param>
+            <param name="vertex">The <see cref="T:Photon.Media.Vertex"/> used to replace the <see cref="T:Photon.Media.Vertex"/> at the specified index</param>
         </member>
-        <member name="M:Photon.Media.VertexBufferObject`1.SetVertices(Photon.Media.Vertex{`0}[])">
+        <member name="M:Photon.Media.VertexBufferObject.SetVertices(Photon.Media.Vertex[])">
             <summary>
-            Sets the array of <see cref="T:Photon.Media.Vertex`1"/> associated with the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            Sets the array of <see cref="T:Photon.Media.Vertex"/> associated with the <see cref="T:Photon.Media.VertexBufferObject"/>
             </summary>
-            <param name="vertices">The array of <see cref="T:Photon.Media.Vertex`1"/> to upload to the <see cref="T:Photon.Media.VertexBufferObject`1"/></param>
+            <param name="vertices">The array of <see cref="T:Photon.Media.Vertex"/> to upload to the <see cref="T:Photon.Media.VertexBufferObject"/></param>
         </member>
-        <member name="M:Photon.Media.VertexBufferObject`1.SetIndice(System.Int32,System.UInt16)">
+        <member name="M:Photon.Media.VertexBufferObject.SetIndice(System.Int32,System.UInt16)">
             <summary>
             Replaces the indice at the specified index by the specified value
             </summary>
             <param name="indiceIndex">The index of the indice to replace</param>
             <param name="indice">The indice used to replace the indice at the specified index</param>
         </member>
-        <member name="M:Photon.Media.VertexBufferObject`1.SetIndices(System.UInt16[])">
+        <member name="M:Photon.Media.VertexBufferObject.SetIndices(System.UInt16[])">
             <summary>
             Sets the array of indices associated with the element buffer object
             </summary>
             <param name="indices">The array of indices to upload to the element buffer object</param>
         </member>
-        <member name="M:Photon.Media.VertexBufferObject`1.Render">
+        <member name="M:Photon.Media.VertexBufferObject.Render">
             <summary>
-            Renders the <see cref="T:Photon.Media.VertexBufferObject`1"/>
+            Renders the <see cref="T:Photon.Media.VertexBufferObject"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.VertexBufferObject.Dispose">
+            <summary>
+            Disposes of the <see cref="T:Photon.Media.VertexBufferObject"/> and of all its resources
+            </summary>
+        </member>
+        <member name="T:Photon.Media.CacheMode">
+            <summary>
+            Describes the way a <see cref="T:Photon.Visual"/> is cached by Photon
+            </summary>
+        </member>
+        <member name="F:Photon.Media.CacheMode.NoCache">
+            <summary>
+            The <see cref="T:Photon.Visual"/> is not cached
+            </summary>
+        </member>
+        <member name="F:Photon.Media.CacheMode.Cache">
+            <summary>
+            The <see cref="T:Photon.Visual"/> generates a unique <see cref="T:Photon.Media.Drawing"/> instance that is never updated
+            </summary>
+        </member>
+        <member name="F:Photon.Media.CacheMode.DynamicCache">
+            <summary>
+            The <see cref="T:Photon.Visual"/> generates a new <see cref="T:Photon.Media.Drawing"/> only when the <see cref="M:Photon.Visual.InvalidateVisual"/> method is called
+            </summary>
+        </member>
+        <member name="T:Photon.Media.TextureWrapFilter">
+            <summary>
+            Defines the wrap filter to apply to a <see cref="T:Photon.Media.Texture"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Media.TextureWrapFilter.Repeat">
+            <summary>
+            The <see cref="T:Photon.Media.Texture"/> will be repeated on the surface
+            </summary>
+        </member>
+        <member name="F:Photon.Media.TextureWrapFilter.Clamp">
+            <summary>
+            The <see cref="T:Photon.Media.Texture"/> will be skewed to fit the surface's bounds
+            </summary>
+        </member>
+        <member name="F:Photon.Media.TextureWrapFilter.ClampToEdge">
+            <summary>
+            Same as <see cref="F:Photon.Media.TextureWrapFilter.Clamp"/>, but gets rid of some artifacts on the borders
             </summary>
         </member>
         <member name="T:Photon.Media.ColorExtensions">
@@ -4087,6 +4479,11 @@
             This class represents a brush that paints an area with an image
             </summary>
         </member>
+        <member name="F:Photon.Media.ImageBrush._ActiveDrawing">
+            <summary>
+            Gets the drawing that the <see cref="T:Photon.Media.ImageBrush"/> is currently used to render
+            </summary>
+        </member>
         <member name="M:Photon.Media.ImageBrush.#ctor">
             <summary>
             Initializes a new <see cref="T:Photon.Media.ImageBrush"/>
@@ -4108,17 +4505,40 @@
             Gets/Sets the <see cref="T:System.Drawing.Bitmap"/> reprenting the image to paint
             </summary>
         </member>
-        <member name="M:Photon.Media.ImageBrush.Use(Photon.Media.Rectangle)">
+        <member name="P:Photon.Media.ImageBrush.Texture">
             <summary>
-            Uses the brush to paint a geometry
+            Gets the <see cref="T:Photon.Media.Texture"/> created based on the <see cref="T:System.Drawing.Bitmap"/> returned by the <see cref="P:Photon.Media.ImageBrush.Image"/> 
             </summary>
-            <param name="geometryBounds">The <see cref="T:Photon.Media.Rectangle"/> representing the geometry's bounds</param>
+        </member>
+        <member name="M:Photon.Media.ImageBrush.OnPropertyChanged(System.String,System.Object,System.Object)">
+            <summary>
+            When overriden in a class, this method provides means to run code whenever a <see cref="T:Photon.DependencyProperty"/> has changed
+            </summary>
+            <param name="propertyName">The case sensitive name of the modified property</param>
+            <param name="originalValue">An object representing the property's value before the suffered change(s)</param>
+            <param name="value">An object representing the property's actual (new) value</param>
+        </member>
+        <member name="M:Photon.Media.ImageBrush.BeginUse(Photon.Media.Drawing)">
+            <summary>
+            Begins using the <see cref="T:Photon.Media.Brush"/> to paint a geometry. Must be followed by a call to the <see cref="M:Photon.Media.Brush.EndUse"/> method
+            </summary>
+            <param name="drawing">The <see cref="T:Photon.Media.Drawing"/> to render</param>
+        </member>
+        <member name="M:Photon.Media.ImageBrush.EndUse">
+            <summary>
+            Ends using the <see cref="T:Photon.Media.Brush"/>
+            </summary>
         </member>
         <member name="M:Photon.Media.ImageBrush.Clone">
             <summary>
             Clones the brush
             </summary>
             <returns>The clone of the <see cref="T:Photon.Media.Brush"/></returns>
+        </member>
+        <member name="M:Photon.Media.ImageBrush.Dispose">
+            <summary>
+            Disposes of the <see cref="T:Photon.Media.ImageBrush"/> and its resources
+            </summary>
         </member>
         <member name="T:Photon.Media.MouseCursor">
             <summary>
@@ -4324,7 +4744,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Photon.Media.Rectangle.Empty">
+        <member name="M:Photon.Media.Rectangle.ToGeometry">
+            <summary>
+            Returns a new <see cref="T:Photon.Media.Geometry"/> based on the rectangle
+            </summary>
+            <returns>A new <see cref="T:Photon.Media.Geometry"/> based on the rectangle</returns>
+        </member>
+        <member name="P:Photon.Media.Rectangle.Empty">
             <summary>
             An empty (default) instance of the rectangle struct
             </summary>
@@ -4388,11 +4814,16 @@
             Gets/Sets the <see cref="T:System.Drawing.Color"/> associated with the brush
             </summary>
         </member>
-        <member name="M:Photon.Media.SolidColorBrush.Use(Photon.Media.Rectangle)">
+        <member name="M:Photon.Media.SolidColorBrush.BeginUse(Photon.Media.Drawing)">
             <summary>
-            Uses the brush to paint a geometry
+            Begins using the <see cref="T:Photon.Media.Brush"/> to paint a geometry. Must be followed by a call to the <see cref="M:Photon.Media.Brush.EndUse"/> method
             </summary>
-            <param name="geometryBounds">The <see cref="T:Photon.Media.Rectangle"/> representing the geometry's bounds</param>
+            <param name="drawing">The <see cref="T:Photon.Media.Drawing"/> to render</param>
+        </member>
+        <member name="M:Photon.Media.SolidColorBrush.EndUse">
+            <summary>
+            Ends using the <see cref="T:Photon.Media.Brush"/>
+            </summary>
         </member>
         <member name="M:Photon.Media.SolidColorBrush.Clone">
             <summary>
@@ -4452,6 +4883,25 @@
             An empty (default) instance of the thickness struct
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:Photon.Media.IEnumerableExtensions">
+            <summary>
+            Defines extensions methods for the <see cref="T:System.Collections.Generic.IEnumerable`1"/> type
+            </summary>
+        </member>
+        <member name="M:Photon.Media.IEnumerableExtensions.GetBounds(System.Collections.Generic.IEnumerable{Photon.Media.Point})">
+            <summary>
+            Determines the <see cref="T:Photon.Media.Rectangle"/> bounds of the geometry the <see cref="T:Photon.Media.Point"/> instances held by this enumerable constitute
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Photon.Media.Point"/></param>
+            <returns>A <see cref="T:Photon.Media.Rectangle"/> representing the bounds of the geometry the <see cref="T:Photon.Media.Point"/> instances held by this enumerable constitute</returns>
+        </member>
+        <member name="M:Photon.Media.IEnumerableExtensions.ToVertexArray(System.Collections.Generic.IEnumerable{Photon.Media.Point})">
+            <summary>
+            Returns an array of <see cref="T:Photon.Media.Vertex"/> based on the <see cref="T:Photon.Media.Point"/>s contained by the <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            </summary>
+            <param name="extended">The extended <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Photon.Media.Point"/></param>
+            <returns>An array of <see cref="T:Photon.Media.Vertex"/> based on the <see cref="T:Photon.Media.Point"/>s contained by the <see cref="T:System.Collections.Generic.IEnumerable`1"/></returns>
         </member>
         <member name="T:Photon.Media.StringExtensions">
             <summary>
@@ -4748,6 +5198,11 @@
             Provides services for managing the queue of work items for a <see cref="T:System.Threading.Thread"/>
             </summary>
         </member>
+        <member name="F:Photon.Threading.Dispatcher.ActiveContext">
+            <summary>
+            The active <see cref="T:Photon.Threading.DispatcherContext"/>
+            </summary>
+        </member>
         <member name="M:Photon.Threading.Dispatcher.#ctor">
             <summary>
             Initializes a new <see cref="T:Photon.Threading.Dispatcher"/>
@@ -4758,21 +5213,101 @@
             Gets the <see cref="T:Photon.Threading.DispatcherContext"/> associated with the <see cref="T:Photon.Threading.Dispatcher"/>
             </summary>
         </member>
-        <member name="M:Photon.Threading.Dispatcher.Invoke(System.Delegate,Photon.Threading.DispatcherPriority,System.Object[])">
+        <member name="M:Photon.Threading.Dispatcher.Invoke(Photon.Threading.DispatcherPriority,System.Delegate,System.Object[])">
             <summary>
-            Executes the specified Action synchronously on the thread the <see cref="T:Photon.Threading.Dispatcher"/> is associated with
+            Executes the specified <see cref="T:System.Delegate"/> synchronously on the thread the <see cref="T:Photon.Threading.Dispatcher"/> is associated with
             </summary>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Delegate"/></param>
             <param name="delegateMethod">The <see cref="T:System.Delegate"/> to execute</param>
-            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Action"/></param>
-            <param name="args">An array of object containg the ordered parameters of the <see cref="T:System.Action"/> to execute</param>
+            <param name="args">An array of object containg the ordered parameters of the <see cref="T:System.Delegate"/> to execute</param>
         </member>
-        <member name="M:Photon.Threading.Dispatcher.BeginInvoke(System.Delegate,Photon.Threading.DispatcherPriority,System.Object[])">
+        <member name="M:Photon.Threading.Dispatcher.Invoke(Photon.Threading.DispatcherPriority,System.Action)">
             <summary>
-            Executes the specified <see cref="T:System.Action"/> asynchronously with the specified arguments, at the specified <see cref="T:Photon.Threading.DispatcherPriority"/>, on the thread that the <see cref="T:Photon.Threading.Dispatcher"/> was created on
+            Executes the specified <see cref="T:System.Action"/> synchronously on the thread the <see cref="T:Photon.Threading.Dispatcher"/> is associated with
             </summary>
-            <param name="delegateMethod">The <see cref="T:System.Delegate"/> to execute</param>
             <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Action"/></param>
-            <param name="args">An array of object containg the ordered parameters of the <see cref="T:System.Action"/> to execute</param>
+            <param name="action">The <see cref="T:System.Delegate"/> to execute</param>
+        </member>
+        <member name="M:Photon.Threading.Dispatcher.Invoke``1(Photon.Threading.DispatcherPriority,System.Action{``0},``0)">
+            <summary>
+            Executes the specified <see cref="T:System.Action"/> synchronously on the thread the <see cref="T:Photon.Threading.Dispatcher"/> is associated with
+            </summary>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Action"/></param>
+            <param name="action">The <see cref="T:System.Delegate"/> to execute</param>
+            <param name="argument">The <see cref="T:System.Action`1"/>'s argument</param>
+            <typeparam name="T">The type of the <see cref="T:System.Action`1"/> parameter</typeparam>
+        </member>
+        <member name="M:Photon.Threading.Dispatcher.Invoke``2(Photon.Threading.DispatcherPriority,System.Action{``0,``1},``0,``1)">
+            <summary>
+            Executes the specified <see cref="T:System.Action`2"/> synchronously on the thread the <see cref="T:Photon.Threading.Dispatcher"/> is associated with
+            </summary>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Action"/></param>
+            <param name="action">The <see cref="T:System.Delegate"/> to execute</param>
+            <param name="argument1">The <see cref="T:System.Action`2"/>'s first argument</param>
+            <param name="argument2">The <see cref="T:System.Action`2"/>'s second argument</param>
+            <typeparam name="T1">The type of the <see cref="T:System.Action`2"/>'s first parameter</typeparam>
+            <typeparam name="T2">The type of the <see cref="T:System.Action`2"/>'s second parameter</typeparam>
+        </member>
+        <member name="M:Photon.Threading.Dispatcher.Invoke``3(Photon.Threading.DispatcherPriority,System.Action{``0,``1,``2},``0,``1,``2)">
+            <summary>
+            Executes the specified <see cref="T:System.Action`3"/> synchronously on the thread the <see cref="T:Photon.Threading.Dispatcher"/> is associated with
+            </summary>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Action"/></param>
+            <param name="action">The <see cref="T:System.Delegate"/> to execute</param>
+            <param name="argument1">The <see cref="T:System.Action`3"/>'s first argument</param>
+            <param name="argument2">The <see cref="T:System.Action`3"/>'s second argument</param>
+            <param name="argument3">The <see cref="T:System.Action`3"/>'s third argument</param>
+            <typeparam name="T1">The type of the <see cref="T:System.Action`3"/>'s first parameter</typeparam>
+            <typeparam name="T2">The type of the <see cref="T:System.Action`3"/>'s second parameter</typeparam>
+            <typeparam name="T3">The type of the <see cref="T:System.Action`3"/>'s third parameter</typeparam>
+        </member>
+        <member name="M:Photon.Threading.Dispatcher.BeginInvoke(Photon.Threading.DispatcherPriority,System.Delegate,System.Object[])">
+            <summary>
+            Executes the specified <see cref="T:System.Delegate"/> asynchronously with the specified arguments, at the specified <see cref="T:Photon.Threading.DispatcherPriority"/>, on the thread that the <see cref="T:Photon.Threading.Dispatcher"/> was created on
+            </summary>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Delegate"/></param>
+            <param name="delegateMethod">The <see cref="T:System.Delegate"/> to execute</param>
+            <param name="args">An array of object containg the ordered parameters of the <see cref="T:System.Delegate"/> to execute</param>
+        </member>
+        <member name="M:Photon.Threading.Dispatcher.BeginInvoke(Photon.Threading.DispatcherPriority,System.Action)">
+            <summary>
+            Executes the specified <see cref="T:System.Action"/> asynchronously at the specified <see cref="T:Photon.Threading.DispatcherPriority"/>, on the thread that the <see cref="T:Photon.Threading.Dispatcher"/> was created on
+            </summary>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Action"/></param>
+            <param name="action">The <see cref="T:System.Action"/> to execute</param>
+        </member>
+        <member name="M:Photon.Threading.Dispatcher.BeginInvoke``1(Photon.Threading.DispatcherPriority,System.Action{``0},``0)">
+            <summary>
+            Executes the specified <see cref="T:System.Action`1"/> asynchronously at the specified <see cref="T:Photon.Threading.DispatcherPriority"/>, on the thread that the <see cref="T:Photon.Threading.Dispatcher"/> was created on
+            </summary>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Action"/></param>
+            <param name="action">The <see cref="T:System.Action`1"/> to execute</param>
+            <param name="argument">The <see cref="T:System.Action`1"/>'s argument</param>
+            <typeparam name="T">The type of the <see cref="T:System.Action`1"/>'s parameter</typeparam>
+        </member>
+        <member name="M:Photon.Threading.Dispatcher.BeginInvoke``2(Photon.Threading.DispatcherPriority,System.Action{``0,``1},``0,``1)">
+            <summary>
+            Executes the specified <see cref="T:System.Action`2"/> asynchronously at the specified <see cref="T:Photon.Threading.DispatcherPriority"/>, on the thread that the <see cref="T:Photon.Threading.Dispatcher"/> was created on
+            </summary>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Action"/></param>
+            <param name="action">The <see cref="T:System.Action`2"/> to execute</param>
+            <param name="argument1">The <see cref="T:System.Action`2"/>'s first argument</param>
+            <param name="argument2">The <see cref="T:System.Action`2"/>'s second argument</param>
+            <typeparam name="T1">The type of the <see cref="T:System.Action`2"/>'s first parameter</typeparam>
+            <typeparam name="T2">The type of the <see cref="T:System.Action`2"/>'s second parameter</typeparam>
+        </member>
+        <member name="M:Photon.Threading.Dispatcher.BeginInvoke``3(Photon.Threading.DispatcherPriority,System.Action{``0,``1,``2},``0,``1,``2)">
+            <summary>
+            Executes the specified <see cref="T:System.Action`3"/> asynchronously at the specified <see cref="T:Photon.Threading.DispatcherPriority"/>, on the thread that the <see cref="T:Photon.Threading.Dispatcher"/> was created on
+            </summary>
+            <param name="priority">The <see cref="T:Photon.Threading.DispatcherPriority"/> at which to execute the specified <see cref="T:System.Action"/></param>
+            <param name="action">The <see cref="T:System.Action`3"/> to execute</param>
+            <param name="argument1">The <see cref="T:System.Action`3"/>'s first argument</param>
+            <param name="argument2">The <see cref="T:System.Action`3"/>'s second argument</param>
+            <param name="argument3">The <see cref="T:System.Action`3"/>'s third argument</param>
+            <typeparam name="T1">The type of the <see cref="T:System.Action`3"/>'s first parameter</typeparam>
+            <typeparam name="T2">The type of the <see cref="T:System.Action`3"/>'s second parameter</typeparam>
+            <typeparam name="T3">The type of the <see cref="T:System.Action`3"/>'s third parameter</typeparam>
         </member>
         <member name="T:Photon.Threading.DispatcherContext">
             <summary>
@@ -4790,23 +5325,30 @@
             The <see cref="T:Photon.Threading.PriorityQueue`1"/> of <see cref="T:Photon.Threading.DispatcherOperation"/>s queued in the <see cref="T:Photon.Threading.DispatcherContext"/>
             </summary>
         </member>
-        <member name="M:Photon.Threading.DispatcherContext.#ctor">
-            <summary>
-            Initializes a new <see cref="T:Photon.Threading.DispatcherContext"/> synchronized with the current <see cref="T:System.Threading.Thread"/><para></para>
-            When using this constructor, the <see cref="!:DispatcherContext.DispatchOperations"/> method will have to be explicitly called by the <see cref="T:System.Threading.Thread"/> it is synchronized with
-            </summary>
+        <member name="M:Photon.Threading.DispatcherContext.#ctor(Photon.Threading.Dispatcher)">
+             <summary>
+             Initializes a new <see cref="T:Photon.Threading.DispatcherContext"/> synchronized with the current <see cref="T:System.Threading.Thread"/><para></para>
+             When using this constructor, the <see cref="M:Photon.Threading.DispatcherContext.ExecuteOperations(System.Object)"/> method will have to be explicitly called by the <see cref="T:System.Threading.Thread"/> it is synchronized with
+             </summary>
+            <param name="owner">The <see cref="T:Photon.Threading.Dispatcher"/> that owns the <see cref="T:Photon.Threading.DispatcherContext"/></param>
         </member>
-        <member name="M:Photon.Threading.DispatcherContext.#ctor(System.Threading.ApartmentState)">
-            <summary>
-            Initialies a new <see cref="T:Photon.Threading.DispatcherContext"/> synchronized with a new <see cref="T:System.Threading.Thread"/> instance
-            </summary>
-            <param name="threadApartmentState">The <see cref="T:System.Threading.ApartmentState"/> of the <see cref="T:Photon.Threading.Dispatcher"/>'s <see cref="T:System.Threading.Thread"/></param>
+        <member name="M:Photon.Threading.DispatcherContext.#ctor(Photon.Threading.Dispatcher,System.Threading.ApartmentState)">
+             <summary>
+             Initialies a new <see cref="T:Photon.Threading.DispatcherContext"/> synchronized with a new <see cref="T:System.Threading.Thread"/> instance
+             </summary>
+             <param name="threadApartmentState">The <see cref="T:System.Threading.ApartmentState"/> of the <see cref="T:Photon.Threading.Dispatcher"/>'s <see cref="T:System.Threading.Thread"/></param>
+            <param name="owner">The <see cref="T:Photon.Threading.Dispatcher"/> that owns the <see cref="T:Photon.Threading.DispatcherContext"/></param>
         </member>
         <member name="M:Photon.Threading.DispatcherContext.#ctor(Photon.Threading.DispatcherContext)">
             <summary>
             Initialies a new <see cref="T:Photon.Threading.DispatcherContext"/> synchronized based on the specified <see cref="T:Photon.Threading.DispatcherContext"/> instance
             </summary>
             <param name="sourceContext">The source <see cref="T:Photon.Threading.DispatcherContext"/> the <see cref="T:Photon.Threading.DispatcherContext"/> to create is based on</param>
+        </member>
+        <member name="P:Photon.Threading.DispatcherContext.Owner">
+            <summary>
+            Gets the <see cref="T:Photon.Threading.Dispatcher"/> that owns the <see cref="T:Photon.Threading.DispatcherContext"/>
+            </summary>
         </member>
         <member name="M:Photon.Threading.DispatcherContext.Send(System.Threading.SendOrPostCallback,System.Object)">
             <summary>
@@ -4838,6 +5380,11 @@
             Executes the specified <see cref="T:Photon.Threading.DispatcherOperation"/>
             </summary>
             <param name="state">The state associated with the <see cref="M:Photon.Threading.DispatcherContext.ExecuteOperation(System.Object)"/> method call, that is a <see cref="T:Photon.Threading.DispatcherOperation"/></param>
+        </member>
+        <member name="P:Photon.Threading.DispatcherContext.Current">
+            <summary>
+            Gets the <see cref="T:Photon.Threading.DispatcherContext"/> for the current <see cref="T:System.Threading.Thread"/>
+            </summary>
         </member>
         <member name="T:Photon.Threading.DispatcherOperation">
             <summary>

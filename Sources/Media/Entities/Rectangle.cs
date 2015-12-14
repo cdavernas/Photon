@@ -179,12 +179,24 @@ namespace Photon.Media
         }
 
         /// <summary>
+        /// Returns a new <see cref="Media.Geometry"/> based on the rectangle
+        /// </summary>
+        /// <returns>A new <see cref="Media.Geometry"/> based on the rectangle</returns>
+        public Geometry ToGeometry()
+        {
+            return new RectangleGeometry(this);
+        }
+
+        /// <summary>
         /// An empty (default) instance of the rectangle struct
         /// </summary>
         /// <returns></returns>
-        public static Rectangle Empty()
+        public static Rectangle Empty
         {
-            return new Rectangle();
+            get
+            {
+                return new Rectangle();
+            }
         }
 
     }

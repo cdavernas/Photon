@@ -15,6 +15,21 @@ namespace Photon.Media
            : Collection<PathSegment>
     {
 
+        /// <summary>
+        /// Gets an <see cref="IEnumerable{T}"/> of the <see cref="Point"/>s that define the <see cref="PathSegment"/>s contained by the <see cref="PathSegmentCollection"/>
+        /// </summary>
+        /// <returns>An <see cref="IEnumerable{T}"/> of the <see cref="Point"/>s that define the <see cref="PathSegment"/>s contained by the <see cref="PathSegmentCollection"/></returns>
+        public IEnumerable<Point> ToPoints()
+        {
+            List<Point> points;
+            points = new List<Point>();
+            foreach (PathSegment segment in this)
+            {
+                points.AddRange(segment.ToPoints());
+            }
+            return points;
+        }
+
     }
 
 }

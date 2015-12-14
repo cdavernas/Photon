@@ -53,10 +53,10 @@ namespace Photon.Media
         }
 
         /// <summary>
-        /// Uses the brush to paint a geometry
+        /// Begins using the <see cref="Brush"/> to paint a geometry. Must be followed by a call to the <see cref="Brush.EndUse"/> method
         /// </summary>
-        /// <param name="geometryBounds">The <see cref="Media.Rectangle"/> representing the geometry's bounds</param>
-        internal override void Use(Rectangle geometryBounds)
+        /// <param name="drawing">The <see cref="Drawing"/> to render</param>
+        internal override void BeginUse(Drawing drawing)
         {
             Color color;
             if (this.Opacity != 1)
@@ -71,6 +71,14 @@ namespace Photon.Media
         }
 
         /// <summary>
+        /// Ends using the <see cref="Brush"/>
+        /// </summary>
+        internal override void EndUse()
+        {
+            //Nothing to do
+        }
+
+        /// <summary>
         /// Clones the brush
         /// </summary>
         /// <returns>The clone of the <see cref="Brush"/></returns>
@@ -78,6 +86,7 @@ namespace Photon.Media
         {
             return new SolidColorBrush(this.Color) { Opacity = this.Opacity };
         }
+
 
     }
 
