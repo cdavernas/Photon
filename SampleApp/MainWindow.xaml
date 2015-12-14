@@ -2,7 +2,7 @@
         xmlns="clr-namespace:Photon;assembly=Photon"
         xmlns:ctrl="clr-namespace:Photon.Controls;assembly=Photon"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Background="C:\Users\Charles-Frédéric\Pictures\TestNext.jpg">
+        Background="Black">
 
     <Window.Resources>
         <ResourceDictionary>
