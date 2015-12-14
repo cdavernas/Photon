@@ -18,7 +18,7 @@ namespace Photon
         /// <summary>
         /// Gets a dictionary containing all of the element's <see cref="DependencyProperty"/> 
         /// </summary>
-        Dictionary<DependencyProperty, object> DependencyProperties { get; }
+        DependencyPropertyCollection DependencyProperties { get; }
 
         /// <summary>
         /// Gets a list containing all the <see cref="Media.Animations.AnimationClock"/> attached to the <see cref="IDependencyElement"/>

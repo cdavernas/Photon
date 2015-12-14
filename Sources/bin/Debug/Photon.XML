@@ -621,6 +621,18 @@
             When inherited by a class, generates a new <see cref="T:Photon.Media.Drawing"/> of the <see cref="T:Photon.Visual"/>
             </summary>
         </member>
+        <member name="T:Photon.DependencyPropertyCollection">
+            <summary>
+            Represents a <see cref="T:System.Collections.Generic.Dictionary`2"/> of a pair of a <see cref="T:Photon.DependencyProperty"/> and an object representing the property's value for the owner <see cref="T:Photon.DependencyObject"/>
+            </summary>
+        </member>
+        <member name="M:Photon.DependencyPropertyCollection.Contains(System.String)">
+            <summary>
+            Gets a boolean indicating whether or not the specified property full name (as returned by the <see cref="M:Photon.DependencyProperty.ToString"/> method) is found within the <see cref="T:Photon.DependencyPropertyCollection"/>
+            </summary>
+            <param name="propertyFullName">the specified property full name (as returned by the <see cref="M:Photon.DependencyProperty.ToString"/> method) to search for within the <see cref="T:Photon.DependencyPropertyCollection"/></param>
+            <returns>A boolean indicating whether or not the specified property full name (as returned by the <see cref="M:Photon.DependencyProperty.ToString"/> method) is found within the <see cref="T:Photon.DependencyPropertyCollection"/></returns>
+        </member>
         <member name="T:Photon.SetterBaseCollection">
             <summary>
             Represents a collection of <see cref="T:Photon.SetterBase"/> objects.
@@ -800,6 +812,23 @@
         <member name="P:Photon.EventTrigger.RoutedEvent">
             <summary>
             Gets or sets the <see cref="P:Photon.EventTrigger.RoutedEvent"/> that will activate the trigger
+            </summary>
+        </member>
+        <member name="T:Photon.PropertyPath">
+            <summary>
+            Implements a data structure for describing a property as a path below another property, or below an owning type. <para></para>
+            Property paths are used in data binding to objects, and in storyboards and timelines for animations
+            </summary>
+        </member>
+        <member name="M:Photon.PropertyPath.#ctor(System.Collections.Generic.IEnumerable{Photon.DependencyProperty})">
+            <summary>
+            Initializes a new <see cref="T:Photon.PropertyPath"/> based on the specified chain of <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+            <param name="propertyChain">An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the ordered <see cref="T:Photon.DependencyProperty"/> instances to navigate</param>
+        </member>
+        <member name="P:Photon.PropertyPath.PropertyChain">
+            <summary>
+            Gets an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the ordered <see cref="T:Photon.DependencyProperty"/> instances to navigate
             </summary>
         </member>
         <member name="T:Photon.ResourceDictionary">
@@ -3503,7 +3532,7 @@
         </member>
         <member name="E:Photon.Media.Animations.AnimationClock.Completed">
             <summary>
-            This event is fired whenever the animation is completed
+            When inherited by a class, this event is fired whenever all the children animation timelines are completed
             </summary>
         </member>
         <member name="M:Photon.Media.Animations.AnimationClock.#ctor">
@@ -3605,12 +3634,12 @@
         </member>
         <member name="P:Photon.Media.Animations.AnimationTimeline.TargetProperty">
             <summary>
-            Gets the <see cref="T:Photon.DependencyProperty"/> animated by the animation timeline
+            Gets the <see cref="T:Photon.PropertyPath"/> leading to the <see cref="T:Photon.DependencyProperty"/> animated by the <see cref="T:Photon.Media.Animations.AnimationTimeline"/>
             </summary>
         </member>
         <member name="P:Photon.Media.Animations.AnimationTimeline.Time">
             <summary>
-            Gets a <see cref="T:System.TimeSpan"/> indicating the time elasped since the animation timeline has begun
+            Gets a <see cref="T:System.TimeSpan"/> indicating the time elasped since the <see cref="T:Photon.Media.Animations.AnimationTimeline"/> has begun
             </summary>
         </member>
         <member name="P:Photon.Media.Animations.AnimationTimeline.OriginalValue">
@@ -3683,6 +3712,41 @@
             <param name="normalizedTime">A double representing the animation's normalized time (ranging from 0.0 to 1.0)</param>
             <returns></returns>
         </member>
+        <member name="T:Photon.Media.Animations.AnimationTimelineCollection">
+            <summary>
+            Represents a collection of <see cref="T:Photon.Media.Animations.AnimationTimeline"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Animations.ColorAnimation">
+            <summary>
+            Represents a <see cref="T:System.Drawing.Color"/> <see cref="T:Photon.Media.Animations.Animation`1"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.ColorAnimation.AlphaLength">
+            <summary>
+            The <see cref="T:Photon.Media.Animations.ColorAnimation"/>'s alpha channel difference between the values provided by the From and To properties
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.ColorAnimation.RedLength">
+            <summary>
+            The <see cref="T:Photon.Media.Animations.ColorAnimation"/>'s red channel difference between the values provided by the From and To properties
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.ColorAnimation.GreenLength">
+            <summary>
+            The <see cref="T:Photon.Media.Animations.ColorAnimation"/>'s green channel difference between the values provided by the From and To properties
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.ColorAnimation.BlueLength">
+            <summary>
+            The <see cref="T:Photon.Media.Animations.ColorAnimation"/>'s blue channel difference between the values provided by the From and To properties
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.ColorAnimation.OnRender">
+            <summary>
+            Allows the execution of code whenever the animation renders
+            </summary>
+        </member>
         <member name="T:Photon.Media.Animations.RepeatBehavior">
             <summary>
             Describes how a <see cref="T:Photon.Media.Animations.Animation`1"/> repeats its simple duration
@@ -3704,6 +3768,98 @@
             <summary>
             Gets a <see cref="T:Photon.Media.Animations.RepeatBehavior"/> that specifies an infinite number of repetitions.
             </summary>
+        </member>
+        <member name="T:Photon.Media.Animations.Storyboard">
+            <summary>
+            A <see cref="T:Photon.Media.Animations.AnimationClock"/> that provides object and property targeting information for its child animations
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Animations.Storyboard.RenderedFrames">
+            <summary>
+            Gets the amount of frames that have been rendered since the <see cref="T:Photon.Media.Animations.Storyboard"/> begun
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Animations.Storyboard.AnimationsCompleted">
+            <summary>
+            Gets the amount of <see cref="T:Photon.Media.Animations.AnimationTimeline"/>s that have completed since the <see cref="T:Photon.Media.Animations.Storyboard"/> begun
+            </summary>
+        </member>
+        <member name="E:Photon.Media.Animations.Storyboard.Completed">
+            <summary>
+            This event is fired whenever all the children animation timelines are completed
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.Storyboard.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Animations.Storyboard"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.Storyboard.Children">
+            <summary>
+            Gets a collection of all the <see cref="T:Photon.Media.Animations.Storyboard"/>'s child <see cref="T:Photon.Media.Animations.AnimationTimeline"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.Storyboard.Elapsed">
+            <summary>
+            Gets the time elapsed since the <see cref="T:Photon.Media.Animations.Storyboard"/> begun
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.Storyboard.Begin">
+            <summary>
+            Begins the <see cref="T:Photon.Media.Animations.Storyboard"/> and all its subsequent <see cref="T:Photon.Media.Animations.AnimationTimeline"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.Storyboard.Render">
+            <summary>
+            Renders the <see cref="T:Photon.Media.Animations.AnimationTimeline"/>s owned by the <see cref="T:Photon.Media.Animations.Storyboard"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.Storyboard.Stop">
+            <summary>
+            Stops the <see cref="T:Photon.Media.Animations.Storyboard"/> and all its subsequent <see cref="T:Photon.Media.Animations.AnimationTimeline"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.Storyboard.OnChildrenChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Handles the <see cref="E:Photon.ObservableHashSet`1.CollectionChanged"/> event
+            </summary>
+            <param name="sender">The event's sender</param>
+            <param name="e">The <see cref="T:System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> associated with the event</param>
+        </member>
+        <member name="M:Photon.Media.Animations.Storyboard.OnAnimationCompleted(System.Object,System.EventArgs)">
+            <summary>
+            Handles the <see cref="E:Photon.Media.Animations.AnimationTimeline.Completed"/> event raised by child <see cref="T:Photon.Media.Animations.AnimationTimeline"/>s
+            </summary>
+            <param name="sender">The event's sender</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> associated with the event</param>
+        </member>
+        <member name="M:Photon.Media.Animations.Storyboard.Register(Photon.IUIElement)">
+            <summary>
+            Creates the register a new <see cref="T:Photon.Media.Animations.Storyboard"/> for the specified <see cref="T:Photon.IUIElement"/>
+            </summary>
+            <param name="element">The <see cref="T:Photon.IUIElement"/> for which to create the <see cref="T:Photon.Media.Animations.Storyboard"/></param>
+            <returns>The <see cref="T:Photon.Media.Animations.Storyboard"/> that has been registered into the specified <see cref="T:Photon.IUIElement"/></returns>
+        </member>
+        <member name="M:Photon.Media.Animations.Storyboard.SetTarget(Photon.Media.Animations.AnimationTimeline,Photon.DependencyObject)">
+            <summary>
+            Sets the target <see cref="T:Photon.DependencyObject"/> of the specified <see cref="T:Photon.Media.Animations.AnimationTimeline"/> 
+            </summary>
+            <param name="animation">The <see cref="T:Photon.Media.Animations.AnimationTimeline"/> for which to set the specified target</param>
+            <param name="target">The <see cref="T:Photon.Media.Animations.AnimationTimeline"/>'s target <see cref="T:Photon.DependencyObject"/></param>
+        </member>
+        <member name="M:Photon.Media.Animations.Storyboard.SetTargetProperty(Photon.Media.Animations.AnimationTimeline,Photon.DependencyProperty)">
+            <summary>
+            Sets the targeted <see cref="T:Photon.DependencyProperty"/> of the specified <see cref="T:Photon.Media.Animations.AnimationTimeline"/>
+            </summary>
+            <param name="animation">The <see cref="T:Photon.Media.Animations.AnimationTimeline"/> for which to set the specified targeted property</param>
+            <param name="property">The <see cref="T:Photon.Media.Animations.AnimationTimeline"/>'s targeted <see cref="T:Photon.DependencyProperty"/></param>
+        </member>
+        <member name="M:Photon.Media.Animations.Storyboard.SetTargetProperty(Photon.Media.Animations.AnimationTimeline,Photon.PropertyPath)">
+            <summary>
+            Sets the targeted <see cref="T:Photon.DependencyProperty"/> of the specified <see cref="T:Photon.Media.Animations.AnimationTimeline"/>
+            </summary>
+            <param name="animation">The <see cref="T:Photon.Media.Animations.AnimationTimeline"/> for which to set the specified targeted property</param>
+            <param name="propertyPath">The <see cref="T:Photon.Media.Animations.AnimationTimeline"/>'s targeted <see cref="T:Photon.PropertyPath"/></param>
         </member>
         <member name="T:Photon.Media.Animations.EasingMode">
             <summary>

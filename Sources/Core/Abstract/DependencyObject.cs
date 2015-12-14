@@ -35,7 +35,7 @@ namespace Photon
         /// Gets a dictionary containing a list of all the <see cref="DependencyProperty"/> contained by the <see cref="DependencyObject"/>
         /// </summary>
         [XmlIgnore]
-        public Dictionary<DependencyProperty, object> DependencyProperties { get; private set; }
+        public DependencyPropertyCollection DependencyProperties { get; private set; }
 
         /// <summary>
         /// Gets a list containing a list of all the <see cref="Media.Animations.AnimationClock"/> attached to the <see cref="DependencyObject"/>
@@ -171,11 +171,11 @@ namespace Photon
         /// </summary>
         /// <param name="depencyObjectType">The type of the <see cref="DependencyObject"/> to search for <see cref="DependencyProperty"/></param>
         /// <returns>A dictionary of <see cref="DependencyProperty"/></returns>
-        private static Dictionary<DependencyProperty, object> GetDepencyProperties(Type depencyObjectType)
+        private static DependencyPropertyCollection GetDepencyProperties(Type depencyObjectType)
         {
-            Dictionary<DependencyProperty, object> dependencyProperties;
+            DependencyPropertyCollection dependencyProperties;
             DependencyProperty dependencyProperty;
-            dependencyProperties = new Dictionary<DependencyProperty, object>();
+            dependencyProperties = new DependencyPropertyCollection();
             foreach (FieldInfo field in depencyObjectType.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy))
             {
                 if (field.FieldType == typeof(DependencyProperty))
