@@ -831,6 +831,28 @@
             Gets an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the ordered <see cref="T:Photon.DependencyProperty"/> instances to navigate
             </summary>
         </member>
+        <member name="M:Photon.PropertyPath.GetValue(Photon.DependencyObject)">
+            <summary>
+            Gets an object representing the value returned by the <see cref="T:Photon.DependencyProperty"/> the <see cref="T:Photon.PropertyPath"/> leads to
+            </summary>
+            <param name="dependencyObject">The root <see cref="T:Photon.DependencyObject"/> for which to get the value returned by the <see cref="T:Photon.DependencyProperty"/> the <see cref="T:Photon.PropertyPath"/> leads to</param>
+            <returns>An object representing the value returned by the <see cref="T:Photon.DependencyProperty"/> the <see cref="T:Photon.PropertyPath"/> leads to</returns>
+        </member>
+        <member name="M:Photon.PropertyPath.GetValue``1(Photon.DependencyObject)">
+            <summary>
+            Gets an object representing the value returned by the <see cref="T:Photon.DependencyProperty"/> the <see cref="T:Photon.PropertyPath"/> leads to
+            </summary>
+            <param name="dependencyObject">The root <see cref="T:Photon.DependencyObject"/> for which to get the value returned by the <see cref="T:Photon.DependencyProperty"/> the <see cref="T:Photon.PropertyPath"/> leads to</param>
+            <returns>An object representing the value returned by the <see cref="T:Photon.DependencyProperty"/> the <see cref="T:Photon.PropertyPath"/> leads to</returns>
+            <typeparam name="TResult">The expected type of the returned value</typeparam>
+        </member>
+        <member name="M:Photon.PropertyPath.SetValue(Photon.DependencyObject,System.Object)">
+            <summary>
+            Sets the value of the <see cref="T:Photon.DependencyProperty"/> the <see cref="T:Photon.PropertyPath"/> leads to
+            </summary>
+            <param name="dependencyObject">The root <see cref="T:Photon.DependencyObject"/> for which to set the value of the <see cref="T:Photon.DependencyProperty"/> the <see cref="T:Photon.PropertyPath"/> leads to</param>
+            <param name="value">The value to set to the <see cref="T:Photon.DependencyProperty"/> the <see cref="T:Photon.PropertyPath"/> leads to</param>
+        </member>
         <member name="T:Photon.ResourceDictionary">
             <summary>
             Provides a dictionary implementation that contains Photon resources used by components and other elements of a Photon application
