@@ -822,7 +822,7 @@ namespace Photon
         /// <param name="drawingContext">The <see cref="Photon.DrawingContext"/> in which to render the window</param>
         protected virtual void OnRender(DrawingContext drawingContext)
         {
-            if(this.Background != null)
+            if (this.Background != null)
             {
                 drawingContext.DrawRectangle(new Rectangle(0, 0, this.Hwnd.Width, this.Hwnd.Height), Thickness.Empty, this.Background, null);
             }

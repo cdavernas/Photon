@@ -63,12 +63,14 @@
     <Compile Include="Core\Abstract\TriggerAction.cs" />
     <Compile Include="Core\Abstract\TriggerBase.cs" />
     <Compile Include="Core\Abstract\Visual.cs" />
+    <Compile Include="Core\Collections\DependencyPropertyCollection.cs" />
     <Compile Include="Core\Collections\SetterBaseCollection.cs" />
     <Compile Include="Core\Collections\TriggerActionCollection.cs" />
     <Compile Include="Core\Collections\TriggerBaseCollection.cs" />
     <Compile Include="Core\Entities\Application.cs" />
     <Compile Include="Core\Entities\EventSetter.cs" />
     <Compile Include="Core\Entities\EventTrigger.cs" />
+    <Compile Include="Core\Entities\PropertyPath.cs" />
     <Compile Include="Core\Entities\ResourceDictionary.cs" />
     <Compile Include="Core\Entities\RoutedEvent.cs" />
     <Compile Include="Core\Entities\Setter.cs" />
@@ -131,7 +133,10 @@
     <Compile Include="Media.Animations\Abstract\AnimationClock.cs" />
     <Compile Include="Media.Animations\Abstract\AnimationTimeline.cs" />
     <Compile Include="Media.Animations\Abstract\EasingFunction.cs" />
+    <Compile Include="Media.Animations\Collections\AnimationTimelineCollection.cs" />
+    <Compile Include="Media.Animations\Entities\ColorAnimation.cs" />
     <Compile Include="Media.Animations\Entities\RepeatBehavior.cs" />
+    <Compile Include="Media.Animations\Entities\Storyboard.cs" />
     <Compile Include="Media.Animations\Enumerations\EasingMode.cs" />
     <Compile Include="Media.Animations\Enumerations\FillBehavior.cs" />
     <Compile Include="Media.Animations\Enumerations\RepeatMode.cs" />

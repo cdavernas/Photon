@@ -14,9 +14,9 @@ namespace Photon.Media.Animations
     {
 
         /// <summary>
-        /// This event is fired whenever the animation is completed
+        /// When inherited by a class, this event is fired whenever all the children animation timelines are completed
         /// </summary>
-        public event EventHandler Completed;
+        public abstract event EventHandler Completed;
 
         /// <summary>
         /// Initializes a new <see cref="AnimationClock"/>

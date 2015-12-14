@@ -76,12 +76,12 @@ namespace Photon.Media.Animations
         public DependencyObject Target { get; internal set; }
 
         /// <summary>
-        /// Gets the <see cref="DependencyProperty"/> animated by the animation timeline
+        /// Gets the <see cref="PropertyPath"/> leading to the <see cref="DependencyProperty"/> animated by the <see cref="AnimationTimeline"/>
         /// </summary>
-        public DependencyProperty TargetProperty { get; internal set; }
+        public PropertyPath TargetProperty { get; internal set; }
 
         /// <summary>
-        /// Gets a <see cref="TimeSpan"/> indicating the time elasped since the animation timeline has begun
+        /// Gets a <see cref="TimeSpan"/> indicating the time elasped since the <see cref="AnimationTimeline"/> has begun
         /// </summary>
         public TimeSpan Time
         {
