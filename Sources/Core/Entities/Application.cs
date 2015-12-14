@@ -254,7 +254,7 @@ namespace Photon
             xamlFilePath = "/" + typeof(TApplication).Assembly.GetName().Name + ";component/" + typeof(TApplication).Name + ".xaml";
             try
             {
-                xamlStream = Application.GetResourceStream(new Uri(xamlFilePath, UriKind.RelativeOrAbsolute));
+                xamlStream = Application.GetResourceStream(new Uri(xamlFilePath, UriKind.Relative));
             }
             catch(Exception ex)
             {
