@@ -135,18 +135,31 @@
     <Compile Include="Media.Animations\Abstract\EasingFunction.cs" />
     <Compile Include="Media.Animations\Collections\AnimationTimelineCollection.cs" />
     <Compile Include="Media.Animations\Entities\ColorAnimation.cs" />
+    <Compile Include="Media.Animations\Entities\DoubleAnimation.cs" />
+    <Compile Include="Media.Animations\Entities\FloatAnimation.cs" />
     <Compile Include="Media.Animations\Entities\RepeatBehavior.cs" />
     <Compile Include="Media.Animations\Entities\Storyboard.cs" />
     <Compile Include="Media.Animations\Enumerations\EasingMode.cs" />
     <Compile Include="Media.Animations\Enumerations\FillBehavior.cs" />
     <Compile Include="Media.Animations\Enumerations\RepeatMode.cs" />
+    <Compile Include="Media.Effects\Abstract\Effect.cs" />
+    <Compile Include="Media.Effects\Abstract\EffectGroup.cs" />
+    <Compile Include="Media.Effects\Collections\EffectCollection.cs" />
+    <Compile Include="Media.Effects\Collections\ShaderCollection.cs" />
+    <Compile Include="Media.Effects\Entities\ColorizeEffect.cs" />
+    <Compile Include="Media.Effects\Entities\PixelateEffect.cs" />
+    <Compile Include="Media.Effects\Entities\Shader.cs" />
+    <Compile Include="Media.Effects\Entities\ShaderEffect.cs" />
+    <Compile Include="Media.Effects\Entities\ShaderProgram.cs" />
     <Compile Include="Media\Abstract\Brush.cs" />
     <Compile Include="Media\Abstract\Drawing.cs" />
     <Compile Include="Media\Abstract\Geometry.cs" />
     <Compile Include="Media\Abstract\PathSegment.cs" />
+    <Compile Include="Media\Collections\FrameBufferObjectCollection.cs" />
     <Compile Include="Media\Collections\PathFigureCollection.cs" />
     <Compile Include="Media\Collections\PathSegmentCollection.cs" />
     <Compile Include="Media\Collections\PointCollection.cs" />
+    <Compile Include="Media\Entities\FrameBufferObject.cs" />
     <Compile Include="Media\Entities\GeometryDrawing.cs" />
     <Compile Include="Media\Entities\LineGeometry.cs" />
     <Compile Include="Media\Entities\LineSegment.cs" />
@@ -185,7 +198,12 @@
     <Compile Include="Threading\Entities\DispatcherOperation.cs" />
     <Compile Include="Threading\Enumerations\DispatcherPriority.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Shaders\Pixelate\pixelate.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Shaders\Colorize\colorize.frag" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

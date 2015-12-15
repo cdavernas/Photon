@@ -45,12 +45,13 @@ namespace Photon
                 {
                     temp = resourceUri.ToString().Replace("component/", "").Split(';');
                     assemblyName = temp[0].Replace("/", "").Replace(@"\", "");
-                    resourceName = assemblyName + "." + temp[1].Replace("/", "").Replace(@"\", "");
+                    resourceName = assemblyName + "." + temp[1].Replace("/", ".").Replace(@"\", "");
                     assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == assemblyName);
                     if (assembly == null)
                     {
                         throw new Exception("The assembly '" + assemblyName + "' does not exist and/or cannot be found");
                     }
+                    var x = assembly.GetManifestResourceNames();
                     stream = assembly.GetManifestResourceStream(resourceName);
                     if (stream == null)
                     {

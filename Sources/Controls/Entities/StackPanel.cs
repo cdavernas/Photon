@@ -236,7 +236,7 @@ namespace Photon.Controls
             {
                 drawingContext.DrawRectangle(this.RenderTarget, Thickness.Empty, this.Background, null);
             }
-            foreach(UIElement element in this.Children)
+            foreach (UIElement element in this.Children)
             {
                 element.Render(drawingContext);
             }

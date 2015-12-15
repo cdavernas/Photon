@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using Photon;
 using Photon.Controls;
 using Photon.Media.Animations;
+using Photon.Media.Effects;
 using System.Drawing;
+using OpenTK.Graphics.OpenGL;
+using OpenTK;
 
 namespace SampleApp
 {
@@ -28,8 +31,8 @@ namespace SampleApp
             ColorAnimation colorAnim;
             this.ColorAnimation = Storyboard.Register(this);
             colorAnim = new ColorAnimation();
-            colorAnim.From = Color.Green;
-            colorAnim.To = Color.Red;
+            colorAnim.From = Color.Blue;
+            colorAnim.To = Color.Magenta;
             colorAnim.Duration = TimeSpan.FromSeconds(2);
             colorAnim.AutoReverse = true;
             colorAnim.RepeatBehavior = RepeatBehavior.Forever;
