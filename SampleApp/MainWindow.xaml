@@ -2,7 +2,7 @@
         xmlns="clr-namespace:Photon;assembly=Photon"
         xmlns:ctrl="clr-namespace:Photon.Controls;assembly=Photon"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Background="Black">
+        Background="C:\Users\Charles-Frédéric\Pictures\TestNext.jpg">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -12,7 +12,7 @@
                         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
                         <Setter Property="VerticalAlignment" Value="Center"></Setter>
                         <Setter Property="Orientation" Value="Horizontal"></Setter>
-                        <Setter Property="Background" Value="#FFFFFFFF"></Setter>
+                        <Setter Property="Background" Value="#20FFFFFF"></Setter>
                     </Style>
                     <Style x:Key="item" TargetType="{x:Type ctrl:Border}">
                         <Setter Property="Width" Value="25"></Setter>

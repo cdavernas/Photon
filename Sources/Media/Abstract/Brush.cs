@@ -40,12 +40,12 @@ namespace Photon.Media
         /// Begins using the <see cref="Brush"/> to render the specified <see cref="Drawing"/>. Must be followed by a call to the <see cref="Brush.EndUse"/> method
         /// </summary>
         /// <param name="drawing">The <see cref="Drawing"/> to render</param>
-        internal abstract void BeginUse(Drawing drawing);
+        public abstract void BeginUse(Drawing drawing);
 
         /// <summary>
         /// Ends using the <see cref="Brush"/>
         /// </summary>
-        internal abstract void EndUse();
+        public abstract void EndUse();
 
         /// <summary>
         /// Clones the brush

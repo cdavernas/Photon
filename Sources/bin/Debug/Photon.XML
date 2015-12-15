@@ -569,6 +569,16 @@
             Initialies a new <see cref="T:Photon.Visual"/>
             </summary>
         </member>
+        <member name="F:Photon.Visual.EffectProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Visual.Effect"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Visual.Effect">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Effects.Effect"/> associated with the <see cref="T:Photon.Visual"/>
+            </summary>
+        </member>
         <member name="P:Photon.Visual.VisualCacheMode">
             <summary>
             Gets the <see cref="T:Photon.Visual"/>'s <see cref="T:Photon.Media.CacheMode"/>
@@ -1440,11 +1450,6 @@
         <member name="M:Photon.Window.InvalidateLayout">
             <summary>
             Invalidates the window's layout
-            </summary>
-        </member>
-        <member name="M:Photon.Window.InvalidateVisual">
-            <summary>
-            Invalidates the window's visual, forcing it to redraw
             </summary>
         </member>
         <member name="M:Photon.Window.OnHwndLoad(System.Object,System.EventArgs)">
@@ -3769,6 +3774,36 @@
             Allows the execution of code whenever the animation renders
             </summary>
         </member>
+        <member name="T:Photon.Media.Animations.DoubleAnimation">
+            <summary>
+            Represents a <see cref="T:System.Double"/> <see cref="T:Photon.Media.Animations.Animation`1"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.DoubleAnimation.Length">
+            <summary>
+            The <see cref="T:System.Double"/>'s difference between the values provided by the From and To properties
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.DoubleAnimation.OnRender">
+            <summary>
+            Allows the execution of code whenever the animation renders
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Animations.FloatAnimation">
+            <summary>
+            Represents a <see cref="T:System.Single"/> <see cref="T:Photon.Media.Animations.Animation`1"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Animations.FloatAnimation.Length">
+            <summary>
+            The <see cref="T:System.Single"/>'s difference between the values provided by the From and To properties
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Animations.FloatAnimation.OnRender">
+            <summary>
+            Allows the execution of code whenever the animation renders
+            </summary>
+        </member>
         <member name="T:Photon.Media.Animations.RepeatBehavior">
             <summary>
             Describes how a <see cref="T:Photon.Media.Animations.Animation`1"/> repeats its simple duration
@@ -3933,6 +3968,368 @@
             The animation will repeat itself forever
             </summary>
         </member>
+        <member name="T:Photon.Media.Effects.Effect">
+            <summary>
+            Represents the base class for all graphical effects that can be applied at render time to a <see cref="T:Photon.Visual"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.Effect.IsLoaded">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Media.Effects.Effect"/> has already been loaded
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.Effect.Load">
+            <summary>
+            Loads the <see cref="T:Photon.Media.Effects.Effect"/> if it hasn't already been done
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.Effect.BeginUse">
+            <summary>
+            Begins using the <see cref="T:Photon.Media.Effects.Effect"/>. Must be followed by a call to the <see cref="M:Photon.Media.Effects.Effect.EndUse"/> method
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.Effect.EndUse">
+            <summary>
+            Ends using the <see cref="T:Photon.Media.Effects.Effect"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.Effect.OnLoaded">
+            <summary>
+            When overriden in a class, allows the execution of code whenever the <see cref="T:Photon.Media.Effects.Effect"/> has been loaded
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.Effect.Dispose">
+            <summary>
+            Disposes of the <see cref="T:Photon.Media.Effects.Effect"/> and all its resources
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Effects.EffectGroup">
+            <summary>
+            Represents a group of <see cref="T:Photon.Media.Effects.Effect"/>s that can be applied at render time to a <see cref="T:Photon.Visual"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.EffectGroup.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Effects.EffectGroup"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.EffectGroup.Effects">
+            <summary>
+            Gets a collection of the <see cref="T:Photon.Media.Effects.Effect"/>s contained by the <see cref="T:Photon.Media.Effects.EffectGroup"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.EffectGroup.BeginUse">
+            <summary>
+            Begins using the <see cref="T:Photon.Media.Effects.EffectGroup"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.EffectGroup.EndUse">
+            <summary>
+            Ends using the <see cref="T:Photon.Media.Effects.EffectGroup"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.EffectGroup.OnLoaded">
+            <summary>
+            Allows the execution of code whenever the <see cref="T:Photon.Media.Effects.EffectGroup"/> has been loaded
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Effects.EffectCollection">
+            <summary>
+            Represents a collection of <see cref="T:Photon.Media.Effects.Effect"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Effects.ShaderCollection">
+            <summary>
+            Represents a collection of <see cref="T:Photon.Media.Effects.Shader"/>s
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Effects.ColorizeEffect">
+            <summary>
+            Represents an <see cref="T:Photon.Media.Effects.Effect"/> that taints a <see cref="T:Photon.Visual"/> with the specified <see cref="P:Photon.Media.Effects.ColorizeEffect.Color"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Effects.ColorizeEffect.UNIFORM_COLOR">
+            <summary>
+            Gets the name of the color <see cref="T:Photon.Media.Effects.Shader"/>'s uniform
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Effects.ColorizeEffect.UNIFORM_INTENSITY">
+            <summary>
+            Gets the name of the intensity multiplier <see cref="T:Photon.Media.Effects.Shader"/>'s uniform
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Effects.ColorizeEffect.FRAGSHADER_GLSLFILE_PATH">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Effects.ColorizeEffect"/> GLSL source file/resource path
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Effects.ColorizeEffect.ColorProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Media.Effects.ColorizeEffect.Color"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.ColorizeEffect.Color">
+            <summary>
+            Gets/sets the <see cref="P:Photon.Media.Effects.ColorizeEffect.Color"/> used to shade a <see cref="T:Photon.Visual"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Effects.ColorizeEffect.IntensityProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Media.Effects.ColorizeEffect.Intensity"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.ColorizeEffect.Intensity">
+            <summary>
+            Gets/sets a double (ranging from 0.0 to 1.0) representing the <see cref="T:Photon.Media.Effects.ColorizeEffect"/>'s intensity
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.ColorizeEffect.OnLoaded">
+            <summary>
+            Allows the execution of code whenever the <see cref="T:Photon.Media.Effects.Effect"/> has been loaded
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.ColorizeEffect.OnPropertyChanged(System.String,System.Object,System.Object)">
+            <summary>
+            When overriden in a class, this method provides means to run code whenever a <see cref="T:Photon.DependencyProperty"/> has changed
+            </summary>
+            <param name="propertyName">The case sensitive name of the modified property</param>
+            <param name="originalValue">An object representing the property's value before the suffered change(s)</param>
+            <param name="value">An object representing the property's actual (new) value</param>
+        </member>
+        <member name="M:Photon.Media.Effects.ColorizeEffect.Dispose">
+            <summary>
+            Disposes of the <see cref="T:Photon.Media.Effects.ColorizeEffect"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Effects.PixelateEffect">
+            <summary>
+            This <see cref="T:Photon.Media.Effects.ShaderEffect"/> pixelates a <see cref="T:Photon.Visual"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Effects.PixelateEffect.UNIFORM_PIXELTHRESHOLD">
+            <summary>
+            Gets the name of the pixel threshold <see cref="T:Photon.Media.Effects.Shader"/>'s uniform
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Effects.PixelateEffect.SHADER_GLSLFILE_PATH">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Effects.PixelateEffect"/>'s <see cref="T:Photon.Media.Effects.Shader"/> GLSL file/resource path
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.PixelateEffect.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Effects.PixelateEffect"/>
+            </summary>
+        </member>
+        <member name="F:Photon.Media.Effects.PixelateEffect.PixelThresholdProperty">
+            <summary>
+            Describes the <see cref="P:Photon.Media.Effects.PixelateEffect.PixelThreshold"/> <see cref="T:Photon.DependencyProperty"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.PixelateEffect.PixelThreshold">
+            <summary>
+            Gets/sets the <see cref="T:Photon.Media.Effects.PixelateEffect"/>'s pixel threshold
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.PixelateEffect.OnLoaded">
+            <summary>
+            Allows the execution of code whenever the <see cref="T:Photon.Media.Effects.Effect"/> has been loaded
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.PixelateEffect.OnPropertyChanged(System.String,System.Object,System.Object)">
+            <summary>
+            Provides means to run code whenever a <see cref="T:Photon.DependencyProperty"/> has changed
+            </summary>
+            <param name="propertyName">The case sensitive name of the modified property</param>
+            <param name="originalValue">An object representing the property's value before the suffered change(s)</param>
+            <param name="value">An object representing the property's actual (new) value</param>
+        </member>
+        <member name="T:Photon.Media.Effects.Shader">
+            <summary>
+            Wrapping an OpenGL (GLSL) shader, it is used to calculate rendering effects on graphics hardware with a high degree of flexibility
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.Shader.#ctor(OpenTK.Graphics.OpenGL.ShaderType,System.Uri)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Effects.Shader"/> based on the specified GLSL file/resource <see cref="T:System.Uri"/>
+            </summary>
+            <param name="type">The <see cref="T:Photon.Media.Effects.Shader"/>'s <see cref="T:OpenTK.Graphics.OpenGL.ShaderType"/></param>
+            <param name="glslUri">The file/resource <see cref="T:System.Uri"/> of the GLSL code to compile in order to generate the <see cref="T:Photon.Media.Effects.Shader"/></param>
+        </member>
+        <member name="M:Photon.Media.Effects.Shader.#ctor(OpenTK.Graphics.OpenGL.ShaderType,System.IO.Stream)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Effects.Shader"/> based on the specified GLSL file path
+            </summary>
+            <param name="type">The <see cref="T:Photon.Media.Effects.Shader"/>'s <see cref="T:OpenTK.Graphics.OpenGL.ShaderType"/></param>
+            <param name="glslStream">The <see cref="T:System.IO.Stream"/> containing the GLSL code to compile in order to generate the <see cref="T:Photon.Media.Effects.Shader"/></param>
+        </member>
+        <member name="P:Photon.Media.Effects.Shader.Type">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Effects.Shader"/>'s <see cref="T:OpenTK.Graphics.OpenGL.ShaderType"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.Shader.Id">
+            <summary>
+            Gets an integer representing the Id of the <see cref="T:Photon.Media.Effects.Shader"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.Shader.GlslCode">
+            <summary>
+            Gets a string representing the <see cref="T:Photon.Media.Effects.Shader"/>'s uncompiled GLSL code
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.Shader.Compile">
+            <summary>
+            Compiles the <see cref="P:Photon.Media.Effects.Shader.GlslCode"/> into an OpenGL shader
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.Shader.Dispose">
+            <summary>
+            Disposes of the <see cref="T:Photon.Media.Effects.Shader"/> and of all its resources
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Effects.ShaderEffect">
+            <summary>
+            Represents an <see cref="T:Photon.Media.Effects.Effect"/> generated thanks to a <see cref="P:Photon.Media.Effects.ShaderEffect.ShaderProgram"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderEffect.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Effects.ShaderEffect"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.ShaderEffect.ShaderProgram">
+            <summary>
+            Gets the <see cref="T:Photon.Media.Effects.ShaderProgram"/> associated 
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderEffect.BeginUse">
+            <summary>
+            Begins using the <see cref="T:Photon.Media.Effects.ShaderEffect"/>. Must be followed by a call to the <see cref="M:Photon.Media.Effects.ShaderEffect.EndUse"/> method
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderEffect.EndUse">
+            <summary>
+            Ends using the <see cref="T:Photon.Media.Effects.ShaderEffect"/>
+            </summary>
+        </member>
+        <member name="T:Photon.Media.Effects.ShaderProgram">
+            <summary>
+            A <see cref="T:Photon.Media.Effects.ShaderProgram"/> is a wrapper for an OpenGL program object, which represents fully processed executable code, in the OpenGL Shading Language, for one or more Shader stages
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.Effects.ShaderProgram"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.ShaderProgram.Id">
+            <summary>
+            Gets an integer representing the <see cref="T:Photon.Media.Effects.ShaderProgram"/>'s Id
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.ShaderProgram.Shaders">
+            <summary>
+            Gets a collection of the <see cref="T:Photon.Media.Effects.Shader"/>s contained by the <see cref="T:Photon.Media.Effects.ShaderProgram"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.ShaderProgram.LoadedUniforms">
+            <summary>
+            Gets a dictionary of KeyValuePairs made of both the loaded <see cref="T:Photon.Media.Effects.Shader"/>'s uniforms and of the uniforms addresses
+            </summary>
+        </member>
+        <member name="P:Photon.Media.Effects.ShaderProgram.IsLoaded">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Media.Effects.ShaderProgram"/> is loaded
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.GetUniformAddress(System.String)">
+            <summary>
+            Gets an integer representing the address of the specified <see cref="T:Photon.Media.Effects.Shader"/>'s uniform
+            </summary>
+            <param name="uniformName">The name of the <see cref="T:Photon.Media.Effects.Shader"/> uniform to retrieve the address of</param>
+            <returns>An integer representing the address of the specified <see cref="T:Photon.Media.Effects.Shader"/>'s uniform</returns>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.GetUniform(System.String,System.Single@)">
+            <summary>
+            Gets the value of the specified <see cref="T:Photon.Media.Effects.Shader"/>'s uniform
+            </summary>
+            <param name="uniformName">The name of the <see cref="T:Photon.Media.Effects.Shader"/>'s uniform to retrieve</param>
+            <param name="value">The float used to hold the returned value</param>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.SetUniform(System.String,System.Single)">
+            <summary>
+            Sets the specified uniform
+            </summary>
+            <param name="uniformName">The name of the <see cref="T:Photon.Media.Effects.Shader"/> uniform to set</param>
+            <param name="value">The value to set to the <see cref="T:Photon.Media.Effects.Shader"/> uniform</param>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.SetUniform(System.String,System.Single,System.Single)">
+            <summary>
+            Sets the specified uniform
+            </summary>
+            <param name="uniformName">The name of the <see cref="T:Photon.Media.Effects.Shader"/> uniform to set</param>
+            <param name="value1">The second value to set to the <see cref="T:Photon.Media.Effects.Shader"/> uniform</param>
+            <param name="value2">The first value to set to the <see cref="T:Photon.Media.Effects.Shader"/> uniform</param>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.SetUniform(System.String,System.Single,System.Single,System.Single)">
+            <summary>
+            Sets the specified uniform
+            </summary>
+            <param name="uniformName">The name of the <see cref="T:Photon.Media.Effects.Shader"/> uniform to set</param>
+            <param name="value1">The first value to set to the <see cref="T:Photon.Media.Effects.Shader"/> uniform</param>
+            <param name="value2">The second value to set to the <see cref="T:Photon.Media.Effects.Shader"/> uniform</param>
+            <param name="value3">The third value to set to the <see cref="T:Photon.Media.Effects.Shader"/> uniform</param>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.SetUniform(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Sets the specified uniform
+            </summary>
+            <param name="uniformName">The name of the <see cref="T:Photon.Media.Effects.Shader"/> uniform to set</param>
+            <param name="value1">The first value to set to the <see cref="T:Photon.Media.Effects.Shader"/> uniform</param>
+            <param name="value2">The second value to set to the <see cref="T:Photon.Media.Effects.Shader"/> uniform</param>
+            <param name="value3">The third value to set to the <see cref="T:Photon.Media.Effects.Shader"/> uniform</param>
+            <param name="value4">The fourth value to set to the <see cref="T:Photon.Media.Effects.Shader"/> uniform</param>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.SetUniform(System.String,System.Drawing.Color)">
+            <summary>
+            Sets the specified uniform with the specified <see cref="T:System.Drawing.Color"/>
+            </summary>
+            <param name="uniformName">The name of the <see cref="T:Photon.Media.Effects.Shader"/> uniform to set</param>
+            <param name="color">The <see cref="T:System.Drawing.Color"/> value to set to the <see cref="T:Photon.Media.Effects.Shader"/> uniform</param>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.Load">
+            <summary>
+            Loads the <see cref="T:Photon.Media.Effects.ShaderProgram"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.Link">
+            <summary>
+            Links the <see cref="T:Photon.Media.Effects.ShaderProgram"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.BeginUse">
+            <summary>
+            Begins using the <see cref="T:Photon.Media.Effects.ShaderProgram"/>. Must be followed by a call to the <see cref="M:Photon.Media.Effects.ShaderProgram.EndUse"/> method
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.EndUse">
+            <summary>
+            Ends using the <see cref="T:Photon.Media.Effects.ShaderProgram"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.OnShadersChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Handles the <see cref="P:Photon.Media.Effects.ShaderProgram.Shaders"/>'s <see cref="E:Photon.ObservableHashSet`1.CollectionChanged"/> event
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The <see cref="T:System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> associated with the event</param>
+        </member>
+        <member name="M:Photon.Media.Effects.ShaderProgram.Dispose">
+            <summary>
+            Disposes of the <see cref="T:Photon.Media.Effects.ShaderProgram"/> and all its resources
+            </summary>
+        </member>
         <member name="T:Photon.Media.Brush">
             <summary>
             Defines objects used to paint graphical objects. Classes that derive from Brush describe how the area is painted
@@ -4054,6 +4451,11 @@
             </summary>
             <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of the <see cref="T:Photon.Media.Point"/>s that define the <see cref="T:Photon.Media.PathSegment"/></returns>
         </member>
+        <member name="T:Photon.Media.FrameBufferObjectCollection">
+            <summary>
+            Represents a collection of <see cref="T:Photon.Media.FrameBufferObject"/>s
+            </summary>
+        </member>
         <member name="T:Photon.Media.PathFigureCollection">
             <summary>
             Represents a collection of <see cref="T:Photon.Media.PathFigure"/> objects that collectively make up the geometry of a <see cref="T:Photon.Media.PathGeometry"/>
@@ -4079,6 +4481,46 @@
         <member name="T:Photon.Media.PointCollection">
             <summary>
             Represents a collection of <see cref="T:Photon.Media.Point"/> values that can be individually accessed by index
+            </summary>
+        </member>
+        <member name="T:Photon.Media.FrameBufferObject">
+            <summary>
+            Represents an OpenGL object which allows for the creation of user-defined buffer thanks to which one can render to non-Default Framebuffer locations, and thus render without disturbing the main screen.
+            </summary>
+        </member>
+        <member name="M:Photon.Media.FrameBufferObject.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new <see cref="T:Photon.Media.FrameBufferObject"/>
+            </summary>
+        </member>
+        <member name="P:Photon.Media.FrameBufferObject.Id">
+            <summary>
+            Gets an integer representing the <see cref="T:Photon.Media.FrameBufferObject"/> Id
+            </summary>
+        </member>
+        <member name="P:Photon.Media.FrameBufferObject.IsLoaded">
+            <summary>
+            Gets a boolean indicating whether or not the <see cref="T:Photon.Media.FrameBufferObject"/> has been loaded
+            </summary>
+        </member>
+        <member name="M:Photon.Media.FrameBufferObject.Load">
+            <summary>
+            Loads the <see cref="T:Photon.Media.FrameBufferObject"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.FrameBufferObject.BeginUse">
+            <summary>
+            Begins using the <see cref="T:Photon.Media.FrameBufferObject"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.FrameBufferObject.EndUse">
+            <summary>
+            Ends using the <see cref="T:Photon.Media.FrameBufferObject"/>
+            </summary>
+        </member>
+        <member name="M:Photon.Media.FrameBufferObject.Dispose">
+            <summary>
+            Dispose of the <see cref="T:Photon.Media.FrameBufferObject"/> and all its resources
             </summary>
         </member>
         <member name="T:Photon.Media.GeometryDrawing">

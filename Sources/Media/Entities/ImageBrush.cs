@@ -90,7 +90,7 @@ namespace Photon.Media
         /// Begins using the <see cref="Brush"/> to paint a geometry. Must be followed by a call to the <see cref="Brush.EndUse"/> method
         /// </summary>
         /// <param name="drawing">The <see cref="Drawing"/> to render</param>
-        internal override void BeginUse(Drawing drawing)
+        public override void BeginUse(Drawing drawing)
         {
             Rectangle bounds;
             //Sets the drawing as the active drawing
@@ -123,7 +123,7 @@ namespace Photon.Media
         /// <summary>
         /// Ends using the <see cref="Brush"/>
         /// </summary>
-        internal override void EndUse()
+        public override void EndUse()
         {
             //Sets the stencil function to draw the masked geometry
             GL.StencilFunc(StencilFunction.Equal, 1, 1);

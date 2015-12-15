@@ -23,6 +23,25 @@ namespace Photon
         }
 
         /// <summary>
+        /// Describes the <see cref="Visual.Effect"/> <see cref="DependencyProperty"/>
+        /// </summary>
+        public static DependencyProperty EffectProperty = DependencyProperty.Register("Effect", typeof(Visual));
+        /// <summary>
+        /// Gets/sets the <see cref="Media.Effects.Effect"/> associated with the <see cref="Visual"/>
+        /// </summary>
+        public Media.Effects.Effect Effect
+        {
+            get
+            {
+                return this.GetValue<Media.Effects.Effect>(Visual.EffectProperty);
+            }
+            set
+            {
+                this.SetValue(Visual.EffectProperty, value);
+            }
+        }
+
+        /// <summary>
         /// Gets the <see cref="Visual"/>'s <see cref="Media.CacheMode"/>
         /// </summary>
         public Media.CacheMode VisualCacheMode { get; protected set; }
@@ -103,6 +122,10 @@ namespace Photon
                     element.Load();
                 }
             }
+            if(this.Effect != null)
+            {
+                this.Effect.Load();
+            }
             this.IsLoaded = true;
             this.OnLoaded();
         }
@@ -117,7 +140,15 @@ namespace Photon
             {
                 clock.Render();
             }
+            if(this.Effect != null)
+            {
+                this.Effect.BeginUse();
+            }
             this.OnRender(drawingContext);
+            if (this.Effect != null)
+            {
+                this.Effect.EndUse();
+            }
         }
 
         /// <summary>

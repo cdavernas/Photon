@@ -17,7 +17,7 @@ namespace Photon
     /// Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes
     /// </summary>
     public class Window
-        : DependencyObject, Controls.IDecorator
+        : Visual, Controls.IDecorator
     {
 
         /// <summary>
@@ -568,20 +568,13 @@ namespace Photon
         }
 
         /// <summary>
-        /// Invalidates the window's visual, forcing it to redraw
-        /// </summary>
-        public void InvalidateVisual()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Handles the underlying <see cref="GameWindow.Load"/> event
         /// </summary>
         /// <param name="sender">The sender of the event</param>
         /// <param name="e">The event's arguments</param>
         private void OnHwndLoad(object sender, EventArgs e)
         {
+            this.Load();
             if(this.Child != null)
             {
                 this.Child.Load();
@@ -614,11 +607,7 @@ namespace Photon
                 clock.Render();
             }
             this.DrawingContext.BeginRenderPass();
-            this.OnRender(this.DrawingContext);
-            if (this.Child != null)
-            {
-                this.Child.Render(this.DrawingContext);
-            }
+            this.Render(this.DrawingContext);     
             this.DrawingContext.EndRenderPass();
             this.Dispatcher.Context.ExecuteOperations(this.Dispatcher.Context);
         }
@@ -820,11 +809,15 @@ namespace Photon
         /// When overriden in a class, renders the window in the specified <see cref="Photon.DrawingContext"/>
         /// </summary>
         /// <param name="drawingContext">The <see cref="Photon.DrawingContext"/> in which to render the window</param>
-        protected virtual void OnRender(DrawingContext drawingContext)
+        protected override void OnRender(DrawingContext drawingContext)
         {
             if (this.Background != null)
             {
                 drawingContext.DrawRectangle(new Rectangle(0, 0, this.Hwnd.Width, this.Hwnd.Height), Thickness.Empty, this.Background, null);
+            }
+            if (this.Child != null)
+            {
+                this.Child.Render(this.DrawingContext);
             }
         }
 
